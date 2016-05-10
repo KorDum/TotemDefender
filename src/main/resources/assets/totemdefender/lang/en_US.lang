@@ -1,0 +1,67 @@
+itemGroup.tabName=Totem Defender
+item.core.name=Core
+tile.totemTreeSapling.name=Totem Tree Sapling
+tile.totemTreeLog.name=Totem Tree Wood
+tile.totemTreeLogFace1.name=Totem Tree Wood
+tile.totemTreeLogFace2.name=Totem Tree Wood
+tile.totemTreeLogFace3.name=Totem Tree Wood
+tile.totemTreeLeaves.name=Totem Tree Leaves
+tile.totemTreePlanks.name=Totem Tree Planks
+tile.totemTreeStairs.name=Totem Tree Stairs
+tile.totemTreeSlab.name=Totem Tree Slab
+item.totemTreeDoor.name=Totem Tree Door
+tile.totemTreeFence.name=Totem Tree Fence
+tile.totemTreeFenceGate.name=Totem Tree Fence Gate
+tile.totemTreeDoor.name=Totem Tree Door
+entity.totemProjectile.name=Totem Projectile
+
+tile.woodenTotem.name=Wooden Totem
+tile.ironTotem.name=Iron Totem
+tile.goldTotem.name=Gold Totem
+tile.diamondTotem.name=Diamond Totem
+
+item.projectileMode.name=Projectile Mode
+item.aoeMode.name=AoE Mode
+
+item.playerFilter.name=Player Filter
+item.selfPlayerFilter.name=Self Filter
+item.anotherPlayerFilter.name=Another Player Filter
+item.animalFilter.name=Animal Filter
+item.enemyFilter.name=Enemy Filter
+item.livingFilter.name=Slime Filter
+item.waterFilter.name=Water Mob Filter
+
+item.woodenDamageUpgrade.name=Damage I
+item.woodenASUpgrade.name=Attack speed I
+item.woodenRadiusUpgrade.name=Radius I
+item.ironDamageUpgrade.name=Damage II
+item.ironASUpgrade.name=Attack speed II
+item.ironRadiusUpgrade.name=Radius II
+item.goldDamageUpgrade.name=Damage III
+item.goldASUpgrade.name=Attack speed III
+item.goldRadiusUpgrade.name=Radius III
+item.diamondDamageUpgrade.name=Damage IV
+item.diamondASUpgrade.name=Attack speed IV
+item.diamondRadiusUpgrade.name=Radius IV
+
+item.poisonUpgrade.name=Poison Modifier
+item.fireUpgrade.name=Fire Modifier
+item.lightingUpgrade.name=Lighting Modifier
+item.witherUpgrade.name=Wither Modifier
+item.slowdownUpgrade.name=Slowdown Modifier
+item.weaknessUpgrade.name=Weakness Modifier
+item.waterBreathingUpgrade.name=Water Breathing Modifier
+item.regenerationUpgrade.name=Regeneration Modifier
+item.healUpgrade.name=Heal Modifier
+item.hungryUpgrade.name=Hungry Modifier
+item.blindnessUpgrade.name=Blindness Modifier
+item.confusionUpgrade.name=Confusion Modifier
+
+prop.attackSpeed=%s Attack Speed
+prop.damage=%s Damage
+prop.radius=%s blocks of Radius
+
+gui.woodenTotem=Basic Totem
+gui.ironTotem=Iron Totem
+gui.goldTotem=Gold Totem
+gui.diamondTotem=Diamond Totem

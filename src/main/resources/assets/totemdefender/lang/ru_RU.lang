@@ -1,0 +1,66 @@
+itemGroup.tabName=Totem Defender
+item.core.name=Ядро
+tile.totemTreeSapling.name=Саженец тотемного древа
+tile.totemTreeLog.name=Древесина тотемного древа
+tile.totemTreeLogFace1.name=Древесина тотемного древа
+tile.totemTreeLogFace2.name=Древесина тотемного древа
+tile.totemTreeLogFace3.name=Древесина тотемного древа
+tile.totemTreeLeaves.name=Листва тотемного древа
+tile.totemTreePlanks.name=Доски тотемного древа
+tile.totemTreeStairs.name=Ступеньки из тотемного древа
+tile.totemTreeSlab.name=Плита из тотемного древа
+tile.totemTreeFence.name=Забор из тотемного древа
+tile.totemTreeFenceGate.name=Калитка из тотемного древа
+tile.totemTreeDoor.name=Дверь из тотемного древа
+entity.totemProjectile.name=Снаряд Тотема
+
+tile.woodenTotem.name=Деревянный тотем
+tile.ironTotem.name=Железный тотем
+tile.goldTotem.name=Золотой тотем
+tile.diamondTotem.name=Алмазный тотем
+
+item.projectileMode.name=Снаряд
+item.aoeMode.name=По площади
+
+item.playerFilter.name=Фильтр на игроков
+item.selfPlayerFilter.name=Фильтр на себя
+item.anotherPlayerFilter.name=Фильтр на других игроков
+item.animalFilter.name=Фильтр на животных
+item.enemyFilter.name=Фильтр на враждебных существ
+item.livingFilter.name=Фильтр на слизней
+item.waterFilter.name=Фильтр на водяных существ
+
+item.woodenDamageUpgrade.name=Урон I
+item.woodenASUpgrade.name=Скорость атаки I
+item.woodenRadiusUpgrade.name=Радиус I
+item.ironDamageUpgrade.name=Урон II
+item.ironASUpgrade.name=Скорость атаки II
+item.ironRadiusUpgrade.name=Радиус II
+item.goldDamageUpgrade.name=Урон III
+item.goldASUpgrade.name=Скорость атаки III
+item.goldRadiusUpgrade.name=Радиус III
+item.diamondDamageUpgrade.name=Урон IV
+item.diamondASUpgrade.name=Скорость атаки IV
+item.diamondRadiusUpgrade.name=Радиус IV
+
+item.poisonUpgrade.name=Модификатор: яд
+item.fireUpgrade.name=Модификатор: огонь
+item.lightingUpgrade.name=Модификатор: молния
+item.witherUpgrade.name=Модификатор: иссушение
+item.slowdownUpgrade.name=Модификатор: замедление
+item.weaknessUpgrade.name=Модификатор: слабость
+item.waterBreathingUpgrade.name=Модификатор: подводное дыхание
+item.regenerationUpgrade.name=Модификатор: регенерация
+item.healUpgrade.name=Модификатор: лечение
+item.hungryUpgrade.name=Модификатор: голод
+item.blindnessUpgrade.name=Модификатор: слепота
+item.confusionUpgrade.name=Модификатор: конфуз
+
+prop.attackSpeed=%s скорость атаки
+prop.damage=%s урон
+prop.radius=%s блоков радиус
+
+gui.woodenTotem=Деревянный тотем
+gui.ironTotem=Железный тотем
+gui.goldTotem=Золотой тотем
+gui.diamondTotem=Алмазный тотем
