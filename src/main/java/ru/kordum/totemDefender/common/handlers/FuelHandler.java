@@ -1,4 +1,4 @@
-package ru.kordum.totemDefender.common.handlres;
+package ru.kordum.totemDefender.common.handlers;
 
 import cpw.mods.fml.common.IFuelHandler;
 import net.minecraft.block.Block;
@@ -12,11 +12,8 @@ public class FuelHandler implements IFuelHandler {
     public int getBurnTime(ItemStack fuel) {
         Item item = fuel.getItem();
         Block block = Block.getBlockFromItem(item);
-
-        if (block != null) {
-            if (block.equals(BlockManager.sapling)) {
-                return 150;
-            }
+        if (block != null && block.equals(BlockManager.sapling)) {
+            return 150;
         }
 
         return 0;

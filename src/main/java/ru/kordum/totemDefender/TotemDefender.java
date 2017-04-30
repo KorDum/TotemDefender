@@ -16,8 +16,8 @@ import ru.kordum.totemDefender.common.ModCreativeTab;
 import ru.kordum.totemDefender.common.RecipeManager;
 import ru.kordum.totemDefender.common.config.Config;
 import ru.kordum.totemDefender.common.entities.EntityProjectile;
-import ru.kordum.totemDefender.common.handlres.FuelHandler;
-import ru.kordum.totemDefender.common.handlres.GuiHandler;
+import ru.kordum.totemDefender.common.handlers.FuelHandler;
+import ru.kordum.totemDefender.common.handlers.GuiHandler;
 
 @Mod(
     modid = TotemDefender.MODID,

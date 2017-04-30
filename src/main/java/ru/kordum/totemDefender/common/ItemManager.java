@@ -49,6 +49,7 @@ public class ItemManager {
     public static ItemModifierUpgrade regenerationModifier;
     public static ItemModifierUpgrade waterBreathingModifier;
     public static ItemModifierUpgrade weaknessModifier;
+    public static ItemModifierUpgrade knockbackModifier;
 
     public static void registerItems(Config config) {
         /*
@@ -100,6 +101,7 @@ public class ItemManager {
         regenerationModifier = new ItemModifierUpgrade("regenerationUpgrade", ItemModifierUpgrade.REGENERATION, config.regenerationModifier);
         waterBreathingModifier = new ItemModifierUpgrade("waterBreathingUpgrade", ItemModifierUpgrade.WATER_BREATHING, config.waterBreathingModifier);
         weaknessModifier = new ItemModifierUpgrade("weaknessUpgrade", ItemModifierUpgrade.WEAKNESS, config.weaknessModifier);
+        knockbackModifier = new ItemModifierUpgrade("knockbackUpgrade", ItemModifierUpgrade.KNOCKBACK, config.knockbackModifier);
 
         /*
          * Filters

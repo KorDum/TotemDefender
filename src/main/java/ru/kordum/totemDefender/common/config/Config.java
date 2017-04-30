@@ -83,6 +83,7 @@ public class Config extends Configuration {
     public ConfigUpgrade regenerationModifier;
     public ConfigUpgrade waterBreathingModifier;
     public ConfigUpgrade weaknessModifier;
+    public ConfigUpgrade knockbackModifier;
 
     //---------------------------------------------------------------------------
     //
@@ -217,6 +218,7 @@ public class Config extends Configuration {
         regenerationModifier = createUpgradeConfig(REGENERATION_MODIFIER_CATEGORY, -10, 0, 0, true);
         waterBreathingModifier = createUpgradeConfig(WATER_BREATHING_MODIFIER_CATEGORY, -10, 0, 0, true);
         weaknessModifier = createUpgradeConfig(WEAKNESS_MODIFIER_CATEGORY, -10, 0, 0, true);
+        knockbackModifier = createUpgradeConfig(KNOCKBACK_MODIFIER_CATEGORY, -50, 0, 0, true);
 
         save();
     }

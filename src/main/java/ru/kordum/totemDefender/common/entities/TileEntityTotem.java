@@ -20,7 +20,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.EntityDamageSource;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import ru.kordum.totemDefender.TotemDefender;
@@ -146,7 +146,7 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory {
         }
     }
 
-    public void calculateStats() {
+    private void calculateStats() {
         calculateStats((BlockTotem) getBlockType());
     }
 
@@ -209,25 +209,24 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory {
         return list;
     }
 
-    protected Entity search() {
+    private void search() {
         if (filter == 0 || mode == 0) {
-            return null;
+            return;
         }
 
         long time = new Date().getTime();
         if (lastShoot != 0 && time - lastShoot < 1000 / attackSpeed) {
-            return null;
+            return;
         }
 
         ArrayList<Object> list = getEntityList();
-        if ((mode & ItemMode.PROJECTILE) == ItemMode.PROJECTILE) {
+        if ((mode & ItemMode.PROJECTILE) != 0) {
             projectileShot(list);
-        } else if ((mode & ItemMode.AOE) == ItemMode.AOE) {
+        } else if ((mode & ItemMode.AOE) != 0) {
             aoeShot(list);
         }
 
         lastShoot = time;
-        return null;
     }
 
     private void aoeShot(ArrayList<Object> list) {
@@ -431,8 +430,23 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory {
             entity.addPotionEffect(new PotionEffect(Potion.heal.id, 1, 1));
         }
 
+        if ((modifier & ItemModifierUpgrade.KNOCKBACK) != 0) {
+            double dx = xCoord - entity.posX;
+            double dy = yCoord - entity.posY;
+            double dz = zCoord - entity.posZ;
+            double strength = 0.5 / (dx * dx + dy * dy + dz * dz) * damage;
+            if (strength > 1) {
+                strength = 1;
+            }
+            entity.addVelocity(
+                ((dx > 0) ? -1 : 1) * strength,
+                ((dy > 0) ? -1 : 1) * strength,
+                ((dz > 0) ? -1 : 1) * strength
+            );
+        }
+
         if (needDamage || modifier == 0) {
-            entity.attackEntityFrom(EntityDamageSource.generic, damage);
+            entity.attackEntityFrom(new DamageSource("totem"), damage);
         }
     }
 
@@ -440,7 +454,7 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory {
     public ItemStack decrStackSize(int slot, int amount) {
         ItemStack stack = getStackInSlot(slot);
         if (stack == null) {
-            return stack;
+            return null;
         }
 
         if (stack.stackSize <= amount) {

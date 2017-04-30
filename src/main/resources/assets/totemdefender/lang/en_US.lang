@@ -1,5 +1,6 @@
 itemGroup.tabName=Totem Defender
 item.core.name=Core
+
 tile.totemTreeSapling.name=Totem Tree Sapling
 tile.totemTreeLog.name=Totem Tree Wood
 tile.totemTreeLogFace1.name=Totem Tree Wood
@@ -56,12 +57,20 @@ item.healUpgrade.name=Heal Modifier
 item.hungryUpgrade.name=Hungry Modifier
 item.blindnessUpgrade.name=Blindness Modifier
 item.confusionUpgrade.name=Confusion Modifier
+item.knockbackUpgrade.name=Knockback Modifier
 
 prop.attackSpeed=%s Attack Speed
 prop.damage=%s Damage
 prop.radius=%s blocks of Radius
+prop.holdMore=<Hold shift for details>
 
 gui.woodenTotem=Basic Totem
 gui.ironTotem=Iron Totem
 gui.goldTotem=Gold Totem
 gui.diamondTotem=Diamond Totem
+gui.attackSpeed=%ss
+gui.damage=%s
+gui.radius=%s
+
+death.attack.totem=%1$s was incinerated by Totem's anger.
+death.attack.totem.player=%1$s was incinerated by Totem's anger, while fighting %2$s.

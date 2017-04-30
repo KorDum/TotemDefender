@@ -36,8 +36,8 @@ public class BlockFence extends net.minecraft.block.BlockFence {
             || block instanceof net.minecraft.block.BlockFenceGate
             || (
                 block.getMaterial().isOpaque() &&
-                    block.renderAsNormalBlock() &&
-                    block.getMaterial() != Material.gourd
+                block.renderAsNormalBlock() &&
+                block.getMaterial() != Material.gourd
             );
     }
 

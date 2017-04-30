@@ -3,6 +3,8 @@ package ru.kordum.totemDefender.common.items.upgrades;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
+import org.lwjgl.input.Keyboard;
 import ru.kordum.totemDefender.common.config.ConfigUpgrade;
 import ru.kordum.totemDefender.common.items.ItemBase;
 import ru.kordum.totemDefender.common.utils.Formatter;
@@ -14,7 +16,7 @@ public class ItemUpgrade extends ItemBase {
     public static final int LEVEL_IRON = 2;
     public static final int LEVEL_GOLD = 3;
     public static final int LEVEL_DIAMOND = 4;
-    
+
     private float damage;
     private float attackSpeed;
     private int radius;
@@ -45,7 +47,7 @@ public class ItemUpgrade extends ItemBase {
     @Override
     public void addInformation(ItemStack itemStack, EntityPlayer player, List tooltip, boolean advanced) {
         super.addInformation(itemStack, player, tooltip, advanced);
-        if (advanced) {
+        if (advanced || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
             if (attackSpeed != 0) {
                 tooltip.add(EnumChatFormatting.BLUE + Formatter.getProp("prop.attackSpeed", attackSpeed, isModifiersInPercent()));
             }
@@ -56,7 +58,7 @@ public class ItemUpgrade extends ItemBase {
                 tooltip.add(EnumChatFormatting.GREEN + Formatter.getProp("prop.radius", radius, isModifiersInPercent()));
             }
         } else {
-            tooltip.add(EnumChatFormatting.GRAY + "<Hold shift for details>");
+            tooltip.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("prop.holdMore"));
         }
     }
 

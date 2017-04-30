@@ -47,12 +47,11 @@ public class ItemDoor extends net.minecraft.item.ItemDoor {
             if (!door.canPlaceBlockAt(world, x, y, z)) {
                 return false;
             }
-            else {
-                int direction = MathHelper.floor_double((player.rotationYaw + 180) * 4 / 360 - 0.5) & 3;
-                placeDoorBlock(world, x, y, z, direction, door);
-                itemStack.stackSize--;
-                return true;
-            }
+
+            int direction = MathHelper.floor_double((player.rotationYaw + 180) * 4 / 360 - 0.5) & 3;
+            placeDoorBlock(world, x, y, z, direction, door);
+            itemStack.stackSize--;
+            return true;
         }
 
         return false;

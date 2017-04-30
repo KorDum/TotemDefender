@@ -7,13 +7,13 @@ import net.minecraft.util.IIcon;
 import ru.kordum.totemDefender.TotemDefender;
 
 public abstract class BlockLog extends net.minecraft.block.BlockLog {
-    private String name;
-
     @SideOnly(Side.CLIENT)
     protected IIcon sideIcon;
 
     @SideOnly(Side.CLIENT)
     protected IIcon topIcon;
+
+    private String name;
 
     //---------------------------------------------------------------------------
     //

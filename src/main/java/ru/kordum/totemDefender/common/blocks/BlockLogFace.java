@@ -65,8 +65,7 @@ public abstract class BlockLogFace extends BlockDirectional {
     public IIcon getIcon(int side, int meta) {
         if (side == 1 || side == 0) {
             return topIcon;
-        }
-        else if ((meta == 2 && side == 2) ||
+        } else if ((meta == 2 && side == 2) ||
             (meta == 3 && side == 5) ||
             (meta == 0 && side == 3) ||
             (meta == 1 && side == 4)) {

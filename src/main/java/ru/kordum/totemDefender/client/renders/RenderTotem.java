@@ -43,14 +43,11 @@ public class RenderTotem extends TileEntitySpecialRenderer {
     public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float scale) {
         if (entity instanceof TileEntityWoodenTotem) {
             bindTexture(TEXTURE_WOODEN);
-        }
-        else if (entity instanceof TileEntityIronTotem) {
+        } else if (entity instanceof TileEntityIronTotem) {
             bindTexture(TEXTURE_IRON);
-        }
-        else if (entity instanceof TileEntityGoldTotem) {
+        } else if (entity instanceof TileEntityGoldTotem) {
             bindTexture(TEXTURE_GOLD);
-        }
-        else {
+        } else {
             bindTexture(TEXTURE_DIAMOND);
         }
 

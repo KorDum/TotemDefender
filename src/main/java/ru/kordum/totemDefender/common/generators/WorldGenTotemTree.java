@@ -41,8 +41,7 @@ public class WorldGenTotemTree extends WorldGenAbstractTree {
             for (int block1 = y; block1 <= y + 1 + l && flag; ++block1) {
                 if (block1 - y < i1) {
                     l3 = 0;
-                }
-                else {
+                } else {
                     l3 = k1;
                 }
 
@@ -54,8 +53,7 @@ public class WorldGenTotemTree extends WorldGenAbstractTree {
                             if (!k2.isAir(world, i2, block1, i) && !k2.isLeaves(world, i2, block1, i)) {
                                 flag = false;
                             }
-                        }
-                        else {
+                        } else {
                             flag = false;
                         }
                     }
@@ -95,8 +93,7 @@ public class WorldGenTotemTree extends WorldGenAbstractTree {
                             if (i2 > k1) {
                                 i2 = k1;
                             }
-                        }
-                        else {
+                        } else {
                             l3++;
                         }
                     }
@@ -112,18 +109,15 @@ public class WorldGenTotemTree extends WorldGenAbstractTree {
 
                             if (rand.nextDouble() > 0.05) {
                                 log = BlockManager.log;
-                            }
-                            else {
+                            } else {
                                 double faceRand = rand.nextGaussian();
                                 meta = rand.nextInt(4);
 
                                 if (faceRand > 0.66) {
                                     log = BlockManager.face1Log;
-                                }
-                                else if (faceRand > 0.33) {
+                                } else if (faceRand > 0.33) {
                                     log = BlockManager.face2Log;
-                                }
-                                else {
+                                } else {
                                     log = BlockManager.face3Log;
                                 }
                             }
