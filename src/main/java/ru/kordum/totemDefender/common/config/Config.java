@@ -43,6 +43,7 @@ public class Config extends Configuration {
     private static final String REGENERATION_MODIFIER_CATEGORY = "regenerationModifier";
     private static final String WATER_BREATHING_MODIFIER_CATEGORY = "waterBreathingModifier";
     private static final String WEAKNESS_MODIFIER_CATEGORY = "weaknessModifier";
+    private static final String KNOCKBACK_MODIFIER_CATEGORY = "knockbackModifier";
 
     private static final String ATTACK_SPEED_PARAM = "attackSpeed";
     private static final String DAMAGE_PARAM = "damage";
@@ -95,27 +96,20 @@ public class Config extends Configuration {
 
     //---------------------------------------------------------------------------
     //
-    // PRIVATE HANDLERS
-    //
-    //---------------------------------------------------------------------------
-
-    //---------------------------------------------------------------------------
-    //
     // PRIVATE METHODS
     //
     //---------------------------------------------------------------------------
 
-    private ConfigCategory createDefaultTotemParams(ConfigCategory category, ConfigTotem config) {
+    private void createDefaultTotemParams(ConfigCategory category, ConfigTotem config) {
         Property attackSpeedProperty = new Property(ATTACK_SPEED_PARAM, String.valueOf(config.getAttackSpeed()), Property.Type.DOUBLE);
         Property damageProperty = new Property(DAMAGE_PARAM, String.valueOf(config.getDamage()), Property.Type.DOUBLE);
         Property radiusProperty = new Property(RADIUS_PARAM, String.valueOf(config.getRadius()), Property.Type.INTEGER);
         category.put(ATTACK_SPEED_PARAM, attackSpeedProperty);
         category.put(DAMAGE_PARAM, damageProperty);
         category.put(RADIUS_PARAM, radiusProperty);
-        return category;
     }
 
-    private ConfigCategory createUpgradeParams(ConfigCategory category, ConfigUpgrade config) {
+    private void createUpgradeParams(ConfigCategory category, ConfigUpgrade config) {
         Property attackSpeedProperty = new Property(ATTACK_SPEED_PARAM, String.valueOf(config.getAttackSpeed()), Property.Type.DOUBLE);
         Property damageProperty = new Property(DAMAGE_PARAM, String.valueOf(config.getDamage()), Property.Type.DOUBLE);
         Property radiusProperty = new Property(RADIUS_PARAM, String.valueOf(config.getRadius()), Property.Type.INTEGER);
@@ -124,7 +118,6 @@ public class Config extends Configuration {
         category.put(DAMAGE_PARAM, damageProperty);
         category.put(RADIUS_PARAM, radiusProperty);
         category.put(PERCENT_PARAM, percentProperty);
-        return category;
     }
 
     private ConfigTotem createTotemConfig(String subCategory, float defaultSpeed, float defaultDamage,
@@ -173,43 +166,43 @@ public class Config extends Configuration {
     public void loadAndSave() {
         load();
 
-        /**
-         * Totems
+        /*
+          Totems
          */
         woodenTotem = createTotemConfig(WOODEN_TOTEM_CATEGORY, 0.4f, 5, 3);
         ironTotem = createTotemConfig(IRON_TOTEM_CATEGORY, 0.5f, 6, 3);
         goldTotem = createTotemConfig(GOLD_TOTEM_CATEGORY, 0.6f, 7, 4);
         diamondTotem = createTotemConfig(DIAMOND_TOTEM_CATEGORY, 0.8f, 8, 4);
 
-        /**
+        /*
          * Wooden Upgrades
          */
         woodenASUpgrade = createUpgradeConfig(WOODEN_AS_UPGRADE_CATEGORY, 0.1f, -2, 0);
         woodenDamageUpgrade = createUpgradeConfig(WOODEN_DAMAGE_UPGRADE_CATEGORY, -0.01f, 1, 0);
         woodenRadiusUpgrade = createUpgradeConfig(WOODEN_RADIUS_UPGRADE_CATEGORY, -0.1f, -3, 1);
 
-        /**
+        /*
          * Iron Upgrades
          */
         ironASUpgrade = createUpgradeConfig(IRON_AS_UPGRADE_CATEGORY, 0.2f, -2, 0);
         ironDamageUpgrade = createUpgradeConfig(IRON_DAMAGE_UPGRADE_CATEGORY, -0.05f, 2, 0);
         ironRadiusUpgrade = createUpgradeConfig(IRON_RADIUS_UPGRADE_CATEGORY, -0.1f, -2, 1);
 
-        /**
+        /*
          * Gold Upgrades
          */
         goldASUpgrade = createUpgradeConfig(GOLD_AS_UPGRADE_CATEGORY, 0.2f, -1f, 0);
         goldDamageUpgrade = createUpgradeConfig(GOLD_DAMAGE_UPGRADE_CATEGORY, -0.1f, 3, 0);
         goldRadiusUpgrade = createUpgradeConfig(GOLD_RADIUS_UPGRADE_CATEGORY, -0.1f, -1, 2);
 
-        /**
+        /*
          * Diamond Upgrades
          */
         diamondASUpgrade = createUpgradeConfig(DIAMOND_AS_UPGRADE_CATEGORY, 0.3f, 0, 0);
         diamondDamageUpgrade = createUpgradeConfig(DIAMOND_DAMAGE_UPGRADE_CATEGORY, -0.15f, 4, 0);
         diamondRadiusUpgrade = createUpgradeConfig(DIAMOND_RADIUS_UPGRADE_CATEGORY, -0.1f, 0, 2);
 
-        /**
+        /*
          * Modifiers
          */
         poisonModifier = createUpgradeConfig(POISON_MODIFIER_CATEGORY, -30, -25, 0, true);

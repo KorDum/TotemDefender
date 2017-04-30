@@ -32,9 +32,9 @@ public class BlockFence extends net.minecraft.block.BlockFence {
     public boolean canConnectFenceTo(IBlockAccess world, int x, int y, int z) {
         Block block = world.getBlock(x, y, z);
 
-        return block == this ||
-            block instanceof net.minecraft.block.BlockFenceGate ||
-            (
+        return block == this
+            || block instanceof net.minecraft.block.BlockFenceGate
+            || (
                 block.getMaterial().isOpaque() &&
                     block.renderAsNormalBlock() &&
                     block.getMaterial() != Material.gourd

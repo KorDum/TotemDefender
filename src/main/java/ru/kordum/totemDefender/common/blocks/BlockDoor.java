@@ -65,8 +65,7 @@ public class BlockDoor extends net.minecraft.block.BlockDoor {
                     (halfMeta == 1 && side == 5) ||
                     (halfMeta == 2 && side == 3) ||
                     (halfMeta == 3 && side == 4);
-            }
-            else {
+            } else {
                 flipped = (halfMeta == 0 && side == 5) ||
                     (halfMeta == 1 && side == 3) ||
                     (halfMeta == 2 && side == 4) ||

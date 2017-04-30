@@ -59,13 +59,11 @@ public abstract class BlockTotem extends BlockContainer {
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int meta, float what, float these, float are) {
         TileEntity target = world.getTileEntity(x, y, z);
-
         if (target == null || player.isSneaking()) {
             return false;
         }
 
         TileEntityTotem tileEntity = (TileEntityTotem) target;
-
         if (!tileEntity.hasOwner()) {
             tileEntity.setOwner(player.getUniqueID());
         }
@@ -90,13 +88,11 @@ public abstract class BlockTotem extends BlockContainer {
     private void dropItems(World world, int x, int y, int z) {
         Random rand = new Random();
         TileEntity tileEntity = world.getTileEntity(x, y, z);
-
         if (!(tileEntity instanceof IInventory)) {
             return;
         }
 
         IInventory inventory = (IInventory) tileEntity;
-
         for (int i = 0; i < inventory.getSizeInventory(); i++) {
             ItemStack item = inventory.getStackInSlot(i);
 

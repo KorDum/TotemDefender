@@ -26,8 +26,7 @@ public class BlockSlab extends net.minecraft.block.BlockSlab {
 
         if (isDouble) {
             name += "Double";
-        }
-        else {
+        } else {
             setCreativeTab(TotemDefender.tab);
         }
 
@@ -46,11 +45,9 @@ public class BlockSlab extends net.minecraft.block.BlockSlab {
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
         if (world.getBlock(x, y - 1, z) == BlockManager.slab) {
             world.setBlock(x, y - 1, z, BlockManager.doubleSlab);
-        }
-        else if (world.getBlock(x, y + 1, z) == BlockManager.slab) {
+        } else if (world.getBlock(x, y + 1, z) == BlockManager.slab) {
             world.setBlock(x, y + 1, z, BlockManager.doubleSlab);
-        }
-        else {
+        } else {
             super.onBlockPlacedBy(world, x, y, z, entity, itemStack);
         }
     }

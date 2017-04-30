@@ -3,7 +3,7 @@ package ru.kordum.totemDefender.common.gui.slots;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import ru.kordum.totemDefender.common.items.filters.ItemFilter;
+import ru.kordum.totemDefender.common.items.upgrades.ItemFilter;
 
 public class SlotFilter extends Slot {
 

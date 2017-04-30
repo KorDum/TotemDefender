@@ -15,6 +15,7 @@
 .buildpath
 .project
 .settings
+.classpath
 
 # windows thumbnail cache
 Thumbs.db

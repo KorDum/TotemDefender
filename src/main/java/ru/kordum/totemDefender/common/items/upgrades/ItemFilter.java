@@ -1,12 +1,17 @@
-package ru.kordum.totemDefender.common.items.modes;
+package ru.kordum.totemDefender.common.items.upgrades;
 
 import ru.kordum.totemDefender.common.items.ItemBase;
 
-public abstract class ItemMode extends ItemBase {
-    public static final byte PROJECTILE = 1;
-    public static final byte AOE = 2;
+public class ItemFilter extends ItemBase {
+    public static final short PLAYER = 1;
+    public static final short ANIMAL = 2;
+    public static final short ENEMY = 4;
+    public static final short SLIME = 8;
+    public static final short WATER_MOB = 16;
+    public static final short SELF_PLAYER = 32;
+    public static final short ANOTHER_PLAYER = 64;
 
-    private byte mode;
+    private int mode;
 
     //---------------------------------------------------------------------------
     //
@@ -14,7 +19,7 @@ public abstract class ItemMode extends ItemBase {
     //
     //---------------------------------------------------------------------------
 
-    public ItemMode(String name, byte mode) {
+    public ItemFilter(String name, short mode) {
         super(name);
         this.mode = mode;
     }
@@ -25,7 +30,7 @@ public abstract class ItemMode extends ItemBase {
     //
     //---------------------------------------------------------------------------
 
-    public byte getMode() {
+    public int getMode() {
         return mode;
     }
 }

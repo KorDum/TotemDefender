@@ -2,7 +2,7 @@ package ru.kordum.totemDefender.common.items.upgrades;
 
 import ru.kordum.totemDefender.common.config.ConfigUpgrade;
 
-public abstract class ItemModifierUpgrade extends ItemUpgrade {
+public class ItemModifierUpgrade extends ItemUpgrade {
     public static final short POISON = 1;
     public static final short FIRE = 2;
     public static final short LIGHTING = 4;
@@ -15,6 +15,7 @@ public abstract class ItemModifierUpgrade extends ItemUpgrade {
     public static final short REGENERATION = 512;
     public static final short WATER_BREATHING = 1024;
     public static final short WEAKNESS = 2048;
+    public static final short KNOCKBACK = 4096;
 
     private short modifier;
 
