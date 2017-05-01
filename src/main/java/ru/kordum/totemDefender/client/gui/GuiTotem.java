@@ -1,9 +1,9 @@
 package ru.kordum.totemDefender.client.gui;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 import ru.kordum.totemDefender.common.ResourceManager;
 import ru.kordum.totemDefender.common.entities.TileEntityTotem;
@@ -12,7 +12,7 @@ import ru.kordum.totemDefender.common.gui.ContainerTotem;
 import java.text.NumberFormat;
 
 @SideOnly(Side.CLIENT)
-public class GuiTotem extends GuiContainer {
+public abstract class GuiTotem extends GuiContainer {
     protected TileEntityTotem tileEntity;
 
     //---------------------------------------------------------------------------
@@ -32,7 +32,7 @@ public class GuiTotem extends GuiContainer {
     //
     //---------------------------------------------------------------------------
 
-    private void drawString(String string, int x, int y) {
+    protected void drawString(String string, int x, int y) {
         fontRendererObj.drawString(string, x, y, 0x404040);
     }
 
@@ -44,12 +44,12 @@ public class GuiTotem extends GuiContainer {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int param1, int param2) {
-        fontRendererObj.drawString(tileEntity.getInventoryName(), 8, 6, 0x404040);
+        fontRendererObj.drawString(tileEntity.getName(), 8, 6, 4210752);
         fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 0x404040);
 
-        drawString(getFormattedProp("gui.attackSpeed", tileEntity.getAttackSpeed()), 22, 27);
-        drawString(getFormattedProp("gui.damage", tileEntity.getDamage()), 67, 27);
-        drawString(getFormattedProp("gui.radius", tileEntity.getRadius()), 112, 27);
+        drawString(getFormattedProp("prop.attackSpeed", tileEntity.getAttackSpeed()), 8, 18);
+        drawString(getFormattedProp("prop.damage", tileEntity.getDamage()), 8, 28);
+        drawString(getFormattedProp("prop.radius", tileEntity.getRadius()), 8, 38);
     }
 
     @Override

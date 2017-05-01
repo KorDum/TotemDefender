@@ -1,7 +1,7 @@
 package ru.kordum.totemDefender.common.items;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import ru.kordum.totemDefender.TotemDefender;
 
 public abstract class ItemBase extends Item {
@@ -16,7 +16,6 @@ public abstract class ItemBase extends Item {
     public ItemBase(String name) {
         this.name = name;
         setUnlocalizedName(name);
-        setTextureName(TotemDefender.MODID + ":" + name);
         setCreativeTab(TotemDefender.tab);
         GameRegistry.registerItem(this, name);
     }

@@ -1,4 +1,4 @@
-## TotemDefender 1.7.10
+## TotemDefender 1.8
 
 The master branch will always contain the latest released version with possibly some bug fixes for that version that will eventually be released.
 New versions will be created in branched named like {mc_version}-{mod_version}

@@ -1,7 +1,5 @@
 package ru.kordum.totemDefender.common.blocks;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.util.IIcon;
 import ru.kordum.totemDefender.TotemDefender;
 
 public class BlockFenceGate extends net.minecraft.block.BlockFenceGate {
@@ -15,34 +13,18 @@ public class BlockFenceGate extends net.minecraft.block.BlockFenceGate {
 
     public BlockFenceGate() {
         name = "totemTreeFenceGate";
-        setBlockName(name);
+        setUnlocalizedName(name);
         setHardness(4);
         setCreativeTab(TotemDefender.tab);
     }
 
     //---------------------------------------------------------------------------
     //
-    // PUBLIC METHODS
-    //
-    //---------------------------------------------------------------------------
-
-    @Override
-    public void registerBlockIcons(IIconRegister iconRegister) {
-        blockIcon = iconRegister.registerIcon(TotemDefender.MODID + ":totemTreePlanks");
-    }
-
-    //---------------------------------------------------------------------------
-    //
-    // ACCESSORS
+    // PUBLIC ACCESSORS
     //
     //---------------------------------------------------------------------------
 
     public String getName() {
         return name;
-    }
-
-    @Override
-    public IIcon getIcon(int p_getIcon_1_, int p_getIcon_2_) {
-        return blockIcon;
     }
 }

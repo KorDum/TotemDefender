@@ -13,11 +13,10 @@ public class BlockStairs extends net.minecraft.block.BlockStairs {
     //---------------------------------------------------------------------------
 
     public BlockStairs() {
-        super(BlockManager.planks, 0);
+        super(BlockManager.planks.getStateFromMeta(0));
         name = "totemTreeStairs";
-        setBlockName(name);
+        setUnlocalizedName(name);
         useNeighborBrightness = true;
-        setHardness(4);
         setCreativeTab(TotemDefender.tab);
     }
 

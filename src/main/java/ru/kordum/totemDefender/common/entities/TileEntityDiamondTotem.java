@@ -21,7 +21,7 @@ public class TileEntityDiamondTotem extends TileEntityTotem {
     //---------------------------------------------------------------------------
 
     @Override
-    public String getInventoryName() {
+    public String getName() {
         return StatCollector.translateToLocalFormatted("gui.diamondTotem");
     }
 

@@ -66,7 +66,8 @@ public abstract class ContainerTotem extends Container {
                     if (stackInSlot.stackSize == 1) {
                         targetSlot.putStack(stackInSlot);
                         putStackInSlot(slot, null);
-                    } else {
+                    }
+                    else {
                         putStackInSlot(i, stackInSlot.splitStack(1));
                     }
                     return;
@@ -86,7 +87,8 @@ public abstract class ContainerTotem extends Container {
 
                 if (stackInTargetSlot == null) {
                     putStackInSlot(i, stackInSlot);
-                } else {
+                }
+                else {
                     stackInTargetSlot.stackSize++;
                 }
                 return;

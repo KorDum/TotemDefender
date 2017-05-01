@@ -2,6 +2,7 @@ package ru.kordum.totemDefender.common.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.util.IStringSerializable;
 import ru.kordum.totemDefender.TotemDefender;
 
 public class BlockPlanks extends Block {
@@ -16,8 +17,7 @@ public class BlockPlanks extends Block {
     public BlockPlanks() {
         super(Material.wood);
         name = "totemTreePlanks";
-        setBlockName(name);
-        setBlockTextureName(TotemDefender.MODID + ":" + name);
+        setUnlocalizedName(name);
         setHardness(4);
         setCreativeTab(TotemDefender.tab);
     }
@@ -30,5 +30,23 @@ public class BlockPlanks extends Block {
 
     public String getName() {
         return name;
+    }
+
+    public enum EnumType implements IStringSerializable {
+        TOTEM("totem");
+
+        private final String name;
+
+        EnumType(String name) {
+            this.name = name;
+        }
+
+        public String toString() {
+            return this.name;
+        }
+
+        public String getName() {
+            return this.name;
+        }
     }
 }

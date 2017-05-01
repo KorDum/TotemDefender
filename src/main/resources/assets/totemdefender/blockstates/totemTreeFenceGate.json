@@ -1,0 +1,39 @@
+{
+    "variants": {
+        "facing=south,in_wall=false,open=false,powered=false": { "model": "totemdefender:totemTreeFenceGate_closed" },
+        "facing=west,in_wall=false,open=false,powered=false":  { "model": "totemdefender:totemTreeFenceGate_closed", "y": 90, "uvlock": true },
+        "facing=north,in_wall=false,open=false,powered=false": { "model": "totemdefender:totemTreeFenceGate_closed", "y": 180, "uvlock": true },
+        "facing=east,in_wall=false,open=false,powered=false":  { "model": "totemdefender:totemTreeFenceGate_closed", "y": 270, "uvlock": true },
+        "facing=south,in_wall=false,open=false,powered=true": { "model": "totemdefender:totemTreeFenceGate_closed" },
+        "facing=west,in_wall=false,open=false,powered=true":  { "model": "totemdefender:totemTreeFenceGate_closed", "y": 90, "uvlock": true },
+        "facing=north,in_wall=false,open=false,powered=true": { "model": "totemdefender:totemTreeFenceGate_closed", "y": 180, "uvlock": true },
+        "facing=east,in_wall=false,open=false,powered=true":  { "model": "totemdefender:totemTreeFenceGate_closed", "y": 270, "uvlock": true },
+        
+        "facing=south,in_wall=false,open=true,powered=false": { "model": "totemdefender:totemTreeFenceGate_open" },
+        "facing=west,in_wall=false,open=true,powered=false":  { "model": "totemdefender:totemTreeFenceGate_open", "y": 90, "uvlock": true },
+        "facing=north,in_wall=false,open=true,powered=false": { "model": "totemdefender:totemTreeFenceGate_open", "y": 180, "uvlock": true },
+        "facing=east,in_wall=false,open=true,powered=false":  { "model": "totemdefender:totemTreeFenceGate_open", "y": 270, "uvlock": true },
+        "facing=south,in_wall=false,open=true,powered=true": { "model": "totemdefender:totemTreeFenceGate_open" },
+        "facing=west,in_wall=false,open=true,powered=true":  { "model": "totemdefender:totemTreeFenceGate_open", "y": 90, "uvlock": true },
+        "facing=north,in_wall=false,open=true,powered=true": { "model": "totemdefender:totemTreeFenceGate_open", "y": 180, "uvlock": true },
+        "facing=east,in_wall=false,open=true,powered=true":  { "model": "totemdefender:totemTreeFenceGate_open", "y": 270, "uvlock": true },
+        
+        "facing=south,in_wall=true,open=false,powered=false": { "model": "totemdefender:totemTreeFenceGate_wall_closed" },
+        "facing=west,in_wall=true,open=false,powered=false":  { "model": "totemdefender:totemTreeFenceGate_wall_closed", "y": 90, "uvlock": true },
+        "facing=north,in_wall=true,open=false,powered=false": { "model": "totemdefender:totemTreeFenceGate_wall_closed", "y": 180, "uvlock": true },
+        "facing=east,in_wall=true,open=false,powered=false":  { "model": "totemdefender:totemTreeFenceGate_wall_closed", "y": 270, "uvlock": true },
+        "facing=south,in_wall=true,open=false,powered=true": { "model": "totemdefender:totemTreeFenceGate_wall_closed" },
+        "facing=west,in_wall=true,open=false,powered=true":  { "model": "totemdefender:totemTreeFenceGate_wall_closed", "y": 90, "uvlock": true },
+        "facing=north,in_wall=true,open=false,powered=true": { "model": "totemdefender:totemTreeFenceGate_wall_closed", "y": 180, "uvlock": true },
+        "facing=east,in_wall=true,open=false,powered=true":  { "model": "totemdefender:totemTreeFenceGate_wall_closed", "y": 270, "uvlock": true },
+        
+        "facing=south,in_wall=true,open=true,powered=false": { "model": "totemdefender:totemTreeFenceGate_wall_open" },
+        "facing=west,in_wall=true,open=true,powered=false":  { "model": "totemdefender:totemTreeFenceGate_wall_open", "y": 90, "uvlock": true },
+        "facing=north,in_wall=true,open=true,powered=false": { "model": "totemdefender:totemTreeFenceGate_wall_open", "y": 180, "uvlock": true },
+        "facing=east,in_wall=true,open=true,powered=false":  { "model": "totemdefender:totemTreeFenceGate_wall_open", "y": 270, "uvlock": true },
+        "facing=south,in_wall=true,open=true,powered=true": { "model": "totemdefender:totemTreeFenceGate_wall_open" },
+        "facing=west,in_wall=true,open=true,powered=true":  { "model": "totemdefender:totemTreeFenceGate_wall_open", "y": 90, "uvlock": true },
+        "facing=north,in_wall=true,open=true,powered=true": { "model": "totemdefender:totemTreeFenceGate_wall_open", "y": 180, "uvlock": true },
+        "facing=east,in_wall=true,open=true,powered=true":  { "model": "totemdefender:totemTreeFenceGate_wall_open", "y": 270, "uvlock": true }
+    }
+}

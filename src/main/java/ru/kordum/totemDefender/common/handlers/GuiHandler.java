@@ -1,9 +1,10 @@
 package ru.kordum.totemDefender.common.handlers;
 
-import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.IGuiHandler;
 import ru.kordum.totemDefender.client.gui.GuiDiamondTotem;
 import ru.kordum.totemDefender.client.gui.GuiGoldTotem;
 import ru.kordum.totemDefender.client.gui.GuiIronTotem;
@@ -37,31 +38,41 @@ public class GuiHandler implements IGuiHandler {
 
     @Override
     public Object getServerGuiElement(int i, EntityPlayer player, World world, int x, int y, int z) {
-        TileEntity tileEntity = world.getTileEntity(x, y, z);
+        TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
+
         if (tileEntity instanceof TileEntityWoodenTotem) {
             return new ContainerWoodenTotem(player.inventory, (TileEntityWoodenTotem) tileEntity);
-        } else if (tileEntity instanceof TileEntityIronTotem) {
+        }
+        else if (tileEntity instanceof TileEntityIronTotem) {
             return new ContainerIronTotem(player.inventory, (TileEntityIronTotem) tileEntity);
-        } else if (tileEntity instanceof TileEntityGoldTotem) {
+        }
+        else if (tileEntity instanceof TileEntityGoldTotem) {
             return new ContainerGoldTotem(player.inventory, (TileEntityGoldTotem) tileEntity);
-        } else if (tileEntity instanceof TileEntityDiamondTotem) {
+        }
+        else if (tileEntity instanceof TileEntityDiamondTotem) {
             return new ContainerDiamondTotem(player.inventory, (TileEntityDiamondTotem) tileEntity);
         }
+
         return null;
     }
 
     @Override
     public Object getClientGuiElement(int i, EntityPlayer player, World world, int x, int y, int z) {
-        TileEntity tileEntity = world.getTileEntity(x, y, z);
+        TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
+
         if (tileEntity instanceof TileEntityWoodenTotem) {
             return new GuiWoodenTotem(player.inventory, (TileEntityWoodenTotem) tileEntity);
-        } else if (tileEntity instanceof TileEntityIronTotem) {
+        }
+        else if (tileEntity instanceof TileEntityIronTotem) {
             return new GuiIronTotem(player.inventory, (TileEntityIronTotem) tileEntity);
-        } else if (tileEntity instanceof TileEntityGoldTotem) {
+        }
+        else if (tileEntity instanceof TileEntityGoldTotem) {
             return new GuiGoldTotem(player.inventory, (TileEntityGoldTotem) tileEntity);
-        } else if (tileEntity instanceof TileEntityDiamondTotem) {
+        }
+        else if (tileEntity instanceof TileEntityDiamondTotem) {
             return new GuiDiamondTotem(player.inventory, (TileEntityDiamondTotem) tileEntity);
         }
+
         return null;
     }
 }

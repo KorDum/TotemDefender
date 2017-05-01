@@ -1,5 +1,6 @@
 package ru.kordum.totemDefender.common;
 
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.util.ResourceLocation;
 import ru.kordum.totemDefender.TotemDefender;
 
@@ -21,6 +22,10 @@ public class ResourceManager {
 
     public static ResourceLocation getResourceWithExt(String category, String name) {
         return getResource(category, name + ".png");
+    }
+
+    public static ModelResourceLocation getResource(String name) {
+        return new ModelResourceLocation(TotemDefender.MODID.toLowerCase() + ":" + name);
     }
 
     //---------------------------------------------------------------------------

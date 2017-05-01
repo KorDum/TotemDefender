@@ -1,8 +1,8 @@
 package ru.kordum.totemDefender.client;
 
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import ru.kordum.totemDefender.client.renders.RenderProjectile;
 import ru.kordum.totemDefender.client.renders.RenderTotem;
 import ru.kordum.totemDefender.common.CommonProxy;

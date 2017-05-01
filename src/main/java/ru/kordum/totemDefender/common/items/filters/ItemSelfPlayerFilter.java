@@ -1,6 +1,6 @@
-package ru.kordum.totemDefender.common.blocks;
+package ru.kordum.totemDefender.common.items.filters;
 
-public class BlockBasicLog extends BlockLog {
+public class ItemSelfPlayerFilter extends ItemFilter {
 
     //---------------------------------------------------------------------------
     //
@@ -8,7 +8,7 @@ public class BlockBasicLog extends BlockLog {
     //
     //---------------------------------------------------------------------------
 
-    public BlockBasicLog() {
-        super("totemTreeLog");
+    public ItemSelfPlayerFilter() {
+        super("selfPlayerFilter", SELF_PLAYER);
     }
 }

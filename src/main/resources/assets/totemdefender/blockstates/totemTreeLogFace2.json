@@ -1,0 +1,37 @@
+{
+    "forge_marker": 1,
+    "variants": {
+        "facing=north": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/totemTreeLog2",
+                "side": "totemdefender:blocks/totemTreeLog1",
+                "north": "totemdefender:blocks/totemTreeLogFace2"
+            }
+        },
+        "facing=south": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/totemTreeLog2",
+                "side": "totemdefender:blocks/totemTreeLog1",
+                "south": "totemdefender:blocks/totemTreeLogFace2"
+            }
+        },
+        "facing=east": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/totemTreeLog2",
+                "side": "totemdefender:blocks/totemTreeLog1",
+                "east": "totemdefender:blocks/totemTreeLogFace2"
+            }
+        },
+        "facing=west": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/totemTreeLog2",
+                "side": "totemdefender:blocks/totemTreeLog1",
+                "west": "totemdefender:blocks/totemTreeLogFace2"
+            }
+        }
+    }
+}

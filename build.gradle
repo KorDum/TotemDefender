@@ -1,38 +1,31 @@
 buildscript {
     repositories {
-        mavenCentral()
         maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+            url "https://plugins.gradle.org/m2/"
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath "gradle.plugin.net.minecraftforge.gradle:ForgeGradle:2.0.2"
     }
 }
 
-apply plugin: 'forge'
+apply plugin: "net.minecraftforge.gradle.forge"
 
-version = "1.2.0"
+version = "1.1.7"
 group = "ru.kordum.totemDefender"
-archivesBaseName = "TotemDefender-1.7.10"
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
-
-// uncomment this hack if you use old IDEA
-/*sourceSets {
-    main {
-        output.resourcesDir = output.classesDir
-    }
-}*/
+archivesBaseName = "TotemDefender-1.11"
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
 
 minecraft {
-    version = "1.7.10-10.13.3.1355-1.7.10"
+    version = "1.11-13.19.1.2189"
     runDir = "eclipse"
+    mappings = "snapshot_20141130"
+    //makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+}
+
+dependencies {
+
 }
 
 processResources {

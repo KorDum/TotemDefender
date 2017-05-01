@@ -1,18 +1,10 @@
 package ru.kordum.totemDefender.common.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.util.IIcon;
+import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState;
 import ru.kordum.totemDefender.TotemDefender;
 
-public abstract class BlockLog extends net.minecraft.block.BlockLog {
-    @SideOnly(Side.CLIENT)
-    protected IIcon sideIcon;
-
-    @SideOnly(Side.CLIENT)
-    protected IIcon topIcon;
-
+public class BlockLog extends net.minecraft.block.BlockLog {
     private String name;
 
     //---------------------------------------------------------------------------
@@ -21,12 +13,22 @@ public abstract class BlockLog extends net.minecraft.block.BlockLog {
     //
     //---------------------------------------------------------------------------
 
-    public BlockLog(String name) {
+    public BlockLog() {
         super();
-        this.name = name;
-        setBlockName(name);
-        setBlockTextureName(TotemDefender.MODID + ":" + name + "1");
+        this.name = "totemTreeLog";
+        setUnlocalizedName(name);
         setCreativeTab(TotemDefender.tab);
+        setDefaultState(blockState.getBaseState().withProperty(LOG_AXIS, EnumAxis.Y));
+    }
+
+    //---------------------------------------------------------------------------
+    //
+    // PRIVATE METHODS
+    //
+    //---------------------------------------------------------------------------
+
+    protected BlockState createBlockState() {
+        return new BlockState(this, LOG_AXIS);
     }
 
     //---------------------------------------------------------------------------
@@ -35,11 +37,43 @@ public abstract class BlockLog extends net.minecraft.block.BlockLog {
     //
     //---------------------------------------------------------------------------
 
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister) {
-        super.registerBlockIcons(iconRegister);
-        sideIcon = iconRegister.registerIcon(TotemDefender.MODID + ":" + name + "1");
-        topIcon = iconRegister.registerIcon(TotemDefender.MODID + ":" + name + "2");
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+        IBlockState state = getDefaultState();
+
+        switch (meta & 12) {
+            case 0:
+                return state.withProperty(LOG_AXIS, EnumAxis.Y);
+
+            case 4:
+                return state.withProperty(LOG_AXIS, EnumAxis.X);
+
+            case 8:
+                return state.withProperty(LOG_AXIS, EnumAxis.Z);
+
+            default:
+                return state.withProperty(LOG_AXIS, EnumAxis.NONE);
+        }
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        int i = 0;
+
+        switch (SwitchEnumAxis.AXIS_LOOKUP[((EnumAxis) state.getValue(LOG_AXIS)).ordinal()]) {
+            case 1:
+                i |= 4;
+                break;
+
+            case 2:
+                i |= 8;
+                break;
+
+            case 3:
+                i |= 12;
+        }
+
+        return i;
     }
 
     //---------------------------------------------------------------------------
@@ -52,13 +86,27 @@ public abstract class BlockLog extends net.minecraft.block.BlockLog {
         return name;
     }
 
-    @SideOnly(Side.CLIENT)
-    protected IIcon getSideIcon(int side) {
-        return sideIcon;
-    }
+    static final class SwitchEnumAxis {
+        static final int[] AXIS_LOOKUP = new int[EnumAxis.values().length];
 
-    @SideOnly(Side.CLIENT)
-    protected IIcon getTopIcon(int side) {
-        return topIcon;
+        static {
+            try {
+                AXIS_LOOKUP[EnumAxis.X.ordinal()] = 1;
+            }
+            catch (NoSuchFieldError ignored) {
+            }
+
+            try {
+                AXIS_LOOKUP[EnumAxis.Z.ordinal()] = 2;
+            }
+            catch (NoSuchFieldError ignored) {
+            }
+
+            try {
+                AXIS_LOOKUP[EnumAxis.NONE.ordinal()] = 3;
+            }
+            catch (NoSuchFieldError ignored) {
+            }
+        }
     }
 }

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "stage=0,type=totem": { "model": "totemdefender:totemTreeSapling" },
+        "stage=1,type=totem": { "model": "totemdefender:totemTreeSapling" }
+    }
+}

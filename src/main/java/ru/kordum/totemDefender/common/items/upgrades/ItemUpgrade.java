@@ -3,20 +3,13 @@ package ru.kordum.totemDefender.common.items.upgrades;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
-import org.lwjgl.input.Keyboard;
 import ru.kordum.totemDefender.common.config.ConfigUpgrade;
 import ru.kordum.totemDefender.common.items.ItemBase;
 import ru.kordum.totemDefender.common.utils.Formatter;
 
 import java.util.List;
 
-public class ItemUpgrade extends ItemBase {
-    public static final int LEVEL_WOODEN = 1;
-    public static final int LEVEL_IRON = 2;
-    public static final int LEVEL_GOLD = 3;
-    public static final int LEVEL_DIAMOND = 4;
-
+public abstract class ItemUpgrade extends ItemBase {
     private float damage;
     private float attackSpeed;
     private int radius;
@@ -45,20 +38,19 @@ public class ItemUpgrade extends ItemBase {
     //---------------------------------------------------------------------------
 
     @Override
-    public void addInformation(ItemStack itemStack, EntityPlayer player, List tooltip, boolean advanced) {
-        super.addInformation(itemStack, player, tooltip, advanced);
-        if (advanced || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-            if (attackSpeed != 0) {
-                tooltip.add(EnumChatFormatting.BLUE + Formatter.getProp("prop.attackSpeed", attackSpeed, isModifiersInPercent()));
-            }
-            if (damage != 0) {
-                tooltip.add(EnumChatFormatting.RED + Formatter.getProp("prop.damage", damage, isModifiersInPercent()));
-            }
-            if (radius != 0) {
-                tooltip.add(EnumChatFormatting.GREEN + Formatter.getProp("prop.radius", radius, isModifiersInPercent()));
-            }
-        } else {
-            tooltip.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("prop.holdMore"));
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) {
+        super.addInformation(itemStack, player, list, par4);
+
+        if (attackSpeed != 0) {
+            list.add(EnumChatFormatting.BLUE + Formatter.getProp("prop.attackSpeed", attackSpeed, isModifiersInPercent()));
+        }
+
+        if (damage != 0) {
+            list.add(EnumChatFormatting.RED + Formatter.getProp("prop.damage", damage, isModifiersInPercent()));
+        }
+
+        if (radius != 0) {
+            list.add(EnumChatFormatting.GREEN + Formatter.getProp("prop.radius", radius, isModifiersInPercent()));
         }
     }
 

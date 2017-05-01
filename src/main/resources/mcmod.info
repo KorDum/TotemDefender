@@ -2,7 +2,7 @@
 {
   "modid": "${modid}",
   "name": "Totem Defender",
-  "description": "Turret Defender mod.",
+  "description": "Totem Defender mod.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",

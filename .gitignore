@@ -1,21 +1,22 @@
-/eclipse
-/.gradle
-/out
-
-# forge
-/*-changelog.txt
-
-# phpstorm project files
-.idea
-*.iml
-*.iws
-*.ipr
-
-# zend studio for eclipse project files
-.buildpath
-.project
+# eclipse
+bin
+*.launch
 .settings
+.metadata
 .classpath
+.project
 
-# windows thumbnail cache
-Thumbs.db
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run

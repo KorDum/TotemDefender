@@ -2,6 +2,7 @@ package ru.kordum.totemDefender.common.entities;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
@@ -40,7 +41,7 @@ public class EntityProjectile extends EntityThrowable {
         }
 
         for (int i = 0; i < 3; i++) {
-            worldObj.spawnParticle("snowballpoof", posX, posY, posZ, 0.0D, 0.0D, 0.0D);
+            worldObj.spawnParticle(EnumParticleTypes.SNOW_SHOVEL, posX, posY, posZ, 0.0D, 0.0D, 0.0D);
         }
 
         if (!worldObj.isRemote) {
@@ -61,7 +62,7 @@ public class EntityProjectile extends EntityThrowable {
 
     //---------------------------------------------------------------------------
     //
-    // ACCESSORS
+    // PUBLIC ACCESSORS
     //
     //---------------------------------------------------------------------------
 

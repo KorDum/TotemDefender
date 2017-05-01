@@ -1,8 +1,8 @@
-package ru.kordum.totemDefender.common.items.upgrades;
+package ru.kordum.totemDefender.common.items.filters;
 
 import ru.kordum.totemDefender.common.items.ItemBase;
 
-public class ItemFilter extends ItemBase {
+public abstract class ItemFilter extends ItemBase {
     public static final short PLAYER = 1;
     public static final short ANIMAL = 2;
     public static final short ENEMY = 4;
@@ -26,7 +26,7 @@ public class ItemFilter extends ItemBase {
 
     //---------------------------------------------------------------------------
     //
-    // ACCESSORS
+    // PUBLIC ACCESSORS
     //
     //---------------------------------------------------------------------------
 
