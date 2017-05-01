@@ -20,11 +20,12 @@ import ru.kordum.totemDefender.common.handlers.GuiHandler;
     modid = TotemDefender.MODID,
     version = TotemDefender.VERSION,
     name = TotemDefender.NAME,
-    dependencies = "required-after:Forge@[13.19.1.2189]")
+    dependencies = "required-after:Forge@[11.14.4.1563,]"
+)
 public class TotemDefender {
     public static final String MODID = "TotemDefender";
     public static final String NAME = "Totem Defender";
-    public static final String VERSION = "1.1.7";
+    public static final String VERSION = "1.2.0";
 
     @SidedProxy(
         clientSide = "ru.kordum.totemDefender.client.ClientProxy",

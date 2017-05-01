@@ -42,14 +42,11 @@ public class GuiHandler implements IGuiHandler {
 
         if (tileEntity instanceof TileEntityWoodenTotem) {
             return new ContainerWoodenTotem(player.inventory, (TileEntityWoodenTotem) tileEntity);
-        }
-        else if (tileEntity instanceof TileEntityIronTotem) {
+        } else if (tileEntity instanceof TileEntityIronTotem) {
             return new ContainerIronTotem(player.inventory, (TileEntityIronTotem) tileEntity);
-        }
-        else if (tileEntity instanceof TileEntityGoldTotem) {
+        } else if (tileEntity instanceof TileEntityGoldTotem) {
             return new ContainerGoldTotem(player.inventory, (TileEntityGoldTotem) tileEntity);
-        }
-        else if (tileEntity instanceof TileEntityDiamondTotem) {
+        } else if (tileEntity instanceof TileEntityDiamondTotem) {
             return new ContainerDiamondTotem(player.inventory, (TileEntityDiamondTotem) tileEntity);
         }
 
@@ -62,14 +59,11 @@ public class GuiHandler implements IGuiHandler {
 
         if (tileEntity instanceof TileEntityWoodenTotem) {
             return new GuiWoodenTotem(player.inventory, (TileEntityWoodenTotem) tileEntity);
-        }
-        else if (tileEntity instanceof TileEntityIronTotem) {
+        } else if (tileEntity instanceof TileEntityIronTotem) {
             return new GuiIronTotem(player.inventory, (TileEntityIronTotem) tileEntity);
-        }
-        else if (tileEntity instanceof TileEntityGoldTotem) {
+        } else if (tileEntity instanceof TileEntityGoldTotem) {
             return new GuiGoldTotem(player.inventory, (TileEntityGoldTotem) tileEntity);
-        }
-        else if (tileEntity instanceof TileEntityDiamondTotem) {
+        } else if (tileEntity instanceof TileEntityDiamondTotem) {
             return new GuiDiamondTotem(player.inventory, (TileEntityDiamondTotem) tileEntity);
         }
 

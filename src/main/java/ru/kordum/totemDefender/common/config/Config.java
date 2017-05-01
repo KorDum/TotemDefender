@@ -43,6 +43,7 @@ public class Config extends Configuration {
     private static final String REGENERATION_MODIFIER_CATEGORY = "regenerationModifier";
     private static final String WATER_BREATHING_MODIFIER_CATEGORY = "waterBreathingModifier";
     private static final String WEAKNESS_MODIFIER_CATEGORY = "weaknessModifier";
+    private static final String KNOCKBACK_MODIFIER_CATEGORY = "knockbackModifier";
 
     private static final String ATTACK_SPEED_PARAM = "attackSpeed";
     private static final String DAMAGE_PARAM = "damage";
@@ -82,6 +83,7 @@ public class Config extends Configuration {
     public ConfigUpgrade regenerationModifier;
     public ConfigUpgrade waterBreathingModifier;
     public ConfigUpgrade weaknessModifier;
+    public ConfigUpgrade knockbackModifier;
 
     //---------------------------------------------------------------------------
     //
@@ -167,7 +169,7 @@ public class Config extends Configuration {
     public void loadAndSave() {
         load();
 
-        /**
+        /*
          * Totems
          */
         woodenTotem = createTotemConfig(WOODEN_TOTEM_CATEGORY, 0.4f, 5, 3);
@@ -175,35 +177,35 @@ public class Config extends Configuration {
         goldTotem = createTotemConfig(GOLD_TOTEM_CATEGORY, 0.6f, 7, 4);
         diamondTotem = createTotemConfig(DIAMOND_TOTEM_CATEGORY, 0.8f, 8, 4);
 
-        /**
+        /*
          * Wooden Upgrades
          */
         woodenASUpgrade = createUpgradeConfig(WOODEN_AS_UPGRADE_CATEGORY, 0.1f, -2, 0);
         woodenDamageUpgrade = createUpgradeConfig(WOODEN_DAMAGE_UPGRADE_CATEGORY, -0.01f, 1, 0);
         woodenRadiusUpgrade = createUpgradeConfig(WOODEN_RADIUS_UPGRADE_CATEGORY, -0.1f, -3, 1);
 
-        /**
+        /*
          * Iron Upgrades
          */
         ironASUpgrade = createUpgradeConfig(IRON_AS_UPGRADE_CATEGORY, 0.2f, -2, 0);
         ironDamageUpgrade = createUpgradeConfig(IRON_DAMAGE_UPGRADE_CATEGORY, -0.05f, 2, 0);
         ironRadiusUpgrade = createUpgradeConfig(IRON_RADIUS_UPGRADE_CATEGORY, -0.1f, -2, 1);
 
-        /**
+        /*
          * Gold Upgrades
          */
         goldASUpgrade = createUpgradeConfig(GOLD_AS_UPGRADE_CATEGORY, 0.2f, -1f, 0);
         goldDamageUpgrade = createUpgradeConfig(GOLD_DAMAGE_UPGRADE_CATEGORY, -0.1f, 3, 0);
         goldRadiusUpgrade = createUpgradeConfig(GOLD_RADIUS_UPGRADE_CATEGORY, -0.1f, -1, 2);
 
-        /**
+        /*
          * Diamond Upgrades
          */
         diamondASUpgrade = createUpgradeConfig(DIAMOND_AS_UPGRADE_CATEGORY, 0.3f, 0, 0);
         diamondDamageUpgrade = createUpgradeConfig(DIAMOND_DAMAGE_UPGRADE_CATEGORY, -0.15f, 4, 0);
         diamondRadiusUpgrade = createUpgradeConfig(DIAMOND_RADIUS_UPGRADE_CATEGORY, -0.1f, 0, 2);
 
-        /**
+        /*
          * Modifiers
          */
         poisonModifier = createUpgradeConfig(POISON_MODIFIER_CATEGORY, -30, -25, 0, true);
@@ -218,6 +220,7 @@ public class Config extends Configuration {
         regenerationModifier = createUpgradeConfig(REGENERATION_MODIFIER_CATEGORY, -10, 0, 0, true);
         waterBreathingModifier = createUpgradeConfig(WATER_BREATHING_MODIFIER_CATEGORY, -10, 0, 0, true);
         weaknessModifier = createUpgradeConfig(WEAKNESS_MODIFIER_CATEGORY, -10, 0, 0, true);
+        knockbackModifier = createUpgradeConfig(KNOCKBACK_MODIFIER_CATEGORY, -50, 0, 0, true);
 
         save();
     }

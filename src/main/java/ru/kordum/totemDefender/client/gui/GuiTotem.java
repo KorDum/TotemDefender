@@ -44,12 +44,12 @@ public abstract class GuiTotem extends GuiContainer {
 
     @Override
     protected void drawGuiContainerForegroundLayer(int param1, int param2) {
-        fontRendererObj.drawString(tileEntity.getName(), 8, 6, 4210752);
+        fontRendererObj.drawString(tileEntity.getName(), 8, 6, 0x404040);
         fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 0x404040);
 
-        drawString(getFormattedProp("prop.attackSpeed", tileEntity.getAttackSpeed()), 8, 18);
-        drawString(getFormattedProp("prop.damage", tileEntity.getDamage()), 8, 28);
-        drawString(getFormattedProp("prop.radius", tileEntity.getRadius()), 8, 38);
+        drawString(getFormattedProp("gui.attackSpeed", tileEntity.getAttackSpeed()), 22, 27);
+        drawString(getFormattedProp("gui.damage", tileEntity.getDamage()), 67, 27);
+        drawString(getFormattedProp("gui.radius", tileEntity.getRadius()), 112, 27);
     }
 
     @Override

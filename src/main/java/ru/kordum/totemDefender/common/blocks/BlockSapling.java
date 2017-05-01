@@ -87,8 +87,7 @@ public class BlockSapling extends BlockBush implements IGrowable {
     public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) {
         if ((Integer) state.getValue(STAGE) == 0) {
             worldIn.setBlockState(pos, state.cycleProperty(STAGE), 4);
-        }
-        else {
+        } else {
             generateTree(worldIn, pos, state, rand);
         }
     }

@@ -55,12 +55,20 @@ item.healUpgrade.name=Модификатор: лечение
 item.hungryUpgrade.name=Модификатор: голод
 item.blindnessUpgrade.name=Модификатор: слепота
 item.confusionUpgrade.name=Модификатор: конфуз
+item.knockbackUpgrade.name=Модификатор: отброс
 
 prop.attackSpeed=%s скорость атаки
 prop.damage=%s урон
 prop.radius=%s блоков радиус
+prop.holdMore=<Зажмите SHIFT Для подробностей>
 
 gui.woodenTotem=Деревянный тотем
 gui.ironTotem=Железный тотем
 gui.goldTotem=Золотой тотем
 gui.diamondTotem=Алмазный тотем
+gui.attackSpeed=%sс
+gui.damage=%s
+gui.radius=%s
+
+death.attack.totem=%1$s испепелен гневом Тотема.
+death.attack.totem.player=%1$s испепелен гневом Тотема, пока убегал от %2$s.

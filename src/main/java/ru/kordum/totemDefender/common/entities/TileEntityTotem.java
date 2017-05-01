@@ -20,13 +20,14 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.EntityDamageSource;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import ru.kordum.totemDefender.common.blocks.BlockTotem;
-import ru.kordum.totemDefender.common.items.filters.ItemFilter;
-import ru.kordum.totemDefender.common.items.modes.ItemMode;
+import ru.kordum.totemDefender.common.items.upgrades.ItemFilter;
+import ru.kordum.totemDefender.common.items.upgrades.ItemMode;
 import ru.kordum.totemDefender.common.items.upgrades.ItemModifierUpgrade;
 import ru.kordum.totemDefender.common.items.upgrades.ItemUpgrade;
 
@@ -123,8 +124,7 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory, 
                 attackSpeed += block.getAttackSpeed() * item.getAttackSpeed() / 100;
                 damage += block.getDamage() * item.getDamage() / 100;
                 radius += Math.ceil(block.getRadius() * item.getRadius() / 100);
-            }
-            else {
+            } else {
                 attackSpeed += item.getAttackSpeed();
                 damage += item.getDamage();
                 radius += item.getRadius();
@@ -148,7 +148,7 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory, 
         }
     }
 
-    public void calculateStats() {
+    private void calculateStats() {
         calculateStats((BlockTotem) getBlockType());
     }
 
@@ -173,8 +173,7 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory, 
         if (itemStack != null) {
             ItemMode item = (ItemMode) itemStack.getItem();
             mode = item.getMode();
-        }
-        else {
+        } else {
             mode = 0;
         }
     }
@@ -221,17 +220,14 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory, 
         }
 
         long time = new Date().getTime();
-
         if (lastShoot != 0 && time - lastShoot < 1000 / attackSpeed) {
             return null;
         }
 
         ArrayList<EntityLivingBase> list = getEntityList();
-
         if ((mode & ItemMode.PROJECTILE) == ItemMode.PROJECTILE) {
             projectileShot(list);
-        }
-        else if ((mode & ItemMode.AOE) == ItemMode.AOE) {
+        } else if ((mode & ItemMode.AOE) == ItemMode.AOE) {
             aoeShot(list);
         }
 
@@ -241,7 +237,6 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory, 
 
     private void aoeShot(ArrayList<EntityLivingBase> list) {
         Vec3 totemVector = new Vec3(pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5);
-
         for (EntityLivingBase entity : list) {
             if (!isDamageable(entity)) {
                 continue;
@@ -276,8 +271,8 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory, 
                 boundingBox.minY + (boundingBox.maxY - boundingBox.minY) / 2,
                 boundingBox.minZ + (boundingBox.maxZ - boundingBox.minZ) / 2
             );
-            MovingObjectPosition objectPosition = worldObj.rayTraceBlocks(totemVector, entityVector, true);
 
+            MovingObjectPosition objectPosition = worldObj.rayTraceBlocks(totemVector, entityVector, true);
             if (objectPosition != null && objectPosition.entityHit != entity) {
                 continue;
             }
@@ -302,16 +297,13 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory, 
     private boolean isDamageable(EntityLivingBase entity) {
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
-
             if ((filter & ItemFilter.PLAYER) == ItemFilter.PLAYER) {
                 return !player.capabilities.isCreativeMode;
-            }
-            else {
+            } else {
                 if ((filter & ItemFilter.SELF_PLAYER) == ItemFilter.SELF_PLAYER) {
                     return !player.capabilities.isCreativeMode &&
                         player.getUniqueID().equals(owner);
-                }
-                else if ((filter & ItemFilter.ANOTHER_PLAYER) == ItemFilter.ANOTHER_PLAYER) {
+                } else if ((filter & ItemFilter.ANOTHER_PLAYER) == ItemFilter.ANOTHER_PLAYER) {
                     return !player.capabilities.isCreativeMode &&
                         !player.getUniqueID().equals(owner);
                 }
@@ -382,8 +374,24 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory, 
             entity.addPotionEffect(new PotionEffect(Potion.heal.id, 1, 1));
         }
 
+        if ((modifier & ItemModifierUpgrade.KNOCKBACK) != 0) {
+            BlockPos pos = getPos();
+            double dx = pos.getX() - entity.posX;
+            double dy = pos.getY() - entity.posY;
+            double dz = pos.getZ() - entity.posZ;
+            double strength = 0.5 / (dx * dx + dy * dy + dz * dz) * damage;
+            if (strength > 1) {
+                strength = 1;
+            }
+            entity.addVelocity(
+                ((dx > 0) ? -1 : 1) * strength,
+                ((dy > 0) ? -1 : 1) * strength,
+                ((dz > 0) ? -1 : 1) * strength
+            );
+        }
+
         if (needDamage || modifier == 0) {
-            entity.attackEntityFrom(EntityDamageSource.generic, damage);
+            entity.attackEntityFrom(new DamageSource("totem"), damage);
         }
     }
 
@@ -456,8 +464,7 @@ public abstract class TileEntityTotem extends TileEntity implements IInventory, 
         if (stack != null) {
             if (stack.stackSize <= amount) {
                 setInventorySlotContents(slot, null);
-            }
-            else {
+            } else {
                 stack = stack.splitStack(amount);
 
                 if (stack.stackSize == 0) {

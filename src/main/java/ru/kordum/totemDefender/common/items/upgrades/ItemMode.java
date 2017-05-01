@@ -1,8 +1,8 @@
-package ru.kordum.totemDefender.common.items.modes;
+package ru.kordum.totemDefender.common.items.upgrades;
 
 import ru.kordum.totemDefender.common.items.ItemBase;
 
-public abstract class ItemMode extends ItemBase {
+public class ItemMode extends ItemBase {
     public static final byte PROJECTILE = 1;
     public static final byte AOE = 2;
 

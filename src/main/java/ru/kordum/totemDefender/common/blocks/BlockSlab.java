@@ -59,8 +59,7 @@ public class BlockSlab extends net.minecraft.block.BlockSlab {
 
         if (isDouble()) {
             return iblockstate;
-        }
-        else if (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || (double) hitY <= 0.5D)) {
+        } else if (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || (double) hitY <= 0.5D)) {
             return iblockstate;
         }
 

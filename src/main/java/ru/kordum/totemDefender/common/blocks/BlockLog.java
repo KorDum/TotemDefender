@@ -92,20 +92,17 @@ public class BlockLog extends net.minecraft.block.BlockLog {
         static {
             try {
                 AXIS_LOOKUP[EnumAxis.X.ordinal()] = 1;
-            }
-            catch (NoSuchFieldError ignored) {
+            } catch (NoSuchFieldError ignored) {
             }
 
             try {
                 AXIS_LOOKUP[EnumAxis.Z.ordinal()] = 2;
-            }
-            catch (NoSuchFieldError ignored) {
+            } catch (NoSuchFieldError ignored) {
             }
 
             try {
                 AXIS_LOOKUP[EnumAxis.NONE.ordinal()] = 3;
-            }
-            catch (NoSuchFieldError ignored) {
+            } catch (NoSuchFieldError ignored) {
             }
         }
     }
