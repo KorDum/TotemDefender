@@ -5,7 +5,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import ru.kordum.totemDefender.TotemDefender;
 
 public abstract class ItemBase extends Item {
-    private String name;
 
     //---------------------------------------------------------------------------
     //
@@ -14,19 +13,9 @@ public abstract class ItemBase extends Item {
     //---------------------------------------------------------------------------
 
     public ItemBase(String name) {
-        this.name = name;
         setUnlocalizedName(name);
+        setRegistryName(name);
         setCreativeTab(TotemDefender.tab);
-        GameRegistry.registerItem(this, name);
-    }
-
-    //---------------------------------------------------------------------------
-    //
-    // ACCESSORS
-    //
-    //---------------------------------------------------------------------------
-
-    public String getName() {
-        return name;
+        GameRegistry.register(this);
     }
 }

@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "half=bottom": { "model": "totemdefender:totemTreeSlab_half" },
-        "half=top": { "model": "totemdefender:totemTreeSlab_upper" }
-    }
-}

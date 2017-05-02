@@ -1,0 +1,6 @@
+{
+	"parent": "block/fence_post",
+	"textures": {
+		"texture": "totemdefender:blocks/totem_tree_planks"
+	}
+}

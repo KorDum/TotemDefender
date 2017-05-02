@@ -1,7 +1,8 @@
 package ru.kordum.totemDefender.common;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -14,7 +15,7 @@ public class ModCreativeTab extends CreativeTabs {
     //---------------------------------------------------------------------------
 
     public ModCreativeTab() {
-        super(CreativeTabs.getNextID(), "tabName");
+        super(CreativeTabs.getNextID(), "tab_name");
     }
 
     //---------------------------------------------------------------------------
@@ -25,7 +26,8 @@ public class ModCreativeTab extends CreativeTabs {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public Item getTabIconItem() {
-        return Item.getItemFromBlock(BlockManager.woodenTotem);
+    public ItemStack getTabIconItem() {
+        return new ItemStack(Items.COMMAND_BLOCK_MINECART);
+//        return new ItemStack(Item.getItemFromBlock(BlockManager.woodenTotem));
     }
 }

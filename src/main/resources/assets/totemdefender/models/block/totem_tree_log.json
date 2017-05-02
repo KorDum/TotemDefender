@@ -1,0 +1,11 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "down": "totemdefender:blocks/totem_tree_log2",
+        "up": "totemdefender:blocks/totem_tree_log2",
+        "north": "totemdefender:blocks/totem_tree_log1",
+        "south": "totemdefender:blocks/totem_tree_log1",
+        "west": "totemdefender:blocks/totem_tree_log1",
+        "east": "totemdefender:blocks/totem_tree_log1"
+    }
+}

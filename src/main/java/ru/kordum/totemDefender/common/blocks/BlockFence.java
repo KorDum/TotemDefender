@@ -4,7 +4,6 @@ import net.minecraft.block.material.Material;
 import ru.kordum.totemDefender.TotemDefender;
 
 public class BlockFence extends net.minecraft.block.BlockFence {
-    private String name;
 
     //---------------------------------------------------------------------------
     //
@@ -12,21 +11,11 @@ public class BlockFence extends net.minecraft.block.BlockFence {
     //
     //---------------------------------------------------------------------------
 
-    public BlockFence() {
-        super(Material.wood);
-        name = "totemTreeFence";
+    public BlockFence(String name) {
+        super(Material.WOOD, Material.WOOD.getMaterialMapColor());
         setUnlocalizedName(name);
+        setRegistryName(name);
         setHardness(4);
         setCreativeTab(TotemDefender.tab);
-    }
-
-    //---------------------------------------------------------------------------
-    //
-    // ACCESSORS
-    //
-    //---------------------------------------------------------------------------
-
-    public String getName() {
-        return name;
     }
 }

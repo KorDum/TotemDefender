@@ -5,7 +5,6 @@ import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.common.BlockManager;
 
 public class ItemDoor extends net.minecraft.item.ItemDoor {
-    private String name;
 
     //---------------------------------------------------------------------------
     //
@@ -13,21 +12,11 @@ public class ItemDoor extends net.minecraft.item.ItemDoor {
     //
     //---------------------------------------------------------------------------
 
-    public ItemDoor() {
+    public ItemDoor(String name) {
         super(BlockManager.door);
-        name = "totemTreeDoor";
         setUnlocalizedName(name);
+        setRegistryName(name);
         setCreativeTab(TotemDefender.tab);
-        GameRegistry.registerItem(this, getName());
-    }
-
-    //---------------------------------------------------------------------------
-    //
-    // ACCESSORS
-    //
-    //---------------------------------------------------------------------------
-
-    public String getName() {
-        return name;
+        GameRegistry.register(this);
     }
 }

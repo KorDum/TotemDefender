@@ -1,6 +1,6 @@
-itemGroup.tabName=Totem Defender
+itemGroup.tab_name=Totem Defender
 item.core.name=Ядро
-tile.totemTreeSapling.name=Саженец тотемного древа
+tile.totem_tree_sapling.name=Саженец тотемного древа
 tile.totemTreeLog.name=Древесина тотемного древа
 tile.totemTreeLogFace1.name=Древесина тотемного древа
 tile.totemTreeLogFace2.name=Древесина тотемного древа
@@ -14,13 +14,13 @@ tile.totemTreeFenceGate.name=Калитка из тотемного древа
 tile.totemTreeDoor.name=Дверь из тотемного древа
 entity.totemProjectile.name=Снаряд Тотема
 
-tile.woodenTotem.name=Деревянный тотем
-tile.ironTotem.name=Железный тотем
-tile.goldTotem.name=Золотой тотем
-tile.diamondTotem.name=Алмазный тотем
+tile.wooden_totem.name=Деревянный тотем
+tile.iron_totem.name=Железный тотем
+tile.gold_totem.name=Золотой тотем
+tile.diamond_totem.name=Алмазный тотем
 
-item.projectileMode.name=Снаряд
-item.aoeMode.name=По площади
+item.projectile_mode.name=Снаряд
+item.aoe_mode.name=По площади
 
 item.playerFilter.name=Фильтр на игроков
 item.selfPlayerFilter.name=Фильтр на себя
@@ -57,16 +57,16 @@ item.blindnessUpgrade.name=Модификатор: слепота
 item.confusionUpgrade.name=Модификатор: конфуз
 item.knockbackUpgrade.name=Модификатор: отброс
 
-prop.attackSpeed=%s скорость атаки
+prop.attack_speed=%s скорость атаки
 prop.damage=%s урон
 prop.radius=%s блоков радиус
-prop.holdMore=<Зажмите SHIFT Для подробностей>
+prop.hold_more=<Зажмите SHIFT Для подробностей>
 
-gui.woodenTotem=Деревянный тотем
-gui.ironTotem=Железный тотем
-gui.goldTotem=Золотой тотем
-gui.diamondTotem=Алмазный тотем
-gui.attackSpeed=%sс
+gui.wooden_totem=Деревянный тотем
+gui.iron_totem=Железный тотем
+gui.gold_totem=Золотой тотем
+gui.diamond_totem=Алмазный тотем
+gui.attack_speed=%sс
 gui.damage=%s
 gui.radius=%s
 

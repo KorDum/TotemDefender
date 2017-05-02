@@ -10,7 +10,7 @@ public class ItemCore extends ItemBase {
     //
     //---------------------------------------------------------------------------
 
-    public ItemCore() {
-        super("core");
+    public ItemCore(String name) {
+        super(name);
     }
 }

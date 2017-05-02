@@ -1,10 +1,10 @@
 package ru.kordum.totemDefender.common.blocks;
 
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.ResourceLocation;
 import ru.kordum.totemDefender.TotemDefender;
-import ru.kordum.totemDefender.common.BlockManager;
 
 public class BlockStairs extends net.minecraft.block.BlockStairs {
-    private String name;
 
     //---------------------------------------------------------------------------
     //
@@ -12,21 +12,11 @@ public class BlockStairs extends net.minecraft.block.BlockStairs {
     //
     //---------------------------------------------------------------------------
 
-    public BlockStairs() {
-        super(BlockManager.planks.getStateFromMeta(0));
-        name = "totemTreeStairs";
+    public BlockStairs(String name, IBlockState state) {
+        super(state);
         setUnlocalizedName(name);
+        setRegistryName(new ResourceLocation(TotemDefender.MODID, name));
         useNeighborBrightness = true;
         setCreativeTab(TotemDefender.tab);
-    }
-
-    //---------------------------------------------------------------------------
-    //
-    // ACCESSORS
-    //
-    //---------------------------------------------------------------------------
-
-    public String getName() {
-        return name;
     }
 }

@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "totemdefender:blocks/totem_tree_sapling"
+    }
+}

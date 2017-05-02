@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "totemDefender:blocks/totem_tree_leaves"
+    }
+}

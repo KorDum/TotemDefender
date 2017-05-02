@@ -4,8 +4,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import ru.kordum.totemDefender.common.BlockManager;
 import ru.kordum.totemDefender.common.CommonProxy;
@@ -13,17 +11,14 @@ import ru.kordum.totemDefender.common.ItemManager;
 import ru.kordum.totemDefender.common.ModCreativeTab;
 import ru.kordum.totemDefender.common.RecipeManager;
 import ru.kordum.totemDefender.common.config.Config;
-import ru.kordum.totemDefender.common.entities.EntityProjectile;
-import ru.kordum.totemDefender.common.handlers.GuiHandler;
 
 @Mod(
     modid = TotemDefender.MODID,
     version = TotemDefender.VERSION,
-    name = TotemDefender.NAME,
-    dependencies = "required-after:Forge@[11.14.4.1563,]"
+    name = TotemDefender.NAME
 )
 public class TotemDefender {
-    public static final String MODID = "TotemDefender";
+    public static final String MODID = "totemdefender";
     public static final String NAME = "Totem Defender";
     public static final String VERSION = "1.2.0";
 
@@ -50,8 +45,8 @@ public class TotemDefender {
         tab = new ModCreativeTab();
         BlockManager.registerBlocks(config);
         ItemManager.registerItems(config);
-        EntityRegistry.registerModEntity(EntityProjectile.class, "totemProjectile", 0, this, 32, 10, true);
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+//        EntityRegistry.registerModEntity(EntityProjectile.class, "totemProjectile", 0, this, 32, 10, true);
+//        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
 
     @Mod.EventHandler
@@ -59,7 +54,7 @@ public class TotemDefender {
         RecipeManager.registerRecipes();
 
         if (event.getSide() == Side.CLIENT) {
-            BlockManager.registerMeshes();
+            BlockManager.registerRenders();
             ItemManager.registerMeshes();
             proxy.registerRenderThings();
         }

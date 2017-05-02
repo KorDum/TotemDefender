@@ -6,7 +6,6 @@ import net.minecraft.util.IStringSerializable;
 import ru.kordum.totemDefender.TotemDefender;
 
 public class BlockPlanks extends Block {
-    private String name;
 
     //---------------------------------------------------------------------------
     //
@@ -14,10 +13,10 @@ public class BlockPlanks extends Block {
     //
     //---------------------------------------------------------------------------
 
-    public BlockPlanks() {
-        super(Material.wood);
-        name = "totemTreePlanks";
+    public BlockPlanks(String name) {
+        super(Material.WOOD);
         setUnlocalizedName(name);
+        setRegistryName(name);
         setHardness(4);
         setCreativeTab(TotemDefender.tab);
     }
@@ -27,10 +26,6 @@ public class BlockPlanks extends Block {
     // ACCESSORS
     //
     //---------------------------------------------------------------------------
-
-    public String getName() {
-        return name;
-    }
 
     public enum EnumType implements IStringSerializable {
         TOTEM("totem");

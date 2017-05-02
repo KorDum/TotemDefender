@@ -1,9 +1,9 @@
 package ru.kordum.totemDefender.common.blocks;
 
 import net.minecraft.block.material.Material;
+import ru.kordum.totemDefender.TotemDefender;
 
 public class BlockDoor extends net.minecraft.block.BlockDoor {
-    private String name;
 
     //---------------------------------------------------------------------------
     //
@@ -11,20 +11,10 @@ public class BlockDoor extends net.minecraft.block.BlockDoor {
     //
     //---------------------------------------------------------------------------
 
-    public BlockDoor() {
-        super(Material.wood);
-        name = "blockTotemTreeDoor";
+    public BlockDoor(String name) {
+        super(Material.WOOD);
         setUnlocalizedName(name);
+        setRegistryName(TotemDefender.MODID, name);
         setHardness(4);
-    }
-
-    //---------------------------------------------------------------------------
-    //
-    // ACCESSORS
-    //
-    //---------------------------------------------------------------------------
-
-    public String getName() {
-        return name;
     }
 }

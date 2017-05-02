@@ -1,0 +1,36 @@
+{
+    "forge_marker": 1,
+    "variants": {
+        "axis=x": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/totem_tree_log2",
+                "side": "totemdefender:blocks/totem_tree_log1"
+            },
+            "x": 90,
+            "y": 90
+        },
+        "axis=y": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/totem_tree_log2",
+                "side": "totemdefender:blocks/totem_tree_log1"
+            }
+        },
+        "axis=none": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/totem_tree_log2",
+                "side": "totemdefender:blocks/totem_tree_log1"
+            }
+        },
+        "axis=z": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/totem_tree_log2",
+                "side": "totemdefender:blocks/totem_tree_log1"
+            },
+            "x": 90
+        }
+    }
+}

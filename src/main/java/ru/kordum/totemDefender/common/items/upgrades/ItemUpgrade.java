@@ -2,8 +2,8 @@ package ru.kordum.totemDefender.common.items.upgrades;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import org.lwjgl.input.Keyboard;
 import ru.kordum.totemDefender.common.config.ConfigUpgrade;
 import ru.kordum.totemDefender.common.items.ItemBase;
@@ -49,16 +49,18 @@ public class ItemUpgrade extends ItemBase {
         super.addInformation(itemStack, player, tooltip, advanced);
         if (advanced || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
             if (attackSpeed != 0) {
-                tooltip.add(EnumChatFormatting.BLUE + Formatter.getProp("prop.attackSpeed", attackSpeed, isModifiersInPercent()));
+                tooltip.add(Formatter.getProp(TextFormatting.BLUE, "prop.attack_speed", attackSpeed, isModifiersInPercent()));
             }
             if (damage != 0) {
-                tooltip.add(EnumChatFormatting.RED + Formatter.getProp("prop.damage", damage, isModifiersInPercent()));
+                tooltip.add(Formatter.getProp(TextFormatting.RED, "prop.damage", damage, isModifiersInPercent()));
             }
             if (radius != 0) {
-                tooltip.add(EnumChatFormatting.GREEN + Formatter.getProp("prop.radius", radius, isModifiersInPercent()));
+                tooltip.add(Formatter.getProp(TextFormatting.GREEN, "prop.radius", radius, isModifiersInPercent()));
             }
         } else {
-            tooltip.add(EnumChatFormatting.GRAY + StatCollector.translateToLocal("prop.holdMore"));
+            TextComponentTranslation translation = new TextComponentTranslation("prop.hold_more");
+            translation.getStyle().setColor(TextFormatting.GRAY);
+            tooltip.add(translation.getFormattedText());
         }
     }
 

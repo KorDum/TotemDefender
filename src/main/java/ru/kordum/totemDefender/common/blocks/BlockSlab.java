@@ -2,23 +2,21 @@ package ru.kordum.totemDefender.common.blocks;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.BlockState;
+import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.common.BlockManager;
 
 import java.util.Random;
 
-public class BlockSlab extends net.minecraft.block.BlockSlab {
-    private String name;
+public abstract class BlockSlab extends net.minecraft.block.BlockSlab {
+    public static final PropertyEnum<Variant> VARIANT = PropertyEnum.create("variant", Variant.class);
 
     //---------------------------------------------------------------------------
     //
@@ -27,24 +25,19 @@ public class BlockSlab extends net.minecraft.block.BlockSlab {
     //---------------------------------------------------------------------------
 
     public BlockSlab(String name) {
-        super(Material.wood);
-        this.name = name;
-        setUnlocalizedName(name);
+        super(Material.WOOD);
         setHardness(4);
         useNeighborBrightness = true;
+        setUnlocalizedName(name);
+        setRegistryName(name);
 
-        IBlockState iblockstate = blockState.getBaseState();
-
+        IBlockState state = blockState.getBaseState();
         if (!isDouble()) {
-            iblockstate = iblockstate.withProperty(HALF, EnumBlockHalf.BOTTOM);
-            setCreativeTab(TotemDefender.tab);
+            state = state.withProperty(HALF, EnumBlockHalf.BOTTOM);
         }
 
-        setDefaultState(iblockstate);
-    }
-
-    public BlockSlab() {
-        this("totemTreeSlab");
+        setDefaultState(state.withProperty(VARIANT, Variant.DEFAULT));
+        setCreativeTab(TotemDefender.tab);
     }
 
     //---------------------------------------------------------------------------
@@ -53,37 +46,19 @@ public class BlockSlab extends net.minecraft.block.BlockSlab {
     //
     //---------------------------------------------------------------------------
 
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        IBlockState iblockstate = super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer)
-            .withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM);
-
-        if (isDouble()) {
-            return iblockstate;
-        } else if (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || (double) hitY <= 0.5D)) {
-            return iblockstate;
-        }
-
-        return iblockstate.withProperty(HALF, EnumBlockHalf.TOP);
-    }
-
     @Override
     public String getUnlocalizedName(int meta) {
-        return name;
-    }
-
-    @Override
-    public boolean isDouble() {
-        return false;
+        return super.getUnlocalizedName();
     }
 
     @Override
     public IProperty getVariantProperty() {
-        return null;
+        return VARIANT;
     }
 
     @Override
-    public Object getVariant(ItemStack stack) {
-        return null;
+    public Comparable<?> getTypeForItem(ItemStack stack) {
+        return Variant.DEFAULT;
     }
 
     //---------------------------------------------------------------------------
@@ -93,36 +68,11 @@ public class BlockSlab extends net.minecraft.block.BlockSlab {
     //---------------------------------------------------------------------------
 
     @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Item.getItemFromBlock(BlockManager.slab);
-    }
-
-    public IBlockState getStateFromMeta(int meta) {
-        IBlockState iblockstate = getDefaultState();
-
-        if (!isDouble()) {
-            iblockstate = iblockstate.withProperty(HALF, (meta & 8) == 0 ?
-                EnumBlockHalf.BOTTOM :
-                EnumBlockHalf.TOP);
-        }
-
-        return iblockstate;
-    }
-
-    public int getMetaFromState(IBlockState state) {
-        int i = 0;
-
-        if (!isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP) {
-            i |= 8;
-        }
-
-        return i;
-    }
-
-    protected BlockState createBlockState() {
-        return isDouble() ?
-            new BlockState(this) :
-            new BlockState(this, HALF);
+    protected BlockStateContainer createBlockState()
+    {
+        return this.isDouble() ?
+            new BlockStateContainer(this, VARIANT) :
+            new BlockStateContainer(this, HALF, VARIANT);
     }
 
     //---------------------------------------------------------------------------
@@ -131,12 +81,59 @@ public class BlockSlab extends net.minecraft.block.BlockSlab {
     //
     //---------------------------------------------------------------------------
 
-    public String getName() {
-        return name;
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+        return Item.getItemFromBlock(BlockManager.slab);
     }
 
-    @SideOnly(Side.CLIENT)
-    public Item getItem(World worldIn, BlockPos pos) {
-        return Item.getItemFromBlock(BlockManager.slab);
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+        IBlockState state = getDefaultState().withProperty(VARIANT, Variant.DEFAULT);
+        if (!isDouble()) {
+            state = state.withProperty(HALF, (meta & 8) == 0 ? EnumBlockHalf.BOTTOM : EnumBlockHalf.TOP);
+        }
+        return state;
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        int i = 0;
+        if (!isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP) {
+            i |= 8;
+        }
+        return i;
+    }
+
+    @Override
+    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
+        return new ItemStack(BlockManager.slab);
+    }
+
+    public static class Double extends BlockSlab {
+        public Double(String name) {
+            super(name);
+        }
+
+        public boolean isDouble() {
+            return true;
+        }
+    }
+
+    public static class Half extends BlockSlab {
+        public Half(String name) {
+            super(name);
+        }
+
+        public boolean isDouble() {
+            return false;
+        }
+    }
+
+    public static enum Variant implements IStringSerializable {
+        DEFAULT;
+
+        public String getName() {
+            return "default";
+        }
     }
 }

@@ -1,8 +1,0 @@
-{
-    "parent": "block/half_slab",
-    "textures": {
-        "bottom": "totemdefender:blocks/totemTreePlanks",
-        "top": "totemdefender:blocks/totemTreePlanks",
-        "side": "totemdefender:blocks/totemTreePlanks"
-    }
-}
