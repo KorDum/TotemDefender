@@ -68,8 +68,8 @@ public class ModItems {
     
     public static void registerItems(Config config) {
         core = new ItemCore("core");
-        door = new ItemDoor("totem_tree_door");
-        slab = new ItemSlab("totem_tree_slab", ModBlocks.slab, ModBlocks.slab, ModBlocks.doubleSlab);
+        door = new ItemDoor("door");
+        slab = new ItemSlab("slab", ModBlocks.slab, ModBlocks.slab, ModBlocks.doubleSlab);
         stairs = new ItemBlock(ModBlocks.stairs).setRegistryName(ModBlocks.stairs.getRegistryName());
         fence = new ItemBlock(ModBlocks.fence).setRegistryName(ModBlocks.fence.getRegistryName());
         fenceGate = new ItemBlock(ModBlocks.fenceGate).setRegistryName(ModBlocks.fenceGate.getRegistryName());

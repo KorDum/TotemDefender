@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "totemdefender:log_face3" },
+        "facing=south": { "model": "totemdefender:log_face3", "y": 180 },
+        "facing=west":  { "model": "totemdefender:log_face3", "y": 270 },
+        "facing=east":  { "model": "totemdefender:log_face3", "y": 90 }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "totemdefender:blocks/planks",
+        "top": "totemdefender:blocks/planks",
+        "side": "totemdefender:blocks/planks"
+    }
+}

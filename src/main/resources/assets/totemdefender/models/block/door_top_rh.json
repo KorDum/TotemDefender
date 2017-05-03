@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top_rh",
+    "textures": {
+        "bottom": "totemdefender:blocks/block_door_lower",
+        "top": "totemdefender:blocks/block_door_upper"
+    }
+}

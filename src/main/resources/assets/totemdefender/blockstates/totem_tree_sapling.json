@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "stage=0,type=totem": { "model": "totemdefender:totem_tree_sapling" },
-        "stage=1,type=totem": { "model": "totemdefender:totem_tree_sapling" }
-    }
-}

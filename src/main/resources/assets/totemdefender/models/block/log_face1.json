@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "totemdefender:blocks/log2",
+        "front": "totemdefender:blocks/log_face1",
+        "side": "totemdefender:blocks/log1"
+    }
+}

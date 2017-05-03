@@ -46,27 +46,27 @@ public class ModBlocks {
     //---------------------------------------------------------------------------
 
     public static void registerBlocks(Config config) {
-        sapling = new BlockSapling("totem_tree_sapling");
-        leaves = new BlockLeaves("totem_tree_leaves");
-        log = new BlockLog("totem_tree_log");
-        logFace1 = new BlockLogFace("totem_tree_log_face1");
-        logFace2 = new BlockLogFace("totem_tree_log_face2");
-        logFace3 = new BlockLogFace("totem_tree_log_face3");
-        planks = new BlockPlanks("totem_tree_planks");
-        stairs = new BlockStairs("totem_tree_stairs", planks.getDefaultState());
-        slab = new BlockSlab.Half("totem_tree_slab");
-        doubleSlab = new BlockSlab.Double("totem_tree_double_slab");
-        fence = new BlockFence("totem_tree_fence");
-        fenceGate = new BlockFenceGate("totem_tree_fence_gate");
-        door = new BlockDoor("totem_tree_door");
+        sapling = new BlockSapling("sapling");
+        leaves = new BlockLeaves("leaves");
+        log = new BlockLog("log");
+        logFace1 = new BlockLogFace("log_face1");
+        logFace2 = new BlockLogFace("log_face2");
+        logFace3 = new BlockLogFace("log_face3");
+        planks = new BlockPlanks("planks");
+        stairs = new BlockStairs("stairs", planks.getDefaultState());
+        slab = new BlockSlab.Half("slab");
+        doubleSlab = new BlockSlab.Double("double_slab");
+        fence = new BlockFence("fence");
+        fenceGate = new BlockFenceGate("fence_gate");
+        door = new BlockDoor("door");
 
 //        woodenTotem = new BlockWoodenTotem(config.woodenTotem);
 //        ironTotem = new BlockIronTotem(config.ironTotem);
 //        goldTotem = new BlockGoldTotem(config.goldTotem);
 //        diamondTotem = new BlockDiamondTotem(config.diamondTotem);
 
-//        GameRegistry.register(sapling);
-//        GameRegistry.register(leaves);
+        GameRegistry.register(sapling);
+        GameRegistry.register(leaves);
         GameRegistry.register(log);
         GameRegistry.register(logFace1);
         GameRegistry.register(logFace2);
