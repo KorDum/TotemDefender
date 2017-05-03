@@ -12,10 +12,6 @@ import ru.kordum.totemDefender.common.utils.Formatter;
 import java.util.List;
 
 public class ItemUpgrade extends ItemBase {
-    public static final int LEVEL_WOODEN = 1;
-    public static final int LEVEL_IRON = 2;
-    public static final int LEVEL_GOLD = 3;
-    public static final int LEVEL_DIAMOND = 4;
 
     private float damage;
     private float attackSpeed;

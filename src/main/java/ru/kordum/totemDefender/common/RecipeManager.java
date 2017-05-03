@@ -15,10 +15,10 @@ public class RecipeManager {
         GameRegistry.addSmelting(ModBlocks.logFace1, new ItemStack(Items.COAL, 1, 1), 0.1f);
         GameRegistry.addSmelting(ModBlocks.logFace2, new ItemStack(Items.COAL, 1, 1), 0.1f);
         GameRegistry.addSmelting(ModBlocks.logFace3, new ItemStack(Items.COAL, 1, 1), 0.1f);
-//        GameRegistry.addSmelting(ModBlocks.woodenTotem, new ItemStack(Items.COAL, 2, 1), 1);
-//        GameRegistry.addSmelting(ModBlocks.ironTotem, new ItemStack(Items.IRON_INGOT, 4, 1), 1);
-//        GameRegistry.addSmelting(ModBlocks.goldTotem, new ItemStack(Items.GOLD_INGOT, 4, 1), 1);
-//        GameRegistry.addSmelting(ModBlocks.diamondTotem, new ItemStack(Items.DIAMOND, 4, 1), 1);
+        GameRegistry.addSmelting(ModBlocks.woodenTotem, new ItemStack(Items.COAL, 2, 1), 1);
+        GameRegistry.addSmelting(ModBlocks.ironTotem, new ItemStack(Items.IRON_INGOT, 4, 1), 1);
+        GameRegistry.addSmelting(ModBlocks.goldTotem, new ItemStack(Items.GOLD_INGOT, 4, 1), 1);
+        GameRegistry.addSmelting(ModBlocks.diamondTotem, new ItemStack(Items.DIAMOND, 4, 1), 1);
 
         /*
          * Common
@@ -70,7 +70,7 @@ public class RecipeManager {
         /*
          * Totems
          */
-        /*addRecipe(ModBlocks.woodenTotem, new Object[]{
+        addRecipe(ModBlocks.woodenTotem, new Object[]{
             "WLW", "WCW", "WRW",
             'L', new ItemStack(Items.DYE, 1, 4),
             'C', ModItems.core,
@@ -103,7 +103,7 @@ public class RecipeManager {
             'R', Blocks.REDSTONE_BLOCK,
             'W', ModBlocks.log,
             'I', Items.DIAMOND,
-        });*/
+        });
 
         /*
          * Modes

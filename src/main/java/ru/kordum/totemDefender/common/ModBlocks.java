@@ -7,9 +7,12 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import ru.kordum.totemDefender.common.blocks.BlockDiamondTotem;
 import ru.kordum.totemDefender.common.blocks.BlockDoor;
 import ru.kordum.totemDefender.common.blocks.BlockFence;
 import ru.kordum.totemDefender.common.blocks.BlockFenceGate;
+import ru.kordum.totemDefender.common.blocks.BlockGoldTotem;
+import ru.kordum.totemDefender.common.blocks.BlockIronTotem;
 import ru.kordum.totemDefender.common.blocks.BlockLeaves;
 import ru.kordum.totemDefender.common.blocks.BlockLog;
 import ru.kordum.totemDefender.common.blocks.BlockLogFace;
@@ -17,7 +20,13 @@ import ru.kordum.totemDefender.common.blocks.BlockPlanks;
 import ru.kordum.totemDefender.common.blocks.BlockSapling;
 import ru.kordum.totemDefender.common.blocks.BlockSlab;
 import ru.kordum.totemDefender.common.blocks.BlockStairs;
+import ru.kordum.totemDefender.common.blocks.BlockTotem;
+import ru.kordum.totemDefender.common.blocks.BlockWoodenTotem;
 import ru.kordum.totemDefender.common.config.Config;
+import ru.kordum.totemDefender.common.entities.TileEntityDiamondTotem;
+import ru.kordum.totemDefender.common.entities.TileEntityGoldTotem;
+import ru.kordum.totemDefender.common.entities.TileEntityIronTotem;
+import ru.kordum.totemDefender.common.entities.TileEntityWoodenTotem;
 
 public class ModBlocks {
     public static BlockSapling sapling;
@@ -34,10 +43,10 @@ public class ModBlocks {
     public static BlockFenceGate fenceGate;
     public static BlockDoor door;
 
-//    public static BlockWoodenTotem woodenTotem;
-//    public static BlockIronTotem ironTotem;
-//    public static BlockGoldTotem goldTotem;
-//    public static BlockDiamondTotem diamondTotem;
+    public static BlockTotem woodenTotem;
+    public static BlockTotem ironTotem;
+    public static BlockTotem goldTotem;
+    public static BlockTotem diamondTotem;
 
     //---------------------------------------------------------------------------
     //
@@ -60,10 +69,10 @@ public class ModBlocks {
         fenceGate = new BlockFenceGate("fence_gate");
         door = new BlockDoor("door");
 
-//        woodenTotem = new BlockWoodenTotem(config.woodenTotem);
-//        ironTotem = new BlockIronTotem(config.ironTotem);
-//        goldTotem = new BlockGoldTotem(config.goldTotem);
-//        diamondTotem = new BlockDiamondTotem(config.diamondTotem);
+        woodenTotem = new BlockWoodenTotem("wooden_totem", config.woodenTotem);
+        ironTotem = new BlockIronTotem("iron_totem", config.ironTotem);
+        goldTotem = new BlockGoldTotem("gold_totem", config.goldTotem);
+        diamondTotem = new BlockDiamondTotem("diamond_totem", config.diamondTotem);
 
         GameRegistry.register(sapling);
         GameRegistry.register(leaves);
@@ -79,17 +88,15 @@ public class ModBlocks {
         GameRegistry.register(fenceGate);
         GameRegistry.register(door);
 
-//        GameRegistry.registerBlock(woodenTotem, ItemTotem.class, woodenTotem.getName());
-//        GameRegistry.registerTileEntity(TileEntityWoodenTotem.class, woodenTotem.getUnlocalizedName());
+        GameRegistry.register(woodenTotem);
+        GameRegistry.register(ironTotem);
+        GameRegistry.register(goldTotem);
+        GameRegistry.register(diamondTotem);
 
-//        GameRegistry.registerBlock(ironTotem, ItemTotem.class, ironTotem.getName());
-//        GameRegistry.registerTileEntity(TileEntityIronTotem.class, ironTotem.getUnlocalizedName());
-
-//        GameRegistry.registerBlock(goldTotem, ItemTotem.class, goldTotem.getName());
-//        GameRegistry.registerTileEntity(TileEntityGoldTotem.class, goldTotem.getUnlocalizedName());
-
-//        GameRegistry.registerBlock(diamondTotem, ItemTotem.class, diamondTotem.getName());
-//        GameRegistry.registerTileEntity(TileEntityDiamondTotem.class, diamondTotem.getUnlocalizedName());
+        GameRegistry.registerTileEntity(TileEntityWoodenTotem.class, woodenTotem.getUnlocalizedName());
+        GameRegistry.registerTileEntity(TileEntityIronTotem.class, ironTotem.getUnlocalizedName());
+        GameRegistry.registerTileEntity(TileEntityGoldTotem.class, goldTotem.getUnlocalizedName());
+        GameRegistry.registerTileEntity(TileEntityDiamondTotem.class, diamondTotem.getUnlocalizedName());
 
         Blocks.FIRE.setFireInfo(leaves, 30, 60);
         Blocks.FIRE.setFireInfo(planks, 5, 20);
@@ -104,10 +111,10 @@ public class ModBlocks {
         Blocks.FIRE.setFireInfo(stairs, 5, 20);
         Blocks.FIRE.setFireInfo(sapling, 60, 100);
         Blocks.FIRE.setFireInfo(door, 5, 60);
-//        Blocks.FIRE.setFireInfo(woodenTotem, 5, 30);
-//        Blocks.FIRE.setFireInfo(ironTotem, 5, 100);
-//        Blocks.FIRE.setFireInfo(goldTotem, 5, 150);
-//        Blocks.FIRE.setFireInfo(diamondTotem, 5, 300);
+        Blocks.FIRE.setFireInfo(woodenTotem, 5, 30);
+        Blocks.FIRE.setFireInfo(ironTotem, 5, 100);
+        Blocks.FIRE.setFireInfo(goldTotem, 5, 150);
+        Blocks.FIRE.setFireInfo(diamondTotem, 5, 300);
     }
 
     public static void registerRenders() {
@@ -126,10 +133,10 @@ public class ModBlocks {
         registerRender(mesher, fence);
         registerRender(mesher, fenceGate);
 
-//        registerRender(mesher, woodenTotem);
-//        registerRender(mesher, ironTotem);
-//        registerRender(mesher, goldTotem);
-//        registerRender(mesher, diamondTotem);
+        registerRender(mesher, woodenTotem);
+        registerRender(mesher, ironTotem);
+        registerRender(mesher, goldTotem);
+        registerRender(mesher, diamondTotem);
     }
 
     //---------------------------------------------------------------------------

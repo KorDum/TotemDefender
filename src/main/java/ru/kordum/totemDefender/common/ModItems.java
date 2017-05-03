@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import ru.kordum.totemDefender.common.blocks.BlockTotem;
 import ru.kordum.totemDefender.common.config.Config;
 import ru.kordum.totemDefender.common.items.common.ItemCore;
 import ru.kordum.totemDefender.common.items.common.ItemDoor;
@@ -30,6 +31,11 @@ public class ModItems {
     public static Item logFace3;
     public static Item sapling;
     public static Item leaf;
+
+    public static Item woodenTotem;
+    public static Item ironTotem;
+    public static Item goldTotem;
+    public static Item diamondTotem;
 
     public static ItemUpgrade woodenDamageUpgrade;
     public static ItemUpgrade woodenASUpgrade;
@@ -84,21 +90,26 @@ public class ModItems {
         sapling = getItemFromBLock(ModBlocks.sapling);
         leaf = getItemFromBLock(ModBlocks.leaves);
 
-        woodenASUpgrade = new ItemUpgrade("wooden_as_upgrade", ItemUpgrade.LEVEL_WOODEN, config.woodenASUpgrade);
-        woodenDamageUpgrade = new ItemUpgrade("wooden_damage_upgrade", ItemUpgrade.LEVEL_WOODEN, config.woodenDamageUpgrade);
-        woodenRadiusUpgrade = new ItemUpgrade("wooden_radius_upgrade", ItemUpgrade.LEVEL_WOODEN, config.woodenRadiusUpgrade);
+        woodenTotem = getItemFromBLock(ModBlocks.woodenTotem);
+        ironTotem = getItemFromBLock(ModBlocks.ironTotem);
+        goldTotem = getItemFromBLock(ModBlocks.goldTotem);
+        diamondTotem = getItemFromBLock(ModBlocks.diamondTotem);
 
-        ironASUpgrade = new ItemUpgrade("iron_as_upgrade", ItemUpgrade.LEVEL_IRON, config.ironASUpgrade);
-        ironDamageUpgrade = new ItemUpgrade("iron_damage_upgrade", ItemUpgrade.LEVEL_IRON, config.ironDamageUpgrade);
-        ironRadiusUpgrade = new ItemUpgrade("iron_radius_upgrade", ItemUpgrade.LEVEL_IRON, config.ironRadiusUpgrade);
+        woodenASUpgrade = new ItemUpgrade("wooden_as_upgrade", BlockTotem.LEVEL_WOODEN, config.woodenASUpgrade);
+        woodenDamageUpgrade = new ItemUpgrade("wooden_damage_upgrade", BlockTotem.LEVEL_WOODEN, config.woodenDamageUpgrade);
+        woodenRadiusUpgrade = new ItemUpgrade("wooden_radius_upgrade", BlockTotem.LEVEL_WOODEN, config.woodenRadiusUpgrade);
 
-        goldASUpgrade = new ItemUpgrade("gold_as_upgrade", ItemUpgrade.LEVEL_GOLD, config.goldASUpgrade);
-        goldDamageUpgrade = new ItemUpgrade("gold_damage_upgrade", ItemUpgrade.LEVEL_GOLD, config.goldDamageUpgrade);
-        goldRadiusUpgrade = new ItemUpgrade("gold_radius_upgrade", ItemUpgrade.LEVEL_GOLD, config.goldRadiusUpgrade);
+        ironASUpgrade = new ItemUpgrade("iron_as_upgrade", BlockTotem.LEVEL_IRON, config.ironASUpgrade);
+        ironDamageUpgrade = new ItemUpgrade("iron_damage_upgrade", BlockTotem.LEVEL_IRON, config.ironDamageUpgrade);
+        ironRadiusUpgrade = new ItemUpgrade("iron_radius_upgrade", BlockTotem.LEVEL_IRON, config.ironRadiusUpgrade);
 
-        diamondASUpgrade = new ItemUpgrade("diamond_as_upgrade", ItemUpgrade.LEVEL_DIAMOND, config.diamondASUpgrade);
-        diamondDamageUpgrade = new ItemUpgrade("diamond_damage_upgrade", ItemUpgrade.LEVEL_DIAMOND, config.diamondDamageUpgrade);
-        diamondRadiusUpgrade = new ItemUpgrade("diamond_radius_upgrade", ItemUpgrade.LEVEL_DIAMOND, config.diamondRadiusUpgrade);
+        goldASUpgrade = new ItemUpgrade("gold_as_upgrade", BlockTotem.LEVEL_GOLD, config.goldASUpgrade);
+        goldDamageUpgrade = new ItemUpgrade("gold_damage_upgrade", BlockTotem.LEVEL_GOLD, config.goldDamageUpgrade);
+        goldRadiusUpgrade = new ItemUpgrade("gold_radius_upgrade", BlockTotem.LEVEL_GOLD, config.goldRadiusUpgrade);
+
+        diamondASUpgrade = new ItemUpgrade("diamond_as_upgrade", BlockTotem.LEVEL_DIAMOND, config.diamondASUpgrade);
+        diamondDamageUpgrade = new ItemUpgrade("diamond_damage_upgrade", BlockTotem.LEVEL_DIAMOND, config.diamondDamageUpgrade);
+        diamondRadiusUpgrade = new ItemUpgrade("diamond_radius_upgrade", BlockTotem.LEVEL_DIAMOND, config.diamondRadiusUpgrade);
 
         fireModifier = new ItemModifierUpgrade("fire_upgrade", ItemModifierUpgrade.FIRE, config.fireModifier);
         poisonModifier = new ItemModifierUpgrade("poison_upgrade", ItemModifierUpgrade.POISON, config.poisonModifier);
