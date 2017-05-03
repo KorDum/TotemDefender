@@ -5,9 +5,9 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import ru.kordum.totemDefender.common.BlockManager;
+import ru.kordum.totemDefender.common.ModBlocks;
 import ru.kordum.totemDefender.common.CommonProxy;
-import ru.kordum.totemDefender.common.ItemManager;
+import ru.kordum.totemDefender.common.ModItems;
 import ru.kordum.totemDefender.common.ModCreativeTab;
 import ru.kordum.totemDefender.common.RecipeManager;
 import ru.kordum.totemDefender.common.config.Config;
@@ -43,8 +43,8 @@ public class TotemDefender {
         config.loadAndSave();
 
         tab = new ModCreativeTab();
-        BlockManager.registerBlocks(config);
-        ItemManager.registerItems(config);
+        ModBlocks.registerBlocks(config);
+        ModItems.registerItems(config);
 //        EntityRegistry.registerModEntity(EntityProjectile.class, "totemProjectile", 0, this, 32, 10, true);
 //        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
@@ -54,8 +54,8 @@ public class TotemDefender {
         RecipeManager.registerRecipes();
 
         if (event.getSide() == Side.CLIENT) {
-            BlockManager.registerRenders();
-            ItemManager.registerMeshes();
+            ModBlocks.registerRenders();
+            ModItems.registerRenders();
             proxy.registerRenderThings();
         }
     }

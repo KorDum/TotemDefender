@@ -1,11 +1,8 @@
 {
-    "parent": "block/cube",
+    "parent": "block/orientable",
     "textures": {
-        "down": "totemdefender:blocks/totem_tree_log2",
-        "up": "totemdefender:blocks/totem_tree_log2",
-        "north": "totemdefender:blocks/totem_tree_log1",
-        "south": "totemdefender:blocks/totem_tree_log1",
-        "west": "totemdefender:blocks/totem_tree_log1",
-        "east": "totemdefender:blocks/totem_tree_log_face1"
+        "top": "totemdefender:blocks/totem_tree_log2",
+        "front": "totemdefender:blocks/totem_tree_log_face1",
+        "side": "totemdefender:blocks/totem_tree_log1"
     }
 }

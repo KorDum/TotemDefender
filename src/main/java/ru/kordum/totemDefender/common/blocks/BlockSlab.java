@@ -11,7 +11,7 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import ru.kordum.totemDefender.TotemDefender;
-import ru.kordum.totemDefender.common.BlockManager;
+import ru.kordum.totemDefender.common.ModBlocks;
 
 import java.util.Random;
 
@@ -83,7 +83,7 @@ public abstract class BlockSlab extends net.minecraft.block.BlockSlab {
 
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Item.getItemFromBlock(BlockManager.slab);
+        return Item.getItemFromBlock(ModBlocks.slab);
     }
 
     @Override
@@ -106,7 +106,7 @@ public abstract class BlockSlab extends net.minecraft.block.BlockSlab {
 
     @Override
     public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-        return new ItemStack(BlockManager.slab);
+        return new ItemStack(ModBlocks.slab);
     }
 
     public static class Double extends BlockSlab {

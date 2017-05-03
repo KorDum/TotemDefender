@@ -10,18 +10,22 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import ru.kordum.totemDefender.common.blocks.BlockDoor;
 import ru.kordum.totemDefender.common.blocks.BlockFence;
 import ru.kordum.totemDefender.common.blocks.BlockFenceGate;
+import ru.kordum.totemDefender.common.blocks.BlockLeaves;
+import ru.kordum.totemDefender.common.blocks.BlockLog;
+import ru.kordum.totemDefender.common.blocks.BlockLogFace;
 import ru.kordum.totemDefender.common.blocks.BlockPlanks;
+import ru.kordum.totemDefender.common.blocks.BlockSapling;
 import ru.kordum.totemDefender.common.blocks.BlockSlab;
 import ru.kordum.totemDefender.common.blocks.BlockStairs;
 import ru.kordum.totemDefender.common.config.Config;
 
-public class BlockManager {
-//    public static BlockSapling sapling;
-//    public static BlockLeaves leaves;
-//    public static BlockLog log;
-//    public static BlockLogFace1 face1Log;
-//    public static BlockLogFace2 face2Log;
-//    public static BlockLogFace3 face3Log;
+public class ModBlocks {
+    public static BlockSapling sapling;
+    public static BlockLeaves leaves;
+    public static BlockLog log;
+    public static BlockLogFace logFace1;
+    public static BlockLogFace logFace2;
+    public static BlockLogFace logFace3;
     public static BlockPlanks planks;
     public static BlockStairs stairs;
     public static BlockSlab slab;
@@ -42,12 +46,12 @@ public class BlockManager {
     //---------------------------------------------------------------------------
 
     public static void registerBlocks(Config config) {
-//        sapling = new BlockSapling();
-//        leaves = new BlockLeaves();
-//        log = new BlockLog();
-//        face1Log = new BlockLogFace1();
-//        face2Log = new BlockLogFace2();
-//        face3Log = new BlockLogFace3();
+        sapling = new BlockSapling("totem_tree_sapling");
+        leaves = new BlockLeaves("totem_tree_leaves");
+        log = new BlockLog("totem_tree_log");
+        logFace1 = new BlockLogFace("totem_tree_log_face1");
+        logFace2 = new BlockLogFace("totem_tree_log_face2");
+        logFace3 = new BlockLogFace("totem_tree_log_face3");
         planks = new BlockPlanks("totem_tree_planks");
         stairs = new BlockStairs("totem_tree_stairs", planks.getDefaultState());
         slab = new BlockSlab.Half("totem_tree_slab");
@@ -63,10 +67,10 @@ public class BlockManager {
 
 //        GameRegistry.register(sapling);
 //        GameRegistry.register(leaves);
-//        GameRegistry.register(log);
-//        GameRegistry.register(face1Log);
-//        GameRegistry.register(face2Log);
-//        GameRegistry.register(face3Log);
+        GameRegistry.register(log);
+        GameRegistry.register(logFace1);
+        GameRegistry.register(logFace2);
+        GameRegistry.register(logFace3);
         GameRegistry.register(planks);
         GameRegistry.register(stairs);
         GameRegistry.register(slab);
@@ -87,18 +91,18 @@ public class BlockManager {
 //        GameRegistry.registerBlock(diamondTotem, ItemTotem.class, diamondTotem.getName());
 //        GameRegistry.registerTileEntity(TileEntityDiamondTotem.class, diamondTotem.getUnlocalizedName());
 
-//        Blocks.FIRE.setFireInfo(leaves, 30, 60);
+        Blocks.FIRE.setFireInfo(leaves, 30, 60);
         Blocks.FIRE.setFireInfo(planks, 5, 20);
         Blocks.FIRE.setFireInfo(slab, 5, 20);
         Blocks.FIRE.setFireInfo(doubleSlab, 5, 20);
-//        Blocks.FIRE.setFireInfo(log, 5, 5);
-//        Blocks.FIRE.setFireInfo(face1Log, 5, 5);
-//        Blocks.FIRE.setFireInfo(face2Log, 5, 5);
-//        Blocks.FIRE.setFireInfo(face3Log, 5, 5);
+        Blocks.FIRE.setFireInfo(log, 5, 5);
+        Blocks.FIRE.setFireInfo(logFace1, 5, 5);
+        Blocks.FIRE.setFireInfo(logFace2, 5, 5);
+        Blocks.FIRE.setFireInfo(logFace3, 5, 5);
         Blocks.FIRE.setFireInfo(fence, 5, 20);
         Blocks.FIRE.setFireInfo(fenceGate, 5, 20);
         Blocks.FIRE.setFireInfo(stairs, 5, 20);
-//        Blocks.FIRE.setFireInfo(sapling, 60, 100);
+        Blocks.FIRE.setFireInfo(sapling, 60, 100);
         Blocks.FIRE.setFireInfo(door, 5, 60);
 //        Blocks.FIRE.setFireInfo(woodenTotem, 5, 30);
 //        Blocks.FIRE.setFireInfo(ironTotem, 5, 100);
@@ -108,14 +112,14 @@ public class BlockManager {
 
     public static void registerRenders() {
         ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-//        registerRender(mesher, sapling);
-//        registerRender(mesher, leaves);
+        registerRender(mesher, sapling);
+        registerRender(mesher, leaves);
         registerRender(mesher, planks);
         registerRender(mesher, stairs);
-//        registerRender(mesher, log);
-//        registerRender(mesher, face1Log);
-//        registerRender(mesher, face2Log);
-//        registerRender(mesher, face3Log);
+        registerRender(mesher, log);
+        registerRender(mesher, logFace1);
+        registerRender(mesher, logFace2);
+        registerRender(mesher, logFace3);
         registerRender(mesher, door);
         registerRender(mesher, slab);
         registerRender(mesher, doubleSlab);

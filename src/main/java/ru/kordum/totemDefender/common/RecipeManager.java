@@ -11,9 +11,9 @@ public class RecipeManager {
     public static void registerRecipes() {
         /*OreDictionary.registerOre("plankWood", BlockManager.planks);
         GameRegistry.addSmelting(BlockManager.log, new ItemStack(Items.COAL, 1, 1), 0.1f);
-        GameRegistry.addSmelting(BlockManager.face1Log, new ItemStack(Items.COAL, 1, 1), 0.1f);
-        GameRegistry.addSmelting(BlockManager.face2Log, new ItemStack(Items.COAL, 1, 1), 0.1f);
-        GameRegistry.addSmelting(BlockManager.face3Log, new ItemStack(Items.COAL, 1, 1), 0.1f);
+        GameRegistry.addSmelting(BlockManager.logFace1, new ItemStack(Items.COAL, 1, 1), 0.1f);
+        GameRegistry.addSmelting(BlockManager.logFace2, new ItemStack(Items.COAL, 1, 1), 0.1f);
+        GameRegistry.addSmelting(BlockManager.logFace3, new ItemStack(Items.COAL, 1, 1), 0.1f);
         GameRegistry.addSmelting(BlockManager.woodenTotem, new ItemStack(Items.COAL, 2, 1), 1);
         GameRegistry.addSmelting(BlockManager.ironTotem, new ItemStack(Items.IRON_INGOT, 4, 1), 1);
         GameRegistry.addSmelting(BlockManager.goldTotem, new ItemStack(Items.GOLD_INGOT, 4, 1), 1);
@@ -22,7 +22,7 @@ public class RecipeManager {
         /*
          * Common
          */
-        addRecipe(ItemManager.core, new Object[]{
+        addRecipe(ModItems.core, new Object[]{
             "L L", "LEL", "LRL",
             'L', new ItemStack(Items.DYE, 1, 4),
             'E', Items.ENDER_PEARL,
@@ -62,9 +62,9 @@ public class RecipeManager {
         });
 
         addShapelessRecipe(BlockManager.planks, 4, BlockManager.log);
-        addShapelessRecipe(BlockManager.planks, 4, BlockManager.face1Log);
-        addShapelessRecipe(BlockManager.planks, 4, BlockManager.face2Log);
-        addShapelessRecipe(BlockManager.planks, 4, BlockManager.face3Log);*/
+        addShapelessRecipe(BlockManager.planks, 4, BlockManager.logFace1);
+        addShapelessRecipe(BlockManager.planks, 4, BlockManager.logFace2);
+        addShapelessRecipe(BlockManager.planks, 4, BlockManager.logFace3);*/
 
         /*
          * Totems

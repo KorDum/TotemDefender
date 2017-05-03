@@ -15,7 +15,7 @@ import ru.kordum.totemDefender.common.items.upgrades.ItemMode;
 import ru.kordum.totemDefender.common.items.upgrades.ItemModifierUpgrade;
 import ru.kordum.totemDefender.common.items.upgrades.ItemUpgrade;
 
-public class ItemManager {
+public class ModItems {
     public static ItemCore core;
     public static ItemDoor door;
     public static ItemSlab slab;
@@ -23,6 +23,10 @@ public class ItemManager {
     public static Item fence;
     public static Item fenceGate;
     public static Item planks;
+    public static Item log;
+    public static Item logFace1;
+    public static Item logFace2;
+    public static Item logFace3;
 
     public static ItemUpgrade woodenDamageUpgrade;
     public static ItemUpgrade woodenASUpgrade;
@@ -61,55 +65,36 @@ public class ItemManager {
     public static ItemModifierUpgrade waterBreathingModifier;
     public static ItemModifierUpgrade weaknessModifier;
     public static ItemModifierUpgrade knockbackModifier;
-
+    
     public static void registerItems(Config config) {
-        /*
-         * Common
-         */
         core = new ItemCore("core");
         door = new ItemDoor("totem_tree_door");
-        slab = new ItemSlab("totem_tree_slab", BlockManager.slab, BlockManager.slab, BlockManager.doubleSlab);
-        stairs = new ItemBlock(BlockManager.stairs).setRegistryName(BlockManager.stairs.getRegistryName());
-        fence = new ItemBlock(BlockManager.fence).setRegistryName(BlockManager.fence.getRegistryName());
-        fenceGate = new ItemBlock(BlockManager.fenceGate).setRegistryName(BlockManager.fenceGate.getRegistryName());
-        planks = new ItemBlock(BlockManager.planks).setRegistryName(BlockManager.planks.getRegistryName());
+        slab = new ItemSlab("totem_tree_slab", ModBlocks.slab, ModBlocks.slab, ModBlocks.doubleSlab);
+        stairs = new ItemBlock(ModBlocks.stairs).setRegistryName(ModBlocks.stairs.getRegistryName());
+        fence = new ItemBlock(ModBlocks.fence).setRegistryName(ModBlocks.fence.getRegistryName());
+        fenceGate = new ItemBlock(ModBlocks.fenceGate).setRegistryName(ModBlocks.fenceGate.getRegistryName());
+        planks = new ItemBlock(ModBlocks.planks).setRegistryName(ModBlocks.planks.getRegistryName());
+        log = new ItemBlock(ModBlocks.log).setRegistryName(ModBlocks.log.getRegistryName());
+        logFace1 = new ItemBlock(ModBlocks.logFace1).setRegistryName(ModBlocks.logFace1.getRegistryName());
+        logFace2 = new ItemBlock(ModBlocks.logFace2).setRegistryName(ModBlocks.logFace2.getRegistryName());
+        logFace3 = new ItemBlock(ModBlocks.logFace3).setRegistryName(ModBlocks.logFace3.getRegistryName());
 
-        GameRegistry.register(stairs);
-        GameRegistry.register(fence);
-        GameRegistry.register(fenceGate);
-        GameRegistry.register(planks);
-
-        /*
-         * Wooden upgrades
-         */
         woodenASUpgrade = new ItemUpgrade("wooden_as_upgrade", ItemUpgrade.LEVEL_WOODEN, config.woodenASUpgrade);
         woodenDamageUpgrade = new ItemUpgrade("wooden_damage_upgrade", ItemUpgrade.LEVEL_WOODEN, config.woodenDamageUpgrade);
         woodenRadiusUpgrade = new ItemUpgrade("wooden_radius_upgrade", ItemUpgrade.LEVEL_WOODEN, config.woodenRadiusUpgrade);
 
-        /*
-         * Iron Upgrades
-         */
         ironASUpgrade = new ItemUpgrade("iron_as_upgrade", ItemUpgrade.LEVEL_IRON, config.ironASUpgrade);
         ironDamageUpgrade = new ItemUpgrade("iron_damage_upgrade", ItemUpgrade.LEVEL_IRON, config.ironDamageUpgrade);
         ironRadiusUpgrade = new ItemUpgrade("iron_radius_upgrade", ItemUpgrade.LEVEL_IRON, config.ironRadiusUpgrade);
 
-        /*
-         * Gold Upgrades
-         */
         goldASUpgrade = new ItemUpgrade("gold_as_upgrade", ItemUpgrade.LEVEL_GOLD, config.goldASUpgrade);
         goldDamageUpgrade = new ItemUpgrade("gold_damage_upgrade", ItemUpgrade.LEVEL_GOLD, config.goldDamageUpgrade);
         goldRadiusUpgrade = new ItemUpgrade("gold_radius_upgrade", ItemUpgrade.LEVEL_GOLD, config.goldRadiusUpgrade);
 
-        /*
-         * Diamond Upgrades
-         */
         diamondASUpgrade = new ItemUpgrade("diamond_as_upgrade", ItemUpgrade.LEVEL_DIAMOND, config.diamondASUpgrade);
         diamondDamageUpgrade = new ItemUpgrade("diamond_damage_upgrade", ItemUpgrade.LEVEL_DIAMOND, config.diamondDamageUpgrade);
         diamondRadiusUpgrade = new ItemUpgrade("diamond_radius_upgrade", ItemUpgrade.LEVEL_DIAMOND, config.diamondRadiusUpgrade);
 
-        /*
-         * Modifiers
-         */
         fireModifier = new ItemModifierUpgrade("fire_upgrade", ItemModifierUpgrade.FIRE, config.fireModifier);
         poisonModifier = new ItemModifierUpgrade("poison_upgrade", ItemModifierUpgrade.POISON, config.poisonModifier);
         lightingModifier = new ItemModifierUpgrade("lighting_upgrade", ItemModifierUpgrade.LIGHTING, config.lightingModifier);
@@ -124,9 +109,6 @@ public class ItemManager {
         weaknessModifier = new ItemModifierUpgrade("weakness_upgrade", ItemModifierUpgrade.WEAKNESS, config.weaknessModifier);
         knockbackModifier = new ItemModifierUpgrade("knockback_upgrade", ItemModifierUpgrade.KNOCKBACK, config.knockbackModifier);
 
-        /*
-         * Filters
-         */
         playerFilter = new ItemFilter("player_filter", ItemFilter.PLAYER);
         selfPlayerFilter = new ItemFilter("self_player_filter", ItemFilter.SELF_PLAYER);
         anotherPlayerFilter = new ItemFilter("another_player_filter", ItemFilter.ANOTHER_PLAYER);
@@ -135,61 +117,67 @@ public class ItemManager {
         slimeFilter = new ItemFilter("slime_filter", ItemFilter.SLIME);
         waterFilter = new ItemFilter("water_filter", ItemFilter.WATER_MOB);
 
-        /*
-         * Modes
-         */
         projectileMode = new ItemMode("projectile_mode", ItemMode.PROJECTILE);
         aoeMode = new ItemMode("aoe_mode", ItemMode.AOE);
+
+        GameRegistry.register(stairs);
+        GameRegistry.register(fence);
+        GameRegistry.register(fenceGate);
+        GameRegistry.register(planks);
+        GameRegistry.register(log);
+        GameRegistry.register(logFace1);
+        GameRegistry.register(logFace2);
+        GameRegistry.register(logFace3);
     }
 
-    public static void registerMeshes() {
+    public static void registerRenders() {
         ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-        registerMesh(mesher, core);
-        registerMesh(mesher, door);
+        registerRender(mesher, core);
+        registerRender(mesher, door);
 
-        registerMesh(mesher, woodenASUpgrade);
-        registerMesh(mesher, woodenDamageUpgrade);
-        registerMesh(mesher, woodenRadiusUpgrade);
+        registerRender(mesher, woodenASUpgrade);
+        registerRender(mesher, woodenDamageUpgrade);
+        registerRender(mesher, woodenRadiusUpgrade);
 
-        registerMesh(mesher, ironASUpgrade);
-        registerMesh(mesher, ironDamageUpgrade);
-        registerMesh(mesher, ironRadiusUpgrade);
+        registerRender(mesher, ironASUpgrade);
+        registerRender(mesher, ironDamageUpgrade);
+        registerRender(mesher, ironRadiusUpgrade);
 
-        registerMesh(mesher, goldASUpgrade);
-        registerMesh(mesher, goldDamageUpgrade);
-        registerMesh(mesher, goldRadiusUpgrade);
+        registerRender(mesher, goldASUpgrade);
+        registerRender(mesher, goldDamageUpgrade);
+        registerRender(mesher, goldRadiusUpgrade);
 
-        registerMesh(mesher, diamondASUpgrade);
-        registerMesh(mesher, diamondDamageUpgrade);
-        registerMesh(mesher, diamondRadiusUpgrade);
+        registerRender(mesher, diamondASUpgrade);
+        registerRender(mesher, diamondDamageUpgrade);
+        registerRender(mesher, diamondRadiusUpgrade);
 
-        registerMesh(mesher, lightingModifier);
-        registerMesh(mesher, poisonModifier);
-        registerMesh(mesher, fireModifier);
-        registerMesh(mesher, witherModifier);
-        registerMesh(mesher, slowdownModifier);
-        registerMesh(mesher, blindnessModifier);
-        registerMesh(mesher, confusionModifier);
-        registerMesh(mesher, healModifier);
-        registerMesh(mesher, hungryModifier);
-        registerMesh(mesher, regenerationModifier);
-        registerMesh(mesher, waterBreathingModifier);
-        registerMesh(mesher, weaknessModifier);
-        registerMesh(mesher, knockbackModifier);
+        registerRender(mesher, lightingModifier);
+        registerRender(mesher, poisonModifier);
+        registerRender(mesher, fireModifier);
+        registerRender(mesher, witherModifier);
+        registerRender(mesher, slowdownModifier);
+        registerRender(mesher, blindnessModifier);
+        registerRender(mesher, confusionModifier);
+        registerRender(mesher, healModifier);
+        registerRender(mesher, hungryModifier);
+        registerRender(mesher, regenerationModifier);
+        registerRender(mesher, waterBreathingModifier);
+        registerRender(mesher, weaknessModifier);
+        registerRender(mesher, knockbackModifier);
 
-        registerMesh(mesher, playerFilter);
-        registerMesh(mesher, selfPlayerFilter);
-        registerMesh(mesher, anotherPlayerFilter);
-        registerMesh(mesher, animalFilter);
-        registerMesh(mesher, enemyFilter);
-        registerMesh(mesher, slimeFilter);
-        registerMesh(mesher, waterFilter);
+        registerRender(mesher, playerFilter);
+        registerRender(mesher, selfPlayerFilter);
+        registerRender(mesher, anotherPlayerFilter);
+        registerRender(mesher, animalFilter);
+        registerRender(mesher, enemyFilter);
+        registerRender(mesher, slimeFilter);
+        registerRender(mesher, waterFilter);
 
-        registerMesh(mesher, projectileMode);
-        registerMesh(mesher, aoeMode);
+        registerRender(mesher, projectileMode);
+        registerRender(mesher, aoeMode);
     }
 
-    private static void registerMesh(ItemModelMesher mesher, Item item) {
+    private static void registerRender(ItemModelMesher mesher, Item item) {
         mesher.register(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
     }
 }

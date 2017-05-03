@@ -1,37 +1,8 @@
 {
-    "forge_marker": 1,
     "variants": {
-        "facing=north": {
-            "model": "cube_column",
-            "textures": {
-                "end": "totemdefender:blocks/totem_tree_log2",
-                "side": "totemdefender:blocks/totem_tree_log1",
-                "north": "totemdefender:blocks/totem_tree_log_face3"
-            }
-        },
-        "facing=south": {
-            "model": "cube_column",
-            "textures": {
-                "end": "totemdefender:blocks/totem_tree_log2",
-                "side": "totemdefender:blocks/totem_tree_log1",
-                "south": "totemdefender:blocks/totem_tree_log_face3"
-            }
-        },
-        "facing=east": {
-            "model": "cube_column",
-            "textures": {
-                "end": "totemdefender:blocks/totem_tree_log2",
-                "side": "totemdefender:blocks/totem_tree_log1",
-                "east": "totemdefender:blocks/totem_tree_log_face3"
-            }
-        },
-        "facing=west": {
-            "model": "cube_column",
-            "textures": {
-                "end": "totemdefender:blocks/totem_tree_log2",
-                "side": "totemdefender:blocks/totem_tree_log1",
-                "west": "totemdefender:blocks/totem_tree_log_face3"
-            }
-        }
+        "facing=north": { "model": "totemdefender:totem_tree_log_face3" },
+        "facing=south": { "model": "totemdefender:totem_tree_log_face3", "y": 180 },
+        "facing=west":  { "model": "totemdefender:totem_tree_log_face3", "y": 270 },
+        "facing=east":  { "model": "totemdefender:totem_tree_log_face3", "y": 90 }
     }
 }
