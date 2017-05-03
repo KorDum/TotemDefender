@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "totemDefender:blocks/leaves"
+        "all": "totemDefender:blocks/leaf"
     }
 }

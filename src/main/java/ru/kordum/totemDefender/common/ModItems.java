@@ -1,5 +1,6 @@
 package ru.kordum.totemDefender.common;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -27,6 +28,8 @@ public class ModItems {
     public static Item logFace1;
     public static Item logFace2;
     public static Item logFace3;
+    public static Item sapling;
+    public static Item leaf;
 
     public static ItemUpgrade woodenDamageUpgrade;
     public static ItemUpgrade woodenASUpgrade;
@@ -70,14 +73,16 @@ public class ModItems {
         core = new ItemCore("core");
         door = new ItemDoor("door");
         slab = new ItemSlab("slab", ModBlocks.slab, ModBlocks.slab, ModBlocks.doubleSlab);
-        stairs = new ItemBlock(ModBlocks.stairs).setRegistryName(ModBlocks.stairs.getRegistryName());
-        fence = new ItemBlock(ModBlocks.fence).setRegistryName(ModBlocks.fence.getRegistryName());
-        fenceGate = new ItemBlock(ModBlocks.fenceGate).setRegistryName(ModBlocks.fenceGate.getRegistryName());
-        planks = new ItemBlock(ModBlocks.planks).setRegistryName(ModBlocks.planks.getRegistryName());
-        log = new ItemBlock(ModBlocks.log).setRegistryName(ModBlocks.log.getRegistryName());
-        logFace1 = new ItemBlock(ModBlocks.logFace1).setRegistryName(ModBlocks.logFace1.getRegistryName());
-        logFace2 = new ItemBlock(ModBlocks.logFace2).setRegistryName(ModBlocks.logFace2.getRegistryName());
-        logFace3 = new ItemBlock(ModBlocks.logFace3).setRegistryName(ModBlocks.logFace3.getRegistryName());
+        stairs = getItemFromBLock(ModBlocks.stairs);
+        fence = getItemFromBLock(ModBlocks.fence);
+        fenceGate = getItemFromBLock(ModBlocks.fenceGate);
+        planks = getItemFromBLock(ModBlocks.planks);
+        log = getItemFromBLock(ModBlocks.log);
+        logFace1 = getItemFromBLock(ModBlocks.logFace1);
+        logFace2 = getItemFromBLock(ModBlocks.logFace2);
+        logFace3 = getItemFromBLock(ModBlocks.logFace3);
+        sapling = getItemFromBLock(ModBlocks.sapling);
+        leaf = getItemFromBLock(ModBlocks.leaves);
 
         woodenASUpgrade = new ItemUpgrade("wooden_as_upgrade", ItemUpgrade.LEVEL_WOODEN, config.woodenASUpgrade);
         woodenDamageUpgrade = new ItemUpgrade("wooden_damage_upgrade", ItemUpgrade.LEVEL_WOODEN, config.woodenDamageUpgrade);
@@ -119,15 +124,6 @@ public class ModItems {
 
         projectileMode = new ItemMode("projectile_mode", ItemMode.PROJECTILE);
         aoeMode = new ItemMode("aoe_mode", ItemMode.AOE);
-
-        GameRegistry.register(stairs);
-        GameRegistry.register(fence);
-        GameRegistry.register(fenceGate);
-        GameRegistry.register(planks);
-        GameRegistry.register(log);
-        GameRegistry.register(logFace1);
-        GameRegistry.register(logFace2);
-        GameRegistry.register(logFace3);
     }
 
     public static void registerRenders() {
@@ -179,5 +175,11 @@ public class ModItems {
 
     private static void registerRender(ItemModelMesher mesher, Item item) {
         mesher.register(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+    }
+    
+    private static Item getItemFromBLock(Block block) {
+        Item item = new ItemBlock(block).setRegistryName(block.getRegistryName());
+        GameRegistry.register(item);
+        return item;
     }
 }

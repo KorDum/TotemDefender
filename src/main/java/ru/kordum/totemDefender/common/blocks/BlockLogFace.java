@@ -43,19 +43,19 @@ public class BlockLogFace extends BlockDirectional {
         IBlockState state2 = world.getBlockState(pos.south());
         IBlockState state3 = world.getBlockState(pos.west());
         IBlockState state4 = world.getBlockState(pos.east());
-        EnumFacing enumfacing = state.getValue(FACING);
+        EnumFacing facing = state.getValue(FACING);
 
-        if (enumfacing == EnumFacing.NORTH && state1.isFullBlock() && !state2.isFullBlock()) {
-            enumfacing = EnumFacing.SOUTH;
-        } else if (enumfacing == EnumFacing.SOUTH && state2.isFullBlock() && !state1.isFullBlock()) {
-            enumfacing = EnumFacing.NORTH;
-        } else if (enumfacing == EnumFacing.WEST && state3.isFullBlock() && !state4.isFullBlock()) {
-            enumfacing = EnumFacing.EAST;
-        } else if (enumfacing == EnumFacing.EAST && state4.isFullBlock() && !state3.isFullBlock()) {
-            enumfacing = EnumFacing.WEST;
+        if (facing == EnumFacing.NORTH && state1.isFullBlock() && !state2.isFullBlock()) {
+            facing = EnumFacing.SOUTH;
+        } else if (facing == EnumFacing.SOUTH && state2.isFullBlock() && !state1.isFullBlock()) {
+            facing = EnumFacing.NORTH;
+        } else if (facing == EnumFacing.WEST && state3.isFullBlock() && !state4.isFullBlock()) {
+            facing = EnumFacing.EAST;
+        } else if (facing == EnumFacing.EAST && state4.isFullBlock() && !state3.isFullBlock()) {
+            facing = EnumFacing.WEST;
         }
 
-        world.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
+        world.setBlockState(pos, state.withProperty(FACING, facing), 2);
     }
 
     public IBlockState withRotation(IBlockState state, Rotation rot) {

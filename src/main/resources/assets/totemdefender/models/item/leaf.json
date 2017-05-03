@@ -1,5 +1,5 @@
 {
-    "parent": "totemdefender:block/leaves",
+    "parent": "totemdefender:block/leaf",
     "display": {
         "thirdperson": {
             "rotation": [10, -45, 170],

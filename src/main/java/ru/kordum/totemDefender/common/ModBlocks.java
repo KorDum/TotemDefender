@@ -47,7 +47,7 @@ public class ModBlocks {
 
     public static void registerBlocks(Config config) {
         sapling = new BlockSapling("sapling");
-        leaves = new BlockLeaves("leaves");
+        leaves = new BlockLeaves("leaf");
         log = new BlockLog("log");
         logFace1 = new BlockLogFace("log_face1");
         logFace2 = new BlockLogFace("log_face2");

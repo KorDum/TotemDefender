@@ -1,16 +1,16 @@
 {
     "variants": {
         "check_decay=true,decayable=true": {
-            "model": "totemdefender:leaves"
+            "model": "totemdefender:leaf"
         },
         "check_decay=true,decayable=false": {
-            "model": "totemdefender:leaves"
+            "model": "totemdefender:leaf"
         },
         "check_decay=false,decayable=false": {
-            "model": "totemdefender:leaves"
+            "model": "totemdefender:leaf"
         },
         "check_decay=false,decayable=true": {
-            "model": "totemdefender:leaves"
+            "model": "totemdefender:leaf"
         }
     }
 }
