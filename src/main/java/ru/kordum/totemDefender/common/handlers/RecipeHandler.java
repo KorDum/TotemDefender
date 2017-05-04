@@ -1,4 +1,4 @@
-package ru.kordum.totemDefender.common;
+package ru.kordum.totemDefender.common.handlers;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -7,19 +7,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import ru.kordum.totemDefender.common.ModBlocks;
+import ru.kordum.totemDefender.common.ModItems;
 
-public class RecipeManager {
-    public static void registerRecipes() {
-        OreDictionary.registerOre("plankWood", ModBlocks.planks);
-        GameRegistry.addSmelting(ModBlocks.log, new ItemStack(Items.COAL, 1, 1), 0.1f);
-        GameRegistry.addSmelting(ModBlocks.logFace1, new ItemStack(Items.COAL, 1, 1), 0.1f);
-        GameRegistry.addSmelting(ModBlocks.logFace2, new ItemStack(Items.COAL, 1, 1), 0.1f);
-        GameRegistry.addSmelting(ModBlocks.logFace3, new ItemStack(Items.COAL, 1, 1), 0.1f);
-        GameRegistry.addSmelting(ModBlocks.woodenTotem, new ItemStack(Items.COAL, 2, 1), 1);
-        GameRegistry.addSmelting(ModBlocks.ironTotem, new ItemStack(Items.IRON_INGOT, 4, 1), 1);
-        GameRegistry.addSmelting(ModBlocks.goldTotem, new ItemStack(Items.GOLD_INGOT, 4, 1), 1);
-        GameRegistry.addSmelting(ModBlocks.diamondTotem, new ItemStack(Items.DIAMOND, 4, 1), 1);
-
+public class RecipeHandler {
+    public static void registerCraftingRecipes() {
         /*
          * Common
          */
@@ -368,6 +360,21 @@ public class RecipeManager {
             'S', Items.SLIME_BALL,
             'B', Items.SNOWBALL,
         });
+    }
+    
+    public static void registerFurnaceRecipe() {
+        GameRegistry.addSmelting(ModBlocks.log, new ItemStack(Items.COAL, 1, 1), 0.1f);
+        GameRegistry.addSmelting(ModBlocks.logFace1, new ItemStack(Items.COAL, 1, 1), 0.1f);
+        GameRegistry.addSmelting(ModBlocks.logFace2, new ItemStack(Items.COAL, 1, 1), 0.1f);
+        GameRegistry.addSmelting(ModBlocks.logFace3, new ItemStack(Items.COAL, 1, 1), 0.1f);
+        GameRegistry.addSmelting(ModBlocks.woodenTotem, new ItemStack(Items.COAL, 2, 1), 1);
+        GameRegistry.addSmelting(ModBlocks.ironTotem, new ItemStack(Items.IRON_INGOT, 4, 1), 1);
+        GameRegistry.addSmelting(ModBlocks.goldTotem, new ItemStack(Items.GOLD_INGOT, 4, 1), 1);
+        GameRegistry.addSmelting(ModBlocks.diamondTotem, new ItemStack(Items.DIAMOND, 4, 1), 1);
+    }
+    
+    public static void registerOreDictionary() {
+        OreDictionary.registerOre("plankWood", ModBlocks.planks);
     }
 
     private static void addRecipe(Item item, Object[] recipe) {

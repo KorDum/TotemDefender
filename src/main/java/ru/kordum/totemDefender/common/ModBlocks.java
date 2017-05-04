@@ -1,12 +1,12 @@
 package ru.kordum.totemDefender.common;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.common.blocks.BlockDiamondTotem;
 import ru.kordum.totemDefender.common.blocks.BlockDoor;
 import ru.kordum.totemDefender.common.blocks.BlockFence;
@@ -118,25 +118,24 @@ public class ModBlocks {
     }
 
     public static void registerRenders() {
-        ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-        registerRender(mesher, sapling);
-        registerRender(mesher, leaves);
-        registerRender(mesher, planks);
-        registerRender(mesher, stairs);
-        registerRender(mesher, log);
-        registerRender(mesher, logFace1);
-        registerRender(mesher, logFace2);
-        registerRender(mesher, logFace3);
-        registerRender(mesher, door);
-        registerRender(mesher, slab);
-        registerRender(mesher, doubleSlab);
-        registerRender(mesher, fence);
-        registerRender(mesher, fenceGate);
+        registerRender(sapling);
+        registerRender(leaves);
+        registerRender(planks);
+        registerRender(stairs);
+        registerRender(log);
+        registerRender(logFace1);
+        registerRender(logFace2);
+        registerRender(logFace3);
+        registerRender(door);
+        registerRender(slab);
+        registerRender(doubleSlab);
+        registerRender(fence);
+        registerRender(fenceGate);
 
-        registerRender(mesher, woodenTotem);
-        registerRender(mesher, ironTotem);
-        registerRender(mesher, goldTotem);
-        registerRender(mesher, diamondTotem);
+        registerRender(woodenTotem);
+        registerRender(ironTotem);
+        registerRender(goldTotem);
+        registerRender(diamondTotem);
     }
 
     //---------------------------------------------------------------------------
@@ -145,7 +144,12 @@ public class ModBlocks {
     //
     //---------------------------------------------------------------------------
 
-    private static void registerRender(ItemModelMesher mesher, Block block) {
-        mesher.register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
+    private static void registerRender(Block block) {
+        String name = block.getUnlocalizedName().substring(5);
+        ModelLoader.setCustomModelResourceLocation(
+            Item.getItemFromBlock(block),
+            0,
+            new ModelResourceLocation(TotemDefender.MODID + ":" + name, "inventory")
+        );
     }
 }

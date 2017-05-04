@@ -3,14 +3,10 @@ package ru.kordum.totemDefender;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import ru.kordum.totemDefender.common.ModBlocks;
 import ru.kordum.totemDefender.common.CommonProxy;
-import ru.kordum.totemDefender.common.ModItems;
 import ru.kordum.totemDefender.common.ModCreativeTab;
-import ru.kordum.totemDefender.common.RecipeManager;
-import ru.kordum.totemDefender.common.config.Config;
 
 @Mod(
     modid = TotemDefender.MODID,
@@ -39,24 +35,18 @@ public class TotemDefender {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         instance = this;
-        Config config = new Config(event.getSuggestedConfigurationFile());
-        config.loadAndSave();
-
         tab = new ModCreativeTab();
-        ModBlocks.registerBlocks(config);
-        ModItems.registerItems(config);
-//        EntityRegistry.registerModEntity(EntityProjectile.class, "totemProjectile", 0, this, 32, 10, true);
-//        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+        proxy.preInit(event.getSuggestedConfigurationFile());
+        proxy.registerRenderThings();
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        RecipeManager.registerRecipes();
+        proxy.init();
+    }
 
-        if (event.getSide() == Side.CLIENT) {
-            ModBlocks.registerRenders();
-            ModItems.registerRenders();
-            proxy.registerRenderThings();
-        }
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent event) {
+        // ignored
     }
 }

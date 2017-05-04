@@ -64,10 +64,6 @@ public class BlockFenceGate extends BlockHorizontal {
             : AABB_COLLIDE_ZAXIS;
     }
 
-    /**
-     * Get the actual Block state of this Block at the given position. This applies properties not visible in the
-     * metadata, such as fence connections.
-     */
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         EnumFacing.Axis enumfacing$axis = state.getValue(FACING).getAxis();
 
@@ -78,20 +74,12 @@ public class BlockFenceGate extends BlockHorizontal {
         return state;
     }
 
-    /**
-     * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
-     * blockstate.
-     */
     public IBlockState withRotation(IBlockState state, Rotation rot) {
-        return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
-    /**
-     * Returns the blockstate with the given mirror of the passed blockstate. If inapplicable, returns the passed
-     * blockstate.
-     */
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
-        return state.withRotation(mirrorIn.toRotation((EnumFacing) state.getValue(FACING)));
+        return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }
 
     public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
@@ -108,9 +96,6 @@ public class BlockFenceGate extends BlockHorizontal {
             : AABB_CLOSED_SELECTED_XAXIS;
     }
 
-    /**
-     * Used to determine ambient occlusion and culling when rebuilding chunks for render
-     */
     public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
@@ -123,18 +108,11 @@ public class BlockFenceGate extends BlockHorizontal {
         return worldIn.getBlockState(pos).getValue(OPEN).booleanValue();
     }
 
-    /**
-     * Called by ItemBlocks just before a block is actually set in the world, to allow for adjustments to the
-     * IBlockstate
-     */
     public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         boolean flag = world.isBlockPowered(pos);
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing()).withProperty(OPEN, Boolean.valueOf(flag)).withProperty(POWERED, Boolean.valueOf(flag)).withProperty(IN_WALL, Boolean.valueOf(false));
     }
 
-    /**
-     * Called when the block is right clicked by a player.
-     */
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (state.getValue(OPEN).booleanValue()) {
             state = state.withProperty(OPEN, Boolean.valueOf(false));
@@ -153,11 +131,6 @@ public class BlockFenceGate extends BlockHorizontal {
         return true;
     }
 
-    /**
-     * Called when a neighboring block was changed and marks that this state should perform any checks during a neighbor
-     * change. Cases may include when redstone power is updated, cactus blocks popping off due to a neighboring solid
-     * block, etc.
-     */
     public void neighborChanged(IBlockState state, World world, BlockPos pos, Block blockIn, BlockPos fromPos) {
         if (!world.isRemote) {
             boolean flag = world.isBlockPowered(pos);

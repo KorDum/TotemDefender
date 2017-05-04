@@ -32,7 +32,7 @@ public class BlockDiamondTotem extends BlockTotem {
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         TileEntityDiamondTotem tile = new TileEntityDiamondTotem();
-        tile.calculateStats(this);
+        tile.updateState(this);
         return tile;
     }
 

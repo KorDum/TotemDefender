@@ -129,7 +129,7 @@ public abstract class BlockSlab extends net.minecraft.block.BlockSlab {
         }
     }
 
-    public static enum Variant implements IStringSerializable {
+    public enum Variant implements IStringSerializable {
         DEFAULT;
 
         public String getName() {

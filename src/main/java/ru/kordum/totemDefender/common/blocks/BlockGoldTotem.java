@@ -32,7 +32,7 @@ public class BlockGoldTotem extends BlockTotem {
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         TileEntityGoldTotem tile = new TileEntityGoldTotem();
-        tile.calculateStats(this);
+        tile.updateState(this);
         return tile;
     }
 

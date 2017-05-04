@@ -1,5 +1,7 @@
 itemGroup.tab_name=Totem Defender
 item.core.name=Core
+item.door.name=Totem Tree Door
+
 tile.sapling.name=Totem Tree Sapling
 tile.log.name=Totem Tree Wood
 tile.log_face1.name=Totem Tree Wood
@@ -9,11 +11,8 @@ tile.leaf.name=Totem Tree Leaves
 tile.planks.name=Totem Tree Planks
 tile.stairs.name=Totem Tree Stairs
 tile.slab.name=Totem Tree Slab
-item.slab.name=Totem Tree Slab
-item.door.name=Totem Tree Door
 tile.fence.name=Totem Tree Fence
 tile.fence_gate.name=Totem Tree Fence Gate
-tile.door.name=Totem Tree Door
 entity.totem_projectile.name=Totem Projectile
 
 tile.wooden_totem.name=Wooden Totem
@@ -29,7 +28,7 @@ item.self_player_filter.name=Self Filter
 item.another_player_filter.name=Another Player Filter
 item.animal_filter.name=Animal Filter
 item.enemy_filter.name=Enemy Filter
-item.living_filter.name=Slime Filter
+item.slime_filter.name=Slime Filter
 item.water_filter.name=Water Mob Filter
 
 item.wooden_damage_upgrade.name=Damage I

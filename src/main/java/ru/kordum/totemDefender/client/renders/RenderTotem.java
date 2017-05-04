@@ -2,15 +2,15 @@ package ru.kordum.totemDefender.client.renders;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import ru.kordum.totemDefender.common.ResourceManager;
 import ru.kordum.totemDefender.common.entities.TileEntityGoldTotem;
 import ru.kordum.totemDefender.common.entities.TileEntityIronTotem;
+import ru.kordum.totemDefender.common.entities.TileEntityTotem;
 import ru.kordum.totemDefender.common.entities.TileEntityWoodenTotem;
 import ru.kordum.totemDefender.common.models.ModelTotem;
+import ru.kordum.totemDefender.common.utils.ModResources;
 
-public class RenderTotem extends TileEntitySpecialRenderer {
+public class RenderTotem extends TileEntitySpecialRenderer<TileEntityTotem> {
     private static ResourceLocation TEXTURE_WOODEN;
     private static ResourceLocation TEXTURE_IRON;
     private static ResourceLocation TEXTURE_GOLD;
@@ -26,10 +26,10 @@ public class RenderTotem extends TileEntitySpecialRenderer {
 
     public RenderTotem() {
         model = new ModelTotem();
-        TEXTURE_WOODEN = ResourceManager.getResourceWithExt(ResourceManager.CATEGORY_BLOCKS, "wooden_totem");
-        TEXTURE_IRON = ResourceManager.getResourceWithExt(ResourceManager.CATEGORY_BLOCKS, "iron_totem");
-        TEXTURE_GOLD = ResourceManager.getResourceWithExt(ResourceManager.CATEGORY_BLOCKS, "gold_totem");
-        TEXTURE_DIAMOND = ResourceManager.getResourceWithExt(ResourceManager.CATEGORY_BLOCKS, "diamond_totem");
+        TEXTURE_WOODEN = ModResources.getResource(ModResources.CATEGORY_BLOCKS, "wooden_totem.png");
+        TEXTURE_IRON = ModResources.getResource(ModResources.CATEGORY_BLOCKS, "iron_totem.png");
+        TEXTURE_GOLD = ModResources.getResource(ModResources.CATEGORY_BLOCKS, "gold_totem.png");
+        TEXTURE_DIAMOND = ModResources.getResource(ModResources.CATEGORY_BLOCKS, "diamond_totem.png");
     }
 
     //---------------------------------------------------------------------------
@@ -38,7 +38,7 @@ public class RenderTotem extends TileEntitySpecialRenderer {
     //
     //---------------------------------------------------------------------------
 
-    public void renderTileEntityAt(TileEntity entity, double posX, double posY, double posZ, float scale, int meta) {
+    public void renderTileEntityAt(TileEntityTotem entity, double posX, double posY, double posZ, float scale, int meta) {
         if (entity instanceof TileEntityWoodenTotem) {
             bindTexture(TEXTURE_WOODEN);
         } else if (entity instanceof TileEntityIronTotem) {

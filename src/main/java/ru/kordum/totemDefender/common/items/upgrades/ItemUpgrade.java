@@ -2,7 +2,6 @@ package ru.kordum.totemDefender.common.items.upgrades;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import org.lwjgl.input.Keyboard;
 import ru.kordum.totemDefender.common.config.ConfigUpgrade;
@@ -12,7 +11,6 @@ import ru.kordum.totemDefender.common.utils.Formatter;
 import java.util.List;
 
 public class ItemUpgrade extends ItemBase {
-
     private float damage;
     private float attackSpeed;
     private int radius;
@@ -54,9 +52,7 @@ public class ItemUpgrade extends ItemBase {
                 tooltip.add(Formatter.getProp(TextFormatting.GREEN, "prop.radius", radius, isModifiersInPercent()));
             }
         } else {
-            TextComponentTranslation translation = new TextComponentTranslation("prop.hold_more");
-            translation.getStyle().setColor(TextFormatting.GRAY);
-            tooltip.add(translation.getFormattedText());
+            tooltip.add(Formatter.getLocalize(TextFormatting.GRAY, "prop.hold_more"));
         }
     }
 

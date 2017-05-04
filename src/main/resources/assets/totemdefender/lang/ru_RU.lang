@@ -1,5 +1,7 @@
 itemGroup.tab_name=Totem Defender
 item.core.name=Ядро
+item.door.name=Дверь из тотемного древа
+
 tile.sapling.name=Саженец тотемного древа
 tile.log.name=Древесина тотемного древа
 tile.log_face1.name=Древесина тотемного древа
@@ -11,7 +13,6 @@ tile.stairs.name=Ступеньки из тотемного древа
 tile.slab.name=Плита из тотемного древа
 tile.fence.name=Забор из тотемного древа
 tile.fence_gate.name=Калитка из тотемного древа
-tile.door.name=Дверь из тотемного древа
 entity.projectile.name=Снаряд Тотема
 
 tile.wooden_totem.name=Деревянный тотем
@@ -22,12 +23,12 @@ tile.diamond_totem.name=Алмазный тотем
 item.projectile_mode.name=Снаряд
 item.aoe_mode.name=По площади
 
-item.player_ilter.name=Фильтр на игроков
-item.self_layer_filter.name=Фильтр на себя
+item.player_filter.name=Фильтр на игроков
+item.self_player_filter.name=Фильтр на себя
 item.another_player_filter.name=Фильтр на других игроков
 item.animal_filter.name=Фильтр на животных
 item.enemy_filter.name=Фильтр на враждебных существ
-item.living_filter.name=Фильтр на слизней
+item.slime_filter.name=Фильтр на слизней
 item.water_filter.name=Фильтр на водяных существ
 
 item.wooden_damage_upgrade.name=Урон I

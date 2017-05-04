@@ -27,8 +27,16 @@ public class Formatter {
         if (percent) {
             value += "%";
         }
+        return getLocalize(color, key, (positive ? "+" : "") + value);
+    }
+    
+    public static String getLocalize(String key, Object... args) {
+        TextComponentTranslation translation = new TextComponentTranslation(key, args);
+        return translation.getFormattedText();
+    }
 
-        TextComponentTranslation translation = new TextComponentTranslation(key, (positive ? "+" : "") + value);
+    public static String getLocalize(TextFormatting color, String key, Object... args) {
+        TextComponentTranslation translation = new TextComponentTranslation(key, args);
         translation.getStyle().setColor(color);
         return translation.getFormattedText();
     }

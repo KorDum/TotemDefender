@@ -6,9 +6,8 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -17,11 +16,12 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.common.config.ConfigTotem;
 import ru.kordum.totemDefender.common.entities.TileEntityTotem;
-
-import java.util.Random;
+import ru.kordum.totemDefender.common.handlers.GuiHandler;
 
 public abstract class BlockTotem extends BlockContainer {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
@@ -50,7 +50,6 @@ public abstract class BlockTotem extends BlockContainer {
         setRegistryName(name);
         setHardness(2);
         useNeighborBrightness = true;
-        //        setStepSound(soundTypeWood);
 
         attackSpeed = config.getAttackSpeed();
         damage = config.getDamage();
@@ -77,55 +76,15 @@ public abstract class BlockTotem extends BlockContainer {
             tileEntity.setOwner(player.getUniqueID());
         }
 
-        player.openGui(TotemDefender.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+        if (!world.isRemote) {
+            player.openGui(TotemDefender.instance, GuiHandler.BLOCK_TOTEM, world, pos.getX(), pos.getY(), pos.getZ());
+        }
         return true;
     }
 
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return getDefaultState().withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer));
-    }
-
-    //---------------------------------------------------------------------------
-    //
-    // PRIVATE METHODS
-    //
-    //---------------------------------------------------------------------------
-
-    private void dropItems(World world, BlockPos pos) {
-        Random rand = new Random();
-        TileEntity tileEntity = world.getTileEntity(pos);
-        if (!(tileEntity instanceof IInventory)) {
-            return;
-        }
-
-        IInventory inventory = (IInventory) tileEntity;
-        for (int i = 0; i < inventory.getSizeInventory(); i++) {
-            ItemStack item = inventory.getStackInSlot(i);
-            if (item != null && item.getCount() > 0) {
-                float rx = rand.nextFloat() * 0.8F + 0.1F;
-                float ry = rand.nextFloat() * 0.8F + 0.1F;
-                float rz = rand.nextFloat() * 0.8F + 0.1F;
-
-                EntityItem entityItem = new EntityItem(
-                    world,
-                    pos.getX() + rx,
-                    pos.getY() + ry,
-                    pos.getZ() + rz,
-                    new ItemStack(item.getItem(), item.getCount(), item.getItemDamage())
-                );
-
-                if (item.hasTagCompound()) {
-                    entityItem.getEntityItem().setTagCompound(item.getTagCompound().copy());
-                }
-
-                float factor = 0.05F;
-                entityItem.motionX = rand.nextGaussian() * factor;
-                entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
-                entityItem.motionZ = rand.nextGaussian() * factor;
-                world.spawnEntity(entityItem);
-                item.setCount(0);
-            }
-        }
+        return getDefaultState()
+            .withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer));
     }
 
     //---------------------------------------------------------------------------
@@ -136,7 +95,12 @@ public abstract class BlockTotem extends BlockContainer {
 
     @Override
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
-        dropItems(world, pos);
+        TileEntityTotem tileEntity = (TileEntityTotem) world.getTileEntity(pos);
+        IItemHandler handler = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+        for (int slot = 0; slot < handler.getSlots(); slot++) {
+            ItemStack stack = handler.getStackInSlot(slot);
+            InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+        }
         super.breakBlock(world, pos, state);
     }
 

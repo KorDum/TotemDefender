@@ -32,7 +32,7 @@ public class BlockIronTotem extends BlockTotem {
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         TileEntityIronTotem tile = new TileEntityIronTotem();
-        tile.calculateStats(this);
+        tile.updateState(this);
         return tile;
     }
 

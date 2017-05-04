@@ -1,17 +1,18 @@
 package ru.kordum.totemDefender.common;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.common.blocks.BlockTotem;
 import ru.kordum.totemDefender.common.config.Config;
 import ru.kordum.totemDefender.common.items.common.ItemCore;
 import ru.kordum.totemDefender.common.items.common.ItemDoor;
 import ru.kordum.totemDefender.common.items.common.ItemSlab;
+import ru.kordum.totemDefender.common.items.common.ItemTotem;
 import ru.kordum.totemDefender.common.items.upgrades.ItemFilter;
 import ru.kordum.totemDefender.common.items.upgrades.ItemMode;
 import ru.kordum.totemDefender.common.items.upgrades.ItemModifierUpgrade;
@@ -30,7 +31,7 @@ public class ModItems {
     public static Item logFace2;
     public static Item logFace3;
     public static Item sapling;
-    public static Item leaf;
+    public static Item leaves;
 
     public static Item woodenTotem;
     public static Item ironTotem;
@@ -88,12 +89,12 @@ public class ModItems {
         logFace2 = getItemFromBLock(ModBlocks.logFace2);
         logFace3 = getItemFromBLock(ModBlocks.logFace3);
         sapling = getItemFromBLock(ModBlocks.sapling);
-        leaf = getItemFromBLock(ModBlocks.leaves);
+        leaves = getItemFromBLock(ModBlocks.leaves);
 
-        woodenTotem = getItemFromBLock(ModBlocks.woodenTotem);
-        ironTotem = getItemFromBLock(ModBlocks.ironTotem);
-        goldTotem = getItemFromBLock(ModBlocks.goldTotem);
-        diamondTotem = getItemFromBLock(ModBlocks.diamondTotem);
+        woodenTotem = new ItemTotem(ModBlocks.woodenTotem);
+        ironTotem = new ItemTotem(ModBlocks.ironTotem);
+        goldTotem = new ItemTotem(ModBlocks.goldTotem);
+        diamondTotem = new ItemTotem(ModBlocks.diamondTotem);
 
         woodenASUpgrade = new ItemUpgrade("wooden_as_upgrade", BlockTotem.LEVEL_WOODEN, config.woodenASUpgrade);
         woodenDamageUpgrade = new ItemUpgrade("wooden_damage_upgrade", BlockTotem.LEVEL_WOODEN, config.woodenDamageUpgrade);
@@ -138,54 +139,54 @@ public class ModItems {
     }
 
     public static void registerRenders() {
-        ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
-        registerRender(mesher, core);
-        registerRender(mesher, door);
+        registerRender(core);
+        registerRender(door);
 
-        registerRender(mesher, woodenASUpgrade);
-        registerRender(mesher, woodenDamageUpgrade);
-        registerRender(mesher, woodenRadiusUpgrade);
+        registerRender(woodenASUpgrade);
+        registerRender(woodenDamageUpgrade);
+        registerRender(woodenRadiusUpgrade);
 
-        registerRender(mesher, ironASUpgrade);
-        registerRender(mesher, ironDamageUpgrade);
-        registerRender(mesher, ironRadiusUpgrade);
+        registerRender(ironASUpgrade);
+        registerRender(ironDamageUpgrade);
+        registerRender(ironRadiusUpgrade);
 
-        registerRender(mesher, goldASUpgrade);
-        registerRender(mesher, goldDamageUpgrade);
-        registerRender(mesher, goldRadiusUpgrade);
+        registerRender(goldASUpgrade);
+        registerRender(goldDamageUpgrade);
+        registerRender(goldRadiusUpgrade);
 
-        registerRender(mesher, diamondASUpgrade);
-        registerRender(mesher, diamondDamageUpgrade);
-        registerRender(mesher, diamondRadiusUpgrade);
+        registerRender(diamondASUpgrade);
+        registerRender(diamondDamageUpgrade);
+        registerRender(diamondRadiusUpgrade);
 
-        registerRender(mesher, lightingModifier);
-        registerRender(mesher, poisonModifier);
-        registerRender(mesher, fireModifier);
-        registerRender(mesher, witherModifier);
-        registerRender(mesher, slowdownModifier);
-        registerRender(mesher, blindnessModifier);
-        registerRender(mesher, confusionModifier);
-        registerRender(mesher, healModifier);
-        registerRender(mesher, hungryModifier);
-        registerRender(mesher, regenerationModifier);
-        registerRender(mesher, waterBreathingModifier);
-        registerRender(mesher, weaknessModifier);
-        registerRender(mesher, knockbackModifier);
+        registerRender(lightingModifier);
+        registerRender(poisonModifier);
+        registerRender(fireModifier);
+        registerRender(witherModifier);
+        registerRender(slowdownModifier);
+        registerRender(blindnessModifier);
+        registerRender(confusionModifier);
+        registerRender(healModifier);
+        registerRender(hungryModifier);
+        registerRender(regenerationModifier);
+        registerRender(waterBreathingModifier);
+        registerRender(weaknessModifier);
+        registerRender(knockbackModifier);
 
-        registerRender(mesher, playerFilter);
-        registerRender(mesher, selfPlayerFilter);
-        registerRender(mesher, anotherPlayerFilter);
-        registerRender(mesher, animalFilter);
-        registerRender(mesher, enemyFilter);
-        registerRender(mesher, slimeFilter);
-        registerRender(mesher, waterFilter);
+        registerRender(playerFilter);
+        registerRender(selfPlayerFilter);
+        registerRender(anotherPlayerFilter);
+        registerRender(animalFilter);
+        registerRender(enemyFilter);
+        registerRender(slimeFilter);
+        registerRender(waterFilter);
 
-        registerRender(mesher, projectileMode);
-        registerRender(mesher, aoeMode);
+        registerRender(projectileMode);
+        registerRender(aoeMode);
     }
 
-    private static void registerRender(ItemModelMesher mesher, Item item) {
-        mesher.register(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+    private static void registerRender(Item item) {
+        String name = item.getUnlocalizedName().substring(5);
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(TotemDefender.MODID + ":" + name, "inventory"));
     }
     
     private static Item getItemFromBLock(Block block) {
