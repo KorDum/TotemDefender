@@ -73,10 +73,10 @@ public class ContainerTotem extends Container {
 
     @Override
     public ItemStack transferStackInSlot(EntityPlayer player, int fromSlot) {
-        ItemStack previous = ItemStack.EMPTY;
+        ItemStack previous;
         Slot slot = inventorySlots.get(fromSlot);
         if (slot == null || !slot.getHasStack()) {
-            return previous;
+            return null;
         }
 
         ItemStack current = slot.getStack();
@@ -85,26 +85,28 @@ public class ContainerTotem extends Container {
         if (fromSlot < handler.getSlots()) {
             // From the block inventory to player's inventory
             if (!mergeItemStack(current, handler.getSlots(), handler.getSlots() + 36, true)) {
-                return ItemStack.EMPTY;
+                return null;
             }
         } else {
             // From the player's inventory to block's inventory
             if (!mergeItemStack(current, 0, handler.getSlots(), false)) {
-                return ItemStack.EMPTY;
+                return null;
             }
         }
 
-        if (current.getCount() == 0) {
-            slot.putStack(ItemStack.EMPTY);
+        if (current.stackSize == 0) {
+            slot.putStack(null);
         } else {
             slot.onSlotChanged();
         }
 
-        if (current.getCount() == previous.getCount()) {
+        if (current.stackSize == previous.stackSize) {
             return null;
         }
 
-        slot.onTake(player, current);
+        System.out.println(current);
+        System.out.println(previous);
+        slot.onPickupFromSlot(player, current);
         return previous;
     }
 }

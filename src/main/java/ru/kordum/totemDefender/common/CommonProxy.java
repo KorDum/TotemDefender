@@ -1,6 +1,5 @@
 package ru.kordum.totemDefender.common;
 
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.common.config.Config;
@@ -34,14 +33,7 @@ public class CommonProxy {
         ModBlocks.registerBlocks(config);
         ModItems.registerItems(config);
 
-        EntityRegistry.registerModEntity(
-            new ResourceLocation(TotemDefender.MODID, "totem_projectile"),
-            EntityProjectile.class,
-            "totem_projectile",
-            0,
-            TotemDefender.instance,
-            32, 5, true
-        );
+        EntityRegistry.registerModEntity(EntityProjectile.class, "totem_projectile", 0, TotemDefender.instance, 32, 5, true);
     }
     
     public void init() {

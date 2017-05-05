@@ -81,11 +81,24 @@ public class BlockLogFace extends BlockDirectional {
     }
 
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return getDefaultState().withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer));
+        return getDefaultState().withProperty(FACING, getDirectionFromEntityLiving(pos, placer));
     }
 
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
+    }
+
+    public static EnumFacing getDirectionFromEntityLiving(BlockPos block, EntityLivingBase placer) {
+        if (Math.abs(placer.posX - (double)((float)block.getX() + 0.5F)) < 2.0D && Math.abs(placer.posZ - (double)((float)block.getZ() + 0.5F)) < 2.0D) {
+            double d0 = placer.posY + (double)placer.getEyeHeight();
+            if (d0 - (double)block.getY() > 2.0D) {
+                return EnumFacing.UP;
+            }
+            if ((double)block.getY() - d0 > 0.0D) {
+                return EnumFacing.DOWN;
+            }
+        }
+        return placer.getHorizontalFacing().getOpposite();
     }
 }

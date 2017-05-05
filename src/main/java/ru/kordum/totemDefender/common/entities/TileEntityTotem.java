@@ -76,7 +76,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
 
     @Override
     public void update() {
-        if (!world.isRemote) {
+        if (!worldObj.isRemote) {
             search();
         }
     }
@@ -97,7 +97,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
 
         for (int i = offset; i < count; i++) {
             ItemStack stack = handler.getStackInSlot(i);
-            if (stack == null || stack.isEmpty()) {
+            if (stack == null || stack.stackSize == 0) {
                 continue;
             }
 
@@ -136,7 +136,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         filter = 0;
         for (byte i = 1; i <= getFilterSlotCount(); i++) {
             ItemStack stack = handler.getStackInSlot(i);
-            if (stack == null || stack.isEmpty()) {
+            if (stack == null || stack.stackSize == 0) {
                 continue;
             }
 
@@ -147,7 +147,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
 
     public void updateMode() {
         ItemStack stack = handler.getStackInSlot(0);
-        if (stack != null && !stack.isEmpty()) {
+        if (stack != null && stack.stackSize != 0) {
             ItemMode item = (ItemMode) stack.getItem();
             mode = item.getMode();
         } else {
@@ -167,25 +167,25 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         );
 
         if ((filter & ItemFilter.ENEMY) == ItemFilter.ENEMY) {
-            list.addAll(world.getEntitiesWithinAABB(EntityMob.class, axis));
+            list.addAll(worldObj.getEntitiesWithinAABB(EntityMob.class, axis));
         }
 
         if ((filter & ItemFilter.PLAYER) == ItemFilter.PLAYER ||
             (filter & ItemFilter.SELF_PLAYER) == ItemFilter.SELF_PLAYER ||
             (filter & ItemFilter.ANOTHER_PLAYER) == ItemFilter.ANOTHER_PLAYER) {
-            list.addAll(world.getEntitiesWithinAABB(EntityPlayer.class, axis));
+            list.addAll(worldObj.getEntitiesWithinAABB(EntityPlayer.class, axis));
         }
 
         if ((filter & ItemFilter.ANIMAL) == ItemFilter.ANIMAL) {
-            list.addAll(world.getEntitiesWithinAABB(EntityAnimal.class, axis));
+            list.addAll(worldObj.getEntitiesWithinAABB(EntityAnimal.class, axis));
         }
 
         if ((filter & ItemFilter.SLIME) == ItemFilter.SLIME) {
-            list.addAll(world.getEntitiesWithinAABB(EntitySlime.class, axis));
+            list.addAll(worldObj.getEntitiesWithinAABB(EntitySlime.class, axis));
         }
 
         if ((filter & ItemFilter.WATER_MOB) == ItemFilter.WATER_MOB) {
-            list.addAll(world.getEntitiesWithinAABB(EntityWaterMob.class, axis));
+            list.addAll(worldObj.getEntitiesWithinAABB(EntityWaterMob.class, axis));
         }
 
         return list;
@@ -225,7 +225,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
                 boundingBox.minZ + (boundingBox.maxZ - boundingBox.minZ) / 2
             );
 
-            RayTraceResult objectPosition = world.rayTraceBlocks(totemVector, entityVector, true);
+            RayTraceResult objectPosition = worldObj.rayTraceBlocks(totemVector, entityVector, true);
             if (objectPosition != null && objectPosition.entityHit != entity) {
                 continue;
             }
@@ -248,13 +248,13 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
                 boundingBox.minZ + (boundingBox.maxZ - boundingBox.minZ) / 2
             );
 
-            RayTraceResult objectPosition = world.rayTraceBlocks(totemVector, entityVector, true);
+            RayTraceResult objectPosition = worldObj.rayTraceBlocks(totemVector, entityVector, true);
             if (objectPosition != null && objectPosition.entityHit != entity) {
                 continue;
             }
 
             Vec3d vector = entityVector.subtract(totemVector).normalize();
-            EntityProjectile projectile = new EntityProjectile(world, pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5);
+            EntityProjectile projectile = new EntityProjectile(worldObj, pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5);
             projectile.setOwner(this);
             projectile.motionX = vector.xCoord;
             projectile.motionY = vector.yCoord;
@@ -264,8 +264,8 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
                 projectile.setFire((int) damage);
             }
 
-            world.spawnEntity(projectile);
-            world.playSound(null, pos, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.MASTER, 1.0F, 1.0F);
+            worldObj.spawnEntityInWorld(projectile);
+            worldObj.playSound(null, pos, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.MASTER, 1.0F, 1.0F);
             break;
         }
     }
@@ -302,8 +302,8 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         }
 
         if ((modifier & ItemModifierUpgrade.LIGHTING) == ItemModifierUpgrade.LIGHTING) {
-            EntityLightningBolt lighting = new EntityLightningBolt(world, entity.posX, entity.posY, entity.posZ, false);
-            world.addWeatherEffect(lighting);
+            EntityLightningBolt lighting = new EntityLightningBolt(worldObj, entity.posX, entity.posY, entity.posZ, false);
+            worldObj.addWeatherEffect(lighting);
             needDamage = true;
         }
 
@@ -456,14 +456,12 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            return true;
-        }
-        return super.hasCapability(capability, facing);
+        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY
+            || super.hasCapability(capability, facing);
     }
 
     public boolean isUseableByPlayer(EntityPlayer player) {
-        return world.getTileEntity(getPos()) == this
+        return worldObj.getTileEntity(getPos()) == this
             && player.getDistanceSq(pos.add(0.5, 0.5, 0.5)) <= 64;
     }
 

@@ -12,14 +12,14 @@ apply plugin: "net.minecraftforge.gradle.forge"
 
 version = "1.2.0"
 group = "ru.kordum.totemDefender"
-archivesBaseName = "TotemDefender-1.11.2"
+archivesBaseName = "TotemDefender-1.10.2"
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 minecraft {
-    version = "1.11.2-13.20.0.2286"
+    version = "1.10.2-12.18.3.2281"
     runDir = "eclipse"
-    mappings = "snapshot_20161220"
+    mappings = "snapshot_20161111"
     //makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 

@@ -35,14 +35,14 @@ public class EntityProjectile extends EntityThrowable {
 
     @Override
     protected void onImpact(RayTraceResult traceResult) {
-        if (!world.isRemote) {
+        if (!worldObj.isRemote) {
             if (traceResult.entityHit != null && traceResult.entityHit instanceof EntityLivingBase) {
                 EntityLivingBase entity = (EntityLivingBase) traceResult.entityHit;
                 owner.attack(entity);
             }
         } else {
             for (int i = 0; i < 3; i++) {
-                world.spawnParticle(EnumParticleTypes.SNOW_SHOVEL, posX, posY, posZ, 0.0D, 0.0D, 0.0D);
+                worldObj.spawnParticle(EnumParticleTypes.SNOW_SHOVEL, posX, posY, posZ, 0.0D, 0.0D, 0.0D);
             }
         }
         setDead();

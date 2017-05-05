@@ -23,6 +23,8 @@ import ru.kordum.totemDefender.common.config.ConfigTotem;
 import ru.kordum.totemDefender.common.entities.TileEntityTotem;
 import ru.kordum.totemDefender.common.handlers.GuiHandler;
 
+import javax.annotation.Nullable;
+
 public abstract class BlockTotem extends BlockContainer {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     private static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.25f, 0, 0.25f, 0.75f, 2, 0.75f);
@@ -65,7 +67,7 @@ public abstract class BlockTotem extends BlockContainer {
     //---------------------------------------------------------------------------
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
         TileEntity target = world.getTileEntity(pos);
         if (target == null || player.isSneaking()) {
             return false;
@@ -82,9 +84,10 @@ public abstract class BlockTotem extends BlockContainer {
         return true;
     }
 
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+    @Override
+    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, ItemStack stack) {
         return getDefaultState()
-            .withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer));
+            .withProperty(FACING, getDirectionFromEntityLiving(pos, placer));
     }
 
     //---------------------------------------------------------------------------
@@ -99,7 +102,9 @@ public abstract class BlockTotem extends BlockContainer {
         IItemHandler handler = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         for (int slot = 0; slot < handler.getSlots(); slot++) {
             ItemStack stack = handler.getStackInSlot(slot);
-            InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+            if (stack != null) {
+                InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+            }
         }
         super.breakBlock(world, pos, state);
     }
@@ -115,6 +120,19 @@ public abstract class BlockTotem extends BlockContainer {
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING);
+    }
+
+    public static EnumFacing getDirectionFromEntityLiving(BlockPos block, EntityLivingBase placer) {
+        if (Math.abs(placer.posX - (double)((float)block.getX() + 0.5F)) < 2.0D && Math.abs(placer.posZ - (double)((float)block.getZ() + 0.5F)) < 2.0D) {
+            double d0 = placer.posY + (double)placer.getEyeHeight();
+            if (d0 - (double)block.getY() > 2.0D) {
+                return EnumFacing.UP;
+            }
+            if ((double)block.getY() - d0 > 0.0D) {
+                return EnumFacing.DOWN;
+            }
+        }
+        return placer.getHorizontalFacing().getOpposite();
     }
 
     //---------------------------------------------------------------------------

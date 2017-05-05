@@ -126,9 +126,7 @@ public class ModBlocks {
         registerRender(logFace1);
         registerRender(logFace2);
         registerRender(logFace3);
-        registerRender(door);
         registerRender(slab);
-        registerRender(doubleSlab);
         registerRender(fence);
         registerRender(fenceGate);
 
