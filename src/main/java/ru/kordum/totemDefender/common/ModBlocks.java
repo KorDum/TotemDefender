@@ -1,6 +1,7 @@
 package ru.kordum.totemDefender.common;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -134,6 +135,8 @@ public class ModBlocks {
         registerRender(ironTotem);
         registerRender(goldTotem);
         registerRender(diamondTotem);
+
+        leaves.setGraphicsLevel(Minecraft.isFancyGraphicsEnabled());
     }
 
     //---------------------------------------------------------------------------
