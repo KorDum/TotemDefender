@@ -10,7 +10,7 @@ buildscript {
 
 apply plugin: "net.minecraftforge.gradle.forge"
 
-version = "1.2.0"
+version = "1.2.1"
 group = "ru.kordum.totemDefender"
 archivesBaseName = "TotemDefender-1.10.2"
 sourceCompatibility = JavaVersion.VERSION_1_8

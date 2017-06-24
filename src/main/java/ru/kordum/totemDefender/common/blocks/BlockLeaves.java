@@ -11,6 +11,7 @@ import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.common.ModBlocks;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -38,7 +39,9 @@ public class BlockLeaves extends net.minecraft.block.BlockLeaves {
 
     @Override
     public List<ItemStack> onSheared(@Nonnull ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
-        return null;
+        List<ItemStack> list = new ArrayList<>();
+        list.add(new ItemStack(this));
+        return list;
     }
 
     //---------------------------------------------------------------------------
