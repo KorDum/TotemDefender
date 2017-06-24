@@ -2,9 +2,7 @@ package ru.kordum.totemDefender.common.blocks;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.common.BlockManager;
 
@@ -27,11 +25,6 @@ public class BlockLeaves extends net.minecraft.block.BlockLeaves {
         setBlockTextureName(TotemDefender.MODID + ":" + name);
         field_150121_P = true;
         setCreativeTab(TotemDefender.tab);
-    }
-
-    @Override
-    public boolean isShearable(ItemStack itemStack, IBlockAccess blockAccess, int x, int y, int z) {
-        return false;
     }
 
     //---------------------------------------------------------------------------
