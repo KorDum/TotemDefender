@@ -2,10 +2,8 @@ package ru.kordum.totemDefender.common.blocks;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.common.BlockManager;
 
@@ -33,23 +31,6 @@ public class BlockSlab extends net.minecraft.block.BlockSlab {
         setBlockName(name);
         useNeighborBrightness = true;
         setHardness(4);
-    }
-
-    //---------------------------------------------------------------------------
-    //
-    // HANDLERS
-    //
-    //---------------------------------------------------------------------------
-
-    @Override
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack itemStack) {
-        if (world.getBlock(x, y - 1, z) == BlockManager.slab) {
-            world.setBlock(x, y - 1, z, BlockManager.doubleSlab);
-        } else if (world.getBlock(x, y + 1, z) == BlockManager.slab) {
-            world.setBlock(x, y + 1, z, BlockManager.doubleSlab);
-        } else {
-            super.onBlockPlacedBy(world, x, y, z, entity, itemStack);
-        }
     }
 
     //---------------------------------------------------------------------------
