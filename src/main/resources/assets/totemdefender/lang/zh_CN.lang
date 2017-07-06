@@ -1,0 +1,75 @@
+﻿itemGroup.tab_name=守护图腾
+item.core.name=核心
+item.door.name=图腾木门
+
+tile.sapling.name=图腾木苗
+tile.log.name=图腾原木
+tile.log_face1.name=图腾原木
+tile.log_face2.name=图腾原木
+tile.log_face3.name=图腾原木
+tile.leaf.name=图腾木叶
+tile.planks.name=图腾木板
+tile.stairs.name=图腾木台阶
+tile.slab.name=图腾木半砖
+tile.fence.name=图腾木栅栏
+tile.fence_gate.name=图腾木栅栏门
+entity.totem_projectile.name=图腾投射物
+
+tile.wooden_totem.name=木质图腾
+tile.iron_totem.name=铁质图腾
+tile.gold_totem.name=金质图腾
+tile.diamond_totem.name=钻石图腾
+
+item.projectile_mode.name=狙击模式
+item.aoe_mode.name=群伤模式
+
+item.player_filter.name=玩家过滤器
+item.self_player_filter.name=自身过滤器
+item.another_player_filter.name=其他玩家过滤器
+item.animal_filter.name=动物过滤器
+item.enemy_filter.name=敌对生物过滤器
+item.slime_filter.name=史莱姆过滤器
+item.water_filter.name=水生生物过滤器
+
+item.wooden_damage_upgrade.name=伤害符箓 I
+item.wooden_as_upgrade.name=攻击速度符箓 I
+item.wooden_radius_upgrade.name=范围提升符箓 I
+item.iron_damage_upgrade.name=伤害符箓 II
+item.iron_as_upgrade.name=攻击速度符箓 II
+item.iron_radius_upgrade.name=范围提升符箓 II
+item.gold_damage_upgrade.name=伤害符箓 III
+item.gold_as_upgrade.name=攻击速度符箓 III
+item.gold_radius_upgrade.name=范围提升符箓 III
+item.diamond_damage_upgrade.name=伤害符箓 IV
+item.diamond_as_upgrade.name=攻击速度符箓 IV
+item.diamond_radius_upgrade.name=范围提升符箓 IV
+
+item.poison_upgrade.name=剧毒符箓
+item.fire_upgrade.name=烈火符箓
+item.lighting_upgrade.name=明亮符箓
+item.wither_upgrade.name=凋零符箓
+item.slowdown_upgrade.name=迟缓符箓
+item.weakness_upgrade.name=虚弱符箓
+item.water_breathing_upgrade.name=水息符箓
+item.regeneration_upgrade.name=恢复符箓
+item.heal_upgrade.name=治疗符箓
+item.hungry_upgrade.name=饥饿符箓
+item.blindness_upgrade.name=致盲符箓
+item.confusion_upgrade.name=混乱符箓
+item.knockback_upgrade.name=击退强化符箓
+
+prop.attack_speed=%s 攻击速度
+prop.damage=%s 伤害
+prop.radius=%s 格的攻击范围
+prop.hold_more=<按住shift键显示更多细节>
+
+gui.wooden_totem=木质图腾
+gui.iron_totem=铁质图腾
+gui.gold_totem=金质图腾
+gui.diamond_totem=钻石图腾
+gui.attack_speed=%ss
+gui.damage=%s
+gui.radius=%s
+
+death.attack.totem=%1$s 在图腾的怒火中化为灰烬.
+death.attack.totem.player=在他与 %2$s 作战时, %1$s 因图腾的怒火而化为灰烬.
