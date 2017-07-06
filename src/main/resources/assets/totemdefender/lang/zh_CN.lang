@@ -1,0 +1,76 @@
+﻿itemGroup.tabName=守护图腾
+item.core.name=核心
+item.totemTreeDoor.name=图腾木门
+
+tile.totemTreeSapling.name=图腾木苗
+tile.totemTreeLog.name=图腾原木
+tile.totemTreeLogFace1.name=图腾原木
+tile.totemTreeLogFace2.name=图腾原木
+tile.totemTreeLogFace3.name=图腾原木
+tile.totemTreeLeaves.name=图腾木叶
+tile.totemTreePlanks.name=图腾木板
+tile.totemTreeStairs.name=图腾木台阶
+tile.totemTreeSlab.name=图腾木半砖
+tile.totemTreeFence.name=图腾木栅栏
+tile.totemTreeFenceGate.name=图腾木栅栏门
+tile.totemTreeDoor.name=图腾木门
+entity.totemProjectile.name=图腾投射物
+
+tile.woodenTotem.name=木质图腾
+tile.ironTotem.name=铁质图腾
+tile.goldTotem.name=金质图腾
+tile.diamondTotem.name=钻石图腾
+
+item.projectileMode.name=狙击模式
+item.aoeMode.name=群伤模式
+
+item.playerFilter.name=玩家过滤器
+item.selfPlayerFilter.name=自身过滤器
+item.anotherPlayerFilter.name=其他玩家过滤器
+item.animalFilter.name=动物过滤器
+item.enemyFilter.name=敌对生物过滤器
+item.livingFilter.name=史莱姆过滤器
+item.waterFilter.name=水生生物过滤器
+
+item.woodenDamageUpgrade.name=伤害符箓 I
+item.woodenASUpgrade.name=攻击速度符箓 I
+item.woodenRadiusUpgrade.name=范围提升符箓 I
+item.ironDamageUpgrade.name=伤害符箓 II
+item.ironASUpgrade.name=攻击速度符箓 II
+item.ironRadiusUpgrade.name=范围提升符箓 II
+item.goldDamageUpgrade.name=伤害符箓 III
+item.goldASUpgrade.name=攻击速度符箓 III
+item.goldRadiusUpgrade.name=范围提升符箓 III
+item.diamondDamageUpgrade.name=伤害符箓 IV
+item.diamondASUpgrade.name=攻击速度符箓 IV
+item.diamondRadiusUpgrade.name=范围提升符箓 IV
+
+item.poisonUpgrade.name=剧毒符箓
+item.fireUpgrade.name=烈火符箓
+item.lightingUpgrade.name=明亮符箓
+item.witherUpgrade.name=凋零符箓
+item.slowdownUpgrade.name=迟缓符箓
+item.weaknessUpgrade.name=虚弱符箓
+item.waterBreathingUpgrade.name=水息符箓
+item.regenerationUpgrade.name=恢复符箓
+item.healUpgrade.name=治疗符箓
+item.hungryUpgrade.name=饥饿符箓
+item.blindnessUpgrade.name=致盲符箓
+item.confusionUpgrade.name=混乱符箓
+item.knockbackUpgrade.name=击退强化符箓
+
+prop.attackSpeed=%s 攻击速度
+prop.damage=%s 伤害
+prop.radius=%s 格的攻击范围
+prop.holdMore=<按住shift键显示更多细节>
+
+gui.woodenTotem=木质图腾
+gui.ironTotem=铁质图腾
+gui.goldTotem=金质图腾
+gui.diamondTotem=钻石图腾
+gui.attackSpeed=%ss
+gui.damage=%s
+gui.radius=%s
+
+death.attack.totem=%1$s 在图腾的怒火中化为灰烬.
+death.attack.totem.player=在他与 %2$s 作战时, %1$s 因图腾的怒火而化为灰烬.

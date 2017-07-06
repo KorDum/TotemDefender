@@ -1,5 +1,6 @@
 itemGroup.tabName=Totem Defender
 item.core.name=Core
+item.totemTreeDoor.name=Totem Tree Door
 
 tile.totemTreeSapling.name=Totem Tree Sapling
 tile.totemTreeLog.name=Totem Tree Wood
@@ -10,7 +11,6 @@ tile.totemTreeLeaves.name=Totem Tree Leaves
 tile.totemTreePlanks.name=Totem Tree Planks
 tile.totemTreeStairs.name=Totem Tree Stairs
 tile.totemTreeSlab.name=Totem Tree Slab
-item.totemTreeDoor.name=Totem Tree Door
 tile.totemTreeFence.name=Totem Tree Fence
 tile.totemTreeFenceGate.name=Totem Tree Fence Gate
 tile.totemTreeDoor.name=Totem Tree Door

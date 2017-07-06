@@ -1,5 +1,6 @@
 itemGroup.tabName=Totem Defender
 item.core.name=Ядро
+item.totemTreeDoor.name=Дверь из тотемного древа
 
 tile.totemTreeSapling.name=Саженец тотемного древа
 tile.totemTreeLog.name=Древесина тотемного древа

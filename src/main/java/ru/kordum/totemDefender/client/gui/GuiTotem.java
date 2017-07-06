@@ -63,7 +63,6 @@ public class GuiTotem extends GuiContainer {
         for (int i = tileEntity.getFilterSlotCount(); i < 4; i++) {
             drawTexturedModalRect(7 + x + 18 * i, y + 52, xSize, 0, 18, 18);
         }
-
         for (int i = tileEntity.getUpgradeSlotCount(); i < 4; i++) {
             drawTexturedModalRect(97 + x + 18 * i, y + 52, xSize, 0, 18, 18);
         }

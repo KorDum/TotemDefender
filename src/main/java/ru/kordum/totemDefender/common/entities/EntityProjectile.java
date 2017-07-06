@@ -34,17 +34,19 @@ public class EntityProjectile extends EntityThrowable {
 
     @Override
     protected void onImpact(MovingObjectPosition movingObjectPosition) {
-        if (movingObjectPosition.entityHit != null && movingObjectPosition.entityHit instanceof EntityLivingBase) {
-            EntityLivingBase entity = (EntityLivingBase) movingObjectPosition.entityHit;
-            owner.attack(entity);
+        if (!worldObj.isRemote) {
+            setDead();
         }
 
         for (int i = 0; i < 3; i++) {
             worldObj.spawnParticle("snowballpoof", posX, posY, posZ, 0.0D, 0.0D, 0.0D);
         }
 
-        if (!worldObj.isRemote) {
-            setDead();
+        if (owner != null &&
+            movingObjectPosition.entityHit != null &&
+            movingObjectPosition.entityHit instanceof EntityLivingBase) {
+            EntityLivingBase entity = (EntityLivingBase) movingObjectPosition.entityHit;
+            owner.attack(entity);
         }
     }
 
