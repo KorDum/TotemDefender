@@ -1,0 +1,76 @@
+itemGroup.tabName=Totem Defender
+item.core.name=Kern
+item.totemTreeDoor.name=Totembaumtür
+
+tile.totemTreeSapling.name=Totembaumsetzling
+tile.totemTreeLog.name=Totembaumholz
+tile.totemTreeLogFace1.name=Totembaumholz
+tile.totemTreeLogFace2.name=Totembaumholz
+tile.totemTreeLogFace3.name=Totembaumholz
+tile.totemTreeLeaves.name=Totembaumblätter
+tile.totemTreePlanks.name=Totembaumbretter
+tile.totemTreeStairs.name=Totembaumtreppe
+tile.totemTreeSlab.name=Totembaumstufe
+tile.totemTreeFence.name=Totembaumzaun
+tile.totemTreeFenceGate.name=Totembaumzauntor
+tile.totemTreeDoor.name=Totembaumtür
+entity.totemProjectile.name=Totem-Projektil
+
+tile.woodenTotem.name=Holztotem
+tile.ironTotem.name=Eisentotem
+tile.goldTotem.name=Goldtotem
+tile.diamondTotem.name=Diamanttotem
+
+item.projectileMode.name=Projektil-Modus
+item.aoeMode.name=AoE-Modus
+
+item.playerFilter.name=Spieler-Filter
+item.selfPlayerFilter.name=Selbst-Filter
+item.anotherPlayerFilter.name=Anderer Spieler-Filter
+item.animalFilter.name=Tier-Filter
+item.enemyFilter.name=Gegner-Filter
+item.livingFilter.name=Schleim-Filter
+item.waterFilter.name=Wasser-Mob-Filter
+
+item.woodenDamageUpgrade.name=Schaden I
+item.woodenASUpgrade.name=Angriffsgeschwindigkeit I
+item.woodenRadiusUpgrade.name=Radius I
+item.ironDamageUpgrade.name=Schaden II
+item.ironASUpgrade.name=Angriffsgeschwindigkeit II
+item.ironRadiusUpgrade.name=Radius II
+item.goldDamageUpgrade.name=Schaden III
+item.goldASUpgrade.name=Angriffsgeschwindigkeit III
+item.goldRadiusUpgrade.name=Radius III
+item.diamondDamageUpgrade.name=Schaden IV
+item.diamondASUpgrade.name=Angriffsgeschwindigkeit IV
+item.diamondRadiusUpgrade.name=Radius IV
+
+item.poisonUpgrade.name=Gift-Modifikator
+item.fireUpgrade.name=Feuer-Modifikator
+item.lightingUpgrade.name=Blitz-Modifikator
+item.witherUpgrade.name=Wither-Modifikator
+item.slowdownUpgrade.name=Verlangsamungs-Modifikator
+item.weaknessUpgrade.name=Schwäche-Modifikator
+item.waterBreathingUpgrade.name=Wasseratmungs-Modifikator
+item.regenerationUpgrade.name=Regenerations-Modifikator
+item.healUpgrade.name=Heilungs-Modifikator
+item.hungryUpgrade.name=Hunger-Modifikator
+item.blindnessUpgrade.name=Blindheits-Modifikator
+item.confusionUpgrade.name=Verwirrungs-Modifikator
+item.knockbackUpgrade.name=Rückstoß-Modifikator
+
+prop.attackSpeed=%s Angriffsgeschwindigkeit
+prop.damage=%s Schaden
+prop.radius=%s Blöcke Radius
+prop.holdMore=<Shift halten für Details>
+
+gui.woodenTotem=Einfacher Totem
+gui.ironTotem=Eisentotem
+gui.goldTotem=Goldtotem
+gui.diamondTotem=Diamanttotem
+gui.attackSpeed=%ss
+gui.damage=%s
+gui.radius=%s
+
+death.attack.totem=%1$s wurde vom Zorn des Totems verbrannt.
+death.attack.totem.player=%1$s wurde vom Zorn des Totems verbrannt, während er mit %2$s kämpfte.
