@@ -17,7 +17,7 @@ entity.totem_projectile.name=Totem-Projektil
 
 tile.wooden_totem.name=Holztotem
 tile.iron_totem.name=Eisentotem
-tile.gold_totem.name=Goldtotem
+tile.golden_totem.name=Goldtotem
 tile.diamond_totem.name=Diamanttotem
 
 item.projectile_mode.name=Projektil-Modus
@@ -65,7 +65,7 @@ prop.hold_more=<Shift halten für Details>
 
 gui.wooden_totem=Einfacher Totem
 gui.iron_totem=Eisentotem
-gui.gold_totem=Goldtotem
+gui.golden_totem=Goldtotem
 gui.diamond_totem=Diamanttotem
 gui.attack_speed=%ss
 gui.damage=%s

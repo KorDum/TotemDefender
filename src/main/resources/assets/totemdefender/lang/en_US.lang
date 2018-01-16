@@ -17,7 +17,7 @@ entity.totem_projectile.name=Totem Projectile
 
 tile.wooden_totem.name=Wooden Totem
 tile.iron_totem.name=Iron Totem
-tile.gold_totem.name=Gold Totem
+tile.golden_totem.name=Golden Totem
 tile.diamond_totem.name=Diamond Totem
 
 item.projectile_mode.name=Projectile Mode
@@ -65,7 +65,7 @@ prop.hold_more=<Hold shift for details>
 
 gui.wooden_totem=Basic Totem
 gui.iron_totem=Iron Totem
-gui.gold_totem=Gold Totem
+gui.golden_totem=Golden Totem
 gui.diamond_totem=Diamond Totem
 gui.attack_speed=%ss
 gui.damage=%s

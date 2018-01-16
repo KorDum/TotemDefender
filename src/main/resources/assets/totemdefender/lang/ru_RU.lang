@@ -17,7 +17,7 @@ entity.projectile.name=Снаряд Тотема
 
 tile.wooden_totem.name=Деревянный тотем
 tile.iron_totem.name=Железный тотем
-tile.gold_totem.name=Золотой тотем
+tile.golden_totem.name=Золотой тотем
 tile.diamond_totem.name=Алмазный тотем
 
 item.projectile_mode.name=Снаряд
@@ -65,7 +65,7 @@ prop.hold_more=<Зажмите SHIFT Для подробностей>
 
 gui.wooden_totem=Деревянный тотем
 gui.iron_totem=Железный тотем
-gui.gold_totem=Золотой тотем
+gui.golden_totem=Золотой тотем
 gui.diamond_totem=Алмазный тотем
 gui.attack_speed=%sс
 gui.damage=%s

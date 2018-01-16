@@ -17,7 +17,7 @@ entity.totem_projectile.name=图腾投射物
 
 tile.wooden_totem.name=木质图腾
 tile.iron_totem.name=铁质图腾
-tile.gold_totem.name=金质图腾
+tile.golden_totem.name=金质图腾
 tile.diamond_totem.name=钻石图腾
 
 item.projectile_mode.name=狙击模式
@@ -65,7 +65,7 @@ prop.hold_more=<按住shift键显示更多细节>
 
 gui.wooden_totem=木质图腾
 gui.iron_totem=铁质图腾
-gui.gold_totem=金质图腾
+gui.golden_totem=金质图腾
 gui.diamond_totem=钻石图腾
 gui.attack_speed=%ss
 gui.damage=%s
