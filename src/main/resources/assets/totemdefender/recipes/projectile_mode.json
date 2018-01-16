@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PPP",
+        "PCP",
+        "PPP"
+    ],
+    "key": {
+        "P": {
+            "item": "minecraft:stone",
+            "data": 0
+        },
+        "C": {
+            "item": "totemdefender:core"
+        }
+    },
+    "result": {
+        "item": "totemdefender:projectile_mode",
+        "count": 1
+    }
+}

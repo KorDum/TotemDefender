@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PSP",
+        "SCS",
+        "PSP"
+    ],
+    "key": {
+        "P": {
+            "item": "totemdefender:projectile_mode"
+        },
+        "C": {
+            "item": "totemdefender:core"
+        },
+        "S": {
+            "item": "minecraft:stone",
+            "data": 0
+        }
+    },
+    "result": {
+        "item": "totemdefender:aoe_mode",
+        "count": 1
+    }
+}

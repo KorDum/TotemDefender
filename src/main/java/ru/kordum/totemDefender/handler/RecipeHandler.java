@@ -6,55 +6,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class RecipeHandler {
-    /*addRecipe(ModBlocks.woodenTotem, new Object[]{
-        "WLW", "WCW", "WRW",
-        'L', new ItemStack(Items.DYE, 1, 4),
-        'C', ModItems.core,
-        'R', Blocks.REDSTONE_BLOCK,
-        'W', ModBlocks.log,
-    });
-
-    addRecipe(ModBlocks.ironTotem, new Object[]{
-        "ILI", "WCW", "IRI",
-        'L', new ItemStack(Items.DYE, 1, 4),
-        'C', ModBlocks.woodenTotem,
-        'R', Blocks.REDSTONE_BLOCK,
-        'W', ModBlocks.log,
-        'I', Items.IRON_INGOT,
-    });
-
-    addRecipe(ModBlocks.goldTotem, new Object[]{
-        "ILI", "WCW", "IRI",
-        'L', new ItemStack(Items.DYE, 1, 4),
-        'C', ModBlocks.ironTotem,
-        'R', Blocks.REDSTONE_BLOCK,
-        'W', ModBlocks.log,
-        'I', Items.GOLD_INGOT,
-    });
-
-    addRecipe(ModBlocks.diamondTotem, new Object[]{
-        "ILI", "WCW", "IRI",
-        'L', new ItemStack(Items.DYE, 1, 4),
-        'C', ModBlocks.goldTotem,
-        'R', Blocks.REDSTONE_BLOCK,
-        'W', ModBlocks.log,
-        'I', Items.DIAMOND,
-    });
-
-    addRecipe(ModItems.projectileMode, new Object[]{
-        "PPP", "PCP", "PPP",
-        'P', Blocks.STONE,
-        'C', ModItems.core,
-    });
-
-    addRecipe(ModItems.aoeMode, new Object[]{
-        "PSP", "SCS", "PSP",
-        'P', ModItems.projectileMode,
-        'S', Blocks.STONE,
-        'C', ModItems.core,
-    });
-
-    addRecipe(ModItems.woodenASUpgrade, new Object[]{
+    /*addRecipe(ModItems.woodenASUpgrade, new Object[]{
         "P P", "PCP", "LFL",
         'P', Blocks.PLANKS,
         'L', new ItemStack(Items.DYE, 1, 4),

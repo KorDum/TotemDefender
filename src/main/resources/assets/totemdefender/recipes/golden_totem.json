@@ -1,9 +1,9 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "WLW",
+        "ILI",
         "WCW",
-        "123"
+        "IRI"
     ],
     "key": {
         "L": {
@@ -13,21 +13,18 @@
         "W": {
             "item": "totemdefender:log"
         },
+        "R": {
+            "item": "minecraft:redstone_block"
+        },
         "C": {
-            "item": "totemdefender:core"
+            "item": "totemdefender:iron_totem"
         },
-        "1": {
-            "item": "totemdefender:log_face1"
-        },
-        "2": {
-            "item": "totemdefender:log_face2"
-        },
-        "3": {
-            "item": "totemdefender:log_face3"
+        "I": {
+            "item": "minecraft:gold_ingot"
         }
     },
     "result": {
-        "item": "totemdefender:wooden_totem",
+        "item": "totemdefender:golden_totem",
         "count": 1
     }
 }

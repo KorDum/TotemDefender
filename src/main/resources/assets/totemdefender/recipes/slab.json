@@ -6,12 +6,12 @@
     ],
     "key": {
         "P": {
-            "item": "totemdefender:planks",
-            "data": 0
+            "item": "totemdefender:planks"
         }
     },
     "result": {
         "item": "totemdefender:slab",
+        "data": 0,
         "count": 6
     }
 }
