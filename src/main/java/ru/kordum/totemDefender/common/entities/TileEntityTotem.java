@@ -27,6 +27,8 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+
+import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.common.blocks.BlockTotem;
 import ru.kordum.totemDefender.common.items.upgrades.ItemFilter;
 import ru.kordum.totemDefender.common.items.upgrades.ItemMode;
@@ -443,8 +445,6 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
     // ACCESSORS
     //
     //---------------------------------------------------------------------------
-    
-    
 
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {

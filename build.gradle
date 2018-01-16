@@ -7,20 +7,21 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
     }
 }
-
 apply plugin: "net.minecraftforge.gradle.forge"
 
 version = "1.2.4"
 group = "ru.kordum.totemDefender"
-archivesBaseName = "TotemDefender-1.11.2"
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+archivesBaseName = "TotemDefender-1.12.2"
+
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
 
 minecraft {
-    version = "1.11.2-13.20.0.2315"
-    runDir = "eclipse"
-    mappings = "snapshot_20161220"
-    //makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+    version = "1.12.2-14.23.1.2555"
+    runDir = "run"
+    mappings = "snapshot_20171003"
 }
 
 processResources {
