@@ -2,9 +2,10 @@ package ru.kordum.totemDefender.proxy;
 
 import java.io.File;
 
-import ru.kordum.totemDefender.block.BlockRegistry;
+import ru.kordum.totemDefender.handler.BlockRegistry;
 import ru.kordum.totemDefender.config.Config;
-import ru.kordum.totemDefender.item.ItemRegistry;
+import ru.kordum.totemDefender.handler.RecipeHandler;
+import ru.kordum.totemDefender.handler.ItemRegistry;
 
 public abstract class CommonProxy {
     public void preInit(File configFile) {

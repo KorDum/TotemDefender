@@ -1,4 +1,4 @@
-package ru.kordum.totemDefender.item;
+package ru.kordum.totemDefender.handler;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.kordum.totemDefender.TotemDefender;
-import ru.kordum.totemDefender.block.BlockRegistry;
 import ru.kordum.totemDefender.block.BlockSlab;
 import ru.kordum.totemDefender.block.BlockTotem;
 import ru.kordum.totemDefender.config.Config;

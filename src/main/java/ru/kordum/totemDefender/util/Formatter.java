@@ -6,13 +6,6 @@ import net.minecraft.util.text.TextFormatting;
 import java.text.NumberFormat;
 
 public class Formatter {
-
-    //---------------------------------------------------------------------------
-    //
-    // PUBLIC METHODS
-    //
-    //---------------------------------------------------------------------------
-
     public static String getProp(TextFormatting color, String key, float value, boolean percent) {
         NumberFormat nf = NumberFormat.getInstance();
         nf.setMaximumFractionDigits(2);

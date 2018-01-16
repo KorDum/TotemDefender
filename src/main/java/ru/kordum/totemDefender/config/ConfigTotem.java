@@ -5,23 +5,11 @@ public class ConfigTotem {
     private float damage;
     private int radius;
 
-    //---------------------------------------------------------------------------
-    //
-    // CONSTRUCTOR
-    //
-    //---------------------------------------------------------------------------
-
     public ConfigTotem(float attackSpeed, float damage, int radius) {
         this.attackSpeed = attackSpeed;
         this.damage = damage;
         this.radius = radius;
     }
-
-    //---------------------------------------------------------------------------
-    //
-    // ACCESSORS
-    //
-    //---------------------------------------------------------------------------
 
     public float getAttackSpeed() {
         return attackSpeed;

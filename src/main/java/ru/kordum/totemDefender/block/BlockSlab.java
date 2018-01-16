@@ -13,6 +13,8 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
+import ru.kordum.totemDefender.handler.BlockRegistry;
+
 public abstract class BlockSlab extends net.minecraft.block.BlockSlab {
     public static final PropertyEnum<Variant> VARIANT = PropertyEnum.create("variant", Variant.class);
 

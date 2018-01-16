@@ -21,7 +21,7 @@ import net.minecraftforge.items.IItemHandler;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.config.ConfigTotem;
 import ru.kordum.totemDefender.entity.TileEntityTotem;
-import ru.kordum.totemDefender.proxy.GuiHandler;
+import ru.kordum.totemDefender.handler.GuiHandler;
 
 public abstract class BlockTotem extends BlockContainer {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);

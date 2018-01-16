@@ -1,4 +1,4 @@
-package ru.kordum.totemDefender.proxy;
+package ru.kordum.totemDefender.handler;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;

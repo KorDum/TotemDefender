@@ -11,7 +11,7 @@ import java.util.Random;
 
 import ru.kordum.totemDefender.block.BlockLeaves;
 import ru.kordum.totemDefender.block.BlockLogFace;
-import ru.kordum.totemDefender.block.BlockRegistry;
+import ru.kordum.totemDefender.handler.BlockRegistry;
 
 public class WorldGenTotemTree extends WorldGenAbstractTree {
     private static final IBlockState TRUNK = BlockRegistry.LOG.getDefaultState();

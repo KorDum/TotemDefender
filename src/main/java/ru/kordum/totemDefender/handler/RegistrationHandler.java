@@ -1,4 +1,4 @@
-package ru.kordum.totemDefender.proxy;
+package ru.kordum.totemDefender.handler;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -12,10 +12,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import ru.kordum.totemDefender.TotemDefender;
-import ru.kordum.totemDefender.block.BlockRegistry;
 import ru.kordum.totemDefender.entity.EntityProjectile;
-import ru.kordum.totemDefender.entity.TileEntityRegistry;
-import ru.kordum.totemDefender.item.ItemRegistry;
 
 @Mod.EventBusSubscriber
 public class RegistrationHandler {
@@ -33,7 +30,7 @@ public class RegistrationHandler {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public static void registerModels(ModelRegistryEvent event) {
-        BlockRegistry.registerRenders();
+        TileEntityRegistry.registerRenders();
         ItemRegistry.registerRenders();
 
         EntityRegistry.registerModEntity(

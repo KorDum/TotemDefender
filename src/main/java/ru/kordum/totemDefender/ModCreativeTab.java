@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import ru.kordum.totemDefender.item.ItemRegistry;
+import ru.kordum.totemDefender.handler.ItemRegistry;
 
 public class ModCreativeTab extends CreativeTabs {
     public ModCreativeTab() {
