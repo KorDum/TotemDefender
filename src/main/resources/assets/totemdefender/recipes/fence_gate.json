@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SPS",
+        "SPS"
+    ],
+    "key": {
+        "P": {
+            "item": "totemdefender:planks"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "totemdefender:fence_gate",
+        "count": 3
+    }
+}

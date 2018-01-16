@@ -43,6 +43,7 @@ public class RegistrationHandler {
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public static void registerModels(ModelRegistryEvent event) {
+        BlockRegistry.registerRenders();
         TileEntityRegistry.registerRenders();
         ItemRegistry.registerRenders();
     }

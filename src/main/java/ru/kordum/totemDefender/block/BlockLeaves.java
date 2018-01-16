@@ -48,6 +48,11 @@ public class BlockLeaves extends net.minecraft.block.BlockLeaves {
     }
 
     @Override
+    protected int getSaplingDropChance(IBlockState state) {
+        return 1;
+    }
+
+    @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, CHECK_DECAY, DECAYABLE);
     }

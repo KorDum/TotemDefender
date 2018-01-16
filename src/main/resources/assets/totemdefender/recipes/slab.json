@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wooden_slab",
+    "pattern": [
+        "PPP"
+    ],
+    "key": {
+        "P": {
+            "item": "totemdefender:planks",
+            "data": 0
+        }
+    },
+    "result": {
+        "item": "totemdefender:slab",
+        "count": 6
+    }
+}

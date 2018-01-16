@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PP",
+        "PP",
+        "PP"
+    ],
+    "key": {
+        "P": {
+            "item": "totemdefender:planks"
+        }
+    },
+    "result": {
+        "item": "totemdefender:door",
+        "count": 3
+    }
+}

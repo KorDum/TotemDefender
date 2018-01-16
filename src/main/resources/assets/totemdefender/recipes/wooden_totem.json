@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "WLW",
+        "WCW",
+        "WRW"
+    ],
+    "key": {
+        "W": {
+            "item": "minecraft:dye",
+            "data": 4
+        }
+    },
+    "result": {
+        "item": "totemdefender:door",
+        "count": 3
+    }
+}

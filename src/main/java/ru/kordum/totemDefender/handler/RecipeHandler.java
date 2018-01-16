@@ -6,322 +6,289 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class RecipeHandler {
-    public static void registerCraftingRecipes() {
-        /*addRecipe(new ItemStack(ModBlocks.stairs, 4), new Object[]{
-            "P  ", "PP ", "PPP",
-            'P', ModBlocks.planks,
-        });
+    /*addRecipe(ModBlocks.woodenTotem, new Object[]{
+        "WLW", "WCW", "WRW",
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', ModItems.core,
+        'R', Blocks.REDSTONE_BLOCK,
+        'W', ModBlocks.log,
+    });
 
-        addRecipe(new ItemStack(ModBlocks.slab, 6), new Object[]{
-            "PPP",
-            'P', ModBlocks.planks,
-        });
+    addRecipe(ModBlocks.ironTotem, new Object[]{
+        "ILI", "WCW", "IRI",
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', ModBlocks.woodenTotem,
+        'R', Blocks.REDSTONE_BLOCK,
+        'W', ModBlocks.log,
+        'I', Items.IRON_INGOT,
+    });
 
-        addRecipe(new ItemStack(ModBlocks.fence, 4), new Object[]{
-            "PPP", "P P",
-            'P', ModBlocks.planks,
-        });
+    addRecipe(ModBlocks.goldTotem, new Object[]{
+        "ILI", "WCW", "IRI",
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', ModBlocks.ironTotem,
+        'R', Blocks.REDSTONE_BLOCK,
+        'W', ModBlocks.log,
+        'I', Items.GOLD_INGOT,
+    });
 
-        addRecipe(ModBlocks.fenceGate, new Object[]{
-            "FPF",
-            'P', ModBlocks.planks,
-            'F', ModBlocks.fence,
-        });
+    addRecipe(ModBlocks.diamondTotem, new Object[]{
+        "ILI", "WCW", "IRI",
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', ModBlocks.goldTotem,
+        'R', Blocks.REDSTONE_BLOCK,
+        'W', ModBlocks.log,
+        'I', Items.DIAMOND,
+    });
 
-        addRecipe(ModItems.door, new Object[]{
-            "PP", "PP", "PP",
-            'P', ModBlocks.planks,
-        });
+    addRecipe(ModItems.projectileMode, new Object[]{
+        "PPP", "PCP", "PPP",
+        'P', Blocks.STONE,
+        'C', ModItems.core,
+    });
 
-        addShapelessRecipe(ModBlocks.planks, 4, ModBlocks.log);
-        addShapelessRecipe(ModBlocks.planks, 4, ModBlocks.logFace1);
-        addShapelessRecipe(ModBlocks.planks, 4, ModBlocks.logFace2);
-        addShapelessRecipe(ModBlocks.planks, 4, ModBlocks.logFace3);
+    addRecipe(ModItems.aoeMode, new Object[]{
+        "PSP", "SCS", "PSP",
+        'P', ModItems.projectileMode,
+        'S', Blocks.STONE,
+        'C', ModItems.core,
+    });
 
-        addRecipe(ModBlocks.woodenTotem, new Object[]{
-            "WLW", "WCW", "WRW",
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', ModItems.core,
-            'R', Blocks.REDSTONE_BLOCK,
-            'W', ModBlocks.log,
-        });
+    addRecipe(ModItems.woodenASUpgrade, new Object[]{
+        "P P", "PCP", "LFL",
+        'P', Blocks.PLANKS,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', ModItems.core,
+        'F', Items.FEATHER,
+    });
 
-        addRecipe(ModBlocks.ironTotem, new Object[]{
-            "ILI", "WCW", "IRI",
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', ModBlocks.woodenTotem,
-            'R', Blocks.REDSTONE_BLOCK,
-            'W', ModBlocks.log,
-            'I', Items.IRON_INGOT,
-        });
+    addRecipe(ModItems.ironASUpgrade, new Object[]{
+        "I I", "IPI", "LFL",
+        'I', Items.IRON_INGOT,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.woodenASUpgrade,
+        'F', Items.FEATHER,
+    });
 
-        addRecipe(ModBlocks.goldTotem, new Object[]{
-            "ILI", "WCW", "IRI",
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', ModBlocks.ironTotem,
-            'R', Blocks.REDSTONE_BLOCK,
-            'W', ModBlocks.log,
-            'I', Items.GOLD_INGOT,
-        });
+    addRecipe(ModItems.goldASUpgrade, new Object[]{
+        "G G", "GPG", "LFL",
+        'G', Items.GOLD_INGOT,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.ironASUpgrade,
+        'F', Items.FEATHER,
+    });
 
-        addRecipe(ModBlocks.diamondTotem, new Object[]{
-            "ILI", "WCW", "IRI",
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', ModBlocks.goldTotem,
-            'R', Blocks.REDSTONE_BLOCK,
-            'W', ModBlocks.log,
-            'I', Items.DIAMOND,
-        });
+    addRecipe(ModItems.diamondASUpgrade, new Object[]{
+        "D D", "DPD", "LFL",
+        'D', Items.DIAMOND,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.goldASUpgrade,
+        'F', Items.FEATHER,
+    });
 
-        addRecipe(ModItems.projectileMode, new Object[]{
-            "PPP", "PCP", "PPP",
-            'P', Blocks.STONE,
-            'C', ModItems.core,
-        });
+    addRecipe(ModItems.woodenDamageUpgrade, new Object[]{
+        "P P", "PCP", "LFL",
+        'P', Blocks.PLANKS,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', ModItems.core,
+        'F', Items.ARROW,
+    });
 
-        addRecipe(ModItems.aoeMode, new Object[]{
-            "PSP", "SCS", "PSP",
-            'P', ModItems.projectileMode,
-            'S', Blocks.STONE,
-            'C', ModItems.core,
-        });
+    addRecipe(ModItems.ironDamageUpgrade, new Object[]{
+        "I I", "IPI", "LFL",
+        'I', Items.IRON_INGOT,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.woodenDamageUpgrade,
+        'F', Items.ARROW,
+    });
 
-        addRecipe(ModItems.woodenASUpgrade, new Object[]{
-            "P P", "PCP", "LFL",
-            'P', Blocks.PLANKS,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', ModItems.core,
-            'F', Items.FEATHER,
-        });
+    addRecipe(ModItems.goldDamageUpgrade, new Object[]{
+        "G G", "GPG", "LFL",
+        'G', Items.GOLD_INGOT,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.ironDamageUpgrade,
+        'F', Items.ARROW,
+    });
 
-        addRecipe(ModItems.ironASUpgrade, new Object[]{
-            "I I", "IPI", "LFL",
-            'I', Items.IRON_INGOT,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.woodenASUpgrade,
-            'F', Items.FEATHER,
-        });
+    addRecipe(ModItems.diamondDamageUpgrade, new Object[]{
+        "D D", "DPD", "LFL",
+        'D', Items.DIAMOND,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.goldDamageUpgrade,
+        'F', Items.ARROW,
+    });
 
-        addRecipe(ModItems.goldASUpgrade, new Object[]{
-            "G G", "GPG", "LFL",
-            'G', Items.GOLD_INGOT,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.ironASUpgrade,
-            'F', Items.FEATHER,
-        });
+    addRecipe(ModItems.woodenRadiusUpgrade, new Object[]{
+        "P P", "PCP", "LFL",
+        'P', Blocks.PLANKS,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', ModItems.core,
+        'F', Blocks.REDSTONE_TORCH,
+    });
 
-        addRecipe(ModItems.diamondASUpgrade, new Object[]{
-            "D D", "DPD", "LFL",
-            'D', Items.DIAMOND,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.goldASUpgrade,
-            'F', Items.FEATHER,
-        });
+    addRecipe(ModItems.ironRadiusUpgrade, new Object[]{
+        "I I", "IPI", "LFL",
+        'I', Items.IRON_INGOT,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.woodenRadiusUpgrade,
+        'F', Blocks.REDSTONE_TORCH,
+    });
 
-        addRecipe(ModItems.woodenDamageUpgrade, new Object[]{
-            "P P", "PCP", "LFL",
-            'P', Blocks.PLANKS,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', ModItems.core,
-            'F', Items.ARROW,
-        });
+    addRecipe(ModItems.goldRadiusUpgrade, new Object[]{
+        "G G", "GPG", "LFL",
+        'G', Items.GOLD_INGOT,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.ironRadiusUpgrade,
+        'F', Blocks.REDSTONE_TORCH,
+    });
 
-        addRecipe(ModItems.ironDamageUpgrade, new Object[]{
-            "I I", "IPI", "LFL",
-            'I', Items.IRON_INGOT,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.woodenDamageUpgrade,
-            'F', Items.ARROW,
-        });
+    addRecipe(ModItems.diamondRadiusUpgrade, new Object[]{
+        "D D", "DPD", "LFL",
+        'D', Items.DIAMOND,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.goldRadiusUpgrade,
+        'F', Blocks.REDSTONE_TORCH,
+    });
 
-        addRecipe(ModItems.goldDamageUpgrade, new Object[]{
-            "G G", "GPG", "LFL",
-            'G', Items.GOLD_INGOT,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.ironDamageUpgrade,
-            'F', Items.ARROW,
-        });
+    addRecipe(ModItems.poisonModifier, new Object[]{
+        "D D", "DPD", "LDL",
+        'D', Items.SPIDER_EYE,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.core,
+    });
 
-        addRecipe(ModItems.diamondDamageUpgrade, new Object[]{
-            "D D", "DPD", "LFL",
-            'D', Items.DIAMOND,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.goldDamageUpgrade,
-            'F', Items.ARROW,
-        });
+    addRecipe(ModItems.fireModifier, new Object[]{
+        "D D", "DPD", "LDL",
+        'D', Items.BLAZE_POWDER,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.core,
+    });
 
-        addRecipe(ModItems.woodenRadiusUpgrade, new Object[]{
-            "P P", "PCP", "LFL",
-            'P', Blocks.PLANKS,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', ModItems.core,
-            'F', Blocks.REDSTONE_TORCH,
-        });
+    addRecipe(ModItems.lightingModifier, new Object[]{
+        "D D", "DPD", "LDL",
+        'D', Items.BLAZE_ROD,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.core,
+    });
 
-        addRecipe(ModItems.ironRadiusUpgrade, new Object[]{
-            "I I", "IPI", "LFL",
-            'I', Items.IRON_INGOT,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.woodenRadiusUpgrade,
-            'F', Blocks.REDSTONE_TORCH,
-        });
+    addRecipe(ModItems.witherModifier, new Object[]{
+        "D D", "DPD", "LDL",
+        'D', Items.GHAST_TEAR,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.core,
+    });
 
-        addRecipe(ModItems.goldRadiusUpgrade, new Object[]{
-            "G G", "GPG", "LFL",
-            'G', Items.GOLD_INGOT,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.ironRadiusUpgrade,
-            'F', Blocks.REDSTONE_TORCH,
-        });
+    addRecipe(ModItems.slowdownModifier, new Object[]{
+        "D D", "DPD", "LDL",
+        'D', Items.STRING,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.core,
+    });
 
-        addRecipe(ModItems.diamondRadiusUpgrade, new Object[]{
-            "D D", "DPD", "LFL",
-            'D', Items.DIAMOND,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.goldRadiusUpgrade,
-            'F', Blocks.REDSTONE_TORCH,
-        });
+    addRecipe(ModItems.blindnessModifier, new Object[]{
+        "D D", "DPD", "LDL",
+        'D', Items.ENDER_EYE,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.core,
+    });
 
-        addRecipe(ModItems.poisonModifier, new Object[]{
-            "D D", "DPD", "LDL",
-            'D', Items.SPIDER_EYE,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.core,
-        });
+    addRecipe(ModItems.confusionModifier, new Object[]{
+        "D D", "DPD", "LDL",
+        'D', Items.FERMENTED_SPIDER_EYE,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.core,
+    });
 
-        addRecipe(ModItems.fireModifier, new Object[]{
-            "D D", "DPD", "LDL",
-            'D', Items.BLAZE_POWDER,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.core,
-        });
+    addRecipe(ModItems.healModifier, new Object[]{
+        "D D", "DPD", "LDL",
+        'D', Items.GOLDEN_CARROT,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.core,
+    });
 
-        addRecipe(ModItems.lightingModifier, new Object[]{
-            "D D", "DPD", "LDL",
-            'D', Items.BLAZE_ROD,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.core,
-        });
+    addRecipe(ModItems.regenerationModifier, new Object[]{
+        "D D", "DPD", "LDL",
+        'D', Items.GOLDEN_APPLE,
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.core,
+    });
 
-        addRecipe(ModItems.witherModifier, new Object[]{
-            "D D", "DPD", "LDL",
-            'D', Items.GHAST_TEAR,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.core,
-        });
+    addRecipe(ModItems.hungryModifier, new Object[]{
+        "D D", "DPD", "LDL",
+        'D', new ItemStack(Items.FISH, 1, 3),
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.core,
+    });
 
-        addRecipe(ModItems.slowdownModifier, new Object[]{
-            "D D", "DPD", "LDL",
-            'D', Items.STRING,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.core,
-        });
+    addRecipe(ModItems.waterBreathingModifier, new Object[]{
+        "D D", "DPD", "LDL",
+        'D', new ItemStack(Items.FISH, 1, 0),
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.core,
+    });
 
-        addRecipe(ModItems.blindnessModifier, new Object[]{
-            "D D", "DPD", "LDL",
-            'D', Items.ENDER_EYE,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.core,
-        });
+    addRecipe(ModItems.weaknessModifier, new Object[]{
+        "D D", "DPD", "LDL",
+        'D', new ItemStack(Items.SKULL, 1, 0),
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'P', ModItems.core,
+    });
 
-        addRecipe(ModItems.confusionModifier, new Object[]{
-            "D D", "DPD", "LDL",
-            'D', Items.FERMENTED_SPIDER_EYE,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.core,
-        });
+    addRecipe(ModItems.enemyFilter, new Object[]{
+        " L ", "BCS", " L ",
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', Blocks.STONE,
+        'S', Items.BONE,
+        'B', Items.ROTTEN_FLESH,
+    });
 
-        addRecipe(ModItems.healModifier, new Object[]{
-            "D D", "DPD", "LDL",
-            'D', Items.GOLDEN_CARROT,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.core,
-        });
+    addRecipe(ModItems.playerFilter, new Object[]{
+        " L ", "ACS", " L ",
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', Blocks.STONE,
+        'S', ModItems.selfPlayerFilter,
+        'A', ModItems.anotherPlayerFilter,
+    });
 
-        addRecipe(ModItems.regenerationModifier, new Object[]{
-            "D D", "DPD", "LDL",
-            'D', Items.GOLDEN_APPLE,
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.core,
-        });
+    addRecipe(ModItems.selfPlayerFilter, new Object[]{
+        " L ", "BCS", " L ",
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', Blocks.STONE,
+        'S', Items.WOODEN_SHOVEL,
+        'B', Items.WOODEN_AXE,
+    });
 
-        addRecipe(ModItems.hungryModifier, new Object[]{
-            "D D", "DPD", "LDL",
-            'D', new ItemStack(Items.FISH, 1, 3),
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.core,
-        });
+    addRecipe(ModItems.anotherPlayerFilter, new Object[]{
+        " L ", "BCS", " L ",
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', Blocks.STONE,
+        'S', Items.WOODEN_HOE,
+        'B', Items.WOODEN_SWORD,
+    });
 
-        addRecipe(ModItems.waterBreathingModifier, new Object[]{
-            "D D", "DPD", "LDL",
-            'D', new ItemStack(Items.FISH, 1, 0),
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.core,
-        });
+    addRecipe(ModItems.animalFilter, new Object[]{
+        " L ", "BCS", " L ",
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', Blocks.STONE,
+        'S', Blocks.WOOL,
+        'B', Items.LEATHER,
+    });
 
-        addRecipe(ModItems.weaknessModifier, new Object[]{
-            "D D", "DPD", "LDL",
-            'D', new ItemStack(Items.SKULL, 1, 0),
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'P', ModItems.core,
-        });
+    addRecipe(ModItems.waterFilter, new Object[]{
+        " L ", "BCS", " L ",
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', Blocks.STONE,
+        'S', Items.FISH,
+        'B', new ItemStack(Items.DYE, 1, 0),
+    });
 
-        addRecipe(ModItems.enemyFilter, new Object[]{
-            " L ", "BCS", " L ",
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', Blocks.STONE,
-            'S', Items.BONE,
-            'B', Items.ROTTEN_FLESH,
-        });
-
-        addRecipe(ModItems.playerFilter, new Object[]{
-            " L ", "ACS", " L ",
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', Blocks.STONE,
-            'S', ModItems.selfPlayerFilter,
-            'A', ModItems.anotherPlayerFilter,
-        });
-
-        addRecipe(ModItems.selfPlayerFilter, new Object[]{
-            " L ", "BCS", " L ",
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', Blocks.STONE,
-            'S', Items.WOODEN_SHOVEL,
-            'B', Items.WOODEN_AXE,
-        });
-
-        addRecipe(ModItems.anotherPlayerFilter, new Object[]{
-            " L ", "BCS", " L ",
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', Blocks.STONE,
-            'S', Items.WOODEN_HOE,
-            'B', Items.WOODEN_SWORD,
-        });
-
-        addRecipe(ModItems.animalFilter, new Object[]{
-            " L ", "BCS", " L ",
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', Blocks.STONE,
-            'S', Blocks.WOOL,
-            'B', Items.LEATHER,
-        });
-
-        addRecipe(ModItems.waterFilter, new Object[]{
-            " L ", "BCS", " L ",
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', Blocks.STONE,
-            'S', Items.FISH,
-            'B', new ItemStack(Items.DYE, 1, 0),
-        });
-
-        addRecipe(ModItems.slimeFilter, new Object[]{
-            " L ", "BCS", " L ",
-            'L', new ItemStack(Items.DYE, 1, 4),
-            'C', Blocks.STONE,
-            'S', Items.SLIME_BALL,
-            'B', Items.SNOWBALL,
-        });*/
-    }
+    addRecipe(ModItems.slimeFilter, new Object[]{
+        " L ", "BCS", " L ",
+        'L', new ItemStack(Items.DYE, 1, 4),
+        'C', Blocks.STONE,
+        'S', Items.SLIME_BALL,
+        'B', Items.SNOWBALL,
+    });*/
 
     public static void registerFurnaceRecipe() {
         GameRegistry.addSmelting(BlockRegistry.LOG, new ItemStack(Items.COAL, 1, 1), 0.1f);

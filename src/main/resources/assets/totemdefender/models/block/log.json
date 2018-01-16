@@ -1,11 +1,7 @@
 {
-    "parent": "block/cube",
+    "parent": "block/cube_column",
     "textures": {
-        "down": "totemdefender:blocks/log2",
-        "up": "totemdefender:blocks/log2",
-        "north": "totemdefender:blocks/log1",
-        "south": "totemdefender:blocks/log1",
-        "west": "totemdefender:blocks/log1",
-        "east": "totemdefender:blocks/log1"
+        "end": "totemdefender:blocks/log2",
+        "side": "totemdefender:blocks/log1"
     }
 }

@@ -102,14 +102,14 @@ public class BlockFenceGate extends BlockHorizontal {
         boolean flag = world.isBlockPowered(pos);
         return getDefaultState()
             .withProperty(FACING, placer.getHorizontalFacing())
-            .withProperty(OPEN, Boolean.valueOf(flag))
-            .withProperty(POWERED, Boolean.valueOf(flag))
-            .withProperty(IN_WALL, Boolean.valueOf(false));
+            .withProperty(OPEN, flag)
+            .withProperty(POWERED, flag)
+            .withProperty(IN_WALL, Boolean.FALSE);
     }
 
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (state.getValue(OPEN).booleanValue()) {
-            state = state.withProperty(OPEN, Boolean.valueOf(false));
+            state = state.withProperty(OPEN, Boolean.FALSE);
             world.setBlockState(pos, state, 10);
         } else {
             EnumFacing enumfacing = EnumFacing.fromAngle((double) playerIn.rotationYaw);
@@ -117,7 +117,7 @@ public class BlockFenceGate extends BlockHorizontal {
                 state = state.withProperty(FACING, enumfacing);
             }
 
-            state = state.withProperty(OPEN, Boolean.valueOf(true));
+            state = state.withProperty(OPEN, Boolean.TRUE);
             world.setBlockState(pos, state, 10);
         }
 
@@ -129,8 +129,8 @@ public class BlockFenceGate extends BlockHorizontal {
         if (!world.isRemote) {
             boolean flag = world.isBlockPowered(pos);
             if (state.getValue(POWERED).booleanValue() != flag) {
-                world.setBlockState(pos, state.withProperty(POWERED, Boolean.valueOf(flag))
-                    .withProperty(OPEN, Boolean.valueOf(flag)), 2);
+                world.setBlockState(pos, state.withProperty(POWERED, flag)
+                    .withProperty(OPEN, flag), 2);
 
                 if (state.getValue(OPEN).booleanValue() != flag) {
                     world.playEvent(null, flag ? 1008 : 1014, pos, 0);
@@ -147,8 +147,8 @@ public class BlockFenceGate extends BlockHorizontal {
     public IBlockState getStateFromMeta(int meta) {
         return getDefaultState()
             .withProperty(FACING, EnumFacing.getHorizontal(meta))
-            .withProperty(OPEN, Boolean.valueOf((meta & 4) != 0))
-            .withProperty(POWERED, Boolean.valueOf((meta & 8) != 0));
+            .withProperty(OPEN, (meta & 4) != 0)
+            .withProperty(POWERED, (meta & 8) != 0);
     }
 
     public int getMetaFromState(IBlockState state) {

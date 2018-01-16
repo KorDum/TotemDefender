@@ -1,6 +1,7 @@
 package ru.kordum.totemDefender.handler;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -96,5 +97,9 @@ public class BlockRegistry {
         block.setRegistryName(name);
         block.setCreativeTab(TotemDefender.tab);
         return block;
+    }
+
+    public static void registerRenders() {
+        ((BlockLeaves) LEAVES).setGraphicsLevel(Minecraft.isFancyGraphicsEnabled());
     }
 }
