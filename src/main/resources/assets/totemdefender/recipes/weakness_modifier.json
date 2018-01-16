@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "P P",
+        "PCP",
+        "LPL"
+    ],
+    "key": {
+        "P": {
+            "item": "minecraft:skull",
+            "data": 0
+        },
+        "C": {
+            "item": "totemdefender:core"
+        },
+        "L": {
+            "item": "minecraft:dye",
+            "data": 4
+        }
+    },
+    "result": {
+        "item": "totemdefender:weakness_upgrade",
+        "count": 1
+    }
+}

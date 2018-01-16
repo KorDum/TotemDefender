@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "P P",
+        "PCP",
+        "LPL"
+    ],
+    "key": {
+        "P": {
+            "item": "minecraft:ghast_tear"
+        },
+        "C": {
+            "item": "totemdefender:core"
+        },
+        "L": {
+            "item": "minecraft:dye",
+            "data": 4
+        }
+    },
+    "result": {
+        "item": "totemdefender:wither_upgrade",
+        "count": 1
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " L ",
+        "BCS",
+        " L "
+    ],
+    "key": {
+        "L": {
+            "item": "minecraft:dye",
+            "data": 4
+        },
+        "C": {
+            "item": "minecraft:stone",
+            "data": 0
+        },
+        "B": {
+            "item": "minecraft:dye",
+            "data": 0
+        },
+        "S": {
+            "item": "minecraft:fish",
+            "data": 0
+        }
+    },
+    "result": {
+        "item": "totemdefender:water_filter",
+        "count": 1
+    }
+}

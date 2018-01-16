@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "P P",
+        "PCP",
+        "LFL"
+    ],
+    "key": {
+        "P": {
+            "item": "minecraft:iron_ingot"
+        },
+        "C": {
+            "item": "totemdefender:wooden_as_upgrade"
+        },
+        "L": {
+            "item": "minecraft:dye",
+            "data": 4
+        },
+        "F": {
+            "item": "minecraft:feather"
+        }
+    },
+    "result": {
+        "item": "totemdefender:iron_as_upgrade",
+        "count": 1
+    }
+}

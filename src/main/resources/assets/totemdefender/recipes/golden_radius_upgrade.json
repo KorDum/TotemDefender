@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "P P",
+        "PCP",
+        "LFL"
+    ],
+    "key": {
+        "P": {
+            "item": "minecraft:gold_ingot"
+        },
+        "C": {
+            "item": "totemdefender:iron_radius_upgrade"
+        },
+        "L": {
+            "item": "minecraft:dye",
+            "data": 4
+        },
+        "F": {
+            "item": "minecraft:redstone_torch"
+        }
+    },
+    "result": {
+        "item": "totemdefender:gold_radius_upgrade",
+        "count": 1
+    }
+}

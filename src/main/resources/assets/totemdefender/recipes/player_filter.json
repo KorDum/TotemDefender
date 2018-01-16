@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " L ",
+        "BCS",
+        " L "
+    ],
+    "key": {
+        "L": {
+            "item": "minecraft:dye",
+            "data": 4
+        },
+        "C": {
+            "item": "minecraft:stone",
+            "data": 0
+        },
+        "B": {
+            "item": "totemdefender:another_player_filter"
+        },
+        "S": {
+            "item": "totemdefender:self_player_filter"
+        }
+    },
+    "result": {
+        "item": "totemdefender:player_filter",
+        "count": 1
+    }
+}
