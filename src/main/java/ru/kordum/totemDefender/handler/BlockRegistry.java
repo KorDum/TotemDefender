@@ -1,7 +1,6 @@
 package ru.kordum.totemDefender.handler;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -100,6 +99,8 @@ public class BlockRegistry {
     }
 
     public static void registerRenders() {
-        ((BlockLeaves) LEAVES).setGraphicsLevel(Minecraft.isFancyGraphicsEnabled());
+        // TODO fix leaves opacity
+        // ((BlockLeaves) LEAVES).setGraphicsLevel(Minecraft.isFancyGraphicsEnabled());
+        ((BlockLeaves) LEAVES).setGraphicsLevel(true);
     }
 }
