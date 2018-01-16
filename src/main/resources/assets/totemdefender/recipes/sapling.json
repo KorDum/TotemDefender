@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "RRR",
+        "RSR",
+        "RRR"
+    ],
+    "key": {
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "S": {
+            "item": "minecraft:sapling",
+            "data": 1
+        }
+    },
+    "result": {
+        "item": "totemdefender:sapling",
+        "count": 1
+    }
+}

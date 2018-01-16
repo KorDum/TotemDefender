@@ -3,11 +3,9 @@ package ru.kordum.totemDefender;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import ru.kordum.totemDefender.common.CommonProxy;
-import ru.kordum.totemDefender.common.ModCreativeTab;
+import ru.kordum.totemDefender.proxy.CommonProxy;
 
 @Mod(
     modid = TotemDefender.MODID,
@@ -20,18 +18,12 @@ public class TotemDefender {
     public static final String VERSION = "1.2.4";
 
     @SidedProxy(
-        clientSide = "ru.kordum.totemDefender.client.ClientProxy",
-        serverSide = "ru.kordum.totemDefender.common.CommonProxy"
+        clientSide = "ru.kordum.totemDefender.proxy.ClientProxy",
+        serverSide = "ru.kordum.totemDefender.proxy.ServerProxy"
     )
     public static CommonProxy proxy;
     public static ModCreativeTab tab;
     public static TotemDefender instance;
-
-    //---------------------------------------------------------------------------
-    //
-    // CONSTRUCTOR
-    //
-    //---------------------------------------------------------------------------
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -44,10 +36,5 @@ public class TotemDefender {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init();
-    }
-
-    @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
-        // ignored
     }
 }

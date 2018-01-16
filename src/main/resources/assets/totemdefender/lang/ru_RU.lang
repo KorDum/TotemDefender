@@ -60,7 +60,7 @@ item.knockback_upgrade.name=Модификатор: отброс
 
 prop.attack_speed=%s скорость атаки
 prop.damage=%s урон
-prop.radius=%s блоков радиус
+prop.radius=%s радиус
 prop.hold_more=<Зажмите SHIFT Для подробностей>
 
 gui.wooden_totem=Деревянный тотем

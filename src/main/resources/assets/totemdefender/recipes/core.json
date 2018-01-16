@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "L L",
+        "LEL",
+        "LRL"
+    ],
+    "key": {
+        "L": {
+            "item": "minecraft:dye",
+            "data": 4
+        },
+        "E": {
+            "item": "minecraft:ender_pearl"
+        },
+        "R": {
+            "item": "minecraft:redstone_block"
+        }
+    },
+    "result": {
+        "item": "totemdefender:core",
+        "count": 1
+    }
+}

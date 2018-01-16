@@ -60,7 +60,7 @@ item.knockback_upgrade.name=Knockback Modifier
 
 prop.attack_speed=%s Attack Speed
 prop.damage=%s Damage
-prop.radius=%s blocks of Radius
+prop.radius=%s Radius
 prop.hold_more=<Hold shift for details>
 
 gui.wooden_totem=Basic Totem
