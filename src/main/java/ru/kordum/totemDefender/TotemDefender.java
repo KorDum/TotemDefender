@@ -30,7 +30,6 @@ public class TotemDefender {
         instance = this;
         tab = new ModCreativeTab();
         proxy.preInit(event.getSuggestedConfigurationFile());
-        proxy.registerRenderThings();
     }
 
     @Mod.EventHandler
