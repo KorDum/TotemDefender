@@ -67,7 +67,7 @@ gui.wooden_totem=Einfacher Totem
 gui.iron_totem=Eisentotem
 gui.golden_totem=Goldtotem
 gui.diamond_totem=Diamanttotem
-gui.attack_speed=%ss
+gui.attack_speed=%s
 gui.damage=%s
 gui.radius=%s
 

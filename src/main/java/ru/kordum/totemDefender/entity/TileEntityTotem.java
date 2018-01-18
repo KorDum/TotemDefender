@@ -130,7 +130,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
 
     public void updateMode() {
         ItemStack stack = handler.getStackInSlot(0);
-        if (stack != null && !stack.isEmpty()) {
+        if (!stack.isEmpty()) {
             ItemMode item = (ItemMode) stack.getItem();
             mode = item.getMode();
         } else {
@@ -170,7 +170,6 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         if ((filter & ItemFilter.WATER_MOB) == ItemFilter.WATER_MOB) {
             list.addAll(world.getEntitiesWithinAABB(EntityWaterMob.class, axis));
         }
-
         return list;
     }
 

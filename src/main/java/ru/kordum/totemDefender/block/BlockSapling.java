@@ -15,6 +15,7 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 import java.util.Random;
 
+import ru.kordum.totemDefender.config.ConfigSapling;
 import ru.kordum.totemDefender.worldgen.WorldGenTotemTree;
 
 public class BlockSapling extends BlockBush implements IGrowable {
@@ -22,7 +23,12 @@ public class BlockSapling extends BlockBush implements IGrowable {
     public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 1);
     protected static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.09999999403953552D, 0.0D, 0.09999999403953552D, 0.8999999761581421D, 0.800000011920929D, 0.8999999761581421D);
 
-    public BlockSapling() {
+    private double growChance;
+    private double bonemealChance;
+
+    public BlockSapling(ConfigSapling config) {
+        growChance = config.getGrowChance();
+        bonemealChance = config.getBonemealChance();
         setDefaultState(
             blockState.getBaseState()
                 .withProperty(TYPE, BlockPlanks.EnumType.TOTEM)
@@ -34,7 +40,7 @@ public class BlockSapling extends BlockBush implements IGrowable {
     public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
         if (!world.isRemote) {
             super.updateTick(world, pos, state, rand);
-            if (world.getLightFromNeighbors(pos.up()) >= 9 && rand.nextInt(300) == 0) {
+            if (world.getLightFromNeighbors(pos.up()) >= 9 && rand.nextDouble() < growChance) {
                 grow(world, rand, pos, state);
             }
         }
@@ -77,6 +83,6 @@ public class BlockSapling extends BlockBush implements IGrowable {
 
     @Override
     public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-        return (double) worldIn.rand.nextFloat() < 0.02;
+        return (double) worldIn.rand.nextFloat() < bonemealChance;
     }
 }

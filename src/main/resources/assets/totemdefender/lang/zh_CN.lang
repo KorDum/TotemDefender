@@ -67,7 +67,7 @@ gui.wooden_totem=木质图腾
 gui.iron_totem=铁质图腾
 gui.golden_totem=金质图腾
 gui.diamond_totem=钻石图腾
-gui.attack_speed=%ss
+gui.attack_speed=%s
 gui.damage=%s
 gui.radius=%s
 

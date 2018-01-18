@@ -9,6 +9,9 @@ import java.io.File;
 public class Config extends Configuration {
     private static final String TOTEM_CATEGORY = "totem";
     private static final String UPGRADE_CATEGORY = "upgrade";
+    private static final String MISC_CATEGORY = "misc";
+
+    private static final String SAPLING_CATEGORY = "sapling";
 
     private static final String WOODEN_TOTEM_CATEGORY = "woodenTotem";
     private static final String IRON_TOTEM_CATEGORY = "ironTotem";
@@ -50,6 +53,9 @@ public class Config extends Configuration {
     private static final String RADIUS_PARAM = "radius";
     private static final String PERCENT_PARAM = "percent";
 
+    private static final String GROW_CHANCE_PARAM = "growChance";
+    private static final String BONEMEAL_CHANCE_PARAM = "bonemealChance";
+
     public ConfigTotem woodenTotem;
     public ConfigTotem ironTotem;
     public ConfigTotem goldenTotem;
@@ -85,34 +91,46 @@ public class Config extends Configuration {
     public ConfigUpgrade weaknessModifier;
     public ConfigUpgrade knockbackModifier;
 
+    public ConfigSapling sapling;
+
     public Config(File file) {
         super(file);
     }
 
     private void createDefaultTotemParams(ConfigCategory category, ConfigTotem config) {
         Property attackSpeedProperty = new Property(ATTACK_SPEED_PARAM, String.valueOf(config.getAttackSpeed()), Property.Type.DOUBLE);
-        Property damageProperty = new Property(DAMAGE_PARAM, String.valueOf(config.getDamage()), Property.Type.DOUBLE);
-        Property radiusProperty = new Property(RADIUS_PARAM, String.valueOf(config.getRadius()), Property.Type.INTEGER);
+        attackSpeedProperty.setComment("Attack speed. The higher the value, the faster");
         category.put(ATTACK_SPEED_PARAM, attackSpeedProperty);
+
+        Property damageProperty = new Property(DAMAGE_PARAM, String.valueOf(config.getDamage()), Property.Type.DOUBLE);
+        damageProperty.setComment("Amount of hitpoints for one shot");
         category.put(DAMAGE_PARAM, damageProperty);
+
+        Property radiusProperty = new Property(RADIUS_PARAM, String.valueOf(config.getRadius()), Property.Type.INTEGER);
+        radiusProperty.setComment("Amount of radius in blocks for one shot");
         category.put(RADIUS_PARAM, radiusProperty);
     }
 
     private void createUpgradeParams(ConfigCategory category, ConfigUpgrade config) {
         Property attackSpeedProperty = new Property(ATTACK_SPEED_PARAM, String.valueOf(config.getAttackSpeed()), Property.Type.DOUBLE);
-        Property damageProperty = new Property(DAMAGE_PARAM, String.valueOf(config.getDamage()), Property.Type.DOUBLE);
-        Property radiusProperty = new Property(RADIUS_PARAM, String.valueOf(config.getRadius()), Property.Type.INTEGER);
-        Property percentProperty = new Property(PERCENT_PARAM, String.valueOf(config.isPercent()), Property.Type.BOOLEAN);
+        attackSpeedProperty.setComment("Attack speed. The higher the value, the faster");
         category.put(ATTACK_SPEED_PARAM, attackSpeedProperty);
+
+        Property damageProperty = new Property(DAMAGE_PARAM, String.valueOf(config.getDamage()), Property.Type.DOUBLE);
+        damageProperty.setComment("Amount of hitpoints for one shot");
         category.put(DAMAGE_PARAM, damageProperty);
+
+        Property radiusProperty = new Property(RADIUS_PARAM, String.valueOf(config.getRadius()), Property.Type.INTEGER);
+        radiusProperty.setComment("Amount of radius in blocks for one shot");
         category.put(RADIUS_PARAM, radiusProperty);
+
+        Property percentProperty = new Property(PERCENT_PARAM, String.valueOf(config.isPercent()), Property.Type.BOOLEAN);
+        percentProperty.setComment("Understand values as percents");
         category.put(PERCENT_PARAM, percentProperty);
     }
 
-    private ConfigTotem createTotemConfig(String subCategory, float defaultSpeed, float defaultDamage,
-        int defaultRadius) {
+    private ConfigTotem createTotemConfig(String subCategory, float defaultSpeed, float defaultDamage, int defaultRadius) {
         ConfigCategory category = getCategory(TOTEM_CATEGORY + "." + subCategory);
-
         if (category.isEmpty()) {
             ConfigTotem totemConfig = new ConfigTotem(defaultSpeed, defaultDamage, defaultRadius);
             createDefaultTotemParams(category, totemConfig);
@@ -124,14 +142,12 @@ public class Config extends Configuration {
         return new ConfigTotem(speed, damage, radius);
     }
 
-    private ConfigUpgrade createUpgradeConfig(String subCategory, float defaultSpeed, float defaultDamage,
-        int defaultRadius, boolean isPercent) {
+    private ConfigUpgrade createUpgradeConfig(String subCategory, float defaultSpeed, float defaultDamage, int defaultRadius, boolean isPercent) {
         ConfigCategory category = getCategory(UPGRADE_CATEGORY + "." + subCategory);
-
         if (category.isEmpty()) {
-            ConfigUpgrade upgradeConfig = new ConfigUpgrade(defaultSpeed, defaultDamage, defaultRadius, isPercent);
-            createUpgradeParams(category, upgradeConfig);
-            return upgradeConfig;
+            ConfigUpgrade config = new ConfigUpgrade(defaultSpeed, defaultDamage, defaultRadius, isPercent);
+            createUpgradeParams(category, config);
+            return config;
         }
 
         float speed = (float) category.get(ATTACK_SPEED_PARAM).getDouble();
@@ -141,9 +157,27 @@ public class Config extends Configuration {
         return new ConfigUpgrade(speed, damage, radius, percent);
     }
 
-    private ConfigUpgrade createUpgradeConfig(String subCategory, float defaultSpeed, float defaultDamage,
-        int defaultRadius) {
+    private ConfigUpgrade createUpgradeConfig(String subCategory, float defaultSpeed, float defaultDamage, int defaultRadius) {
         return createUpgradeConfig(subCategory, defaultSpeed, defaultDamage, defaultRadius, false);
+    }
+
+    private ConfigSapling createSaplingConfig(double defaultGrowChance, double defaultBonemealChance) {
+        ConfigCategory category = getCategory(MISC_CATEGORY + "." + SAPLING_CATEGORY);
+        if (category.isEmpty()) {
+            ConfigSapling config = new ConfigSapling(defaultGrowChance, defaultBonemealChance);
+            Property growChanceProperty = new Property(GROW_CHANCE_PARAM, String.valueOf(defaultGrowChance), Property.Type.DOUBLE);
+            growChanceProperty.setComment("Chance grow tree naturally (from 0 to 1)");
+            category.put(GROW_CHANCE_PARAM, growChanceProperty);
+
+            Property bonemealChanceProperty = new Property(BONEMEAL_CHANCE_PARAM, String.valueOf(defaultBonemealChance), Property.Type.DOUBLE);
+            bonemealChanceProperty.setComment("Chance grow tree with Bonemeal (from 0 to 1)");
+            category.put(BONEMEAL_CHANCE_PARAM, bonemealChanceProperty);
+            return config;
+        }
+
+        double growChance = category.get(GROW_CHANCE_PARAM).getDouble();
+        double bonemealChance = category.get(BONEMEAL_CHANCE_PARAM).getDouble();
+        return new ConfigSapling(growChance, bonemealChance);
     }
 
     public void loadAndSave() {
@@ -183,6 +217,8 @@ public class Config extends Configuration {
         waterBreathingModifier = createUpgradeConfig(WATER_BREATHING_MODIFIER_CATEGORY, -10, 0, 0, true);
         weaknessModifier = createUpgradeConfig(WEAKNESS_MODIFIER_CATEGORY, -10, 0, 0, true);
         knockbackModifier = createUpgradeConfig(KNOCKBACK_MODIFIER_CATEGORY, -50, 0, 0, true);
+
+        sapling = createSaplingConfig(0.002, 0.01);
 
         save();
     }
