@@ -1,8 +1,6 @@
 package ru.kordum.totemDefender.config;
 
-import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
 
 import java.io.File;
 
@@ -51,7 +49,9 @@ public class Config extends Configuration {
     private static final String ATTACK_SPEED_PARAM = "attackSpeed";
     private static final String DAMAGE_PARAM = "damage";
     private static final String RADIUS_PARAM = "radius";
-    private static final String PERCENT_PARAM = "percent";
+    private static final String ATTACK_SPEED_PERCENT_PARAM = "attackSpeedPercent";
+    private static final String DAMAGE_PERCENT_PARAM = "damagePercent";
+    private static final String RADIUS_PERCENT_PARAM = "radiusPercent";
 
     private static final String GROW_CHANCE_PARAM = "growChance";
     private static final String BONEMEAL_CHANCE_PARAM = "bonemealChance";
@@ -95,131 +95,65 @@ public class Config extends Configuration {
 
     public Config(File file) {
         super(file);
-    }
-
-    private void createDefaultTotemParams(ConfigCategory category, ConfigTotem config) {
-        Property attackSpeedProperty = new Property(ATTACK_SPEED_PARAM, String.valueOf(config.getAttackSpeed()), Property.Type.DOUBLE);
-        attackSpeedProperty.setComment("Attack speed. The higher the value, the faster");
-        category.put(ATTACK_SPEED_PARAM, attackSpeedProperty);
-
-        Property damageProperty = new Property(DAMAGE_PARAM, String.valueOf(config.getDamage()), Property.Type.DOUBLE);
-        damageProperty.setComment("Amount of hitpoints for one shot");
-        category.put(DAMAGE_PARAM, damageProperty);
-
-        Property radiusProperty = new Property(RADIUS_PARAM, String.valueOf(config.getRadius()), Property.Type.INTEGER);
-        radiusProperty.setComment("Amount of radius in blocks for one shot");
-        category.put(RADIUS_PARAM, radiusProperty);
-    }
-
-    private void createUpgradeParams(ConfigCategory category, ConfigUpgrade config) {
-        Property attackSpeedProperty = new Property(ATTACK_SPEED_PARAM, String.valueOf(config.getAttackSpeed()), Property.Type.DOUBLE);
-        attackSpeedProperty.setComment("Attack speed. The higher the value, the faster");
-        category.put(ATTACK_SPEED_PARAM, attackSpeedProperty);
-
-        Property damageProperty = new Property(DAMAGE_PARAM, String.valueOf(config.getDamage()), Property.Type.DOUBLE);
-        damageProperty.setComment("Amount of hitpoints for one shot");
-        category.put(DAMAGE_PARAM, damageProperty);
-
-        Property radiusProperty = new Property(RADIUS_PARAM, String.valueOf(config.getRadius()), Property.Type.INTEGER);
-        radiusProperty.setComment("Amount of radius in blocks for one shot");
-        category.put(RADIUS_PARAM, radiusProperty);
-
-        Property percentProperty = new Property(PERCENT_PARAM, String.valueOf(config.isPercent()), Property.Type.BOOLEAN);
-        percentProperty.setComment("Understand values as percents");
-        category.put(PERCENT_PARAM, percentProperty);
-    }
-
-    private ConfigTotem createTotemConfig(String subCategory, float defaultSpeed, float defaultDamage, int defaultRadius) {
-        ConfigCategory category = getCategory(TOTEM_CATEGORY + "." + subCategory);
-        if (category.isEmpty()) {
-            ConfigTotem totemConfig = new ConfigTotem(defaultSpeed, defaultDamage, defaultRadius);
-            createDefaultTotemParams(category, totemConfig);
-        }
-
-        float speed = (float) category.get(ATTACK_SPEED_PARAM).getDouble();
-        float damage = (float) category.get(DAMAGE_PARAM).getDouble();
-        int radius = category.get(RADIUS_PARAM).getInt();
-        return new ConfigTotem(speed, damage, radius);
-    }
-
-    private ConfigUpgrade createUpgradeConfig(String subCategory, float defaultSpeed, float defaultDamage, int defaultRadius, boolean isPercent) {
-        ConfigCategory category = getCategory(UPGRADE_CATEGORY + "." + subCategory);
-        if (category.isEmpty()) {
-            ConfigUpgrade config = new ConfigUpgrade(defaultSpeed, defaultDamage, defaultRadius, isPercent);
-            createUpgradeParams(category, config);
-            return config;
-        }
-
-        float speed = (float) category.get(ATTACK_SPEED_PARAM).getDouble();
-        float damage = (float) category.get(DAMAGE_PARAM).getDouble();
-        int radius = category.get(RADIUS_PARAM).getInt();
-        boolean percent = category.get(PERCENT_PARAM).getBoolean();
-        return new ConfigUpgrade(speed, damage, radius, percent);
-    }
-
-    private ConfigUpgrade createUpgradeConfig(String subCategory, float defaultSpeed, float defaultDamage, int defaultRadius) {
-        return createUpgradeConfig(subCategory, defaultSpeed, defaultDamage, defaultRadius, false);
-    }
-
-    private ConfigSapling createSaplingConfig(double defaultGrowChance, double defaultBonemealChance) {
-        ConfigCategory category = getCategory(MISC_CATEGORY + "." + SAPLING_CATEGORY);
-        if (category.isEmpty()) {
-            ConfigSapling config = new ConfigSapling(defaultGrowChance, defaultBonemealChance);
-            Property growChanceProperty = new Property(GROW_CHANCE_PARAM, String.valueOf(defaultGrowChance), Property.Type.DOUBLE);
-            growChanceProperty.setComment("Chance grow tree naturally (from 0 to 1)");
-            category.put(GROW_CHANCE_PARAM, growChanceProperty);
-
-            Property bonemealChanceProperty = new Property(BONEMEAL_CHANCE_PARAM, String.valueOf(defaultBonemealChance), Property.Type.DOUBLE);
-            bonemealChanceProperty.setComment("Chance grow tree with Bonemeal (from 0 to 1)");
-            category.put(BONEMEAL_CHANCE_PARAM, bonemealChanceProperty);
-            return config;
-        }
-
-        double growChance = category.get(GROW_CHANCE_PARAM).getDouble();
-        double bonemealChance = category.get(BONEMEAL_CHANCE_PARAM).getDouble();
-        return new ConfigSapling(growChance, bonemealChance);
-    }
-
-    public void loadAndSave() {
-        load();
-
         woodenTotem = createTotemConfig(WOODEN_TOTEM_CATEGORY, 0.4f, 5, 3);
         ironTotem = createTotemConfig(IRON_TOTEM_CATEGORY, 0.5f, 6, 3);
         goldenTotem = createTotemConfig(GOLDEN_TOTEM_CATEGORY, 0.6f, 7, 4);
         diamondTotem = createTotemConfig(DIAMOND_TOTEM_CATEGORY, 0.8f, 8, 4);
 
-        woodenASUpgrade = createUpgradeConfig(WOODEN_AS_UPGRADE_CATEGORY, 0.1f, -2, 0);
-        woodenDamageUpgrade = createUpgradeConfig(WOODEN_DAMAGE_UPGRADE_CATEGORY, -0.01f, 1, 0);
-        woodenRadiusUpgrade = createUpgradeConfig(WOODEN_RADIUS_UPGRADE_CATEGORY, -0.1f, -3, 1);
+        woodenASUpgrade = createUpgradeConfig(WOODEN_AS_UPGRADE_CATEGORY, 0.1f, false, -2, false, 0, false);
+        woodenDamageUpgrade = createUpgradeConfig(WOODEN_DAMAGE_UPGRADE_CATEGORY, -0.01f, false, 1, false, 0, false);
+        woodenRadiusUpgrade = createUpgradeConfig(WOODEN_RADIUS_UPGRADE_CATEGORY, -0.1f, false, -3, false, 1, false);
 
-        ironASUpgrade = createUpgradeConfig(IRON_AS_UPGRADE_CATEGORY, 0.2f, -2, 0);
-        ironDamageUpgrade = createUpgradeConfig(IRON_DAMAGE_UPGRADE_CATEGORY, -0.05f, 2, 0);
-        ironRadiusUpgrade = createUpgradeConfig(IRON_RADIUS_UPGRADE_CATEGORY, -0.1f, -2, 1);
+        ironASUpgrade = createUpgradeConfig(IRON_AS_UPGRADE_CATEGORY, 0.2f, false, -2, false, 0, false);
+        ironDamageUpgrade = createUpgradeConfig(IRON_DAMAGE_UPGRADE_CATEGORY, -0.05f, false, 2, false, 0, false);
+        ironRadiusUpgrade = createUpgradeConfig(IRON_RADIUS_UPGRADE_CATEGORY, -0.1f, false, -2, false, 1, false);
 
-        goldASUpgrade = createUpgradeConfig(GOLD_AS_UPGRADE_CATEGORY, 0.2f, -1f, 0);
-        goldDamageUpgrade = createUpgradeConfig(GOLD_DAMAGE_UPGRADE_CATEGORY, -0.1f, 3, 0);
-        goldRadiusUpgrade = createUpgradeConfig(GOLD_RADIUS_UPGRADE_CATEGORY, -0.1f, -1, 2);
+        goldASUpgrade = createUpgradeConfig(GOLD_AS_UPGRADE_CATEGORY, 0.2f, false, -1f, false, 0, false);
+        goldDamageUpgrade = createUpgradeConfig(GOLD_DAMAGE_UPGRADE_CATEGORY, -0.1f, false, 3, false, 0, false);
+        goldRadiusUpgrade = createUpgradeConfig(GOLD_RADIUS_UPGRADE_CATEGORY, -0.1f, false, -1, false, 2, false);
 
-        diamondASUpgrade = createUpgradeConfig(DIAMOND_AS_UPGRADE_CATEGORY, 0.3f, 0, 0);
-        diamondDamageUpgrade = createUpgradeConfig(DIAMOND_DAMAGE_UPGRADE_CATEGORY, -0.15f, 4, 0);
-        diamondRadiusUpgrade = createUpgradeConfig(DIAMOND_RADIUS_UPGRADE_CATEGORY, -0.1f, 0, 2);
+        diamondASUpgrade = createUpgradeConfig(DIAMOND_AS_UPGRADE_CATEGORY, 0.3f, false, 0, false, 0, false);
+        diamondDamageUpgrade = createUpgradeConfig(DIAMOND_DAMAGE_UPGRADE_CATEGORY, -0.15f, false, 4, false, 0, false);
+        diamondRadiusUpgrade = createUpgradeConfig(DIAMOND_RADIUS_UPGRADE_CATEGORY, -0.1f, false, 0, false, 2, false);
 
-        poisonModifier = createUpgradeConfig(POISON_MODIFIER_CATEGORY, -30, -25, 0, true);
-        fireModifier = createUpgradeConfig(FIRE_MODIFIER_CATEGORY, -25, -30, 0, true);
-        lightingModifier = createUpgradeConfig(LIGHTING_MODIFIER_CATEGORY, -50, 0, 0, true);
-        witherModifier = createUpgradeConfig(WITHER_MODIFIER_CATEGORY, -50, 0, 0, true);
-        slowdownModifier = createUpgradeConfig(SLOWDOWN_MODIFIER_CATEGORY, -10, 0, 0, true);
-        blindnessModifier = createUpgradeConfig(BLINDNESS_MODIFIER_CATEGORY, -10, 0, 0, true);
-        confusionModifier = createUpgradeConfig(CONFUSION_MODIFIER_CATEGORY, -10, 0, 0, true);
-        healModifier = createUpgradeConfig(HEAL_MODIFIER_CATEGORY, -50, 0, -25, true);
-        hungryModifier = createUpgradeConfig(HUNGRY_MODIFIER_CATEGORY, -10, 0, 0, true);
-        regenerationModifier = createUpgradeConfig(REGENERATION_MODIFIER_CATEGORY, -10, 0, 0, true);
-        waterBreathingModifier = createUpgradeConfig(WATER_BREATHING_MODIFIER_CATEGORY, -10, 0, 0, true);
-        weaknessModifier = createUpgradeConfig(WEAKNESS_MODIFIER_CATEGORY, -10, 0, 0, true);
-        knockbackModifier = createUpgradeConfig(KNOCKBACK_MODIFIER_CATEGORY, -50, 0, 0, true);
+        poisonModifier = createUpgradeConfig(POISON_MODIFIER_CATEGORY, -30, true, -25, true, 0, false);
+        fireModifier = createUpgradeConfig(FIRE_MODIFIER_CATEGORY, -25, true, -30, true, 0, false);
+        lightingModifier = createUpgradeConfig(LIGHTING_MODIFIER_CATEGORY, -50, true, 0, false, 0, false);
+        witherModifier = createUpgradeConfig(WITHER_MODIFIER_CATEGORY, -50, true, 0, false, 0, false);
+        slowdownModifier = createUpgradeConfig(SLOWDOWN_MODIFIER_CATEGORY, -10, true, 0, false, 0, false);
+        blindnessModifier = createUpgradeConfig(BLINDNESS_MODIFIER_CATEGORY, -10, true, 0, false, 0, false);
+        confusionModifier = createUpgradeConfig(CONFUSION_MODIFIER_CATEGORY, -10, true, 0, false, 0, false);
+        healModifier = createUpgradeConfig(HEAL_MODIFIER_CATEGORY, -50, true, 0, false, -25, true);
+        hungryModifier = createUpgradeConfig(HUNGRY_MODIFIER_CATEGORY, -10, true, 0, false, 0, false);
+        regenerationModifier = createUpgradeConfig(REGENERATION_MODIFIER_CATEGORY, -10, true, 0, false, 0, false);
+        waterBreathingModifier = createUpgradeConfig(WATER_BREATHING_MODIFIER_CATEGORY, -10, true, 0, false, 0, false);
+        weaknessModifier = createUpgradeConfig(WEAKNESS_MODIFIER_CATEGORY, -10, true, 0, false, 0, false);
+        knockbackModifier = createUpgradeConfig(KNOCKBACK_MODIFIER_CATEGORY, -50, true, 0, false, 0, false);
 
-        sapling = createSaplingConfig(0.002, 0.01);
-
+        sapling = createSaplingConfig(0.002F, 0.01F);
         save();
+    }
+
+    private ConfigTotem createTotemConfig(String subCategory, float speed, float damage, int radius) {
+        speed = getFloat(ATTACK_SPEED_PARAM, TOTEM_CATEGORY + "." + subCategory, speed, 0, 3, "Attack speed. The higher the value, the faster");
+        damage = getFloat(DAMAGE_PARAM, TOTEM_CATEGORY + "." + subCategory, damage, 0, 1000, "Amount of hitpoints for one shot");
+        radius = getInt(RADIUS_PARAM, TOTEM_CATEGORY + "." + subCategory, radius, 0, 16, "Amount of radius in blocks for one shot");
+        return new ConfigTotem(speed, damage, radius);
+    }
+
+    private ConfigUpgrade createUpgradeConfig(String subCategory, float speed, boolean speedPercent, float damage, boolean damagePercent, int radius, boolean radiusPercent) {
+        speed = getFloat(ATTACK_SPEED_PARAM, UPGRADE_CATEGORY + "." + subCategory, speed, -100, 100, "Attack speed. The higher the value, the faster");
+        speedPercent = getBoolean(ATTACK_SPEED_PERCENT_PARAM, UPGRADE_CATEGORY + "." + subCategory, speedPercent, "Value as percent");
+        damage = getFloat(DAMAGE_PARAM, UPGRADE_CATEGORY + "." + subCategory, damage, -100, 1000, "Amount of hitpoints for one shot");
+        damagePercent = getBoolean(DAMAGE_PERCENT_PARAM, UPGRADE_CATEGORY + "." + subCategory, damagePercent, "Value as percent");
+        radius = getInt(RADIUS_PARAM, UPGRADE_CATEGORY + "." + subCategory, radius, -100, 100, "Amount of radius in blocks for one shot");
+        radiusPercent = getBoolean(RADIUS_PERCENT_PARAM, UPGRADE_CATEGORY + "." + subCategory, radiusPercent, "Value as percent");
+        return new ConfigUpgrade(speed, speedPercent, damage, damagePercent, radius, radiusPercent);
+    }
+
+    private ConfigSapling createSaplingConfig(float growChance, float bonemealChance) {
+        growChance = getFloat(GROW_CHANCE_PARAM, MISC_CATEGORY + "." + SAPLING_CATEGORY, growChance, 0, 1, "Chance grow tree naturally");
+        bonemealChance = getFloat(BONEMEAL_CHANCE_PARAM, MISC_CATEGORY + "." + SAPLING_CATEGORY, bonemealChance, 0, 1, "Chance grow tree with Bonemeal");
+        return new ConfigSapling(growChance, bonemealChance);
     }
 }

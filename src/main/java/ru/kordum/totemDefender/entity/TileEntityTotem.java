@@ -85,13 +85,21 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
             }
 
             ItemUpgrade item = (ItemUpgrade) stack.getItem();
-            if (item.isModifiersInPercent()) {
+            if (item.isAttackSpeedPercent()) {
                 attackSpeed += block.getAttackSpeed() * item.getAttackSpeed() / 100;
-                damage += block.getDamage() * item.getDamage() / 100;
-                radius += Math.ceil(block.getRadius() * item.getRadius() / 100);
             } else {
                 attackSpeed += item.getAttackSpeed();
+            }
+
+            if (item.isDamagePercent()) {
+                damage += block.getDamage() * item.getDamage() / 100;
+            } else {
                 damage += item.getDamage();
+            }
+
+            if (item.isRadiusPercent()) {
+                radius += Math.ceil(block.getRadius() * item.getRadius() / 100);
+            } else {
                 radius += item.getRadius();
             }
 

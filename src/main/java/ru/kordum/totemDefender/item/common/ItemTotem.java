@@ -25,9 +25,9 @@ public class ItemTotem extends ItemBlock {
         super.addInformation(stack, worldIn, tooltip, flagIn);
         if (flagIn.isAdvanced() || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
             BlockTotem block = (BlockTotem) this.block;
-            tooltip.add(Formatter.getProp(TextFormatting.BLUE, "prop.attack_speed", block.getAttackSpeed(), false));
-            tooltip.add(Formatter.getProp(TextFormatting.RED, "prop.damage", block.getDamage(), false));
-            tooltip.add(Formatter.getProp(TextFormatting.GREEN, "prop.radius", block.getRadius(), false));
+            tooltip.add(Formatter.getStat(TextFormatting.BLUE, "prop.attack_speed", block.getAttackSpeed()));
+            tooltip.add(Formatter.getStat(TextFormatting.RED, "prop.damage", block.getDamage()));
+            tooltip.add(Formatter.getStat(TextFormatting.GREEN, "prop.radius", block.getRadius()));
         } else {
             tooltip.add(Formatter.getLocalize(TextFormatting.GRAY, "prop.hold_more"));
         }

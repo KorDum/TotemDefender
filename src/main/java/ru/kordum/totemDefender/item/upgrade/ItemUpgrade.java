@@ -15,32 +15,26 @@ import ru.kordum.totemDefender.config.ConfigUpgrade;
 import ru.kordum.totemDefender.util.Formatter;
 
 public class ItemUpgrade extends Item {
-    private float damage;
-    private float attackSpeed;
-    private int radius;
-    private boolean modifiersIsPercent;
     private int level;
+    private ConfigUpgrade config;
 
     public ItemUpgrade(int level, ConfigUpgrade config) {
         this.level = level;
-        attackSpeed = config.getAttackSpeed();
-        damage = config.getDamage();
-        radius = config.getRadius();
-        modifiersIsPercent = config.isPercent();
+        this.config = config;
     }
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
         if (flagIn.isAdvanced() || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-            if (attackSpeed != 0) {
-                tooltip.add(Formatter.getProp(TextFormatting.BLUE, "prop.attack_speed", attackSpeed, isModifiersInPercent()));
+            if (getAttackSpeed() != 0) {
+                tooltip.add(Formatter.getProp(TextFormatting.BLUE, "prop.attack_speed", getAttackSpeed(), isAttackSpeedPercent()));
             }
-            if (damage != 0) {
-                tooltip.add(Formatter.getProp(TextFormatting.RED, "prop.damage", damage, isModifiersInPercent()));
+            if (getDamage() != 0) {
+                tooltip.add(Formatter.getProp(TextFormatting.RED, "prop.damage", getDamage(), isDamagePercent()));
             }
-            if (radius != 0) {
-                tooltip.add(Formatter.getProp(TextFormatting.GREEN, "prop.radius", radius, isModifiersInPercent()));
+            if (getRadius() != 0) {
+                tooltip.add(Formatter.getProp(TextFormatting.GREEN, "prop.radius", getRadius(), isRadiusPercent()));
             }
         } else {
             tooltip.add(Formatter.getLocalize(TextFormatting.GRAY, "prop.hold_more"));
@@ -48,31 +42,27 @@ public class ItemUpgrade extends Item {
     }
 
     public float getDamage() {
-        return damage;
-    }
-
-    public void setDamage(float damage) {
-        this.damage = damage;
+        return config.getDamage();
     }
 
     public float getAttackSpeed() {
-        return attackSpeed;
-    }
-
-    public void setAttackSpeed(float attackSpeed) {
-        this.attackSpeed = attackSpeed;
+        return config.getAttackSpeed();
     }
 
     public int getRadius() {
-        return radius;
+        return config.getRadius();
     }
 
-    public void setRadius(int radius) {
-        this.radius = radius;
+    public boolean isAttackSpeedPercent() {
+        return config.isSpeedPercent();
     }
 
-    public boolean isModifiersInPercent() {
-        return modifiersIsPercent;
+    public boolean isDamagePercent() {
+        return config.isDamagePercent();
+    }
+
+    public boolean isRadiusPercent() {
+        return config.isRadiusPercent();
     }
 
     public int getLevel() {

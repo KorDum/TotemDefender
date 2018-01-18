@@ -14,7 +14,6 @@ import ru.kordum.totemDefender.handler.ItemRegistry;
 public abstract class CommonProxy {
     public void preInit(File configFile) {
         Config config = new Config(configFile);
-        config.loadAndSave();
         BlockRegistry.init(config);
         ItemRegistry.init(config);
     }
