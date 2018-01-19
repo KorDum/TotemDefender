@@ -50,7 +50,7 @@ public class BlockRegistry {
     public static void init(Config config) {
         blockList = new ArrayList<>();
         SAPLING = prepareBlock(new BlockSapling(config.sapling), "sapling");
-        LEAVES = prepareBlock(new BlockLeaves(), "leaf");
+        LEAVES = prepareBlock(new BlockLeaves(config.sapling.getDropChance()), "leaf");
         LOG = prepareBlock(new BlockLog(), "log");
         LOG_FACE1 = prepareBlock(new BlockLogFace(), "log_face1");
         LOG_FACE2 = prepareBlock(new BlockLogFace(), "log_face2");

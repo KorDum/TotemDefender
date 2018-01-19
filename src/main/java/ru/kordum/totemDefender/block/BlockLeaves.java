@@ -17,6 +17,12 @@ import java.util.Random;
 import ru.kordum.totemDefender.handler.BlockRegistry;
 
 public class BlockLeaves extends net.minecraft.block.BlockLeaves {
+    private int saplingChance;
+
+    public BlockLeaves(int saplingChance) {
+        this.saplingChance = saplingChance;
+    }
+
     @Override
     public List<ItemStack> onSheared(@Nonnull ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
         if (!(item.getItem() instanceof ItemShears)) {
@@ -49,7 +55,7 @@ public class BlockLeaves extends net.minecraft.block.BlockLeaves {
 
     @Override
     protected int getSaplingDropChance(IBlockState state) {
-        return 1;
+        return saplingChance;
     }
 
     @Override

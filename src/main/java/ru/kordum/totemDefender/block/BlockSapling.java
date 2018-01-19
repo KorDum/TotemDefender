@@ -83,6 +83,6 @@ public class BlockSapling extends BlockBush implements IGrowable {
 
     @Override
     public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-        return (double) worldIn.rand.nextFloat() < bonemealChance;
+        return rand.nextDouble() < bonemealChance;
     }
 }

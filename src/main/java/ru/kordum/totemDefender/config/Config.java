@@ -55,6 +55,7 @@ public class Config extends Configuration {
 
     private static final String GROW_CHANCE_PARAM = "growChance";
     private static final String BONEMEAL_CHANCE_PARAM = "bonemealChance";
+    private static final String SAPLING_DROP_CHANCE_PARAM = "dropChance";
 
     public ConfigTotem woodenTotem;
     public ConfigTotem ironTotem;
@@ -130,7 +131,7 @@ public class Config extends Configuration {
         weaknessModifier = createUpgradeConfig(WEAKNESS_MODIFIER_CATEGORY, -10, true, 0, false, 0, false);
         knockbackModifier = createUpgradeConfig(KNOCKBACK_MODIFIER_CATEGORY, -50, true, 0, false, 0, false);
 
-        sapling = createSaplingConfig(0.002F, 0.01F);
+        sapling = createSaplingConfig(0.05F, 0.05F, 30);
         save();
     }
 
@@ -151,9 +152,10 @@ public class Config extends Configuration {
         return new ConfigUpgrade(speed, speedPercent, damage, damagePercent, radius, radiusPercent);
     }
 
-    private ConfigSapling createSaplingConfig(float growChance, float bonemealChance) {
+    private ConfigSapling createSaplingConfig(float growChance, float bonemealChance, int dropChance) {
         growChance = getFloat(GROW_CHANCE_PARAM, MISC_CATEGORY + "." + SAPLING_CATEGORY, growChance, 0, 1, "Chance grow tree naturally");
         bonemealChance = getFloat(BONEMEAL_CHANCE_PARAM, MISC_CATEGORY + "." + SAPLING_CATEGORY, bonemealChance, 0, 1, "Chance grow tree with Bonemeal");
-        return new ConfigSapling(growChance, bonemealChance);
+        dropChance = getInt(SAPLING_DROP_CHANCE_PARAM, MISC_CATEGORY + "." + SAPLING_CATEGORY, dropChance, 1, Short.MAX_VALUE, "Chance drop sapling from tree leaf. The smaller, the more often! Be careful! Vanilla is 20");
+        return new ConfigSapling(growChance, bonemealChance, dropChance);
     }
 }
