@@ -24,7 +24,7 @@ import ru.kordum.totemDefender.entity.TileEntityTotem;
 import ru.kordum.totemDefender.handler.GuiHandler;
 
 public abstract class BlockTotem extends BlockContainer {
-    public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+    private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     private static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.25f, 0, 0.25f, 0.75f, 2, 0.75f);
 
     public static final int LEVEL_WOODEN = 1;
@@ -70,7 +70,7 @@ public abstract class BlockTotem extends BlockContainer {
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return getDefaultState()
-            .withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer));
+            .withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 
     @Override
