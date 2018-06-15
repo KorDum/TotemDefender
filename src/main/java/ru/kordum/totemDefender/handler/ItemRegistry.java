@@ -14,16 +14,18 @@ import java.util.List;
 
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.block.BlockSlab;
-import ru.kordum.totemDefender.block.BlockTotem;
 import ru.kordum.totemDefender.config.Config;
-import ru.kordum.totemDefender.item.common.ItemCore;
-import ru.kordum.totemDefender.item.common.ItemDoor;
-import ru.kordum.totemDefender.item.common.ItemSlab;
-import ru.kordum.totemDefender.item.common.ItemTotem;
-import ru.kordum.totemDefender.item.upgrade.ItemFilter;
-import ru.kordum.totemDefender.item.upgrade.ItemMode;
-import ru.kordum.totemDefender.item.upgrade.ItemModifierUpgrade;
-import ru.kordum.totemDefender.item.upgrade.ItemUpgrade;
+import ru.kordum.totemDefender.config.ConfigUpgrade;
+import ru.kordum.totemDefender.item.EnumFilter;
+import ru.kordum.totemDefender.item.EnumMode;
+import ru.kordum.totemDefender.item.EnumUpgrade;
+import ru.kordum.totemDefender.item.ItemCore;
+import ru.kordum.totemDefender.item.ItemDoor;
+import ru.kordum.totemDefender.item.ItemSlab;
+import ru.kordum.totemDefender.item.ItemTotem;
+import ru.kordum.totemDefender.item.ItemFilter;
+import ru.kordum.totemDefender.item.ItemMode;
+import ru.kordum.totemDefender.item.ItemUpgrade;
 
 public class ItemRegistry {
     public static Item CORE;
@@ -45,35 +47,9 @@ public class ItemRegistry {
     public static Item GOLDEN_TOTEM;
     public static Item DIAMOND_TOTEM;
 
-    public static Item WOODEN_DAMAGE_UPGRADE;
-    public static Item WOODEN_AS_UPGRADE;
-    public static Item WOODEN_RADIUS_UPGRADE;
-    public static Item IRON_DAMAGE_UPGRADE;
-    public static Item IRON_AS_UPGRADE;
-    public static Item IRON_RADIUS_UPGRADE;
-    public static Item GOLDEN_DAMAGE_UPGRADE;
-    public static Item GOLDEN_AS_UPGRADE;
-    public static Item GOLDEN_RADIUS_UPGRADE;
-    public static Item DIAMOND_DAMAGE_UPGRADE;
-    public static Item DIAMOND_AS_UPGRADE;
-    public static Item DIAMOND_RADIUS_UPGRADE;
-
+    public static Item UPGRADE;
     public static Item FILTER;
     public static Item MODE;
-
-    public static Item FIRE_MODIFIER;
-    public static Item POISON_MODIFIER;
-    public static Item LIGHTING_MODIFIER;
-    public static Item WITHER_MODIFIER;
-    public static Item SLOWDOWN_MODIFIER;
-    public static Item BLINDNESS_MODIFIER;
-    public static Item CONFUSION_MODIFIER;
-    public static Item HEAL_MODIFIER;
-    public static Item HUNGRY_MODIFIER;
-    public static Item REGENERATION_MODIFIER;
-    public static Item WATER_BREATHING_MODIFIER;
-    public static Item WEAKNESS_MODIFIER;
-    public static Item KNOCKBACK_MODIFIER;
 
     private static List<Item> itemList;
 
@@ -98,38 +74,14 @@ public class ItemRegistry {
         GOLDEN_TOTEM = prepareItem(new ItemTotem(BlockRegistry.GOLDEN_TOTEM));
         DIAMOND_TOTEM = prepareItem(new ItemTotem(BlockRegistry.DIAMOND_TOTEM));
 
-        WOODEN_AS_UPGRADE = prepareItem(new ItemUpgrade(BlockTotem.LEVEL_WOODEN, config.woodenASUpgrade), "wooden_as_upgrade");
-        WOODEN_DAMAGE_UPGRADE = prepareItem(new ItemUpgrade(BlockTotem.LEVEL_WOODEN, config.woodenDamageUpgrade), "wooden_damage_upgrade");
-        WOODEN_RADIUS_UPGRADE = prepareItem(new ItemUpgrade(BlockTotem.LEVEL_WOODEN, config.woodenRadiusUpgrade), "wooden_radius_upgrade");
-
-        IRON_AS_UPGRADE = prepareItem(new ItemUpgrade(BlockTotem.LEVEL_IRON, config.ironASUpgrade), "iron_as_upgrade");
-        IRON_DAMAGE_UPGRADE = prepareItem(new ItemUpgrade(BlockTotem.LEVEL_IRON, config.ironDamageUpgrade), "iron_damage_upgrade");
-        IRON_RADIUS_UPGRADE = prepareItem(new ItemUpgrade(BlockTotem.LEVEL_IRON, config.ironRadiusUpgrade), "iron_radius_upgrade");
-
-        GOLDEN_AS_UPGRADE = prepareItem(new ItemUpgrade(BlockTotem.LEVEL_GOLD, config.goldASUpgrade), "gold_as_upgrade");
-        GOLDEN_DAMAGE_UPGRADE = prepareItem(new ItemUpgrade(BlockTotem.LEVEL_GOLD, config.goldDamageUpgrade), "gold_damage_upgrade");
-        GOLDEN_RADIUS_UPGRADE = prepareItem(new ItemUpgrade(BlockTotem.LEVEL_GOLD, config.goldRadiusUpgrade), "gold_radius_upgrade");
-
-        DIAMOND_AS_UPGRADE = prepareItem(new ItemUpgrade(BlockTotem.LEVEL_DIAMOND, config.diamondASUpgrade), "diamond_as_upgrade");
-        DIAMOND_DAMAGE_UPGRADE = prepareItem(new ItemUpgrade(BlockTotem.LEVEL_DIAMOND, config.diamondDamageUpgrade), "diamond_damage_upgrade");
-        DIAMOND_RADIUS_UPGRADE = prepareItem(new ItemUpgrade(BlockTotem.LEVEL_DIAMOND, config.diamondRadiusUpgrade), "diamond_radius_upgrade");
-
-        FIRE_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.FIRE, config.fireModifier), "fire_upgrade");
-        POISON_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.POISON, config.poisonModifier), "poison_upgrade");
-        LIGHTING_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.LIGHTING, config.lightingModifier), "lighting_upgrade");
-        WITHER_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.WITHER, config.witherModifier), "wither_upgrade");
-        SLOWDOWN_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.SLOWDOWN, config.slowdownModifier), "slowdown_upgrade");
-        BLINDNESS_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.BLINDNESS, config.blindnessModifier), "blindness_upgrade");
-        CONFUSION_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.CONFUSION, config.confusionModifier), "confusion_upgrade");
-        HEAL_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.HEAL, config.healModifier), "heal_upgrade");
-        HUNGRY_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.HUNGRY, config.hungryModifier), "hungry_upgrade");
-        REGENERATION_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.REGENERATION, config.regenerationModifier), "regeneration_upgrade");
-        WATER_BREATHING_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.WATER_BREATHING, config.waterBreathingModifier), "water_breathing_upgrade");
-        WEAKNESS_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.WEAKNESS, config.weaknessModifier), "weakness_upgrade");
-        KNOCKBACK_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.KNOCKBACK, config.knockbackModifier), "knockback_upgrade");
-
+        UPGRADE = prepareSubItems(new ItemUpgrade(), "upgrade");
         FILTER = prepareSubItems(new ItemFilter(), "filter");
         MODE = prepareSubItems(new ItemMode(), "mode");
+
+        for (EnumUpgrade type : EnumUpgrade.values()) {
+            ConfigUpgrade configUpgrade = config.getConfigUpgrade(type.getName());
+            type.setConfig(configUpgrade);
+        }
     }
 
     public static void registerItems(IForgeRegistry<Item> registry) {
@@ -171,13 +123,17 @@ public class ItemRegistry {
         for (Item item : itemList) {
             registerRender(item);
         }
-        for (ItemMode.EnumMode type : ItemMode.EnumMode.values()) {
+        for (EnumMode type : EnumMode.values()) {
             ModelResourceLocation location = new ModelResourceLocation(MODE.getRegistryName() + "_" + type.getName(), "inventory");
             ModelLoader.setCustomModelResourceLocation(MODE, type.ordinal(), location);
         }
-        for (ItemFilter.EnumFilter type : ItemFilter.EnumFilter.values()) {
+        for (EnumFilter type : EnumFilter.values()) {
             ModelResourceLocation location = new ModelResourceLocation(FILTER.getRegistryName() + "_" + type.getName(), "inventory");
             ModelLoader.setCustomModelResourceLocation(FILTER, type.ordinal(), location);
+        }
+        for (EnumUpgrade type : EnumUpgrade.values()) {
+            ModelResourceLocation location = new ModelResourceLocation(UPGRADE.getRegistryName() + "_" + type.getName(), "inventory");
+            ModelLoader.setCustomModelResourceLocation(UPGRADE, type.ordinal(), location);
         }
     }
 

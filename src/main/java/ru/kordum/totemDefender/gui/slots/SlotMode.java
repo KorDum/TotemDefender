@@ -3,7 +3,7 @@ package ru.kordum.totemDefender.gui.slots;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import ru.kordum.totemDefender.entity.TileEntityTotem;
-import ru.kordum.totemDefender.item.upgrade.ItemMode;
+import ru.kordum.totemDefender.item.ItemMode;
 
 public class SlotMode extends Slot {
     public SlotMode(TileEntityTotem tileEntity, IItemHandler handler, int index, int x, int y) {

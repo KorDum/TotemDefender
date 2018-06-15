@@ -1,4 +1,4 @@
-package ru.kordum.totemDefender.item.common;
+package ru.kordum.totemDefender.item;
 
 import net.minecraft.block.Block;
 

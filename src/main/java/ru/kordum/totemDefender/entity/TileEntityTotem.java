@@ -1,42 +1,31 @@
 package ru.kordum.totemDefender.entity;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.EntitySlime;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import ru.kordum.totemDefender.block.BlockTotem;
+import ru.kordum.totemDefender.item.ItemFilter;
+import ru.kordum.totemDefender.item.ItemUpgrade;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
-
-import ru.kordum.totemDefender.block.BlockTotem;
-import ru.kordum.totemDefender.item.upgrade.ItemFilter;
-import ru.kordum.totemDefender.item.upgrade.ItemMode;
-import ru.kordum.totemDefender.item.upgrade.ItemModifierUpgrade;
-import ru.kordum.totemDefender.item.upgrade.ItemUpgrade;
 
 public abstract class TileEntityTotem extends TileEntity implements ICapabilityProvider, ITickable {
     private static final String NBT_ITEM_STACK_HANDLER = "ItemStackHandler";
@@ -85,7 +74,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
             }
 
             ItemUpgrade item = (ItemUpgrade) stack.getItem();
-            if (item.isAttackSpeedPercent()) {
+            /*if (item.isAttackSpeedPercent()) {
                 attackSpeed += block.getAttackSpeed() * item.getAttackSpeed() / 100;
             } else {
                 attackSpeed += item.getAttackSpeed();
@@ -105,7 +94,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
 
             if (item instanceof ItemModifierUpgrade) {
                 modifier |= ((ItemModifierUpgrade) item).getModifier();
-            }
+            }*/
         }
 
         if (attackSpeed < 0.1f) {
@@ -148,14 +137,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
 
     private ArrayList<EntityLivingBase> getEntityList() {
         ArrayList<EntityLivingBase> list = new ArrayList<>();
-        AxisAlignedBB axis = new AxisAlignedBB(
-            pos.getX() - radius,
-            pos.getY() - radius,
-            pos.getZ() - radius,
-            pos.getX() + radius,
-            pos.getY() + radius,
-            pos.getZ() + radius
-        );
+        AxisAlignedBB axis = new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius);
 
         /*if ((filter & ItemFilter.ENEMY) == ItemFilter.ENEMY) {
             list.addAll(world.getEntitiesWithinAABB(EntityMob.class, axis));
@@ -209,11 +191,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
             }
 
             AxisAlignedBB boundingBox = entity.getEntityBoundingBox();
-            Vec3d entityVector = new Vec3d(
-                boundingBox.minX + (boundingBox.maxX - boundingBox.minX) / 2,
-                boundingBox.minY + (boundingBox.maxY - boundingBox.minY) / 2,
-                boundingBox.minZ + (boundingBox.maxZ - boundingBox.minZ) / 2
-            );
+            Vec3d entityVector = new Vec3d(boundingBox.minX + (boundingBox.maxX - boundingBox.minX) / 2, boundingBox.minY + (boundingBox.maxY - boundingBox.minY) / 2, boundingBox.minZ + (boundingBox.maxZ - boundingBox.minZ) / 2);
 
             RayTraceResult objectPosition = world.rayTraceBlocks(totemVector, entityVector, true);
             if (objectPosition != null && objectPosition.entityHit != entity) {
@@ -232,11 +210,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
 
             Vec3d totemVector = new Vec3d(pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5);
             AxisAlignedBB boundingBox = entity.getEntityBoundingBox();
-            Vec3d entityVector = new Vec3d(
-                boundingBox.minX + (boundingBox.maxX - boundingBox.minX) / 2,
-                boundingBox.minY + (boundingBox.maxY - boundingBox.minY) / 2,
-                boundingBox.minZ + (boundingBox.maxZ - boundingBox.minZ) / 2
-            );
+            Vec3d entityVector = new Vec3d(boundingBox.minX + (boundingBox.maxX - boundingBox.minX) / 2, boundingBox.minY + (boundingBox.maxY - boundingBox.minY) / 2, boundingBox.minZ + (boundingBox.maxZ - boundingBox.minZ) / 2);
 
             RayTraceResult objectPosition = world.rayTraceBlocks(totemVector, entityVector, true);
             if (objectPosition != null && objectPosition.entityHit != entity) {
@@ -250,9 +224,9 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
             projectile.motionY = vector.y;
             projectile.motionZ = vector.z;
 
-            if ((modifier & ItemModifierUpgrade.FIRE) == ItemModifierUpgrade.FIRE) {
+            /*if ((modifier & ItemModifierUpgrade.FIRE) == ItemModifierUpgrade.FIRE) {
                 projectile.setFire((int) damage);
-            }
+            }*/
 
             world.spawnEntity(projectile);
             world.playSound(null, pos, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.MASTER, 1.0F, 1.0F);
@@ -281,7 +255,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
     public void attack(EntityLivingBase entity) {
         boolean needDamage = false;
 
-        if ((modifier & ItemModifierUpgrade.FIRE) == ItemModifierUpgrade.FIRE) {
+        /*if ((modifier & ItemModifierUpgrade.FIRE) == ItemModifierUpgrade.FIRE) {
             entity.setFire((int) damage);
             needDamage = true;
         }
@@ -353,7 +327,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
                 ((dy > 0) ? -1 : 1) * strength,
                 ((dz > 0) ? -1 : 1) * strength
             );
-        }
+        }*/
 
         if (needDamage || modifier == 0) {
             entity.attackEntityFrom(new DamageSource("totem"), damage);
@@ -439,8 +413,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
     }
 
     public boolean isUseableByPlayer(EntityPlayer player) {
-        return world.getTileEntity(getPos()) == this
-            && player.getDistanceSq(pos.add(0.5, 0.5, 0.5)) <= 64;
+        return world.getTileEntity(getPos()) == this && player.getDistanceSq(pos.add(0.5, 0.5, 0.5)) <= 64;
     }
 
     public abstract int getFilterSlotCount();
