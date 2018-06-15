@@ -15,7 +15,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:projectile_mode",
+        "item": "totemdefender:mode",
+        "data": 0,
         "count": 1
     }
 }

@@ -108,13 +108,13 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
             }
         }
 
-        if (attackSpeed < 0) {
+        if (attackSpeed < 0.1f) {
             attackSpeed = 0.1f;
         }
-        if (damage < 0) {
+        if (damage < 0.5f) {
             damage = 0.5f;
         }
-        if (radius < 0) {
+        if (radius < 1) {
             radius = 1;
         }
     }
@@ -132,18 +132,18 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
             }
 
             ItemFilter item = (ItemFilter) stack.getItem();
-            filter |= item.getMode();
+//            filter |= item.getMode();
         }
     }
 
     public void updateMode() {
-        ItemStack stack = handler.getStackInSlot(0);
+        /*ItemStack stack = handler.getStackInSlot(0);
         if (!stack.isEmpty()) {
             ItemMode item = (ItemMode) stack.getItem();
             mode = item.getMode();
         } else {
             mode = 0;
-        }
+        }*/
     }
 
     private ArrayList<EntityLivingBase> getEntityList() {
@@ -157,7 +157,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
             pos.getZ() + radius
         );
 
-        if ((filter & ItemFilter.ENEMY) == ItemFilter.ENEMY) {
+        /*if ((filter & ItemFilter.ENEMY) == ItemFilter.ENEMY) {
             list.addAll(world.getEntitiesWithinAABB(EntityMob.class, axis));
         }
 
@@ -177,7 +177,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
 
         if ((filter & ItemFilter.WATER_MOB) == ItemFilter.WATER_MOB) {
             list.addAll(world.getEntitiesWithinAABB(EntityWaterMob.class, axis));
-        }
+        }*/
         return list;
     }
 
@@ -192,11 +192,11 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         }
 
         ArrayList<EntityLivingBase> list = getEntityList();
-        if ((mode & ItemMode.PROJECTILE) == ItemMode.PROJECTILE) {
+        /*if ((mode & ItemMode.PROJECTILE) == ItemMode.PROJECTILE) {
             projectileShot(list);
         } else if ((mode & ItemMode.AOE) == ItemMode.AOE) {
             aoeShot(list);
-        }
+        }*/
 
         lastShoot = time;
     }
@@ -263,7 +263,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
     private boolean isDamageable(EntityLivingBase entity) {
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
-            if ((filter & ItemFilter.PLAYER) == ItemFilter.PLAYER) {
+            /*if ((filter & ItemFilter.PLAYER) == ItemFilter.PLAYER) {
                 return !player.capabilities.isCreativeMode;
             }
 
@@ -273,7 +273,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
             } else if ((filter & ItemFilter.ANOTHER_PLAYER) == ItemFilter.ANOTHER_PLAYER) {
                 return !player.capabilities.isCreativeMode &&
                     !player.getUniqueID().equals(owner);
-            }
+            }*/
         }
         return !entity.isDead;
     }

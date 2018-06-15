@@ -22,7 +22,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:slime_filter",
+        "item": "totemdefender:filter",
+        "data": 5,
         "count": 1
     }
 }

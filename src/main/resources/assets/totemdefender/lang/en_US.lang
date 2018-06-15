@@ -20,16 +20,16 @@ tile.iron_totem.name=Iron Totem
 tile.golden_totem.name=Golden Totem
 tile.diamond_totem.name=Diamond Totem
 
-item.projectile_mode.name=Projectile Mode
-item.aoe_mode.name=AoE Mode
+item.mode.projectile.name=Projectile Mode
+item.mode.aoe.name=AoE Mode
 
-item.player_filter.name=Player Filter
-item.self_player_filter.name=Self Filter
-item.another_player_filter.name=Another Player Filter
-item.animal_filter.name=Animal Filter
-item.enemy_filter.name=Enemy Filter
-item.slime_filter.name=Slime Filter
-item.water_filter.name=Water Mob Filter
+item.filter.player.name=Player Filter
+item.filter.self_player.name=Self Filter
+item.filter.another_player.name=Another Player Filter
+item.filter.animal.name=Animal Filter
+item.filter.enemy.name=Enemy Filter
+item.filter.slime.name=Slime Filter
+item.filter.water.name=Water Mob Filter
 
 item.wooden_damage_upgrade.name=Damage I
 item.wooden_as_upgrade.name=Attack speed I

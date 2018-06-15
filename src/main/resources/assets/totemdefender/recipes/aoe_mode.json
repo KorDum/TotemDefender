@@ -7,7 +7,8 @@
     ],
     "key": {
         "P": {
-            "item": "totemdefender:projectile_mode"
+            "item": "totemdefender:mode",
+            "data": 0
         },
         "C": {
             "item": "totemdefender:core"
@@ -18,7 +19,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:aoe_mode",
+        "item": "totemdefender:mode",
+        "data": 1,
         "count": 1
     }
 }

@@ -13,23 +13,23 @@ tile.stairs.name=Ступеньки из тотемного древа
 tile.slab.name=Плита из тотемного древа
 tile.fence.name=Забор из тотемного древа
 tile.fence_gate.name=Калитка из тотемного древа
-entity.projectile.name=Снаряд Тотема
+entity.totem_projectile.name=Снаряд Тотема
 
 tile.wooden_totem.name=Деревянный тотем
 tile.iron_totem.name=Железный тотем
 tile.golden_totem.name=Золотой тотем
 tile.diamond_totem.name=Алмазный тотем
 
-item.projectile_mode.name=Снаряд
-item.aoe_mode.name=По площади
+item.mode.projectile.name=Снаряд
+item.mode.aoe.name=По площади
 
-item.player_filter.name=Фильтр на игроков
-item.self_player_filter.name=Фильтр на себя
-item.another_player_filter.name=Фильтр на других игроков
-item.animal_filter.name=Фильтр на животных
-item.enemy_filter.name=Фильтр на враждебных существ
-item.slime_filter.name=Фильтр на слизней
-item.water_filter.name=Фильтр на водяных существ
+item.filter.player.name=Фильтр на игроков
+item.filter.self_player.name=Фильтр на себя
+item.filter.another_player.name=Фильтр на других игроков
+item.filter.animal.name=Фильтр на животных
+item.filter.enemy.name=Фильтр на враждебных существ
+item.filter.slime.name=Фильтр на слизней
+item.filter.water.name=Фильтр на водяных существ
 
 item.wooden_damage_upgrade.name=Урон I
 item.wooden_as_upgrade.name=Скорость атаки I

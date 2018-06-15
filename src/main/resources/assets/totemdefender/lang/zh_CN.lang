@@ -20,16 +20,16 @@ tile.iron_totem.name=铁质图腾
 tile.golden_totem.name=金质图腾
 tile.diamond_totem.name=钻石图腾
 
-item.projectile_mode.name=狙击模式
-item.aoe_mode.name=群伤模式
+item.mode.projectile.name=狙击模式
+item.mode.aoe.name=群伤模式
 
-item.player_filter.name=玩家过滤器
-item.self_player_filter.name=自身过滤器
-item.another_player_filter.name=其他玩家过滤器
-item.animal_filter.name=动物过滤器
-item.enemy_filter.name=敌对生物过滤器
-item.slime_filter.name=史莱姆过滤器
-item.water_filter.name=水生生物过滤器
+item.filter.player.name=玩家过滤器
+item.filter.self_player.name=自身过滤器
+item.filter.another_player.name=其他玩家过滤器
+item.filter.animal.name=动物过滤器
+item.filter.enemy.name=敌对生物过滤器
+item.filter.slime.name=史莱姆过滤器
+item.filter.water.name=水生生物过滤器
 
 item.wooden_damage_upgrade.name=伤害符箓 I
 item.wooden_as_upgrade.name=攻击速度符箓 I

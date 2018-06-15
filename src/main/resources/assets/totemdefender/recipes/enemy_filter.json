@@ -22,7 +22,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:enemy_filter",
+        "item": "totemdefender:filter",
+        "data": 4,
         "count": 1
     }
 }

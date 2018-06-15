@@ -22,7 +22,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:another_player_filter",
+        "item": "totemdefender:filter",
+        "data": 2,
         "count": 1
     }
 }

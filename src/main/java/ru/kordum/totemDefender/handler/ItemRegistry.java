@@ -58,16 +58,8 @@ public class ItemRegistry {
     public static Item DIAMOND_AS_UPGRADE;
     public static Item DIAMOND_RADIUS_UPGRADE;
 
-    public static Item PLAYER_FILTER;
-    public static Item SELF_PLAYER_FILTER;
-    public static Item ANOTHER_PLAYER_FILTER;
-    public static Item ANIMAL_FILTER;
-    public static Item ENEMY_FILTER;
-    public static Item SLIME_FILTER;
-    public static Item WATER_FILTER;
-
-    public static Item PROJECTILE_MODE;
-    public static Item AOE_MODE;
+    public static Item FILTER;
+    public static Item MODE;
 
     public static Item FIRE_MODIFIER;
     public static Item POISON_MODIFIER;
@@ -136,16 +128,8 @@ public class ItemRegistry {
         WEAKNESS_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.WEAKNESS, config.weaknessModifier), "weakness_upgrade");
         KNOCKBACK_MODIFIER = prepareItem(new ItemModifierUpgrade(ItemModifierUpgrade.KNOCKBACK, config.knockbackModifier), "knockback_upgrade");
 
-        PLAYER_FILTER = prepareItem(new ItemFilter(ItemFilter.PLAYER), "player_filter");
-        SELF_PLAYER_FILTER = prepareItem(new ItemFilter(ItemFilter.SELF_PLAYER), "self_player_filter");
-        ANOTHER_PLAYER_FILTER = prepareItem(new ItemFilter(ItemFilter.ANOTHER_PLAYER), "another_player_filter");
-        ANIMAL_FILTER = prepareItem(new ItemFilter(ItemFilter.ANIMAL), "animal_filter");
-        ENEMY_FILTER = prepareItem(new ItemFilter(ItemFilter.ENEMY), "enemy_filter");
-        SLIME_FILTER = prepareItem(new ItemFilter(ItemFilter.SLIME), "slime_filter");
-        WATER_FILTER = prepareItem(new ItemFilter(ItemFilter.WATER_MOB), "water_filter");
-
-        PROJECTILE_MODE = prepareItem(new ItemMode(ItemMode.PROJECTILE), "projectile_mode");
-        AOE_MODE = prepareItem(new ItemMode(ItemMode.AOE), "aoe_mode");
+        FILTER = prepareSubItems(new ItemFilter(), "filter");
+        MODE = prepareSubItems(new ItemMode(), "mode");
     }
 
     public static void registerItems(IForgeRegistry<Item> registry) {
@@ -157,6 +141,13 @@ public class ItemRegistry {
         item.setUnlocalizedName(name);
         item.setRegistryName(name);
         item.setCreativeTab(TotemDefender.tab);
+        return item;
+    }
+
+    private static Item prepareSubItems(Item item, String name) {
+        itemList.add(item);
+        item.setUnlocalizedName(name);
+        item.setRegistryName(name);
         return item;
     }
 
@@ -180,11 +171,19 @@ public class ItemRegistry {
         for (Item item : itemList) {
             registerRender(item);
         }
+        for (ItemMode.EnumMode type : ItemMode.EnumMode.values()) {
+            ModelResourceLocation location = new ModelResourceLocation(MODE.getRegistryName() + "_" + type.getName(), "inventory");
+            ModelLoader.setCustomModelResourceLocation(MODE, type.ordinal(), location);
+        }
+        for (ItemFilter.EnumFilter type : ItemFilter.EnumFilter.values()) {
+            ModelResourceLocation location = new ModelResourceLocation(FILTER.getRegistryName() + "_" + type.getName(), "inventory");
+            ModelLoader.setCustomModelResourceLocation(FILTER, type.ordinal(), location);
+        }
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerRender(Item item) {
-        ModelResourceLocation resourceLocation = new ModelResourceLocation(item.getRegistryName(), "inventory");
-        ModelLoader.setCustomModelResourceLocation(item, 0, resourceLocation);
+        ModelResourceLocation location = new ModelResourceLocation(item.getRegistryName(), "inventory");
+        ModelLoader.setCustomModelResourceLocation(item, 0, location);
     }
 }

@@ -24,7 +24,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:water_filter",
+        "item": "totemdefender:filter",
+        "data": 6,
         "count": 1
     }
 }
