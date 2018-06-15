@@ -7,22 +7,23 @@
     ],
     "key": {
         "P": {
-            "type": "forge:ore_dict",
-            "ore": "plankWood"
+            "item": "minecraft:iron_ingot"
         },
         "C": {
-            "item": "totemdefender:core"
+            "item": "totemdefender:upgrade",
+            "data": 1
         },
         "L": {
             "item": "minecraft:dye",
             "data": 4
         },
         "F": {
-            "item": "minecraft:redstone_torch"
+            "item": "minecraft:arrow"
         }
     },
     "result": {
-        "item": "totemdefender:wooden_radius_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 4,
         "count": 1
     }
 }

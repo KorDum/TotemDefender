@@ -3,11 +3,12 @@
     "pattern": [
         "P P",
         "PCP",
-        "LPL"
+        "LFL"
     ],
     "key": {
         "P": {
-            "item": "minecraft:golden_carrot"
+            "type": "forge:ore_dict",
+            "ore": "plankWood"
         },
         "C": {
             "item": "totemdefender:core"
@@ -15,10 +16,14 @@
         "L": {
             "item": "minecraft:dye",
             "data": 4
+        },
+        "F": {
+            "item": "minecraft:feather"
         }
     },
     "result": {
-        "item": "totemdefender:heal_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 0,
         "count": 1
     }
 }

@@ -3,12 +3,12 @@
     "pattern": [
         "P P",
         "PCP",
-        "LFL"
+        "LPL"
     ],
     "key": {
         "P": {
-            "type": "forge:ore_dict",
-            "ore": "plankWood"
+            "item": "minecraft:golden_apple",
+            "data": 0
         },
         "C": {
             "item": "totemdefender:core"
@@ -16,13 +16,11 @@
         "L": {
             "item": "minecraft:dye",
             "data": 4
-        },
-        "F": {
-            "item": "minecraft:arrow"
         }
     },
     "result": {
-        "item": "totemdefender:wooden_damage_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 21,
         "count": 1
     }
 }

@@ -7,7 +7,7 @@
     ],
     "key": {
         "P": {
-            "item": "minecraft:ghast_tear"
+            "item": "minecraft:piston"
         },
         "C": {
             "item": "totemdefender:core"
@@ -18,7 +18,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:wither_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 24,
         "count": 1
     }
 }

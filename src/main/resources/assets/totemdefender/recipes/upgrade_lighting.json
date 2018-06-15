@@ -3,25 +3,23 @@
     "pattern": [
         "P P",
         "PCP",
-        "LFL"
+        "LPL"
     ],
     "key": {
         "P": {
-            "item": "minecraft:gold_ingot"
+            "item": "minecraft:blaze_rod"
         },
         "C": {
-            "item": "totemdefender:iron_damage_upgrade"
+            "item": "totemdefender:core"
         },
         "L": {
             "item": "minecraft:dye",
             "data": 4
-        },
-        "F": {
-            "item": "minecraft:arrow"
         }
     },
     "result": {
-        "item": "totemdefender:gold_damage_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 14,
         "count": 1
     }
 }

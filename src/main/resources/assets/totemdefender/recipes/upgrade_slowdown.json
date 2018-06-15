@@ -7,8 +7,7 @@
     ],
     "key": {
         "P": {
-            "item": "minecraft:golden_apple",
-            "data": 0
+            "item": "minecraft:string"
         },
         "C": {
             "item": "totemdefender:core"
@@ -19,7 +18,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:regeneration_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 16,
         "count": 1
     }
 }

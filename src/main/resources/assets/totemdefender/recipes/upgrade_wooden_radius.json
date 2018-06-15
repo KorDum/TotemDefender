@@ -7,21 +7,23 @@
     ],
     "key": {
         "P": {
-            "item": "minecraft:diamond"
+            "type": "forge:ore_dict",
+            "ore": "plankWood"
         },
         "C": {
-            "item": "totemdefender:gold_as_upgrade"
+            "item": "totemdefender:core"
         },
         "L": {
             "item": "minecraft:dye",
             "data": 4
         },
         "F": {
-            "item": "minecraft:feather"
+            "item": "minecraft:redstone_torch"
         }
     },
     "result": {
-        "item": "totemdefender:diamond_as_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 2,
         "count": 1
     }
 }

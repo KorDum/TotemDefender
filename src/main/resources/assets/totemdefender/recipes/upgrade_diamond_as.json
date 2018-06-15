@@ -3,22 +3,27 @@
     "pattern": [
         "P P",
         "PCP",
-        "LPL"
+        "LFL"
     ],
     "key": {
         "P": {
-            "item": "minecraft:string"
+            "item": "minecraft:diamond"
         },
         "C": {
-            "item": "totemdefender:core"
+            "item": "totemdefender:upgrade",
+            "data": 6
         },
         "L": {
             "item": "minecraft:dye",
             "data": 4
+        },
+        "F": {
+            "item": "minecraft:feather"
         }
     },
     "result": {
-        "item": "totemdefender:slowdown_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 9,
         "count": 1
     }
 }

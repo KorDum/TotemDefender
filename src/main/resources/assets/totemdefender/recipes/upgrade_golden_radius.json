@@ -10,7 +10,8 @@
             "item": "minecraft:gold_ingot"
         },
         "C": {
-            "item": "totemdefender:iron_radius_upgrade"
+            "item": "totemdefender:upgrade",
+            "data": 5
         },
         "L": {
             "item": "minecraft:dye",
@@ -21,7 +22,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:gold_radius_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 8,
         "count": 1
     }
 }

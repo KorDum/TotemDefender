@@ -3,22 +3,27 @@
     "pattern": [
         "P P",
         "PCP",
-        "LPL"
+        "LFL"
     ],
     "key": {
         "P": {
-            "item": "minecraft:fermented_spider_eye"
+            "item": "minecraft:diamond"
         },
         "C": {
-            "item": "totemdefender:core"
+            "item": "totemdefender:upgrade",
+            "data": 8
         },
         "L": {
             "item": "minecraft:dye",
             "data": 4
+        },
+        "F": {
+            "item": "minecraft:redstone_torch"
         }
     },
     "result": {
-        "item": "totemdefender:confusion_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 11,
         "count": 1
     }
 }

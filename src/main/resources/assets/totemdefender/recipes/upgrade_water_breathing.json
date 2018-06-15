@@ -8,7 +8,7 @@
     "key": {
         "P": {
             "item": "minecraft:fish",
-            "data": 3
+            "data": 0
         },
         "C": {
             "item": "totemdefender:core"
@@ -19,7 +19,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:hungry_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 22,
         "count": 1
     }
 }

@@ -19,7 +19,7 @@
             "data": 2
         },
         "S": {
-            "item": "totemdefender:self_player_filter",
+            "item": "totemdefender:filter",
             "data": 1
         }
     },

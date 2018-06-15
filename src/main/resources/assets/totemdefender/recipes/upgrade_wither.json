@@ -3,25 +3,23 @@
     "pattern": [
         "P P",
         "PCP",
-        "LFL"
+        "LPL"
     ],
     "key": {
         "P": {
-            "item": "minecraft:iron_ingot"
+            "item": "minecraft:ghast_tear"
         },
         "C": {
-            "item": "totemdefender:wooden_radius_upgrade"
+            "item": "totemdefender:core"
         },
         "L": {
             "item": "minecraft:dye",
             "data": 4
-        },
-        "F": {
-            "item": "minecraft:redstone_torch"
         }
     },
     "result": {
-        "item": "totemdefender:iron_radius_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 15,
         "count": 1
     }
 }

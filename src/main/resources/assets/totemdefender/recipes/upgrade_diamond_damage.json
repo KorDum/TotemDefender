@@ -10,18 +10,20 @@
             "item": "minecraft:diamond"
         },
         "C": {
-            "item": "totemdefender:gold_radius_upgrade"
+            "item": "totemdefender:upgrade",
+            "data": 7
         },
         "L": {
             "item": "minecraft:dye",
             "data": 4
         },
         "F": {
-            "item": "minecraft:redstone_torch"
+            "item": "minecraft:arrow"
         }
     },
     "result": {
-        "item": "totemdefender:diamond_radius_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 10,
         "count": 1
     }
 }

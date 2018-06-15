@@ -7,7 +7,8 @@
     ],
     "key": {
         "P": {
-            "item": "minecraft:blaze_rod"
+            "item": "minecraft:skull",
+            "data": 0
         },
         "C": {
             "item": "totemdefender:core"
@@ -18,7 +19,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:lighting_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 23,
         "count": 1
     }
 }

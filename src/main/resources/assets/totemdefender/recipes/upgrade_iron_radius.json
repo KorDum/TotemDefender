@@ -10,18 +10,20 @@
             "item": "minecraft:iron_ingot"
         },
         "C": {
-            "item": "totemdefender:wooden_as_upgrade"
+            "item": "totemdefender:upgrade",
+            "data": 2
         },
         "L": {
             "item": "minecraft:dye",
             "data": 4
         },
         "F": {
-            "item": "minecraft:feather"
+            "item": "minecraft:redstone_torch"
         }
     },
     "result": {
-        "item": "totemdefender:iron_as_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 5,
         "count": 1
     }
 }

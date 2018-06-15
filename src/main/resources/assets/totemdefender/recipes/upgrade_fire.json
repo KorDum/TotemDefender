@@ -7,7 +7,7 @@
     ],
     "key": {
         "P": {
-            "item": "minecraft:spider_eye"
+            "item": "minecraft:blaze_powder"
         },
         "C": {
             "item": "totemdefender:core"
@@ -18,7 +18,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:poison_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 13,
         "count": 1
     }
 }

@@ -7,8 +7,7 @@
     ],
     "key": {
         "P": {
-            "item": "minecraft:fish",
-            "data": 0
+            "item": "minecraft:golden_carrot"
         },
         "C": {
             "item": "totemdefender:core"
@@ -19,7 +18,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:water_breathing_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 19,
         "count": 1
     }
 }

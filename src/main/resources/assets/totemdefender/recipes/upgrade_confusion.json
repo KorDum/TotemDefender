@@ -7,7 +7,7 @@
     ],
     "key": {
         "P": {
-            "item": "minecraft:blaze_powder"
+            "item": "minecraft:fermented_spider_eye"
         },
         "C": {
             "item": "totemdefender:core"
@@ -18,7 +18,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:fire_upgrade",
+        "item": "totemdefender:upgrade",
+        "data": 18,
         "count": 1
     }
 }
