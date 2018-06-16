@@ -44,6 +44,7 @@ public class ItemFilter extends Item implements ICustomRenderModel {
         return super.getUnlocalizedName(stack) + "." + type.getName();
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void registerRender() {
         for (EnumType type : EnumType.values()) {

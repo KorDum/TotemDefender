@@ -67,6 +67,7 @@ public class ItemTotem extends ItemBlock implements ICustomRenderModel {
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void registerRender() {
         for (BlockTotem.EnumType type : BlockTotem.EnumType.values()) {

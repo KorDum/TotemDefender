@@ -80,7 +80,9 @@ public class BlockRegistry {
         blockList.add(block);
         block.setUnlocalizedName(name);
         block.setRegistryName(name);
-        block.setCreativeTab(TotemDefender.tab);
+        if (!block.hasTileEntity(null)) {
+            block.setCreativeTab(TotemDefender.tab);
+        }
         return block;
     }
 

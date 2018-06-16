@@ -78,6 +78,7 @@ public class ItemUpgrade extends Item implements ICustomRenderModel {
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void registerRender() {
         for (EnumType type : ItemUpgrade.EnumType.values()) {

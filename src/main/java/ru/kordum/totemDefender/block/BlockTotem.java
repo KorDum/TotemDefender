@@ -1,6 +1,6 @@
 package ru.kordum.totemDefender.block;
 
-import net.minecraft.block.BlockContainer;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.PropertyEnum;
@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
@@ -21,12 +22,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import ru.kordum.totemDefender.TotemDefender;
+import ru.kordum.totemDefender.entity.TileEntityDiamondTotem;
+import ru.kordum.totemDefender.entity.TileEntityGoldenTotem;
+import ru.kordum.totemDefender.entity.TileEntityIronTotem;
 import ru.kordum.totemDefender.entity.TileEntityTotem;
+import ru.kordum.totemDefender.entity.TileEntityWoodenTotem;
 import ru.kordum.totemDefender.handler.GuiHandler;
 
 import javax.annotation.Nullable;
 
-public class BlockTotem extends BlockContainer {
+public class BlockTotem extends Block {
     private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     private static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
     private static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.25f, 0, 0.25f, 0.75f, 2, 0.75f);
@@ -98,13 +103,26 @@ public class BlockTotem extends BlockContainer {
         return BOUNDING_BOX;
     }
 
+    @Override
+    public boolean hasTileEntity(IBlockState state) {
+        return true;
+    }
+
     @Nullable
     @Override
-    public TileEntity createNewTileEntity(World world, int meta) {
-        EnumType type = EnumType.byMeta(meta);
-        TileEntityTotem tileEntity = new TileEntityTotem(type);
-        tileEntity.updateState(this);
-        return tileEntity;
+    public TileEntity createTileEntity(World world, IBlockState state) {
+        EnumType type = state.getValue(VARIANT);
+        switch (type) {
+            case WOODEN:
+                return new TileEntityWoodenTotem();
+
+            case IRON:
+                return new TileEntityIronTotem();
+
+            case GOLDEN:
+                return new TileEntityGoldenTotem();
+        }
+        return new TileEntityDiamondTotem();
     }
 
     @Override
@@ -137,6 +155,11 @@ public class BlockTotem extends BlockContainer {
     @Override
     public boolean isFullCube(IBlockState state) {
         return false;
+    }
+
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state) {
+        return EnumBlockRenderType.INVISIBLE;
     }
 
     public enum EnumType implements IStringSerializable {

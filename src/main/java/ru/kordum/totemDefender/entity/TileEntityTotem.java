@@ -15,6 +15,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
-public class TileEntityTotem extends TileEntity implements ICapabilityProvider, ITickable {
+public abstract class TileEntityTotem extends TileEntity implements ICapabilityProvider, ITickable {
     private static final String NBT_ITEM_STACK_HANDLER = "ItemStackHandler";
     private static final String NBT_ATTACK_SPEED = "AttackSpeed";
     private static final String NBT_DAMAGE = "Damage";
@@ -37,32 +38,42 @@ public class TileEntityTotem extends TileEntity implements ICapabilityProvider, 
     private static final String NBT_OWNER = "Owner";
     private static final String NBT_MODIFIER = "Modifier";
 
+    protected BlockTotem.EnumType type;
+    protected ItemStackHandler handler;
+
     private float damage;
     private float attackSpeed;
     private int radius;
 
-    private BlockTotem.EnumType type;
-    private ItemStackHandler handler;
     private short filter;
     private byte mode;
     private short modifier;
     private long lastShoot;
     private UUID owner;
 
-    public TileEntityTotem() {
-
-    }
-
-    public TileEntityTotem(BlockTotem.EnumType type) {
-        this.type = type;
-        handler = new ItemStackHandler(type.getFilterSlots() + type.getUpgradeSlots() + 1);
-    }
-
     @Override
     public void update() {
-        if (!world.isRemote) {
-            search();
+        if (world.isRemote) {
+            return;
         }
+
+        if (filter == 0 || mode == 0) {
+            return;
+        }
+
+        long time = new Date().getTime();
+        if (lastShoot != 0 && time - lastShoot < 1000 / attackSpeed) {
+            return;
+        }
+
+        ArrayList<EntityLivingBase> list = getEntityList();
+        /*if ((mode & ItemMode.PROJECTILE) == ItemMode.PROJECTILE) {
+            projectileShot(list);
+        } else if ((mode & ItemMode.AOE) == ItemMode.AOE) {
+            aoeShot(list);
+        }*/
+
+        lastShoot = time;
     }
 
     public void updateState(BlockTotem block) {
@@ -167,26 +178,6 @@ public class TileEntityTotem extends TileEntity implements ICapabilityProvider, 
             list.addAll(world.getEntitiesWithinAABB(EntityWaterMob.class, axis));
         }*/
         return list;
-    }
-
-    protected void search() {
-        if (filter == 0 || mode == 0) {
-            return;
-        }
-
-        long time = new Date().getTime();
-        if (lastShoot != 0 && time - lastShoot < 1000 / attackSpeed) {
-            return;
-        }
-
-        ArrayList<EntityLivingBase> list = getEntityList();
-        /*if ((mode & ItemMode.PROJECTILE) == ItemMode.PROJECTILE) {
-            projectileShot(list);
-        } else if ((mode & ItemMode.AOE) == ItemMode.AOE) {
-            aoeShot(list);
-        }*/
-
-        lastShoot = time;
     }
 
     private void aoeShot(ArrayList<EntityLivingBase> list) {
