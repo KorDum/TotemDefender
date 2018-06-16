@@ -21,9 +21,9 @@ public class ItemTotem extends ItemBlock {
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
-        if (flagIn.isAdvanced() || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+    public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+        super.addInformation(stack, world, tooltip, flag);
+        if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
             BlockTotem block = (BlockTotem) this.block;
             tooltip.add(Formatter.getStat(TextFormatting.BLUE, "prop.attack_speed", block.getAttackSpeed()));
             tooltip.add(Formatter.getStat(TextFormatting.RED, "prop.damage", block.getDamage()));

@@ -8,24 +8,23 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.block.BlockSlab;
 import ru.kordum.totemDefender.config.Config;
 import ru.kordum.totemDefender.config.ConfigUpgrade;
-import ru.kordum.totemDefender.item.EnumFilter;
 import ru.kordum.totemDefender.item.EnumMode;
 import ru.kordum.totemDefender.item.EnumUpgrade;
 import ru.kordum.totemDefender.item.ItemCore;
 import ru.kordum.totemDefender.item.ItemDoor;
-import ru.kordum.totemDefender.item.ItemSlab;
-import ru.kordum.totemDefender.item.ItemTotem;
 import ru.kordum.totemDefender.item.ItemFilter;
 import ru.kordum.totemDefender.item.ItemMode;
+import ru.kordum.totemDefender.item.ItemSlab;
+import ru.kordum.totemDefender.item.ItemTotem;
 import ru.kordum.totemDefender.item.ItemUpgrade;
+import ru.kordum.totemDefender.model.ICustomRenderModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemRegistry {
     public static Item CORE;
@@ -74,9 +73,9 @@ public class ItemRegistry {
         GOLDEN_TOTEM = prepareItem(new ItemTotem(BlockRegistry.GOLDEN_TOTEM));
         DIAMOND_TOTEM = prepareItem(new ItemTotem(BlockRegistry.DIAMOND_TOTEM));
 
-        UPGRADE = prepareSubItems(new ItemUpgrade(), "upgrade");
-        FILTER = prepareSubItems(new ItemFilter(), "filter");
-        MODE = prepareSubItems(new ItemMode(), "mode");
+        UPGRADE = prepareItem(new ItemUpgrade(), "upgrade");
+        FILTER = prepareItem(new ItemFilter(), "filter");
+        MODE = prepareItem(new ItemMode(), "mode");
 
         for (EnumUpgrade type : EnumUpgrade.values()) {
             ConfigUpgrade configUpgrade = config.getConfigUpgrade(type.getName());
@@ -92,14 +91,9 @@ public class ItemRegistry {
         itemList.add(item);
         item.setUnlocalizedName(name);
         item.setRegistryName(name);
-        item.setCreativeTab(TotemDefender.tab);
-        return item;
-    }
-
-    private static Item prepareSubItems(Item item, String name) {
-        itemList.add(item);
-        item.setUnlocalizedName(name);
-        item.setRegistryName(name);
+        if (!item.getHasSubtypes()) {
+            item.setCreativeTab(TotemDefender.tab);
+        }
         return item;
     }
 
@@ -121,19 +115,11 @@ public class ItemRegistry {
     @SideOnly(Side.CLIENT)
     public static void registerRenders() {
         for (Item item : itemList) {
-            registerRender(item);
-        }
-        for (EnumMode type : EnumMode.values()) {
-            ModelResourceLocation location = new ModelResourceLocation(MODE.getRegistryName() + "_" + type.getName(), "inventory");
-            ModelLoader.setCustomModelResourceLocation(MODE, type.ordinal(), location);
-        }
-        for (EnumFilter type : EnumFilter.values()) {
-            ModelResourceLocation location = new ModelResourceLocation(FILTER.getRegistryName() + "_" + type.getName(), "inventory");
-            ModelLoader.setCustomModelResourceLocation(FILTER, type.ordinal(), location);
-        }
-        for (EnumUpgrade type : EnumUpgrade.values()) {
-            ModelResourceLocation location = new ModelResourceLocation(UPGRADE.getRegistryName() + "_" + type.getName(), "inventory");
-            ModelLoader.setCustomModelResourceLocation(UPGRADE, type.ordinal(), location);
+            if (item instanceof ICustomRenderModel) {
+                ((ICustomRenderModel) item).registerRender();
+            } else {
+                registerRender(item);
+            }
         }
     }
 

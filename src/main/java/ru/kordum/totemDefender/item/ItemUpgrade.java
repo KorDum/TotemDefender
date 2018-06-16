@@ -1,5 +1,6 @@
 package ru.kordum.totemDefender.item;
 
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -7,16 +8,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 import ru.kordum.totemDefender.TotemDefender;
+import ru.kordum.totemDefender.model.ICustomRenderModel;
 import ru.kordum.totemDefender.util.Formatter;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemUpgrade extends Item {
+public class ItemUpgrade extends Item implements ICustomRenderModel {
     public static final int LEVEL_1 = 1;
     public static final int LEVEL_2 = 2;
     public static final int LEVEL_3 = 3;
@@ -74,6 +77,14 @@ public class ItemUpgrade extends Item {
             }
         } else {
             tooltip.add(Formatter.getLocalize(TextFormatting.GRAY, "prop.hold_more"));
+        }
+    }
+
+    @Override
+    public void registerRender() {
+        for (EnumUpgrade type : EnumUpgrade.values()) {
+            ModelResourceLocation location = new ModelResourceLocation(this.getRegistryName() + "_" + type.getName(), "inventory");
+            ModelLoader.setCustomModelResourceLocation(this, type.ordinal(), location);
         }
     }
 }
