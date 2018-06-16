@@ -1,6 +1,5 @@
 package ru.kordum.totemDefender.block;
 
-import com.google.common.base.Predicate;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
@@ -29,11 +28,7 @@ import javax.annotation.Nullable;
 
 public class BlockTotem extends BlockContainer {
     private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-    private static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class, new Predicate<EnumType>() {
-        public boolean apply(@Nullable EnumType type) {
-            return true;
-        }
-    });
+    private static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
     private static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.25f, 0, 0.25f, 0.75f, 2, 0.75f);
 
     public BlockTotem() {
@@ -41,7 +36,9 @@ public class BlockTotem extends BlockContainer {
         setHardness(2);
         useNeighborBrightness = true;
 
-        IBlockState state = blockState.getBaseState().withProperty(VARIANT, EnumType.WOODEN).withProperty(FACING, EnumFacing.NORTH);
+        IBlockState state = blockState.getBaseState()
+            .withProperty(VARIANT, EnumType.WOODEN)
+            .withProperty(FACING, EnumFacing.NORTH);
         setDefaultState(state);
     }
 
@@ -71,7 +68,7 @@ public class BlockTotem extends BlockContainer {
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return getDefaultState()
             .withProperty(FACING, placer.getHorizontalFacing().getOpposite())
-            .withProperty(VARIANT, EnumType.WOODEN);
+            .withProperty(VARIANT, EnumType.byMeta(meta));
     }
 
     @Override
@@ -88,13 +85,28 @@ public class BlockTotem extends BlockContainer {
     @Override
     public IBlockState getStateFromMeta(int meta) {
         return getDefaultState()
-            .withProperty(FACING, EnumFacing.getHorizontal(meta))
-            .withProperty(VARIANT, EnumType.WOODEN);
+            .withProperty(FACING, EnumFacing.getHorizontal((meta & 12) / 4))
+            .withProperty(VARIANT, EnumType.byMeta(meta));
     }
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return state.getValue(FACING).getHorizontalIndex();
+        EnumType type = state.getValue(VARIANT);
+        int i = type.ordinal();
+        switch (state.getValue(FACING)) {
+            case EAST:
+                i |= 4;
+                break;
+
+            case SOUTH:
+                i |= 8;
+                break;
+
+            case WEST:
+                i |= 12;
+                break;
+        }
+        return i;
     }
 
     @Override
@@ -153,6 +165,7 @@ public class BlockTotem extends BlockContainer {
         }
 
         public static EnumType byMeta(int meta) {
+            meta &= 3;
             for (EnumType type : EnumType.values()) {
                 if (type.ordinal() == meta) {
                     return type;

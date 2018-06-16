@@ -37,10 +37,11 @@ public class RenderTotem extends TileEntitySpecialRenderer<TileEntityTotem> {
             bindTexture(TEXTURE_DIAMOND);
         }
 
+        int sideRotation = (entity.getBlockMetadata() & 12) / 4;
         GlStateManager.pushMatrix();
         GlStateManager.translate((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
         GlStateManager.scale(-1.0F, -1.0F, 1.0F);
-        GlStateManager.rotate(90 * entity.getBlockMetadata(), 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(90 * sideRotation, 0.0F, 1.0F, 0.0F);
         model.render(null, 0.0F, 0.0F, 0.0F, 0, 0.0F, 0.0625F);
         GlStateManager.popMatrix();
     }
