@@ -11,10 +11,7 @@ public class RecipeHandler {
         GameRegistry.addSmelting(BlockRegistry.LOG_FACE1, new ItemStack(Items.COAL, 1, 1), 0.1f);
         GameRegistry.addSmelting(BlockRegistry.LOG_FACE2, new ItemStack(Items.COAL, 1, 1), 0.1f);
         GameRegistry.addSmelting(BlockRegistry.LOG_FACE3, new ItemStack(Items.COAL, 1, 1), 0.1f);
-        GameRegistry.addSmelting(BlockRegistry.WOODEN_TOTEM, new ItemStack(Items.COAL, 2, 1), 1);
-        GameRegistry.addSmelting(BlockRegistry.IRON_TOTEM, new ItemStack(Items.IRON_INGOT, 4, 1), 1);
-        GameRegistry.addSmelting(BlockRegistry.GOLDEN_TOTEM, new ItemStack(Items.GOLD_INGOT, 4, 1), 1);
-        GameRegistry.addSmelting(BlockRegistry.DIAMOND_TOTEM, new ItemStack(Items.DIAMOND, 4, 1), 1);
+        GameRegistry.addSmelting(BlockRegistry.TOTEM, new ItemStack(Items.COAL, 2, 16), 3.0f);
     }
 
     public static void registerOreDictionary() {

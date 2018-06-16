@@ -7,6 +7,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import ru.kordum.totemDefender.block.BlockTotem;
 import ru.kordum.totemDefender.entity.TileEntityTotem;
 import ru.kordum.totemDefender.gui.slots.SlotFilter;
 import ru.kordum.totemDefender.gui.slots.SlotMode;
@@ -24,8 +25,9 @@ public class ContainerTotem extends Container {
     }
 
     protected void createTotemInventory() {
-        int filterSlotCount = tileEntity.getFilterSlotCount();
-        int upgradeSlotCount = tileEntity.getUpgradeSlotCount();
+        BlockTotem.EnumType type = tileEntity.getType();
+        int filterSlotCount = type.getFilterSlots();
+        int upgradeSlotCount = type.getUpgradeSlots();
         addSlotToContainer(new SlotMode(tileEntity, handler, 0, 152, 19));
 
         for (int i = 1; i <= filterSlotCount; i++) {

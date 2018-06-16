@@ -8,13 +8,12 @@ import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import ru.kordum.totemDefender.handler.BlockRegistry;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import ru.kordum.totemDefender.handler.BlockRegistry;
 
 public class BlockLeaves extends net.minecraft.block.BlockLeaves {
     private int saplingChance;

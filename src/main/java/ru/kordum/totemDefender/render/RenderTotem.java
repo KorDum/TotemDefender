@@ -3,10 +3,8 @@ package ru.kordum.totemDefender.render;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
-import ru.kordum.totemDefender.entity.TileEntityGoldenTotem;
-import ru.kordum.totemDefender.entity.TileEntityIronTotem;
+import ru.kordum.totemDefender.block.BlockTotem;
 import ru.kordum.totemDefender.entity.TileEntityTotem;
-import ru.kordum.totemDefender.entity.TileEntityWoodenTotem;
 import ru.kordum.totemDefender.model.ModelTotem;
 import ru.kordum.totemDefender.util.ModResources;
 
@@ -28,11 +26,12 @@ public class RenderTotem extends TileEntitySpecialRenderer<TileEntityTotem> {
 
     @Override
     public void render(TileEntityTotem entity, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
-        if (entity instanceof TileEntityWoodenTotem) {
+        BlockTotem.EnumType type = entity.getType();
+        if (type == BlockTotem.EnumType.WOODEN) {
             bindTexture(TEXTURE_WOODEN);
-        } else if (entity instanceof TileEntityIronTotem) {
+        } else if (type == BlockTotem.EnumType.IRON) {
             bindTexture(TEXTURE_IRON);
-        } else if (entity instanceof TileEntityGoldenTotem) {
+        } else if (type == BlockTotem.EnumType.GOLDEN) {
             bindTexture(TEXTURE_GOLDEN);
         } else {
             bindTexture(TEXTURE_DIAMOND);

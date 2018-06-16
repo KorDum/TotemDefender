@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -31,7 +32,7 @@ public class ItemMode extends Item implements ICustomRenderModel {
             return;
         }
 
-        for (EnumMode type : EnumMode.values()) {
+        for (EnumType type : EnumType.values()) {
             ItemStack subItem = new ItemStack(this, 1, type.ordinal());
             items.add(subItem);
         }
@@ -40,15 +41,45 @@ public class ItemMode extends Item implements ICustomRenderModel {
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         int meta = stack.getMetadata();
-        EnumMode type = EnumMode.byMeta(meta);
+        EnumType type = EnumType.byMeta(meta);
         return super.getUnlocalizedName(stack) + "." + type.getName();
     }
 
     @Override
     public void registerRender() {
-        for (EnumMode type : EnumMode.values()) {
+        for (EnumType type : EnumType.values()) {
             ModelResourceLocation location = new ModelResourceLocation(this.getRegistryName() + "_" + type.getName(), "inventory");
             ModelLoader.setCustomModelResourceLocation(this, type.ordinal(), location);
+        }
+    }
+
+    public enum EnumType implements IStringSerializable {
+        PROJECTILE("projectile"),
+        AOE("aoe");
+
+        private final String name;
+
+        EnumType(String name) {
+            this.name = name;
+        }
+
+        public static EnumType byMeta(int meta) {
+            for (EnumType type : EnumType.values()) {
+                if (type.ordinal() == meta) {
+                    return type;
+                }
+            }
+            return null;
+        }
+
+        @Override
+        public String getName() {
+            return name;
+        }
+
+        @Override
+        public String toString() {
+            return name;
         }
     }
 }

@@ -10,10 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import ru.kordum.totemDefender.handler.BlockRegistry;
 
 import java.util.Random;
-
-import ru.kordum.totemDefender.handler.BlockRegistry;
 
 public abstract class BlockSlab extends net.minecraft.block.BlockSlab {
     public static final PropertyEnum<Variant> VARIANT = PropertyEnum.create("variant", Variant.class);

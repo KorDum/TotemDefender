@@ -17,14 +17,16 @@
             "item": "minecraft:redstone_block"
         },
         "C": {
-            "item": "totemdefender:golden_totem"
+            "item": "totemdefender:totem",
+            "data": 2
         },
         "I": {
             "item": "minecraft:diamond"
         }
     },
     "result": {
-        "item": "totemdefender:diamond_totem",
+        "item": "totemdefender:totem",
+        "data": 3,
         "count": 1
     }
 }

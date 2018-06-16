@@ -129,8 +129,7 @@ public class BlockFenceGate extends BlockHorizontal {
         if (!world.isRemote) {
             boolean flag = world.isBlockPowered(pos);
             if (state.getValue(POWERED).booleanValue() != flag) {
-                world.setBlockState(pos, state.withProperty(POWERED, flag)
-                    .withProperty(OPEN, flag), 2);
+                world.setBlockState(pos, state.withProperty(POWERED, flag).withProperty(OPEN, flag), 2);
 
                 if (state.getValue(OPEN).booleanValue() != flag) {
                     world.playEvent(null, flag ? 1008 : 1014, pos, 0);

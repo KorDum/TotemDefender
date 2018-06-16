@@ -117,7 +117,7 @@ public class WorldGenTotemTree extends WorldGenAbstractTree {
                             } else {
                                 log = TRUNK_FACE3;
                             }
-                            
+
                             int meta = rand.nextInt(4);
                             log = log.withProperty(BlockLogFace.FACING, getFacingFromMeta(meta));
                         }
@@ -129,7 +129,7 @@ public class WorldGenTotemTree extends WorldGenAbstractTree {
         }
         return false;
     }
-    
+
     private EnumFacing getFacingFromMeta(int meta) {
         switch (meta) {
             case 0:

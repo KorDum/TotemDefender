@@ -4,7 +4,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
 import ru.kordum.totemDefender.handler.ItemRegistry;
 
 public class ModCreativeTab extends CreativeTabs {
@@ -15,6 +14,6 @@ public class ModCreativeTab extends CreativeTabs {
     @Override
     @SideOnly(Side.CLIENT)
     public ItemStack getTabIconItem() {
-        return new ItemStack(ItemRegistry.WOODEN_TOTEM);
+        return new ItemStack(ItemRegistry.TOTEM);
     }
 }

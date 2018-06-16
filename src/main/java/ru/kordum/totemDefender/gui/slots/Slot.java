@@ -3,10 +3,9 @@ package ru.kordum.totemDefender.gui.slots;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
+import ru.kordum.totemDefender.entity.TileEntityTotem;
 
 import javax.annotation.Nonnull;
-
-import ru.kordum.totemDefender.entity.TileEntityTotem;
 
 public class Slot extends SlotItemHandler {
     protected TileEntityTotem tileEntity;

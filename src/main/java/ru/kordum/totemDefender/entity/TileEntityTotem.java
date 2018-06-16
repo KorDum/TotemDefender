@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
-public abstract class TileEntityTotem extends TileEntity implements ICapabilityProvider, ITickable {
+public class TileEntityTotem extends TileEntity implements ICapabilityProvider, ITickable {
     private static final String NBT_ITEM_STACK_HANDLER = "ItemStackHandler";
     private static final String NBT_ATTACK_SPEED = "AttackSpeed";
     private static final String NBT_DAMAGE = "Damage";
@@ -37,10 +37,11 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
     private static final String NBT_OWNER = "Owner";
     private static final String NBT_MODIFIER = "Modifier";
 
-    protected float damage;
-    protected float attackSpeed;
-    protected int radius;
+    private float damage;
+    private float attackSpeed;
+    private int radius;
 
+    private BlockTotem.EnumType type;
     private ItemStackHandler handler;
     private short filter;
     private byte mode;
@@ -48,8 +49,9 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
     private long lastShoot;
     private UUID owner;
 
-    public TileEntityTotem() {
-        handler = new ItemStackHandler(getFilterSlotCount() + getUpgradeSlotCount() + 1);
+    public TileEntityTotem(BlockTotem.EnumType type) {
+        this.type = type;
+        handler = new ItemStackHandler(type.getFilterSlots() + type.getUpgradeSlots() + 1);
     }
 
     @Override
@@ -61,11 +63,11 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
 
     public void updateState(BlockTotem block) {
         modifier = 0;
-        attackSpeed = block.getAttackSpeed();
-        damage = block.getDamage();
-        radius = block.getRadius();
-        int offset = 1 + getFilterSlotCount();
-        int count = offset + getUpgradeSlotCount();
+//        attackSpeed = block.getAttackSpeed();
+//        damage = block.getDamage();
+//        radius = block.getRadius();
+        int offset = 1 + type.getFilterSlots();
+        int count = offset + type.getUpgradeSlots();
 
         for (int i = offset; i < count; i++) {
             ItemStack stack = handler.getStackInSlot(i);
@@ -114,7 +116,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
 
     public void updateFilter() {
         filter = 0;
-        for (byte i = 1; i <= getFilterSlotCount(); i++) {
+        for (byte i = 1; i <= type.getFilterSlots(); i++) {
             ItemStack stack = handler.getStackInSlot(i);
             if (stack.isEmpty()) {
                 continue;
@@ -416,10 +418,6 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         return world.getTileEntity(getPos()) == this && player.getDistanceSq(pos.add(0.5, 0.5, 0.5)) <= 64;
     }
 
-    public abstract int getFilterSlotCount();
-
-    public abstract int getUpgradeSlotCount();
-
     public float getAttackSpeed() {
         return attackSpeed;
     }
@@ -440,9 +438,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         return owner != null;
     }
 
-    public int getLevel() {
-        return ((BlockTotem) getBlockType()).getLevel();
+    public BlockTotem.EnumType getType() {
+        return type;
     }
-
-    public abstract String getName();
 }

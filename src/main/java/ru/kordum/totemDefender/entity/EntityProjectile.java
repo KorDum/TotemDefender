@@ -24,9 +24,7 @@ public class EntityProjectile extends EntityThrowable {
     @Override
     protected void onImpact(RayTraceResult traceResult) {
         if (!world.isRemote) {
-            if (owner != null &&
-                traceResult.entityHit != null &&
-                traceResult.entityHit instanceof EntityLivingBase) {
+            if (owner != null && traceResult.entityHit != null && traceResult.entityHit instanceof EntityLivingBase) {
                 EntityLivingBase entity = (EntityLivingBase) traceResult.entityHit;
                 owner.attack(entity);
             }

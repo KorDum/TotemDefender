@@ -12,11 +12,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.event.terraingen.TerrainGen;
-
-import java.util.Random;
-
 import ru.kordum.totemDefender.config.ConfigSapling;
 import ru.kordum.totemDefender.worldgen.WorldGenTotemTree;
+
+import java.util.Random;
 
 public class BlockSapling extends BlockBush implements IGrowable {
     public static final PropertyEnum TYPE = PropertyEnum.create("type", BlockPlanks.EnumType.class);
@@ -29,11 +28,11 @@ public class BlockSapling extends BlockBush implements IGrowable {
     public BlockSapling(ConfigSapling config) {
         growChance = config.getGrowChance();
         bonemealChance = config.getBonemealChance();
-        setDefaultState(
-            blockState.getBaseState()
-                .withProperty(TYPE, BlockPlanks.EnumType.TOTEM)
-                .withProperty(STAGE, 0)
-        );
+
+        IBlockState state = blockState.getBaseState()
+            .withProperty(TYPE, BlockPlanks.EnumType.TOTEM)
+            .withProperty(STAGE, 0);
+        setDefaultState(state);
     }
 
     @Override

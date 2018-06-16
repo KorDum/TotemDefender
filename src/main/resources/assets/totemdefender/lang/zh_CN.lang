@@ -15,10 +15,10 @@ tile.fence.name=图腾木栅栏
 tile.fence_gate.name=图腾木栅栏门
 entity.totem_projectile.name=图腾投射物
 
-tile.wooden_totem.name=木质图腾
-tile.iron_totem.name=铁质图腾
-tile.golden_totem.name=金质图腾
-tile.diamond_totem.name=钻石图腾
+tile.totem.wooden.name=木质图腾
+tile.totem.iron.name=铁质图腾
+tile.totem.golden.name=金质图腾
+tile.totem.diamond.name=钻石图腾
 
 item.mode.projectile.name=狙击模式
 item.mode.aoe.name=群伤模式
@@ -62,10 +62,10 @@ prop.damage=%s 伤害
 prop.radius=%s 格的攻击范围
 prop.hold_more=<按住shift键显示更多细节>
 
-gui.wooden_totem=木质图腾
-gui.iron_totem=铁质图腾
-gui.golden_totem=金质图腾
-gui.diamond_totem=钻石图腾
+gui.totem.wooden=木质图腾
+gui.totem.iron=铁质图腾
+gui.totem.golden=金质图腾
+gui.totem.diamond=钻石图腾
 gui.attack_speed=%s
 gui.damage=%s
 gui.radius=%s

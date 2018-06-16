@@ -2,8 +2,8 @@ package ru.kordum.totemDefender.gui.slots;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
+import ru.kordum.totemDefender.block.BlockTotem;
 import ru.kordum.totemDefender.entity.TileEntityTotem;
-import ru.kordum.totemDefender.item.EnumUpgrade;
 import ru.kordum.totemDefender.item.ItemUpgrade;
 
 public class SlotUpgrade extends Slot {
@@ -23,7 +23,8 @@ public class SlotUpgrade extends Slot {
             return false;
         }
 
-        EnumUpgrade type = EnumUpgrade.byMeta(stack.getMetadata());
-        return type.getLevel() <= tileEntity.getLevel();
+        ItemUpgrade.EnumType upgradeType = ItemUpgrade.EnumType.byMeta(stack.getMetadata());
+        BlockTotem.EnumType totemType = tileEntity.getType();
+        return upgradeType.getLevel() <= totemType.getLevel();
     }
 }

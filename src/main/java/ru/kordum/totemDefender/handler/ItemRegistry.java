@@ -12,8 +12,6 @@ import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.block.BlockSlab;
 import ru.kordum.totemDefender.config.Config;
 import ru.kordum.totemDefender.config.ConfigUpgrade;
-import ru.kordum.totemDefender.item.EnumMode;
-import ru.kordum.totemDefender.item.EnumUpgrade;
 import ru.kordum.totemDefender.item.ItemCore;
 import ru.kordum.totemDefender.item.ItemDoor;
 import ru.kordum.totemDefender.item.ItemFilter;
@@ -40,12 +38,7 @@ public class ItemRegistry {
     public static Item LOG_FACE3;
     public static Item SAPLING;
     public static Item LEAVES;
-
-    public static Item WOODEN_TOTEM;
-    public static Item IRON_TOTEM;
-    public static Item GOLDEN_TOTEM;
-    public static Item DIAMOND_TOTEM;
-
+    public static Item TOTEM;
     public static Item UPGRADE;
     public static Item FILTER;
     public static Item MODE;
@@ -67,17 +60,12 @@ public class ItemRegistry {
         LOG_FACE3 = prepareItem(BlockRegistry.LOG_FACE3);
         SAPLING = prepareItem(BlockRegistry.SAPLING);
         LEAVES = prepareItem(BlockRegistry.LEAVES);
-
-        WOODEN_TOTEM = prepareItem(new ItemTotem(BlockRegistry.WOODEN_TOTEM));
-        IRON_TOTEM = prepareItem(new ItemTotem(BlockRegistry.IRON_TOTEM));
-        GOLDEN_TOTEM = prepareItem(new ItemTotem(BlockRegistry.GOLDEN_TOTEM));
-        DIAMOND_TOTEM = prepareItem(new ItemTotem(BlockRegistry.DIAMOND_TOTEM));
-
+        TOTEM = prepareItem(new ItemTotem(BlockRegistry.TOTEM));
         UPGRADE = prepareItem(new ItemUpgrade(), "upgrade");
         FILTER = prepareItem(new ItemFilter(), "filter");
         MODE = prepareItem(new ItemMode(), "mode");
 
-        for (EnumUpgrade type : EnumUpgrade.values()) {
+        for (ItemUpgrade.EnumType type : ItemUpgrade.EnumType.values()) {
             ConfigUpgrade configUpgrade = config.getConfigUpgrade(type.getName());
             type.setConfig(configUpgrade);
         }

@@ -15,10 +15,10 @@ tile.fence.name=Totem Tree Fence
 tile.fence_gate.name=Totem Tree Fence Gate
 entity.totem_projectile.name=Totem Projectile
 
-tile.wooden_totem.name=Wooden Totem
-tile.iron_totem.name=Iron Totem
-tile.golden_totem.name=Golden Totem
-tile.diamond_totem.name=Diamond Totem
+tile.totem.wooden.name=Wooden Totem
+tile.totem.iron.name=Iron Totem
+tile.totem.golden.name=Golden Totem
+tile.totem.diamond.name=Diamond Totem
 
 item.mode.projectile.name=Projectile Mode
 item.mode.aoe.name=AoE Mode
@@ -63,10 +63,10 @@ prop.damage=%s Damage
 prop.radius=%s Radius
 prop.hold_more=<Hold shift for details>
 
-gui.wooden_totem=Basic Totem
-gui.iron_totem=Iron Totem
-gui.golden_totem=Golden Totem
-gui.diamond_totem=Diamond Totem
+gui.totem.wooden=Basic Totem
+gui.totem.iron=Iron Totem
+gui.totem.golden=Golden Totem
+gui.totem.diamond=Diamond Totem
 gui.attack_speed=%s
 gui.damage=%s
 gui.radius=%s

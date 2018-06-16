@@ -1,15 +1,14 @@
 package ru.kordum.totemDefender.proxy;
 
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import ru.kordum.totemDefender.TotemDefender;
+import ru.kordum.totemDefender.config.Config;
+import ru.kordum.totemDefender.handler.BlockRegistry;
+import ru.kordum.totemDefender.handler.GuiHandler;
+import ru.kordum.totemDefender.handler.ItemRegistry;
+import ru.kordum.totemDefender.handler.RecipeHandler;
 
 import java.io.File;
-
-import ru.kordum.totemDefender.TotemDefender;
-import ru.kordum.totemDefender.handler.BlockRegistry;
-import ru.kordum.totemDefender.config.Config;
-import ru.kordum.totemDefender.handler.GuiHandler;
-import ru.kordum.totemDefender.handler.RecipeHandler;
-import ru.kordum.totemDefender.handler.ItemRegistry;
 
 public abstract class CommonProxy {
     public void preInit(File configFile) {
@@ -17,7 +16,7 @@ public abstract class CommonProxy {
         BlockRegistry.init(config);
         ItemRegistry.init(config);
     }
-    
+
     public void init() {
         RecipeHandler.registerFurnaceRecipe();
         RecipeHandler.registerOreDictionary();

@@ -15,10 +15,10 @@ tile.fence.name=Забор из тотемного древа
 tile.fence_gate.name=Калитка из тотемного древа
 entity.totem_projectile.name=Снаряд Тотема
 
-tile.wooden_totem.name=Деревянный тотем
-tile.iron_totem.name=Железный тотем
-tile.golden_totem.name=Золотой тотем
-tile.diamond_totem.name=Алмазный тотем
+tile.totem.wooden.name=Деревянный тотем
+tile.totem.iron.name=Железный тотем
+tile.totem.golden.name=Золотой тотем
+tile.totem.diamond.name=Алмазный тотем
 
 item.mode.projectile.name=Снаряд
 item.mode.aoe.name=По площади
@@ -63,10 +63,10 @@ prop.damage=%s урон
 prop.radius=%s радиус
 prop.hold_more=<Зажмите SHIFT Для подробностей>
 
-gui.wooden_totem=Деревянный тотем
-gui.iron_totem=Железный тотем
-gui.golden_totem=Золотой тотем
-gui.diamond_totem=Алмазный тотем
+gui.totem.wooden=Деревянный тотем
+gui.totem.iron=Железный тотем
+gui.totem.golden=Золотой тотем
+gui.totem.diamond=Алмазный тотем
 gui.attack_speed=%s
 gui.damage=%s
 gui.radius=%s

@@ -1,7 +1,7 @@
 package ru.kordum.totemDefender.config;
 
 import net.minecraftforge.common.config.Configuration;
-import ru.kordum.totemDefender.item.EnumUpgrade;
+import ru.kordum.totemDefender.item.ItemUpgrade;
 
 import java.io.File;
 import java.util.HashMap;
@@ -63,107 +63,107 @@ public class Config extends Configuration {
 
         upgrades = new HashMap<>();
         upgrades.put(
-            EnumUpgrade.WOODEN_AS.getName(),
+            ItemUpgrade.EnumType.WOODEN_AS.getName(),
             ConfigUpgrade.parse(this, UPGRADE_WOODEN_AS, 0.1f, false, -2, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.WOODEN_DAMAGE.getName(),
+            ItemUpgrade.EnumType.WOODEN_DAMAGE.getName(),
             ConfigUpgrade.parse(this, UPGRADE_WOODEN_DAMAGE, -0.01f, false, 1, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.WOODEN_RADIUS.getName(),
+            ItemUpgrade.EnumType.WOODEN_RADIUS.getName(),
             ConfigUpgrade.parse(this, UPGRADE_WOODEN_RADIUS, -0.1f, false, -3, false, 1, false)
         );
 
         upgrades.put(
-            EnumUpgrade.IRON_AS.getName(),
+            ItemUpgrade.EnumType.IRON_AS.getName(),
             ConfigUpgrade.parse(this, UPGRADE_IRON_AS, 0.2f, false, -2, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.IRON_DAMAGE.getName(),
+            ItemUpgrade.EnumType.IRON_DAMAGE.getName(),
             ConfigUpgrade.parse(this, UPGRADE_IRON_DAMAGE, -0.05f, false, 2, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.IRON_RADIUS.getName(),
+            ItemUpgrade.EnumType.IRON_RADIUS.getName(),
             ConfigUpgrade.parse(this, UPGRADE_IRON_RADIUS, -0.1f, false, -2, false, 1, false)
         );
 
         upgrades.put(
-            EnumUpgrade.GOLDEN_AS.getName(),
+            ItemUpgrade.EnumType.GOLDEN_AS.getName(),
             ConfigUpgrade.parse(this, UPGRADE_GOLDEN_AS, 0.2f, false, -1f, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.GOLDEN_DAMAGE.getName(),
+            ItemUpgrade.EnumType.GOLDEN_DAMAGE.getName(),
             ConfigUpgrade.parse(this, UPGRADE_GOLDEN_DAMAGE, -0.1f, false, 3, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.GOLDEN_RADIUS.getName(),
+            ItemUpgrade.EnumType.GOLDEN_RADIUS.getName(),
             ConfigUpgrade.parse(this, UPGRADE_GOLDEN_RADIUS, -0.1f, false, -1, false, 2, false)
         );
 
         upgrades.put(
-            EnumUpgrade.DIAMOND_AS.getName(),
+            ItemUpgrade.EnumType.DIAMOND_AS.getName(),
             ConfigUpgrade.parse(this, UPGRADE_DIAMOND_AS, 0.3f, false, 0, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.DIAMOND_DAMAGE.getName(),
+            ItemUpgrade.EnumType.DIAMOND_DAMAGE.getName(),
             ConfigUpgrade.parse(this, UPGRADE_DIAMOND_DAMAGE, -0.15f, false, 4, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.DIAMOND_RADIUS.getName(),
+            ItemUpgrade.EnumType.DIAMOND_RADIUS.getName(),
             ConfigUpgrade.parse(this, UPGRADE_DIAMOND_RADIUS, -0.1f, false, 0, false, 2, false)
         );
 
         upgrades.put(
-            EnumUpgrade.POISON.getName(),
+            ItemUpgrade.EnumType.POISON.getName(),
             ConfigUpgrade.parse(this, UPGRADE_POISON, -30, true, -25, true, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.FIRE.getName(),
+            ItemUpgrade.EnumType.FIRE.getName(),
             ConfigUpgrade.parse(this, UPGRADE_FIRE, -25, true, -30, true, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.LIGHTING.getName(),
+            ItemUpgrade.EnumType.LIGHTING.getName(),
             ConfigUpgrade.parse(this, UPGRADE_LIGHTING, -50, true, 0, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.WITHER.getName(),
+            ItemUpgrade.EnumType.WITHER.getName(),
             ConfigUpgrade.parse(this, UPGRADE_WITHER, -50, true, 0, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.SLOWDOWN.getName(),
+            ItemUpgrade.EnumType.SLOWDOWN.getName(),
             ConfigUpgrade.parse(this, UPGRADE_SLOWDOWN, -10, true, 0, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.BLINDNESS.getName(),
+            ItemUpgrade.EnumType.BLINDNESS.getName(),
             ConfigUpgrade.parse(this, UPGRADE_BLINDNESS, -10, true, 0, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.CONFUSION.getName(),
+            ItemUpgrade.EnumType.CONFUSION.getName(),
             ConfigUpgrade.parse(this, UPGRADE_CONFUSION, -10, true, 0, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.HEAL.getName(),
+            ItemUpgrade.EnumType.HEAL.getName(),
             ConfigUpgrade.parse(this, UPGRADE_HEAL, -50, true, 0, false, -25, true)
         );
         upgrades.put(
-            EnumUpgrade.HUNGRY.getName(),
+            ItemUpgrade.EnumType.HUNGRY.getName(),
             ConfigUpgrade.parse(this, UPGRADE_HUNGRY, -10, true, 0, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.REGENERATION.getName(),
+            ItemUpgrade.EnumType.REGENERATION.getName(),
             ConfigUpgrade.parse(this, UPGRADE_REGENERATION, -10, true, 0, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.WATER_BREATHING.getName(),
+            ItemUpgrade.EnumType.WATER_BREATHING.getName(),
             ConfigUpgrade.parse(this, UPGRADE_WATER_BREATHING, -10, true, 0, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.WEAKNESS.getName(),
+            ItemUpgrade.EnumType.WEAKNESS.getName(),
             ConfigUpgrade.parse(this, UPGRADE_WEAKNESS, -10, true, 0, false, 0, false)
         );
         upgrades.put(
-            EnumUpgrade.KNOCKBACK.getName(),
+            ItemUpgrade.EnumType.KNOCKBACK.getName(),
             ConfigUpgrade.parse(this, UPGRADE_KNOCKBACK, -50, true, 0, false, 0, false)
         );
         save();

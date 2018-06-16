@@ -27,7 +27,8 @@
         }
     },
     "result": {
-        "item": "totemdefender:wooden_totem",
+        "item": "totemdefender:totem",
+        "data": 0,
         "count": 1
     }
 }
