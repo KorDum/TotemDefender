@@ -43,28 +43,6 @@ public class BlockTotem extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (player.isSneaking()) {
-            return false;
-        }
-
-        TileEntity target = world.getTileEntity(pos);
-        if (target == null) {
-            return false;
-        }
-
-        TileEntityTotem tileEntity = (TileEntityTotem) target;
-        if (!tileEntity.hasOwner()) {
-            tileEntity.setOwner(player.getUniqueID());
-        }
-
-        if (!world.isRemote) {
-            player.openGui(TotemDefender.instance, GuiHandler.BLOCK_TOTEM, world, pos.getX(), pos.getY(), pos.getZ());
-        }
-        return true;
-    }
-
-    @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return getDefaultState()
             .withProperty(FACING, placer.getHorizontalFacing().getOpposite())
@@ -84,8 +62,9 @@ public class BlockTotem extends BlockContainer {
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
+        int side = (meta & 12) / 4;
         return getDefaultState()
-            .withProperty(FACING, EnumFacing.getHorizontal((meta & 12) / 4))
+            .withProperty(FACING, EnumFacing.getHorizontal(side))
             .withProperty(VARIANT, EnumType.byMeta(meta));
     }
 
@@ -121,11 +100,33 @@ public class BlockTotem extends BlockContainer {
 
     @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createNewTileEntity(World world, int meta) {
         EnumType type = EnumType.byMeta(meta);
         TileEntityTotem tileEntity = new TileEntityTotem(type);
         tileEntity.updateState(this);
         return tileEntity;
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (player.isSneaking()) {
+            return false;
+        }
+
+        TileEntity target = world.getTileEntity(pos);
+        if (target == null) {
+            return false;
+        }
+
+        TileEntityTotem tileEntity = (TileEntityTotem) target;
+        if (!tileEntity.hasOwner()) {
+            tileEntity.setOwner(player.getUniqueID());
+        }
+
+        if (!world.isRemote) {
+            player.openGui(TotemDefender.instance, GuiHandler.BLOCK_TOTEM, world, pos.getX(), pos.getY(), pos.getZ());
+        }
+        return true;
     }
 
     @Override

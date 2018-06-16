@@ -49,6 +49,10 @@ public class TileEntityTotem extends TileEntity implements ICapabilityProvider, 
     private long lastShoot;
     private UUID owner;
 
+    public TileEntityTotem() {
+
+    }
+
     public TileEntityTotem(BlockTotem.EnumType type) {
         this.type = type;
         handler = new ItemStackHandler(type.getFilterSlots() + type.getUpgradeSlots() + 1);
