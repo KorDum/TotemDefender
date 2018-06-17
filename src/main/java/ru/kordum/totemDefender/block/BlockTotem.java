@@ -32,7 +32,7 @@ import ru.kordum.totemDefender.handler.GuiHandler;
 
 import javax.annotation.Nullable;
 
-public class BlockTotem extends Block {
+public class BlockTotem extends Block implements IBlockWithSubTypes {
     private static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     private static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
     private static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0.25f, 0, 0.25f, 0.75f, 2, 0.75f);

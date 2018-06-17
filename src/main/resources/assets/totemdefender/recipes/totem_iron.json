@@ -10,9 +10,24 @@
             "item": "minecraft:dye",
             "data": 4
         },
-        "W": {
-            "item": "totemdefender:log"
-        },
+        "W": [
+            {
+                "item": "totemdefender:log",
+                "data": 0
+            },
+            {
+                "item": "totemdefender:log",
+                "data": 1
+            },
+            {
+                "item": "totemdefender:log",
+                "data": 2
+            },
+            {
+                "item": "totemdefender:log",
+                "data": 3
+            }
+        ],
         "R": {
             "item": "minecraft:redstone_block"
         },

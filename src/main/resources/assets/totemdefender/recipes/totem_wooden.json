@@ -11,19 +11,23 @@
             "data": 4
         },
         "W": {
-            "item": "totemdefender:log"
+            "item": "totemdefender:log",
+            "data": 0
         },
         "C": {
             "item": "totemdefender:core"
         },
         "1": {
-            "item": "totemdefender:log_face1"
+            "item": "totemdefender:log",
+            "data": 1
         },
         "2": {
-            "item": "totemdefender:log_face2"
+            "item": "totemdefender:log",
+            "data": 2
         },
         "3": {
-            "item": "totemdefender:log_face3"
+            "item": "totemdefender:log",
+            "data": 3
         }
     },
     "result": {

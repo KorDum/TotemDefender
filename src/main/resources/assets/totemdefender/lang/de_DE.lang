@@ -3,10 +3,10 @@ item.core.name=Kern
 item.door.name=Totembaumtür
 
 tile.sapling.name=Totembaumsetzling
-tile.log.name=Totembaumholz
-tile.log_face1.name=Totembaumholz
-tile.log_face2.name=Totembaumholz
-tile.log_face3.name=Totembaumholz
+tile.log.log.name=Totembaumholz
+tile.log.face_1.name=Totembaumholz
+tile.log.face_2.name=Totembaumholz
+tile.log.face_3.name=Totembaumholz
 tile.leaf.name=Totembaumblätter
 tile.planks.name=Totembaumbretter
 tile.stairs.name=Totembaumtreppe

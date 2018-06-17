@@ -10,14 +10,19 @@ import net.minecraftforge.common.IPlantable;
 import java.util.Random;
 
 import ru.kordum.totemDefender.block.BlockLeaves;
+import ru.kordum.totemDefender.block.BlockLog;
 import ru.kordum.totemDefender.block.BlockLogFace;
 import ru.kordum.totemDefender.handler.BlockRegistry;
 
 public class WorldGenTotemTree extends WorldGenAbstractTree {
-    private static final IBlockState TRUNK = BlockRegistry.LOG.getDefaultState();
-    private static final IBlockState TRUNK_FACE1 = BlockRegistry.LOG_FACE1.getDefaultState();
-    private static final IBlockState TRUNK_FACE2 = BlockRegistry.LOG_FACE2.getDefaultState();
-    private static final IBlockState TRUNK_FACE3 = BlockRegistry.LOG_FACE3.getDefaultState();
+    private final IBlockState LOG = BlockRegistry.LOG.getDefaultState()
+        .withProperty(BlockLog.VARIANT, BlockLog.EnumType.LOG);
+    private final IBlockState LOG_FACE1 = BlockRegistry.LOG.getDefaultState()
+        .withProperty(BlockLog.VARIANT, BlockLog.EnumType.FACE_1);
+    private final IBlockState LOG_FACE2 = BlockRegistry.LOG.getDefaultState()
+        .withProperty(BlockLog.VARIANT, BlockLog.EnumType.FACE_2);
+    private final IBlockState LOG_FACE3 = BlockRegistry.LOG.getDefaultState()
+        .withProperty(BlockLog.VARIANT, BlockLog.EnumType.FACE_3);
 
     private static final IBlockState LEAF = BlockRegistry.LEAVES.getDefaultState()
         .withProperty(BlockLeaves.CHECK_DECAY, Boolean.FALSE);
@@ -107,19 +112,16 @@ public class WorldGenTotemTree extends WorldGenAbstractTree {
                     if (state.getBlock().isAir(state, world, upN) || state.getBlock().isLeaves(state, world, upN)) {
                         IBlockState log;
                         if (rand.nextDouble() > 0.05) {
-                            log = TRUNK;
+                            log = LOG;
                         } else {
                             double faceRand = rand.nextGaussian();
                             if (faceRand > 0.66) {
-                                log = TRUNK_FACE1;
+                                log = LOG_FACE1;
                             } else if (faceRand > 0.33) {
-                                log = TRUNK_FACE2;
+                                log = LOG_FACE2;
                             } else {
-                                log = TRUNK_FACE3;
+                                log = LOG_FACE3;
                             }
-
-                            int meta = rand.nextInt(4);
-                            log = log.withProperty(BlockLogFace.FACING, getFacingFromMeta(meta));
                         }
                         setBlockAndNotifyAdequately(world, position.up(k4), log);
                     }

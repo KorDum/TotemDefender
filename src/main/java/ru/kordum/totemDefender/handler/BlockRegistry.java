@@ -1,6 +1,7 @@
 package ru.kordum.totemDefender.handler;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -16,6 +17,7 @@ import ru.kordum.totemDefender.block.BlockSapling;
 import ru.kordum.totemDefender.block.BlockSlab;
 import ru.kordum.totemDefender.block.BlockStairs;
 import ru.kordum.totemDefender.block.BlockTotem;
+import ru.kordum.totemDefender.block.IBlockWithSubTypes;
 import ru.kordum.totemDefender.config.Config;
 import ru.kordum.totemDefender.config.ConfigTotem;
 
@@ -26,9 +28,6 @@ public class BlockRegistry {
     public static Block SAPLING;
     public static Block LEAVES;
     public static Block LOG;
-    public static Block LOG_FACE1;
-    public static Block LOG_FACE2;
-    public static Block LOG_FACE3;
     public static Block PLANKS;
     public static Block STAIRS;
     public static Block SLAB;
@@ -45,9 +44,6 @@ public class BlockRegistry {
         SAPLING = prepareBlock(new BlockSapling(config.sapling), "sapling");
         LEAVES = prepareBlock(new BlockLeaves(config.sapling.getDropChance()), "leaf");
         LOG = prepareBlock(new BlockLog(), "log");
-        LOG_FACE1 = prepareBlock(new BlockLogFace(), "log_face1");
-        LOG_FACE2 = prepareBlock(new BlockLogFace(), "log_face2");
-        LOG_FACE3 = prepareBlock(new BlockLogFace(), "log_face3");
         PLANKS = prepareBlock(new BlockPlanks(), "planks");
         STAIRS = prepareBlock(new BlockStairs(PLANKS.getDefaultState()), "stairs");
         SLAB = prepareBlock(new BlockSlab.Half(), "slab");
@@ -62,9 +58,6 @@ public class BlockRegistry {
         Blocks.FIRE.setFireInfo(SLAB, 5, 20);
         Blocks.FIRE.setFireInfo(DOUBLE_SLAB, 5, 20);
         Blocks.FIRE.setFireInfo(LOG, 5, 5);
-        Blocks.FIRE.setFireInfo(LOG_FACE1, 5, 5);
-        Blocks.FIRE.setFireInfo(LOG_FACE2, 5, 5);
-        Blocks.FIRE.setFireInfo(LOG_FACE3, 5, 5);
         Blocks.FIRE.setFireInfo(FENCE, 5, 20);
         Blocks.FIRE.setFireInfo(FENCE_GATE, 5, 20);
         Blocks.FIRE.setFireInfo(STAIRS, 5, 20);
@@ -86,7 +79,7 @@ public class BlockRegistry {
         blockList.add(block);
         block.setUnlocalizedName(name);
         block.setRegistryName(name);
-        if (!block.hasTileEntity(null)) {
+        if (!(block instanceof IBlockWithSubTypes)) {
             block.setCreativeTab(TotemDefender.tab);
         }
         return block;

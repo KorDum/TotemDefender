@@ -3,10 +3,10 @@ item.core.name=核心
 item.door.name=图腾木门
 
 tile.sapling.name=图腾木苗
-tile.log.name=图腾原木
-tile.log_face1.name=图腾原木
-tile.log_face2.name=图腾原木
-tile.log_face3.name=图腾原木
+tile.log.log.name=图腾原木
+tile.log.face_1.name=图腾原木
+tile.log.face_2.name=图腾原木
+tile.log.face_3.name=图腾原木
 tile.leaf.name=图腾木叶
 tile.planks.name=图腾木板
 tile.stairs.name=图腾木台阶

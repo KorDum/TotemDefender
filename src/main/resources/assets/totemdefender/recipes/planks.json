@@ -5,9 +5,24 @@
         "L"
     ],
     "key": {
-        "L": {
-            "item": "totemdefender:log"
-        }
+        "L": [
+            {
+                "item": "totemdefender:log",
+                "data": 0
+            },
+            {
+                "item": "totemdefender:log",
+                "data": 1
+            },
+            {
+                "item": "totemdefender:log",
+                "data": 2
+            },
+            {
+                "item": "totemdefender:log",
+                "data": 3
+            }
+        ]
     },
     "result": {
         "item": "totemdefender:planks",

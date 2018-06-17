@@ -55,7 +55,7 @@ public class Config extends Configuration {
         super(file);
         totems = new HashMap<>();
         upgrades = new HashMap<>();
-        sapling = ConfigSapling.parse(this, MISC, 0.05F, 0.05F, 30);
+        sapling = ConfigSapling.parse(this, MISC, 0.05F, 0.15F, 30);
 
         totems.put(
             BlockTotem.EnumType.WOODEN.getName(),

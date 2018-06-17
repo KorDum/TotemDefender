@@ -1,22 +1,29 @@
 package ru.kordum.totemDefender.block;
 
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.IStringSerializable;
 
-public class BlockLog extends net.minecraft.block.BlockLog {
+public class BlockLog extends net.minecraft.block.BlockLog implements IBlockWithSubTypes {
+    public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
+
     public BlockLog() {
         super();
-        setDefaultState(blockState.getBaseState().withProperty(LOG_AXIS, EnumAxis.Y));
+        IBlockState state = blockState.getBaseState()
+            .withProperty(LOG_AXIS, EnumAxis.Y)
+            .withProperty(VARIANT, EnumType.LOG);
+        setDefaultState(state);
     }
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, LOG_AXIS);
+        return new BlockStateContainer(this, LOG_AXIS, VARIANT);
     }
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        IBlockState state = getDefaultState();
+        IBlockState state = getDefaultState().withProperty(VARIANT, EnumType.byMeta(meta));
         switch (meta & 12) {
             case 0:
                 return state.withProperty(LOG_AXIS, EnumAxis.Y);
@@ -32,7 +39,8 @@ public class BlockLog extends net.minecraft.block.BlockLog {
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        int i = 0;
+        EnumType type = state.getValue(VARIANT);
+        int i = type.ordinal();
         switch (SwitchEnumAxis.AXIS_LOOKUP[state.getValue(LOG_AXIS).ordinal()]) {
             case 1:
                 i |= 4;
@@ -69,6 +77,39 @@ public class BlockLog extends net.minecraft.block.BlockLog {
             } catch (NoSuchFieldError ex) {
                 // ignored
             }
+        }
+    }
+
+    public enum EnumType implements IStringSerializable {
+        LOG,
+        FACE_1,
+        FACE_2,
+        FACE_3;
+
+        private String name;
+
+        EnumType() {
+            name = name().toLowerCase();
+        }
+
+        public static EnumType byMeta(int meta) {
+            meta &= 3;
+            for (EnumType type : values()) {
+                if (type.ordinal() == meta) {
+                    return type;
+                }
+            }
+            return null;
+        }
+
+        @Override
+        public String getName() {
+            return name;
+        }
+
+        @Override
+        public String toString() {
+            return name;
         }
     }
 }

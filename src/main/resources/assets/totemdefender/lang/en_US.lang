@@ -3,10 +3,10 @@ item.core.name=Core
 item.door.name=Totem Tree Door
 
 tile.sapling.name=Totem Tree Sapling
-tile.log.name=Totem Tree Wood
-tile.log_face1.name=Totem Tree Wood
-tile.log_face2.name=Totem Tree Wood
-tile.log_face3.name=Totem Tree Wood
+tile.log.log.name=Totem Tree Wood
+tile.log.face_1.name=Totem Tree Wood
+tile.log.face_2.name=Totem Tree Wood
+tile.log.face_3.name=Totem Tree Wood
 tile.leaf.name=Totem Tree Leaves
 tile.planks.name=Totem Tree Planks
 tile.stairs.name=Totem Tree Stairs

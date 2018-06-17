@@ -1,7 +1,7 @@
 {
     "forge_marker": 1,
     "variants": {
-        "axis=x": {
+        "axis=x,variant=log": {
             "model": "cube_column",
             "textures": {
                 "end": "totemdefender:blocks/log2",
@@ -10,25 +10,118 @@
             "x": 90,
             "y": 90
         },
-        "axis=y": {
+        "axis=y,variant=log": {
             "model": "cube_column",
             "textures": {
                 "end": "totemdefender:blocks/log2",
                 "side": "totemdefender:blocks/log1"
             }
         },
-        "axis=none": {
+        "axis=none,variant=log": {
             "model": "cube_column",
             "textures": {
                 "end": "totemdefender:blocks/log2",
                 "side": "totemdefender:blocks/log1"
             }
         },
-        "axis=z": {
+        "axis=z,variant=log": {
             "model": "cube_column",
             "textures": {
                 "end": "totemdefender:blocks/log2",
                 "side": "totemdefender:blocks/log1"
+            },
+            "x": 90
+        },
+        "axis=x,variant=face_1": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/log2",
+                "side": "totemdefender:blocks/log_face1"
+            },
+            "x": 90,
+            "y": 90
+        },
+        "axis=y,variant=face_1": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/log2",
+                "side": "totemdefender:blocks/log_face1"
+            }
+        },
+        "axis=none,variant=face_1": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/log2",
+                "side": "totemdefender:blocks/log_face1"
+            }
+        },
+        "axis=z,variant=face_1": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/log2",
+                "side": "totemdefender:blocks/log_face1"
+            },
+            "x": 90
+        },
+        "axis=x,variant=face_2": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/log2",
+                "side": "totemdefender:blocks/log_face2"
+            },
+            "x": 90,
+            "y": 90
+        },
+        "axis=y,variant=face_2": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/log2",
+                "side": "totemdefender:blocks/log_face2"
+            }
+        },
+        "axis=none,variant=face_2": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/log2",
+                "side": "totemdefender:blocks/log_face2"
+            }
+        },
+        "axis=z,variant=face_2": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/log2",
+                "side": "totemdefender:blocks/log_face2"
+            },
+            "x": 90
+        },
+        "axis=x,variant=face_3": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/log2",
+                "side": "totemdefender:blocks/log_face3"
+            },
+            "x": 90,
+            "y": 90
+        },
+        "axis=y,variant=face_3": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/log2",
+                "side": "totemdefender:blocks/log_face3"
+            }
+        },
+        "axis=none,variant=face_3": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/log2",
+                "side": "totemdefender:blocks/log_face3"
+            }
+        },
+        "axis=z,variant=face_3": {
+            "model": "cube_column",
+            "textures": {
+                "end": "totemdefender:blocks/log2",
+                "side": "totemdefender:blocks/log_face3"
             },
             "x": 90
         }
