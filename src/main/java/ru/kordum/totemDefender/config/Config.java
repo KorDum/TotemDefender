@@ -1,6 +1,7 @@
 package ru.kordum.totemDefender.config;
 
 import net.minecraftforge.common.config.Configuration;
+import ru.kordum.totemDefender.block.BlockTotem;
 import ru.kordum.totemDefender.item.ItemUpgrade;
 
 import java.io.File;
@@ -46,22 +47,33 @@ public class Config extends Configuration {
     private static final String UPGRADE_WEAKNESS = "weakness";
     private static final String UPGRADE_KNOCKBACK = "knockback";
 
-    public ConfigTotem woodenTotem;
-    public ConfigTotem ironTotem;
-    public ConfigTotem goldenTotem;
-    public ConfigTotem diamondTotem;
     public ConfigSapling sapling;
+    public Map<String, ConfigTotem> totems;
     public Map<String, ConfigUpgrade> upgrades;
 
     public Config(File file) {
         super(file);
-        woodenTotem = ConfigTotem.parse(this, TOTEM, TOTEM_WOODEN, 0.4f, 5, 3);
-        ironTotem = ConfigTotem.parse(this, TOTEM, TOTEM_IRON, 0.5f, 6, 3);
-        goldenTotem = ConfigTotem.parse(this, TOTEM, TOTEM_GOLDEN, 0.6f, 7, 4);
-        diamondTotem = ConfigTotem.parse(this, TOTEM, TOTEM_DIAMOND, 0.8f, 8, 4);
+        totems = new HashMap<>();
+        upgrades = new HashMap<>();
         sapling = ConfigSapling.parse(this, MISC, 0.05F, 0.05F, 30);
 
-        upgrades = new HashMap<>();
+        totems.put(
+            BlockTotem.EnumType.WOODEN.getName(),
+            ConfigTotem.parse(this, TOTEM, TOTEM_WOODEN, 0.4f, 5, 3)
+        );
+        totems.put(
+            BlockTotem.EnumType.IRON.getName(),
+            ConfigTotem.parse(this, TOTEM, TOTEM_IRON, 0.5f, 6, 3)
+        );
+        totems.put(
+            BlockTotem.EnumType.GOLDEN.getName(),
+            ConfigTotem.parse(this, TOTEM, TOTEM_GOLDEN, 0.6f, 7, 4)
+        );
+        totems.put(
+            BlockTotem.EnumType.DIAMOND.getName(),
+            ConfigTotem.parse(this, TOTEM, TOTEM_DIAMOND, 0.8f, 8, 4)
+        );
+
         upgrades.put(
             ItemUpgrade.EnumType.WOODEN_AS.getName(),
             ConfigUpgrade.parse(this, UPGRADE_WOODEN_AS, 0.1f, false, -2, false, 0, false)
@@ -171,5 +183,9 @@ public class Config extends Configuration {
 
     public ConfigUpgrade getConfigUpgrade(String key) {
         return upgrades.get(key);
+    }
+
+    public ConfigTotem getConfigTotem(String key) {
+        return totems.get(key);
     }
 }

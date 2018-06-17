@@ -17,6 +17,7 @@ import ru.kordum.totemDefender.block.BlockSlab;
 import ru.kordum.totemDefender.block.BlockStairs;
 import ru.kordum.totemDefender.block.BlockTotem;
 import ru.kordum.totemDefender.config.Config;
+import ru.kordum.totemDefender.config.ConfigTotem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,11 @@ public class BlockRegistry {
         Blocks.FIRE.setFireInfo(SAPLING, 60, 100);
         Blocks.FIRE.setFireInfo(DOOR, 5, 60);
         Blocks.FIRE.setFireInfo(TOTEM, 5, 30);
+
+        for (BlockTotem.EnumType type : BlockTotem.EnumType.values()) {
+            ConfigTotem configTotem = config.getConfigTotem(type.getName());
+            type.setConfig(configTotem);
+        }
     }
 
     public static void registerBlocks(IForgeRegistry<Block> registry) {

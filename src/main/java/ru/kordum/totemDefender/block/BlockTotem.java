@@ -22,6 +22,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import ru.kordum.totemDefender.TotemDefender;
+import ru.kordum.totemDefender.config.ConfigTotem;
 import ru.kordum.totemDefender.entity.TileEntityDiamondTotem;
 import ru.kordum.totemDefender.entity.TileEntityGoldenTotem;
 import ru.kordum.totemDefender.entity.TileEntityIronTotem;
@@ -177,9 +178,7 @@ public class BlockTotem extends Block {
         private int level;
         private int filterSlots;
         private int upgradeSlots;
-        private float damage;
-        private float attackSpeed;
-        private int radius;
+        private ConfigTotem config;
 
         EnumType(String name, int level, int filterSlots, int upgradeSlots) {
             this.name = name;
@@ -216,20 +215,24 @@ public class BlockTotem extends Block {
         }
 
         public float getDamage() {
-            return damage;
+            return config.getDamage();
         }
 
         public float getAttackSpeed() {
-            return attackSpeed;
+            return config.getAttackSpeed();
         }
 
         public int getRadius() {
-            return radius;
+            return config.getRadius();
         }
 
         @Override
         public String toString() {
             return name;
+        }
+
+        public void setConfig(ConfigTotem config) {
+            this.config = config;
         }
     }
 }
