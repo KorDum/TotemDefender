@@ -164,10 +164,10 @@ public class BlockTotem extends Block {
     }
 
     public enum EnumType implements IStringSerializable {
-        WOODEN("wooden", EnumType.LEVEL_1, 1, 1),
-        IRON("iron", EnumType.LEVEL_2, 2, 2),
-        GOLDEN("golden", EnumType.LEVEL_3, 3, 3),
-        DIAMOND("diamond", EnumType.LEVEL_4, 4, 4);
+        WOODEN(EnumType.LEVEL_1, 1, 1),
+        IRON(EnumType.LEVEL_2, 2, 2),
+        GOLDEN(EnumType.LEVEL_3, 3, 3),
+        DIAMOND(EnumType.LEVEL_4, 4, 4);
 
         public static final int LEVEL_1 = 1;
         public static final int LEVEL_2 = 2;
@@ -180,8 +180,8 @@ public class BlockTotem extends Block {
         private int upgradeSlots;
         private ConfigTotem config;
 
-        EnumType(String name, int level, int filterSlots, int upgradeSlots) {
-            this.name = name;
+        EnumType(int level, int filterSlots, int upgradeSlots) {
+            name = name().toLowerCase();
             this.level = level;
             this.filterSlots = filterSlots;
             this.upgradeSlots = upgradeSlots;
@@ -189,7 +189,7 @@ public class BlockTotem extends Block {
 
         public static EnumType byMeta(int meta) {
             meta &= 3;
-            for (EnumType type : EnumType.values()) {
+            for (EnumType type : values()) {
                 if (type.ordinal() == meta) {
                     return type;
                 }

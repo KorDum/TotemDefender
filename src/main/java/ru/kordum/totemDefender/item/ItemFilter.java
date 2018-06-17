@@ -74,7 +74,7 @@ public class ItemFilter extends Item implements ICustomRenderModel {
         }
 
         public static EnumType byMeta(int meta) {
-            for (EnumType type : EnumType.values()) {
+            for (EnumType type : values()) {
                 if (type.ordinal() == meta) {
                     return type;
                 }
