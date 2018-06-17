@@ -88,43 +88,45 @@ public class ItemUpgrade extends Item implements ICustomRenderModel {
     }
 
     public enum EnumType implements IStringSerializable {
-        WOODEN_AS("wooden_as", BlockTotem.EnumType.LEVEL_1),
-        WOODEN_DAMAGE("wooden_damage", BlockTotem.EnumType.LEVEL_1),
-        WOODEN_RADIUS("wooden_radius", BlockTotem.EnumType.LEVEL_1),
+        WOODEN_AS(BlockTotem.EnumType.LEVEL_1),
+        WOODEN_DAMAGE(BlockTotem.EnumType.LEVEL_1),
+        WOODEN_RADIUS(BlockTotem.EnumType.LEVEL_1),
 
-        IRON_AS("iron_as", BlockTotem.EnumType.LEVEL_2),
-        IRON_DAMAGE("iron_damage", BlockTotem.EnumType.LEVEL_2),
-        IRON_RADIUS("iron_radius", BlockTotem.EnumType.LEVEL_2),
+        IRON_AS(BlockTotem.EnumType.LEVEL_2),
+        IRON_DAMAGE(BlockTotem.EnumType.LEVEL_2),
+        IRON_RADIUS(BlockTotem.EnumType.LEVEL_2),
 
-        GOLDEN_AS("golden_as", BlockTotem.EnumType.LEVEL_3),
-        GOLDEN_DAMAGE("golden_damage", BlockTotem.EnumType.LEVEL_3),
-        GOLDEN_RADIUS("golden_radius", BlockTotem.EnumType.LEVEL_3),
+        GOLDEN_AS(BlockTotem.EnumType.LEVEL_3),
+        GOLDEN_DAMAGE(BlockTotem.EnumType.LEVEL_3),
+        GOLDEN_RADIUS(BlockTotem.EnumType.LEVEL_3),
 
-        DIAMOND_AS("diamond_as", BlockTotem.EnumType.LEVEL_4),
-        DIAMOND_DAMAGE("diamond_damage", BlockTotem.EnumType.LEVEL_4),
-        DIAMOND_RADIUS("diamond_radius", BlockTotem.EnumType.LEVEL_4),
+        DIAMOND_AS(BlockTotem.EnumType.LEVEL_4),
+        DIAMOND_DAMAGE(BlockTotem.EnumType.LEVEL_4),
+        DIAMOND_RADIUS(BlockTotem.EnumType.LEVEL_4),
 
-        POISON("poison", BlockTotem.EnumType.LEVEL_1),
-        FIRE("fire", BlockTotem.EnumType.LEVEL_1),
-        LIGHTING("lighting", BlockTotem.EnumType.LEVEL_1),
-        WITHER("wither", BlockTotem.EnumType.LEVEL_1),
-        SLOWDOWN("slowdown", BlockTotem.EnumType.LEVEL_1),
-        BLINDNESS("blindness", BlockTotem.EnumType.LEVEL_1),
-        CONFUSION("confusion", BlockTotem.EnumType.LEVEL_1),
-        HEAL("heal", BlockTotem.EnumType.LEVEL_1),
-        HUNGRY("hungry", BlockTotem.EnumType.LEVEL_1),
-        REGENERATION("regeneration", BlockTotem.EnumType.LEVEL_1),
-        WATER_BREATHING("water_breathing", BlockTotem.EnumType.LEVEL_1),
-        WEAKNESS("weakness", BlockTotem.EnumType.LEVEL_1),
-        KNOCKBACK("knockback", BlockTotem.EnumType.LEVEL_1);
+        POISON(BlockTotem.EnumType.LEVEL_1),
+        FIRE(BlockTotem.EnumType.LEVEL_1),
+        LIGHTING(BlockTotem.EnumType.LEVEL_1),
+        WITHER(BlockTotem.EnumType.LEVEL_1),
+        SLOWDOWN(BlockTotem.EnumType.LEVEL_1),
+        BLINDNESS(BlockTotem.EnumType.LEVEL_1),
+        CONFUSION(BlockTotem.EnumType.LEVEL_1),
+        HEAL(BlockTotem.EnumType.LEVEL_1),
+        HUNGRY(BlockTotem.EnumType.LEVEL_1),
+        REGENERATION(BlockTotem.EnumType.LEVEL_1),
+        WATER_BREATHING(BlockTotem.EnumType.LEVEL_1),
+        WEAKNESS(BlockTotem.EnumType.LEVEL_1),
+        KNOCKBACK(BlockTotem.EnumType.LEVEL_1);
 
-        private String name;
-        private int level;
+        private final String name;
+        private final int level;
+        private final int flag;
         private ConfigUpgrade config;
 
-        EnumType(String name, int level) {
-            this.name = name;
+        EnumType(int level) {
+            name = name().toLowerCase();
             this.level = level;
+            flag = (int) Math.pow(ordinal(), 2);
         }
 
         public static EnumType byMeta(int meta) {
@@ -143,6 +145,10 @@ public class ItemUpgrade extends Item implements ICustomRenderModel {
 
         public int getLevel() {
             return level;
+        }
+
+        public int getFlag() {
+            return flag;
         }
 
         public float getAttackSpeed() {
@@ -176,6 +182,10 @@ public class ItemUpgrade extends Item implements ICustomRenderModel {
         @Override
         public String toString() {
             return name;
+        }
+
+        public boolean check(short modifier) {
+            return (modifier & flag) == flag;
         }
     }
 }

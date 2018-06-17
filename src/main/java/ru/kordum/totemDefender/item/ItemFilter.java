@@ -12,6 +12,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.model.ICustomRenderModel;
 
+import javax.annotation.Nonnull;
+
 public class ItemFilter extends Item implements ICustomRenderModel {
     public ItemFilter() {
         setHasSubtypes(true);
@@ -37,6 +39,7 @@ public class ItemFilter extends Item implements ICustomRenderModel {
         }
     }
 
+    @Nonnull
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         int meta = stack.getMetadata();
@@ -54,18 +57,20 @@ public class ItemFilter extends Item implements ICustomRenderModel {
     }
 
     public enum EnumType implements IStringSerializable {
-        PLAYER("player"),
-        SELF_PLAYER("self_player"),
-        ANOTHER_PLAYER("another_player"),
-        ANIMAL("animal"),
-        ENEMY("enemy"),
-        SLIME("slime"),
-        WATER("water");
+        PLAYER,
+        SELF_PLAYER,
+        ANOTHER_PLAYER,
+        ANIMAL,
+        ENEMY,
+        SLIME,
+        WATER;
 
         private final String name;
+        private final int flag;
 
-        EnumType(String name) {
-            this.name = name;
+        EnumType() {
+            name = name().toLowerCase();
+            flag = (int) Math.pow(ordinal(), 2);
         }
 
         public static EnumType byMeta(int meta) {
@@ -77,14 +82,23 @@ public class ItemFilter extends Item implements ICustomRenderModel {
             return null;
         }
 
+        @Nonnull
         @Override
         public String getName() {
             return name;
         }
 
+        public int getFlag() {
+            return flag;
+        }
+
         @Override
         public String toString() {
             return name;
+        }
+
+        public boolean check(short filter) {
+            return (filter & flag) == flag;
         }
     }
 }

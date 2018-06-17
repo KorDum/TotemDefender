@@ -1,29 +1,38 @@
 package ru.kordum.totemDefender.entity;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import ru.kordum.totemDefender.block.BlockTotem;
 import ru.kordum.totemDefender.item.ItemFilter;
+import ru.kordum.totemDefender.item.ItemMode;
 import ru.kordum.totemDefender.item.ItemUpgrade;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
@@ -37,6 +46,8 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
     private static final String NBT_MODE = "Mode";
     private static final String NBT_OWNER = "Owner";
     private static final String NBT_MODIFIER = "Modifier";
+
+    private static final int MAX_Z_DOWN_SCAN = 3;
 
     protected BlockTotem.EnumType type;
     protected ItemStackHandler handler;
@@ -56,7 +67,6 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         if (world.isRemote) {
             return;
         }
-
         if (filter == 0 || mode == 0) {
             return;
         }
@@ -67,20 +77,20 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         }
 
         ArrayList<EntityLivingBase> list = getEntityList();
-        /*if ((mode & ItemMode.PROJECTILE) == ItemMode.PROJECTILE) {
+        if (ItemMode.EnumType.PROJECTILE.check(mode)) {
             projectileShot(list);
-        } else if ((mode & ItemMode.AOE) == ItemMode.AOE) {
+        } else if (ItemMode.EnumType.AOE.check(mode)) {
             aoeShot(list);
-        }*/
+        }
 
         lastShoot = time;
     }
 
-    public void updateState(BlockTotem block) {
+    public void updateState() {
         modifier = 0;
-//        attackSpeed = block.getAttackSpeed();
-//        damage = block.getDamage();
-//        radius = block.getRadius();
+        attackSpeed = type.getAttackSpeed();
+        damage = type.getDamage();
+        radius = type.getRadius();
         int offset = 1 + type.getFilterSlots();
         int count = offset + type.getUpgradeSlots();
 
@@ -90,28 +100,26 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
                 continue;
             }
 
-            ItemUpgrade item = (ItemUpgrade) stack.getItem();
-            /*if (item.isAttackSpeedPercent()) {
-                attackSpeed += block.getAttackSpeed() * item.getAttackSpeed() / 100;
+            ItemUpgrade.EnumType type = ItemUpgrade.EnumType.byMeta(stack.getMetadata());
+            modifier |= type.getFlag();
+
+            if (type.isAttackSpeedPercent()) {
+                attackSpeed += type.getAttackSpeed() * type.getAttackSpeed() / 100;
             } else {
-                attackSpeed += item.getAttackSpeed();
+                attackSpeed += type.getAttackSpeed();
             }
 
-            if (item.isDamagePercent()) {
-                damage += block.getDamage() * item.getDamage() / 100;
+            if (type.isDamagePercent()) {
+                damage += type.getDamage() * type.getDamage() / 100;
             } else {
-                damage += item.getDamage();
+                damage += type.getDamage();
             }
 
-            if (item.isRadiusPercent()) {
-                radius += Math.ceil(block.getRadius() * item.getRadius() / 100);
+            if (type.isRadiusPercent()) {
+                radius += Math.ceil(type.getRadius() * type.getRadius() / 100);
             } else {
-                radius += item.getRadius();
+                radius += type.getRadius();
             }
-
-            if (item instanceof ItemModifierUpgrade) {
-                modifier |= ((ItemModifierUpgrade) item).getModifier();
-            }*/
         }
 
         if (attackSpeed < 0.1f) {
@@ -125,83 +133,86 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         }
     }
 
-    public void updateState() {
-        updateState((BlockTotem) getBlockType());
-    }
-
     public void updateFilter() {
         filter = 0;
         for (byte i = 1; i <= type.getFilterSlots(); i++) {
             ItemStack stack = handler.getStackInSlot(i);
-            if (stack.isEmpty()) {
-                continue;
+            if (!stack.isEmpty()) {
+                ItemFilter.EnumType type = ItemFilter.EnumType.byMeta(stack.getMetadata());
+                filter |= type.getFlag();
             }
-
-            ItemFilter item = (ItemFilter) stack.getItem();
-//            filter |= item.getMode();
         }
     }
 
     public void updateMode() {
-        /*ItemStack stack = handler.getStackInSlot(0);
-        if (!stack.isEmpty()) {
-            ItemMode item = (ItemMode) stack.getItem();
-            mode = item.getMode();
-        } else {
+        ItemStack stack = handler.getStackInSlot(0);
+        if (stack.isEmpty()) {
             mode = 0;
-        }*/
+        } else {
+            ItemMode.EnumType type = ItemMode.EnumType.byMeta(stack.getMetadata());
+            mode = type.getFlag();
+        }
     }
 
     private ArrayList<EntityLivingBase> getEntityList() {
         ArrayList<EntityLivingBase> list = new ArrayList<>();
-        AxisAlignedBB axis = new AxisAlignedBB(pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius, pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius);
+        AxisAlignedBB axis = new AxisAlignedBB(
+            pos.getX() - radius,
+            pos.getY() - radius,
+            pos.getZ() - (radius > MAX_Z_DOWN_SCAN ? MAX_Z_DOWN_SCAN : radius),
+            pos.getX() + radius,
+            pos.getY() + radius,
+            pos.getZ() + radius
+        );
 
-        /*if ((filter & ItemFilter.ENEMY) == ItemFilter.ENEMY) {
+        if (ItemFilter.EnumType.ENEMY.check(filter)) {
             list.addAll(world.getEntitiesWithinAABB(EntityMob.class, axis));
         }
 
-        if ((filter & ItemFilter.PLAYER) == ItemFilter.PLAYER ||
-            (filter & ItemFilter.SELF_PLAYER) == ItemFilter.SELF_PLAYER ||
-            (filter & ItemFilter.ANOTHER_PLAYER) == ItemFilter.ANOTHER_PLAYER) {
+        if (ItemFilter.EnumType.PLAYER.check(filter) ||
+            ItemFilter.EnumType.SELF_PLAYER.check(filter) ||
+            ItemFilter.EnumType.ANOTHER_PLAYER.check(filter)) {
             list.addAll(world.getEntitiesWithinAABB(EntityPlayer.class, axis));
         }
 
-        if ((filter & ItemFilter.ANIMAL) == ItemFilter.ANIMAL) {
+        if (ItemFilter.EnumType.ANIMAL.check(filter)) {
             list.addAll(world.getEntitiesWithinAABB(EntityAnimal.class, axis));
         }
 
-        if ((filter & ItemFilter.SLIME) == ItemFilter.SLIME) {
+        if (ItemFilter.EnumType.SLIME.check(filter)) {
             list.addAll(world.getEntitiesWithinAABB(EntitySlime.class, axis));
         }
 
-        if ((filter & ItemFilter.WATER_MOB) == ItemFilter.WATER_MOB) {
+        if (ItemFilter.EnumType.WATER.check(filter)) {
             list.addAll(world.getEntitiesWithinAABB(EntityWaterMob.class, axis));
-        }*/
+        }
         return list;
     }
 
     private void aoeShot(ArrayList<EntityLivingBase> list) {
         Vec3d totemVector = new Vec3d(pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5);
         for (EntityLivingBase entity : list) {
-            if (!isDamageable(entity)) {
+            if (isNotDamageable(entity)) {
                 continue;
             }
 
             AxisAlignedBB boundingBox = entity.getEntityBoundingBox();
-            Vec3d entityVector = new Vec3d(boundingBox.minX + (boundingBox.maxX - boundingBox.minX) / 2, boundingBox.minY + (boundingBox.maxY - boundingBox.minY) / 2, boundingBox.minZ + (boundingBox.maxZ - boundingBox.minZ) / 2);
+            Vec3d entityVector = new Vec3d(
+                boundingBox.minX + (boundingBox.maxX - boundingBox.minX) / 2,
+                boundingBox.minY + (boundingBox.maxY - boundingBox.minY) / 2,
+                boundingBox.minZ + (boundingBox.maxZ - boundingBox.minZ) / 2
+            );
 
             RayTraceResult objectPosition = world.rayTraceBlocks(totemVector, entityVector, true);
-            if (objectPosition != null && objectPosition.entityHit != entity) {
-                continue;
+            if (objectPosition == null || objectPosition.entityHit == entity) {
+                attack(entity);
             }
-
-            attack(entity);
         }
     }
 
     private void projectileShot(ArrayList<EntityLivingBase> list) {
         for (EntityLivingBase entity : list) {
-            if (!isDamageable(entity)) {
+            if (isNotDamageable(entity)) {
                 continue;
             }
 
@@ -221,9 +232,9 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
             projectile.motionY = vector.y;
             projectile.motionZ = vector.z;
 
-            /*if ((modifier & ItemModifierUpgrade.FIRE) == ItemModifierUpgrade.FIRE) {
+            if (ItemUpgrade.EnumType.FIRE.check(modifier)) {
                 projectile.setFire((int) damage);
-            }*/
+            }
 
             world.spawnEntity(projectile);
             world.playSound(null, pos, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.MASTER, 1.0F, 1.0F);
@@ -231,86 +242,83 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         }
     }
 
-    private boolean isDamageable(EntityLivingBase entity) {
+    private boolean isNotDamageable(EntityLivingBase entity) {
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
-            /*if ((filter & ItemFilter.PLAYER) == ItemFilter.PLAYER) {
-                return !player.capabilities.isCreativeMode;
+            if (ItemFilter.EnumType.PLAYER.check(filter)) {
+                return player.capabilities.isCreativeMode;
             }
 
-            if ((filter & ItemFilter.SELF_PLAYER) == ItemFilter.SELF_PLAYER) {
-                return !player.capabilities.isCreativeMode &&
-                    player.getUniqueID().equals(owner);
-            } else if ((filter & ItemFilter.ANOTHER_PLAYER) == ItemFilter.ANOTHER_PLAYER) {
-                return !player.capabilities.isCreativeMode &&
-                    !player.getUniqueID().equals(owner);
-            }*/
+            if (ItemFilter.EnumType.SELF_PLAYER.check(filter)) {
+                return player.capabilities.isCreativeMode || !player.getUniqueID().equals(owner);
+            } else if (ItemFilter.EnumType.ANOTHER_PLAYER.check(filter)) {
+                return player.capabilities.isCreativeMode || player.getUniqueID().equals(owner);
+            }
         }
-        return !entity.isDead;
+        return entity.isDead;
     }
 
     public void attack(EntityLivingBase entity) {
         boolean needDamage = false;
-
-        /*if ((modifier & ItemModifierUpgrade.FIRE) == ItemModifierUpgrade.FIRE) {
+        if (ItemUpgrade.EnumType.FIRE.check(modifier)) {
             entity.setFire((int) damage);
             needDamage = true;
         }
 
-        if ((modifier & ItemModifierUpgrade.POISON) == ItemModifierUpgrade.POISON) {
+        if (ItemUpgrade.EnumType.POISON.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 200, 1));
             needDamage = true;
         }
 
-        if ((modifier & ItemModifierUpgrade.LIGHTING) == ItemModifierUpgrade.LIGHTING) {
+        if (ItemUpgrade.EnumType.LIGHTING.check(modifier)) {
             EntityLightningBolt lighting = new EntityLightningBolt(world, entity.posX, entity.posY, entity.posZ, false);
             world.addWeatherEffect(lighting);
             needDamage = true;
         }
 
-        if ((modifier & ItemModifierUpgrade.WITHER) == ItemModifierUpgrade.WITHER) {
+        if (ItemUpgrade.EnumType.WITHER.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 4));
             needDamage = true;
         }
 
-        if ((modifier & ItemModifierUpgrade.SLOWDOWN) == ItemModifierUpgrade.SLOWDOWN) {
+        if (ItemUpgrade.EnumType.SLOWDOWN.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 1));
             needDamage = true;
         }
 
-        if ((modifier & ItemModifierUpgrade.WATER_BREATHING) == ItemModifierUpgrade.WATER_BREATHING) {
+        if (ItemUpgrade.EnumType.WATER_BREATHING.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, (int) (300 * damage), 1));
         }
 
-        if ((modifier & ItemModifierUpgrade.REGENERATION) == ItemModifierUpgrade.REGENERATION) {
+        if (ItemUpgrade.EnumType.REGENERATION.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (int) (10 * damage), 1));
         }
 
-        if ((modifier & ItemModifierUpgrade.BLINDNESS) == ItemModifierUpgrade.BLINDNESS) {
+        if (ItemUpgrade.EnumType.BLINDNESS.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, (int) (30 * damage), 1));
             needDamage = true;
         }
 
-        if ((modifier & ItemModifierUpgrade.WEAKNESS) == ItemModifierUpgrade.WEAKNESS) {
+        if (ItemUpgrade.EnumType.WEAKNESS.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (30 * damage), 1));
             needDamage = true;
         }
 
-        if ((modifier & ItemModifierUpgrade.HUNGRY) == ItemModifierUpgrade.HUNGRY) {
+        if (ItemUpgrade.EnumType.HUNGRY.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (60 * damage), 1));
             needDamage = true;
         }
 
-        if ((modifier & ItemModifierUpgrade.CONFUSION) == ItemModifierUpgrade.CONFUSION) {
+        if (ItemUpgrade.EnumType.CONFUSION.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, (int) (30 * damage), 1));
             needDamage = true;
         }
 
-        if ((modifier & ItemModifierUpgrade.HEAL) == ItemModifierUpgrade.HEAL) {
+        if (ItemUpgrade.EnumType.HEAL.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 1, 1));
         }
 
-        if ((modifier & ItemModifierUpgrade.KNOCKBACK) != 0) {
+        if (ItemUpgrade.EnumType.KNOCKBACK.check(modifier)) {
             BlockPos pos = getPos();
             double dx = pos.getX() - entity.posX;
             double dy = pos.getY() - entity.posY;
@@ -324,7 +332,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
                 ((dy > 0) ? -1 : 1) * strength,
                 ((dz > 0) ? -1 : 1) * strength
             );
-        }*/
+        }
 
         if (needDamage || modifier == 0) {
             entity.attackEntityFrom(new DamageSource("totem"), damage);
@@ -348,6 +356,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         }
     }
 
+    @Nonnull
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
         nbt.setTag(NBT_ITEM_STACK_HANDLER, handler.serializeNBT());
@@ -388,6 +397,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         readFromNBT(tag);
     }
 
+    @Nonnull
     @Override
     public NBTTagCompound getTileData() {
         return getUpdateTag();
@@ -409,8 +419,9 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
         return super.hasCapability(capability, facing);
     }
 
-    public boolean isUseableByPlayer(EntityPlayer player) {
-        return world.getTileEntity(getPos()) == this && player.getDistanceSq(pos.add(0.5, 0.5, 0.5)) <= 64;
+    public boolean isUsableByPlayer(EntityPlayer player) {
+        return world.getTileEntity(getPos()) == this
+            && player.getDistanceSq(pos.add(0.5, 0.5, 0.5)) <= 64;
     }
 
     public float getAttackSpeed() {

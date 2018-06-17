@@ -55,13 +55,15 @@ public class ItemMode extends Item implements ICustomRenderModel {
     }
 
     public enum EnumType implements IStringSerializable {
-        PROJECTILE("projectile"),
-        AOE("aoe");
+        PROJECTILE,
+        AOE;
 
         private final String name;
+        private final byte flag;
 
-        EnumType(String name) {
-            this.name = name;
+        EnumType() {
+            name = name().toLowerCase();
+            flag = (byte) ordinal();
         }
 
         public static EnumType byMeta(int meta) {
@@ -78,9 +80,17 @@ public class ItemMode extends Item implements ICustomRenderModel {
             return name;
         }
 
+        public byte getFlag() {
+            return flag;
+        }
+
         @Override
         public String toString() {
             return name;
+        }
+
+        public boolean check(byte mode) {
+            return mode == flag;
         }
     }
 }
