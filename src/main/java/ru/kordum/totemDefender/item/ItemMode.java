@@ -63,7 +63,7 @@ public class ItemMode extends Item implements ICustomRenderModel {
 
         EnumType() {
             name = name().toLowerCase();
-            flag = (byte) ordinal();
+            flag = (byte) (ordinal() + 1);
         }
 
         public static EnumType byMeta(int meta) {

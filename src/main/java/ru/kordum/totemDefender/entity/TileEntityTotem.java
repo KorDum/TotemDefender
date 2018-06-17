@@ -47,6 +47,9 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
     private static final String NBT_OWNER = "Owner";
     private static final String NBT_MODIFIER = "Modifier";
 
+    private static final float MIN_ATTACK_SPEED = 0.1f;
+    private static final float MIN_DAMAGE = 0.5f;
+    private static final int MIN_RADIUS = 1;
     private static final int MAX_Z_DOWN_SCAN = 3;
 
     protected BlockTotem.EnumType type;
@@ -122,15 +125,16 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
             }
         }
 
-        if (attackSpeed < 0.1f) {
-            attackSpeed = 0.1f;
+        if (attackSpeed < MIN_ATTACK_SPEED) {
+            attackSpeed = MIN_ATTACK_SPEED;
         }
-        if (damage < 0.5f) {
-            damage = 0.5f;
+        if (damage < MIN_DAMAGE) {
+            damage = MIN_DAMAGE;
         }
-        if (radius < 1) {
-            radius = 1;
+        if (radius < MIN_RADIUS) {
+            radius = MIN_RADIUS;
         }
+        markDirty();
     }
 
     public void updateFilter() {
@@ -142,6 +146,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
                 filter |= type.getFlag();
             }
         }
+        markDirty();
     }
 
     public void updateMode() {
@@ -152,6 +157,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
             ItemMode.EnumType type = ItemMode.EnumType.byMeta(stack.getMetadata());
             mode = type.getFlag();
         }
+        markDirty();
     }
 
     private ArrayList<EntityLivingBase> getEntityList() {
@@ -259,63 +265,57 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
     }
 
     public void attack(EntityLivingBase entity) {
-        boolean needDamage = false;
+        boolean needDamage = true;
         if (ItemUpgrade.EnumType.FIRE.check(modifier)) {
             entity.setFire((int) damage);
-            needDamage = true;
         }
 
         if (ItemUpgrade.EnumType.POISON.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 200, 1));
-            needDamage = true;
         }
 
         if (ItemUpgrade.EnumType.LIGHTING.check(modifier)) {
             EntityLightningBolt lighting = new EntityLightningBolt(world, entity.posX, entity.posY, entity.posZ, false);
             world.addWeatherEffect(lighting);
-            needDamage = true;
         }
 
         if (ItemUpgrade.EnumType.WITHER.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.WITHER, 60, 4));
-            needDamage = true;
         }
 
         if (ItemUpgrade.EnumType.SLOWDOWN.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 1));
-            needDamage = true;
         }
 
         if (ItemUpgrade.EnumType.WATER_BREATHING.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, (int) (300 * damage), 1));
+            needDamage = false;
         }
 
         if (ItemUpgrade.EnumType.REGENERATION.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (int) (10 * damage), 1));
+            needDamage = false;
         }
 
         if (ItemUpgrade.EnumType.BLINDNESS.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, (int) (30 * damage), 1));
-            needDamage = true;
         }
 
         if (ItemUpgrade.EnumType.WEAKNESS.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (30 * damage), 1));
-            needDamage = true;
         }
 
         if (ItemUpgrade.EnumType.HUNGRY.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (60 * damage), 1));
-            needDamage = true;
         }
 
         if (ItemUpgrade.EnumType.CONFUSION.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, (int) (30 * damage), 1));
-            needDamage = true;
         }
 
         if (ItemUpgrade.EnumType.HEAL.check(modifier)) {
             entity.addPotionEffect(new PotionEffect(MobEffects.INSTANT_HEALTH, 1, 1));
+            needDamage = false;
         }
 
         if (ItemUpgrade.EnumType.KNOCKBACK.check(modifier)) {
