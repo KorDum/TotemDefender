@@ -3,6 +3,8 @@ package ru.kordum.totemDefender.block;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 
 public class BlockLog extends net.minecraft.block.BlockLog implements IBlockWithSubTypes {
@@ -54,6 +56,16 @@ public class BlockLog extends net.minecraft.block.BlockLog implements IBlockWith
                 i |= 12;
         }
         return i;
+    }
+
+    @Override
+    protected ItemStack getSilkTouchDrop(IBlockState state) {
+        return new ItemStack(Item.getItemFromBlock(this), 1, state.getValue(VARIANT).ordinal());
+    }
+
+    @Override
+    public int damageDropped(IBlockState state) {
+        return state.getValue(VARIANT).ordinal();
     }
 
     static final class SwitchEnumAxis {
