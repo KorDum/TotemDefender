@@ -1,18 +1,18 @@
 itemGroup.tab_name=Totem Defender
 item.core.name=Core
-item.door.name=Totem Tree Door
+item.door.name=Totem Door
 
-tile.sapling.name=Totem Tree Sapling
-tile.log.log.name=Totem Tree Wood
-tile.log.face_1.name=Totem Tree Wood
-tile.log.face_2.name=Totem Tree Wood
-tile.log.face_3.name=Totem Tree Wood
+tile.sapling.name=Totem Sapling
+tile.log.log.name=Totem Wood
+tile.log.face_1.name=Totem Indifferent Face
+tile.log.face_2.name=Totem Angry Face
+tile.log.face_3.name=Totem Scared Face
 tile.leaf.name=Totem Tree Leaves
-tile.planks.name=Totem Tree Planks
-tile.stairs.name=Totem Tree Stairs
-tile.slab.name=Totem Tree Slab
-tile.fence.name=Totem Tree Fence
-tile.fence_gate.name=Totem Tree Fence Gate
+tile.planks.name=Totem Planks
+tile.stairs.name=Totem Stairs
+tile.slab.name=Totem Slab
+tile.totem_fence.name=Totem Fence
+tile.fence_gate.name=Totem Fence Gate
 entity.totem_projectile.name=Totem Projectile
 
 tile.totem.wooden.name=Wooden Totem

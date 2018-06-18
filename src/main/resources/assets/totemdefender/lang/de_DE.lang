@@ -4,14 +4,11 @@ item.door.name=Totembaumtür
 
 tile.sapling.name=Totembaumsetzling
 tile.log.log.name=Totembaumholz
-tile.log.face_1.name=Totembaumholz
-tile.log.face_2.name=Totembaumholz
-tile.log.face_3.name=Totembaumholz
 tile.leaf.name=Totembaumblätter
 tile.planks.name=Totembaumbretter
 tile.stairs.name=Totembaumtreppe
 tile.slab.name=Totembaumstufe
-tile.fence.name=Totembaumzaun
+tile.totem_fence.name=Totembaumzaun
 tile.fence_gate.name=Totembaumzauntor
 entity.totem_projectile.name=Totem-Projektil
 

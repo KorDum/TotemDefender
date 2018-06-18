@@ -4,14 +4,14 @@ item.door.name=Дверь из тотемного древа
 
 tile.sapling.name=Саженец тотемного древа
 tile.log.log.name=Древесина тотемного древа
-tile.log.face_1.name=Древесина тотемного древа
-tile.log.face_2.name=Древесина тотемного древа
-tile.log.face_3.name=Древесина тотемного древа
+tile.log.face_1.name=Безразличное тотемное лицо
+tile.log.face_2.name=Злобное тотемное лицо
+tile.log.face_3.name=Испуганное тотемное лицо
 tile.leaf.name=Листва тотемного древа
 tile.planks.name=Доски тотемного древа
 tile.stairs.name=Ступеньки из тотемного древа
 tile.slab.name=Плита из тотемного древа
-tile.fence.name=Забор из тотемного древа
+tile.totem_fence.name=Забор из тотемного древа
 tile.fence_gate.name=Калитка из тотемного древа
 entity.totem_projectile.name=Снаряд Тотема
 

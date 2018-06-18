@@ -1,7 +1,6 @@
 package ru.kordum.totemDefender.handler;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -11,7 +10,6 @@ import ru.kordum.totemDefender.block.BlockFence;
 import ru.kordum.totemDefender.block.BlockFenceGate;
 import ru.kordum.totemDefender.block.BlockLeaves;
 import ru.kordum.totemDefender.block.BlockLog;
-import ru.kordum.totemDefender.block.BlockLogFace;
 import ru.kordum.totemDefender.block.BlockPlanks;
 import ru.kordum.totemDefender.block.BlockSapling;
 import ru.kordum.totemDefender.block.BlockSlab;

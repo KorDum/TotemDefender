@@ -2,25 +2,16 @@ package ru.kordum.totemDefender.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.block.BlockLog;
-import ru.kordum.totemDefender.block.BlockTotem;
 import ru.kordum.totemDefender.model.ICustomRenderModel;
-import ru.kordum.totemDefender.util.Formatter;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 public class ItemLog extends ItemBlock implements ICustomRenderModel {
     public ItemLog(Block block) {
