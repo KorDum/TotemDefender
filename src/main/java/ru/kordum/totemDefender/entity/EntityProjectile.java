@@ -4,6 +4,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class EntityProjectile extends EntityThrowable {
@@ -43,5 +44,11 @@ public class EntityProjectile extends EntityThrowable {
 
     public void setOwner(TileEntityTotem owner) {
         this.owner = owner;
+    }
+
+    public void setMotion(Vec3d vector) {
+        motionX = vector.x;
+        motionY = vector.y;
+        motionZ = vector.z;
     }
 }

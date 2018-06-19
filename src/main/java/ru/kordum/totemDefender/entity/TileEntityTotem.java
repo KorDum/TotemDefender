@@ -231,7 +231,11 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
 
             Vec3d totemVector = new Vec3d(pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5);
             AxisAlignedBB boundingBox = entity.getEntityBoundingBox();
-            Vec3d entityVector = new Vec3d(boundingBox.minX + (boundingBox.maxX - boundingBox.minX) / 2, boundingBox.minY + (boundingBox.maxY - boundingBox.minY) / 2, boundingBox.minZ + (boundingBox.maxZ - boundingBox.minZ) / 2);
+            Vec3d entityVector = new Vec3d(
+                boundingBox.minX + (boundingBox.maxX - boundingBox.minX) / 2,
+                boundingBox.minY + (boundingBox.maxY - boundingBox.minY) / 2,
+                boundingBox.minZ + (boundingBox.maxZ - boundingBox.minZ) / 2
+            );
 
             RayTraceResult objectPosition = world.rayTraceBlocks(totemVector, entityVector, true);
             if (objectPosition != null && objectPosition.entityHit != entity) {
@@ -241,10 +245,7 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
             Vec3d vector = entityVector.subtract(totemVector).normalize();
             EntityProjectile projectile = new EntityProjectile(world, pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5);
             projectile.setOwner(this);
-            projectile.motionX = vector.x;
-            projectile.motionY = vector.y;
-            projectile.motionZ = vector.z;
-
+            projectile.setMotion(vector);
             if (ItemUpgrade.EnumType.FIRE.check(modifier)) {
                 projectile.setFire((int) damage);
             }

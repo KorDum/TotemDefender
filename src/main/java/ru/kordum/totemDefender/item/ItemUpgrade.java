@@ -126,7 +126,7 @@ public class ItemUpgrade extends Item implements ICustomRenderModel {
         EnumType(int level) {
             name = name().toLowerCase();
             this.level = level;
-            flag = (int) Math.pow(ordinal(), 2);
+            flag = (int) Math.pow(2, ordinal());
         }
 
         public static EnumType byMeta(int meta) {

@@ -70,7 +70,7 @@ public class ItemFilter extends Item implements ICustomRenderModel {
 
         EnumType() {
             name = name().toLowerCase();
-            flag = (int) Math.pow(ordinal(), 2);
+            flag = (int) Math.pow(2, ordinal());
         }
 
         public static EnumType byMeta(int meta) {
