@@ -3,13 +3,11 @@ package ru.kordum.totemDefender.handler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.init.Items;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.block.BlockTotem;
 import ru.kordum.totemDefender.entity.EntityProjectile;
 import ru.kordum.totemDefender.entity.TileEntityDiamondTotem;
@@ -18,24 +16,25 @@ import ru.kordum.totemDefender.entity.TileEntityIronTotem;
 import ru.kordum.totemDefender.entity.TileEntityTotem;
 import ru.kordum.totemDefender.entity.TileEntityWoodenTotem;
 import ru.kordum.totemDefender.render.RenderTotem;
+import ru.kordum.totemDefender.util.ModResources;
 
 public class TileEntityRegistry {
     public static void registerEntities() {
         GameRegistry.registerTileEntity(
             TileEntityWoodenTotem.class,
-            new ResourceLocation(TotemDefender.MODID, BlockRegistry.TOTEM.getUnlocalizedName() + "_" + BlockTotem.EnumType.WOODEN.getName())
+            ModResources.getResource(BlockRegistry.TOTEM.getUnlocalizedName() + "_" + BlockTotem.EnumType.WOODEN.getName())
         );
         GameRegistry.registerTileEntity(
             TileEntityIronTotem.class,
-            new ResourceLocation(TotemDefender.MODID, BlockRegistry.TOTEM.getUnlocalizedName() + "_" + BlockTotem.EnumType.IRON.getName())
+            ModResources.getResource(BlockRegistry.TOTEM.getUnlocalizedName() + "_" + BlockTotem.EnumType.IRON.getName())
         );
         GameRegistry.registerTileEntity(
             TileEntityGoldenTotem.class,
-            new ResourceLocation(TotemDefender.MODID, BlockRegistry.TOTEM.getUnlocalizedName() + "_" + BlockTotem.EnumType.GOLDEN.getName())
+            ModResources.getResource(BlockRegistry.TOTEM.getUnlocalizedName() + "_" + BlockTotem.EnumType.GOLDEN.getName())
         );
         GameRegistry.registerTileEntity(
             TileEntityDiamondTotem.class,
-            new ResourceLocation(TotemDefender.MODID, BlockRegistry.TOTEM.getUnlocalizedName() + "_" + BlockTotem.EnumType.DIAMOND.getName())
+            ModResources.getResource(BlockRegistry.TOTEM.getUnlocalizedName() + "_" + BlockTotem.EnumType.DIAMOND.getName())
         );
     }
 

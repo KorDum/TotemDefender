@@ -13,6 +13,8 @@ import ru.kordum.totemDefender.gui.slots.SlotFilter;
 import ru.kordum.totemDefender.gui.slots.SlotMode;
 import ru.kordum.totemDefender.gui.slots.SlotUpgrade;
 
+import javax.annotation.Nonnull;
+
 public class ContainerTotem extends Container {
     private TileEntityTotem tileEntity;
     private IItemHandler handler;
@@ -55,6 +57,7 @@ public class ContainerTotem extends Container {
         return tileEntity.isUsableByPlayer(player);
     }
 
+    @Nonnull
     @Override
     public ItemStack transferStackInSlot(EntityPlayer player, int fromSlot) {
         ItemStack previous = ItemStack.EMPTY;

@@ -65,6 +65,15 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
     private long lastShoot;
     private UUID owner;
 
+    public TileEntityTotem() {
+        super();
+        init();
+        handler = new ItemStackHandler(type.getFilterSlots() + type.getUpgradeSlots() + 1);
+        updateDefaultState();
+    }
+
+    protected abstract void init();
+
     @Override
     public void update() {
         if (world.isRemote) {
@@ -90,10 +99,8 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
     }
 
     public void updateState() {
+        updateDefaultState();
         modifier = 0;
-        attackSpeed = type.getAttackSpeed();
-        damage = type.getDamage();
-        radius = type.getRadius();
         int offset = 1 + type.getFilterSlots();
         int count = offset + type.getUpgradeSlots();
 
@@ -422,6 +429,12 @@ public abstract class TileEntityTotem extends TileEntity implements ICapabilityP
     public boolean isUsableByPlayer(EntityPlayer player) {
         return world.getTileEntity(getPos()) == this
             && player.getDistanceSq(pos.add(0.5, 0.5, 0.5)) <= 64;
+    }
+
+    protected void updateDefaultState() {
+        attackSpeed = type.getAttackSpeed();
+        damage = type.getDamage();
+        radius = type.getRadius();
     }
 
     public float getAttackSpeed() {

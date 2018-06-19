@@ -7,7 +7,11 @@ public class ModResources {
     public static final String CATEGORY_GUI = "gui";
     public static final String CATEGORY_BLOCKS = "blocks";
 
+    public static ResourceLocation getResource(String name) {
+        return new ResourceLocation(TotemDefender.MODID, name);
+    }
+
     public static ResourceLocation getResource(String category, String name) {
-        return new ResourceLocation(TotemDefender.MODID, "textures/" + category + "/" + name);
+        return getResource("textures/" + category + "/" + name);
     }
 }
