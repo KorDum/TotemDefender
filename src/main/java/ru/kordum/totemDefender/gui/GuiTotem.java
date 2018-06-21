@@ -31,6 +31,13 @@ public class GuiTotem extends GuiContainer {
     }
 
     @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        drawDefaultBackground();
+        super.drawScreen(mouseX, mouseY, partialTicks);
+        renderHoveredToolTip(mouseX, mouseY);
+    }
+
+    @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         String name = "gui.totem." + tileEntity.getType().getName();
         fontRenderer.drawString(Formatter.getLocalize(name), 8, 6, 0x404040);
