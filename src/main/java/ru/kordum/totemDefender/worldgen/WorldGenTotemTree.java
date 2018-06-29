@@ -11,7 +11,6 @@ import java.util.Random;
 
 import ru.kordum.totemDefender.block.BlockLeaves;
 import ru.kordum.totemDefender.block.BlockLog;
-import ru.kordum.totemDefender.block.BlockLogFace;
 import ru.kordum.totemDefender.handler.BlockRegistry;
 
 public class WorldGenTotemTree extends WorldGenAbstractTree {
@@ -130,19 +129,5 @@ public class WorldGenTotemTree extends WorldGenAbstractTree {
             }
         }
         return false;
-    }
-
-    private EnumFacing getFacingFromMeta(int meta) {
-        switch (meta) {
-            case 0:
-                return EnumFacing.NORTH;
-
-            case 1:
-                return EnumFacing.EAST;
-
-            case 2:
-                return EnumFacing.WEST;
-        }
-        return EnumFacing.SOUTH;
     }
 }

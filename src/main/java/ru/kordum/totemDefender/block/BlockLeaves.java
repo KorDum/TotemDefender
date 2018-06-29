@@ -22,17 +22,18 @@ public class BlockLeaves extends net.minecraft.block.BlockLeaves {
         this.saplingChance = saplingChance;
     }
 
+    @Nonnull
     @Override
     public List<ItemStack> onSheared(@Nonnull ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
-        if (!(item.getItem() instanceof ItemShears)) {
-            return null;
-        }
-
         List<ItemStack> list = new ArrayList<>();
-        list.add(new ItemStack(this));
+        if (item.getItem() instanceof ItemShears) {
+            list.add(new ItemStack(this));
+        }
         return list;
     }
 
+    @SuppressWarnings("deprecation")
+    @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta) {
         return getDefaultState()
@@ -42,14 +43,14 @@ public class BlockLeaves extends net.minecraft.block.BlockLeaves {
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        int i = 0;
+        int meta = 0;
         if (!state.getValue(DECAYABLE)) {
-            i |= 4;
+            meta |= 4;
         }
         if (state.getValue(CHECK_DECAY)) {
-            i |= 8;
+            meta |= 8;
         }
-        return i;
+        return meta;
     }
 
     @Override
@@ -57,6 +58,7 @@ public class BlockLeaves extends net.minecraft.block.BlockLeaves {
         return saplingChance;
     }
 
+    @Nonnull
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, CHECK_DECAY, DECAYABLE);

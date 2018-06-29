@@ -13,6 +13,8 @@ import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.block.BlockLog;
 import ru.kordum.totemDefender.model.ICustomRenderModel;
 
+import javax.annotation.Nonnull;
+
 public class ItemLog extends ItemBlock implements ICustomRenderModel {
     public ItemLog(Block block) {
         super(block);
@@ -39,6 +41,7 @@ public class ItemLog extends ItemBlock implements ICustomRenderModel {
         }
     }
 
+    @Nonnull
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         int meta = stack.getMetadata();

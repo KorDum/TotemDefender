@@ -2,7 +2,9 @@ package ru.kordum.totemDefender.handler;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.init.Blocks;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.registries.IForgeRegistry;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.block.BlockDoor;
@@ -84,6 +86,7 @@ public class BlockRegistry {
     }
 
     public static void registerRenders() {
+        ModelLoader.setCustomStateMapper(FENCE_GATE, (new StateMap.Builder()).ignore(BlockFenceGate.POWERED).build());
         ((BlockLeaves) LEAVES).setGraphicsLevel(Minecraft.isFancyGraphicsEnabled());
     }
 }

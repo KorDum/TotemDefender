@@ -19,6 +19,7 @@ import ru.kordum.totemDefender.config.ConfigUpgrade;
 import ru.kordum.totemDefender.model.ICustomRenderModel;
 import ru.kordum.totemDefender.util.Formatter;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -83,7 +84,7 @@ public class ItemUpgrade extends Item implements ICustomRenderModel {
     public void registerRender() {
         for (EnumType type : ItemUpgrade.EnumType.values()) {
             ModelResourceLocation location = new ModelResourceLocation(this.getRegistryName() + "_" + type.getName(), "inventory");
-            ModelLoader.setCustomModelResourceLocation(this, type.ordinal(), location);
+            ModelLoader.setCustomModelResourceLocation(this, type.getMeta(), location);
         }
     }
 
@@ -124,23 +125,28 @@ public class ItemUpgrade extends Item implements ICustomRenderModel {
         private ConfigUpgrade config;
 
         EnumType(int level) {
-            name = name().toLowerCase();
             this.level = level;
-            flag = (int) Math.pow(2, ordinal());
+            name = name().toLowerCase();
+            flag = (int) Math.pow(2, getMeta());
         }
 
         public static EnumType byMeta(int meta) {
             for (EnumType type : values()) {
-                if (type.ordinal() == meta) {
+                if (type.getMeta() == meta) {
                     return type;
                 }
             }
             return null;
         }
 
+        @Nonnull
         @Override
         public String getName() {
             return name;
+        }
+
+        public int getMeta() {
+            return ordinal();
         }
 
         public int getLevel() {

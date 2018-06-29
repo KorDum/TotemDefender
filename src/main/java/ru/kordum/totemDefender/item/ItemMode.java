@@ -12,6 +12,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.model.ICustomRenderModel;
 
+import javax.annotation.Nonnull;
+
 public class ItemMode extends Item implements ICustomRenderModel {
 
     public ItemMode() {
@@ -38,6 +40,7 @@ public class ItemMode extends Item implements ICustomRenderModel {
         }
     }
 
+    @Nonnull
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         int meta = stack.getMetadata();
@@ -72,9 +75,10 @@ public class ItemMode extends Item implements ICustomRenderModel {
                     return type;
                 }
             }
-            return null;
+            return PROJECTILE;
         }
 
+        @Nonnull
         @Override
         public String getName() {
             return name;

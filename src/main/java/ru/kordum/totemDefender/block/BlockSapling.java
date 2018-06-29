@@ -15,6 +15,7 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 import ru.kordum.totemDefender.config.ConfigSapling;
 import ru.kordum.totemDefender.worldgen.WorldGenTotemTree;
 
+import javax.annotation.Nonnull;
 import java.util.Random;
 
 public class BlockSapling extends BlockBush implements IGrowable {
@@ -45,6 +46,8 @@ public class BlockSapling extends BlockBush implements IGrowable {
         }
     }
 
+    @Nonnull
+    @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, TYPE, STAGE);
     }
@@ -59,7 +62,7 @@ public class BlockSapling extends BlockBush implements IGrowable {
 
     @Override
     public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
-        if (state.getValue(STAGE).intValue() == 0) {
+        if (state.getValue(STAGE) == 0) {
             world.setBlockState(pos, state.cycleProperty(STAGE), 4);
         } else {
             generateTree(world, pos, state, rand);
@@ -71,6 +74,8 @@ public class BlockSapling extends BlockBush implements IGrowable {
         return 0;
     }
 
+    @Nonnull
+    @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return SAPLING_AABB;
     }

@@ -3,9 +3,9 @@ package ru.kordum.totemDefender.block;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+
+import javax.annotation.Nonnull;
 
 public class BlockLog extends net.minecraft.block.BlockLog implements IBlockWithSubTypes {
     public static final PropertyEnum<EnumType> VARIANT = PropertyEnum.create("variant", EnumType.class);
@@ -18,11 +18,13 @@ public class BlockLog extends net.minecraft.block.BlockLog implements IBlockWith
         setDefaultState(state);
     }
 
+    @Nonnull
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, LOG_AXIS, VARIANT);
     }
 
+    @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta) {
         IBlockState state = getDefaultState().withProperty(VARIANT, EnumType.byMeta(meta));
@@ -42,25 +44,21 @@ public class BlockLog extends net.minecraft.block.BlockLog implements IBlockWith
     @Override
     public int getMetaFromState(IBlockState state) {
         EnumType type = state.getValue(VARIANT);
-        int i = type.ordinal();
+        int meta = type.getMeta();
         switch (SwitchEnumAxis.AXIS_LOOKUP[state.getValue(LOG_AXIS).ordinal()]) {
             case 1:
-                i |= 4;
+                meta |= 4;
                 break;
 
             case 2:
-                i |= 8;
+                meta |= 8;
                 break;
 
             case 3:
-                i |= 12;
+                meta |= 12;
+                break;
         }
-        return i;
-    }
-
-    @Override
-    protected ItemStack getSilkTouchDrop(IBlockState state) {
-        return new ItemStack(Item.getItemFromBlock(this), 1, state.getValue(VARIANT).ordinal());
+        return meta;
     }
 
     @Override
@@ -114,6 +112,11 @@ public class BlockLog extends net.minecraft.block.BlockLog implements IBlockWith
             return null;
         }
 
+        public int getMeta() {
+            return ordinal();
+        }
+
+        @Nonnull
         @Override
         public String getName() {
             return name;
