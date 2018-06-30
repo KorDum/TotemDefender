@@ -16,7 +16,6 @@ import org.lwjgl.input.Keyboard;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.block.BlockTotem;
 import ru.kordum.totemDefender.config.ConfigUpgrade;
-import ru.kordum.totemDefender.model.ICustomRenderModel;
 import ru.kordum.totemDefender.util.Formatter;
 
 import javax.annotation.Nonnull;

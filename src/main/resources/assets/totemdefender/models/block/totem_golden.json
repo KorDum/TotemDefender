@@ -1,0 +1,6 @@
+{
+    "parent": "totemdefender:template/totem",
+    "textures": {
+        "faces": "totemdefender:blocks/totem_golden"
+    }
+}

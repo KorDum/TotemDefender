@@ -1,52 +1,64 @@
 {
     "variants": {
         "facing=north,variant=wooden": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_wooden"
         },
         "facing=east,variant=wooden": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_wooden",
+            "y": 270
         },
         "facing=west,variant=wooden": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_wooden",
+            "y": 90
         },
         "facing=south,variant=wooden": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_wooden",
+            "y": 180
         },
         "facing=north,variant=iron": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_iron"
         },
         "facing=east,variant=iron": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_iron",
+            "y": 270
         },
         "facing=west,variant=iron": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_iron",
+            "y": 90
         },
         "facing=south,variant=iron": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_iron",
+            "y": 180
         },
         "facing=north,variant=golden": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_golden"
         },
         "facing=east,variant=golden": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_golden",
+            "y": 270
         },
         "facing=west,variant=golden": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_golden",
+            "y": 90
         },
         "facing=south,variant=golden": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_golden",
+            "y": 180
         },
         "facing=north,variant=diamond": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_diamond"
         },
         "facing=east,variant=diamond": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_diamond",
+            "y": 270
         },
         "facing=west,variant=diamond": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_diamond",
+            "y": 90
         },
         "facing=south,variant=diamond": {
-            "model": "totemdefender:totem"
+            "model": "totemdefender:totem_diamond",
+            "y": 180
         }
     }
 }

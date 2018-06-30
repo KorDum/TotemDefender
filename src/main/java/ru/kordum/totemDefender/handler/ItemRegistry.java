@@ -20,7 +20,7 @@ import ru.kordum.totemDefender.item.ItemMode;
 import ru.kordum.totemDefender.item.ItemSlab;
 import ru.kordum.totemDefender.item.ItemTotem;
 import ru.kordum.totemDefender.item.ItemUpgrade;
-import ru.kordum.totemDefender.model.ICustomRenderModel;
+import ru.kordum.totemDefender.item.ICustomRenderModel;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,6 +6,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import ru.kordum.totemDefender.tileEntity.TileEntityTotem;
 
 public class EntityProjectile extends EntityThrowable {
     private TileEntityTotem owner;

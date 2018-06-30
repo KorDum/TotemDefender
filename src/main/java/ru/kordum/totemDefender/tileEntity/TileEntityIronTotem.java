@@ -1,4 +1,4 @@
-package ru.kordum.totemDefender.entity;
+package ru.kordum.totemDefender.tileEntity;
 
 import ru.kordum.totemDefender.block.BlockTotem;
 

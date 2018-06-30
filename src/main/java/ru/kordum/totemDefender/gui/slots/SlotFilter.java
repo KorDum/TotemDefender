@@ -2,7 +2,7 @@ package ru.kordum.totemDefender.gui.slots;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
-import ru.kordum.totemDefender.entity.TileEntityTotem;
+import ru.kordum.totemDefender.tileEntity.TileEntityTotem;
 import ru.kordum.totemDefender.item.ItemFilter;
 
 public class SlotFilter extends Slot {

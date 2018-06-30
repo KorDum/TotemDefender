@@ -10,7 +10,6 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ru.kordum.totemDefender.TotemDefender;
-import ru.kordum.totemDefender.model.ICustomRenderModel;
 
 import javax.annotation.Nonnull;
 

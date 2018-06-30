@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
-import ru.kordum.totemDefender.entity.TileEntityTotem;
+import ru.kordum.totemDefender.tileEntity.TileEntityTotem;
 import ru.kordum.totemDefender.gui.ContainerTotem;
 import ru.kordum.totemDefender.gui.GuiTotem;
 

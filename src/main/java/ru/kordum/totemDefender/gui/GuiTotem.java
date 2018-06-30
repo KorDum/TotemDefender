@@ -6,7 +6,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ru.kordum.totemDefender.block.BlockTotem;
-import ru.kordum.totemDefender.entity.TileEntityTotem;
+import ru.kordum.totemDefender.tileEntity.TileEntityTotem;
 import ru.kordum.totemDefender.util.Formatter;
 import ru.kordum.totemDefender.util.ModResources;
 

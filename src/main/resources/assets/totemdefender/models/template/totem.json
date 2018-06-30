@@ -1,0 +1,190 @@
+{
+    "parent": "block/block",
+    "textures": {
+        "totem": "totemdefender:blocks/totem"
+    },
+    "elements": [
+        {
+            "name": "Platform",
+            "from": [ 1, 0, 1 ],
+            "to": [ 15, 1, 15 ],
+            "faces": {
+                "north": { "texture": "#totem", "uv": [ 8, 7, 15, 7.5 ] },
+                "east": { "texture": "#totem", "uv": [ 8, 7, 15, 7.5 ] },
+                "south": { "texture": "#totem", "uv": [ 8, 7, 15, 7.5 ] },
+                "west": { "texture": "#totem", "uv": [ 8, 7, 15, 7.5 ] },
+                "up": { "texture": "#totem", "uv": [ 8, 0, 15, 7.5 ] },
+                "down": { "texture": "#totem", "uv": [ 8, 0, 15, 7 ] }
+            }
+        },
+        {
+            "name": "Head 1",
+            "from": [ 4, 1, 4 ],
+            "to": [ 12, 10, 12 ],
+            "faces": {
+                "north": { "texture": "#faces", "uv": [ 0, 0, 4, 4.5 ] },
+                "east": { "texture": "#totem", "uv": [ 4, 0, 8, 4.5 ] },
+                "south": { "texture": "#faces", "uv": [ 4, 0, 8, 4.5 ] },
+                "west": { "texture": "#totem", "uv": [ 4, 0, 8, 4.5 ] },
+                "up": { "texture": "#totem", "uv": [ 0, 0, 4, 4 ] },
+                "down": { "texture": "#totem", "uv": [ 0, 0, 4, 4 ] }
+            }
+        },
+        {
+            "name": "Bridge 1-2",
+            "from": [ 5, 10, 5 ],
+            "to": [ 11, 12, 11 ],
+            "faces": {
+                "north": { "texture": "#totem", "uv": [ 0, 4, 3, 5 ] },
+                "east": { "texture": "#totem", "uv": [ 0, 4, 3, 5 ] },
+                "south": { "texture": "#totem", "uv": [ 0, 4, 3, 5 ] },
+                "west": { "texture": "#totem", "uv": [ 0, 4, 3, 5 ] },
+                "up": { "texture": "#totem", "uv": [ 0.5, 0.5, 3, 3 ] },
+                "down": { "texture": "#totem", "uv": [ 0.5, 0.5, 3, 3 ] }
+            }
+        },
+        {
+            "name": "Bridge 2-3",
+            "from": [ 5, 21, 5 ],
+            "to": [ 11, 23, 11 ],
+            "faces": {
+                "north": { "texture": "#totem", "uv": [ 0, 4, 3, 5 ] },
+                "east": { "texture": "#totem", "uv": [ 0, 4, 3, 5 ] },
+                "south": { "texture": "#totem", "uv": [ 0, 4, 3, 5 ] },
+                "west": { "texture": "#totem", "uv": [ 0, 4, 3, 5 ] },
+                "up": { "texture": "#totem", "uv": [ 0.5, 0.5, 3, 3 ] },
+                "down": { "texture": "#totem", "uv": [ 0.5, 0.5, 3, 3 ] }
+            }
+        },
+        {
+            "name": "Head 2",
+            "from": [ 4, 12, 4 ],
+            "to": [ 12, 21, 12 ],
+            "faces": {
+                "north": { "texture": "#faces", "uv": [ 4, 0, 8, 4.5 ] },
+                "east": { "texture": "#totem", "uv": [ 4, 0, 8, 4.5 ] },
+                "south": { "texture": "#faces", "uv": [ 8, 0, 12, 4.5 ] },
+                "west": { "texture": "#totem", "uv": [ 4, 0, 7, 4.5 ] },
+                "up": { "texture": "#totem", "uv": [ 0, 0, 4, 4 ] },
+                "down": { "texture": "#totem", "uv": [ 0, 0, 4, 4 ] }
+            }
+        },
+        {
+            "name": "Head 3",
+            "from": [ 4, 23, 4 ],
+            "to": [ 12, 32, 12 ],
+            "faces": {
+                "north": { "texture": "#faces", "uv": [ 8, 0, 12, 4.5 ] },
+                "east": { "texture": "#totem", "uv": [ 4, 0, 8, 4.5 ] },
+                "south": { "texture": "#faces", "uv": [ 0, 0, 4, 4.5 ] },
+                "west": { "texture": "#totem", "uv": [ 4, 0, 7, 4.5 ] },
+                "up": { "texture": "#totem", "uv": [ 0, 0, 4, 4 ] },
+                "down": { "texture": "#totem", "uv": [ 0, 0, 4, 4 ] }
+            }
+        },
+        {
+            "name": "Left Wing 1",
+            "from": [ 2, 13, 7 ],
+            "to": [ 4, 20, 8 ],
+            "faces": {
+                "north": { "texture": "#totem", "uv": [ 0, 4.5, 1, 8 ] },
+                "east": { "texture": "#totem", "uv": [ 0, 4.5, 0.5, 8 ] },
+                "south": { "texture": "#totem", "uv": [ 0, 4.5, 1, 8 ] },
+                "west": { "texture": "#totem", "uv": [ 0, 4.5, 0.5, 8 ] },
+                "up": { "texture": "#totem", "uv": [ 0, 4, 1, 4.5 ] },
+                "down": { "texture": "#totem", "uv": [ 0, 4, 1, 4.5 ] }
+            }
+        },
+        {
+            "name": "Left Wing 2",
+            "from": [ 0, 15, 7 ],
+            "to": [ 2, 21, 8 ],
+            "faces": {
+                "north": { "texture": "#totem", "uv": [ 1, 4, 2, 7 ] },
+                "east": { "texture": "#totem", "uv": [ 1, 4, 1.5, 7 ], "rotation": 180 },
+                "south": { "texture": "#totem", "uv": [ 1, 4.5, 2, 7 ] },
+                "west": { "texture": "#totem", "uv": [ 1, 4, 1.5, 7 ] },
+                "up": { "texture": "#totem", "uv": [ 1, 4, 2, 4.5 ] },
+                "down": { "texture": "#totem", "uv": [ 1, 4, 2, 4.5 ] }
+            }
+        },
+        {
+            "name": "Left Wing 3",
+            "from": [ -2, 17, 7 ],
+            "to": [ 0, 22, 8 ],
+            "faces": {
+                "north": { "texture": "#totem", "uv": [ 2, 4, 3, 6.5 ] },
+                "east": { "texture": "#totem", "uv": [ 2, 4, 2.5, 6.5 ] },
+                "south": { "texture": "#totem", "uv": [ 2, 4, 3, 6.5 ] },
+                "west": { "texture": "#totem", "uv": [ 2, 4, 2.5, 6.5 ], "rotation": 180 },
+                "up": { "texture": "#totem", "uv": [ 2, 4, 3, 4.5 ] },
+                "down": { "texture": "#totem", "uv": [ 2, 4, 3, 4.5 ] }
+            }
+        },
+        {
+            "name": "Left Wing 4",
+            "from": [ -3, 19, 7 ],
+            "to": [ -2, 23, 8 ],
+            "faces": {
+                "north": { "texture": "#totem", "uv": [ 3, 4, 3.5, 6 ] },
+                "east": { "texture": "#totem", "uv": [ 3, 4, 3.5, 6 ] },
+                "south": { "texture": "#totem", "uv": [ 3, 4, 3.5, 6 ] },
+                "west": { "texture": "#totem", "uv": [ 3, 4, 3.5, 6 ], "rotation": 180 },
+                "up": { "texture": "#totem", "uv": [ 3.5, 4, 4, 4.5 ] },
+                "down": { "texture": "#totem", "uv": [ 3.5, 4, 4, 4.5 ] }
+            }
+        },
+        {
+            "name": "Right Wing 1",
+            "from": [ 12, 13, 7 ],
+            "to": [ 14, 20, 8 ],
+            "faces": {
+                "north": { "texture": "#totem", "uv": [ 0, 4.5, 1, 8 ] },
+                "east": { "texture": "#totem", "uv": [ 0, 4.5, 0.5, 8 ] },
+                "south": { "texture": "#totem", "uv": [ 0, 4.5, 1, 8 ] },
+                "west": { "texture": "#totem", "uv": [ 0, 4.5, 0.5, 8 ] },
+                "up": { "texture": "#totem", "uv": [ 0, 4, 1, 4.5 ] },
+                "down": { "texture": "#totem", "uv": [ 0, 4, 1, 4.5 ] }
+            }
+        },
+        {
+            "name": "Right Wing 2",
+            "from": [ 14, 15, 7 ],
+            "to": [ 16, 21, 8 ],
+            "faces": {
+                "north": { "texture": "#totem", "uv": [ 1, 4, 2, 7 ] },
+                "east": { "texture": "#totem", "uv": [ 1, 4, 1.5, 7 ], "rotation": 180 },
+                "south": { "texture": "#totem", "uv": [ 1, 4.5, 2, 7 ] },
+                "west": { "texture": "#totem", "uv": [ 1, 4, 1.5, 7 ] },
+                "up": { "texture": "#totem", "uv": [ 1, 4, 2, 4.5 ] },
+                "down": { "texture": "#totem", "uv": [ 1, 4, 2, 4.5 ] }
+            }
+        },
+        {
+            "name": "Right Wing 3",
+            "from": [ 16, 17, 7 ],
+            "to": [ 18, 22, 8 ],
+            "faces": {
+                "north": { "texture": "#totem", "uv": [ 2, 4, 3, 6.5 ] },
+                "east": { "texture": "#totem", "uv": [ 2, 4, 2.5, 6.5 ] },
+                "south": { "texture": "#totem", "uv": [ 2, 4, 3, 6.5 ] },
+                "west": { "texture": "#totem", "uv": [ 2, 4, 2.5, 6.5 ], "rotation": 180 },
+                "up": { "texture": "#totem", "uv": [ 2, 4, 3, 4.5 ] },
+                "down": { "texture": "#totem", "uv": [ 2, 4, 3, 4.5 ] }
+            }
+        },
+        {
+            "name": "Right Wing 4",
+            "from": [ 18, 19, 7 ],
+            "to": [ 19, 23, 8 ],
+            "faces": {
+                "north": { "texture": "#totem", "uv": [ 3, 4, 3.5, 6 ] },
+                "east": { "texture": "#totem", "uv": [ 3, 4, 3.5, 6 ] },
+                "south": { "texture": "#totem", "uv": [ 3, 4, 3.5, 6 ] },
+                "west": { "texture": "#totem", "uv": [ 3, 4, 3.5, 6 ], "rotation": 180 },
+                "up": { "texture": "#totem", "uv": [ 3.5, 4, 4, 4.5 ] },
+                "down": { "texture": "#totem", "uv": [ 3.5, 4, 4, 4.5 ] }
+            }
+        }
+    ]
+}

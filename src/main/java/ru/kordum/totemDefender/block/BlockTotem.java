@@ -9,10 +9,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
@@ -24,13 +22,14 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.config.ConfigTotem;
-import ru.kordum.totemDefender.entity.TileEntityDiamondTotem;
-import ru.kordum.totemDefender.entity.TileEntityGoldenTotem;
-import ru.kordum.totemDefender.entity.TileEntityIronTotem;
-import ru.kordum.totemDefender.entity.TileEntityTotem;
-import ru.kordum.totemDefender.entity.TileEntityWoodenTotem;
+import ru.kordum.totemDefender.tileEntity.TileEntityDiamondTotem;
+import ru.kordum.totemDefender.tileEntity.TileEntityGoldenTotem;
+import ru.kordum.totemDefender.tileEntity.TileEntityIronTotem;
+import ru.kordum.totemDefender.tileEntity.TileEntityTotem;
+import ru.kordum.totemDefender.tileEntity.TileEntityWoodenTotem;
 import ru.kordum.totemDefender.handler.GuiHandler;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class BlockTotem extends Block implements IBlockWithSubTypes {
@@ -49,6 +48,8 @@ public class BlockTotem extends Block implements IBlockWithSubTypes {
         setDefaultState(state);
     }
 
+    @SuppressWarnings("deprecation")
+    @Nonnull
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return getDefaultState()
@@ -67,6 +68,8 @@ public class BlockTotem extends Block implements IBlockWithSubTypes {
         super.breakBlock(world, pos, state);
     }
 
+    @SuppressWarnings("deprecation")
+    @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta) {
         int side = (meta & 12) / 4;
@@ -78,28 +81,31 @@ public class BlockTotem extends Block implements IBlockWithSubTypes {
     @Override
     public int getMetaFromState(IBlockState state) {
         EnumType type = state.getValue(VARIANT);
-        int i = type.ordinal();
+        int meta = type.getMeta();
         switch (state.getValue(FACING)) {
             case EAST:
-                i |= 4;
+                meta |= 4;
                 break;
 
             case SOUTH:
-                i |= 8;
+                meta |= 8;
                 break;
 
             case WEST:
-                i |= 12;
+                meta |= 12;
                 break;
         }
-        return i;
+        return meta;
     }
 
+    @Nonnull
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, FACING, VARIANT);
     }
 
+    @SuppressWarnings("deprecation")
+    @Nonnull
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return BOUNDING_BOX;
@@ -149,29 +155,21 @@ public class BlockTotem extends Block implements IBlockWithSubTypes {
         return true;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean isFullCube(IBlockState state) {
         return false;
     }
 
     @Override
-    protected ItemStack getSilkTouchDrop(IBlockState state) {
-        return new ItemStack(Item.getItemFromBlock(this), 1, state.getValue(VARIANT).ordinal());
-    }
-
-    @Override
     public int damageDropped(IBlockState state) {
         return state.getValue(VARIANT).ordinal();
-    }
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.INVISIBLE;
     }
 
     public enum EnumType implements IStringSerializable {
@@ -198,19 +196,25 @@ public class BlockTotem extends Block implements IBlockWithSubTypes {
             this.upgradeSlots = upgradeSlots;
         }
 
+        @Nonnull
         public static EnumType byMeta(int meta) {
             meta &= 3;
             for (EnumType type : values()) {
-                if (type.ordinal() == meta) {
+                if (type.getMeta() == meta) {
                     return type;
                 }
             }
-            return null;
+            return WOODEN;
         }
 
+        @Nonnull
         @Override
         public String getName() {
             return name;
+        }
+
+        public int getMeta() {
+            return ordinal();
         }
 
         public int getLevel() {

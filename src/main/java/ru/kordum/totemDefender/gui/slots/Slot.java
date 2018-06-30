@@ -3,7 +3,7 @@ package ru.kordum.totemDefender.gui.slots;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
-import ru.kordum.totemDefender.entity.TileEntityTotem;
+import ru.kordum.totemDefender.tileEntity.TileEntityTotem;
 
 import javax.annotation.Nonnull;
 

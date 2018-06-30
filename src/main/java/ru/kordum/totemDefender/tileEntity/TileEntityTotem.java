@@ -1,4 +1,4 @@
-package ru.kordum.totemDefender.entity;
+package ru.kordum.totemDefender.tileEntity;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
@@ -28,6 +28,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import ru.kordum.totemDefender.block.BlockTotem;
+import ru.kordum.totemDefender.entity.EntityProjectile;
 import ru.kordum.totemDefender.item.ItemFilter;
 import ru.kordum.totemDefender.item.ItemMode;
 import ru.kordum.totemDefender.item.ItemUpgrade;

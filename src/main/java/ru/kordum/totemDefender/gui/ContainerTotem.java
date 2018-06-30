@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import ru.kordum.totemDefender.block.BlockTotem;
-import ru.kordum.totemDefender.entity.TileEntityTotem;
+import ru.kordum.totemDefender.tileEntity.TileEntityTotem;
 import ru.kordum.totemDefender.gui.slots.SlotFilter;
 import ru.kordum.totemDefender.gui.slots.SlotMode;
 import ru.kordum.totemDefender.gui.slots.SlotUpgrade;
