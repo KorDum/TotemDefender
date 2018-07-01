@@ -5,6 +5,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import ru.kordum.totemDefender.TotemDefender;
 import ru.kordum.totemDefender.block.BlockDoor;
@@ -85,6 +87,7 @@ public class BlockRegistry {
         return block;
     }
 
+    @SideOnly(Side.CLIENT)
     public static void registerRenders() {
         ModelLoader.setCustomStateMapper(FENCE_GATE, (new StateMap.Builder()).ignore(BlockFenceGate.POWERED).build());
         ((BlockLeaves) LEAVES).setGraphicsLevel(Minecraft.isFancyGraphicsEnabled());

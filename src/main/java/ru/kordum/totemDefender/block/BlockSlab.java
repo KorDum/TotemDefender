@@ -31,21 +31,25 @@ public abstract class BlockSlab extends net.minecraft.block.BlockSlab {
         setDefaultState(state.withProperty(VARIANT, Variant.DEFAULT));
     }
 
+    @Nonnull
     @Override
     public String getUnlocalizedName(int meta) {
         return super.getUnlocalizedName();
     }
 
+    @Nonnull
     @Override
     public IProperty getVariantProperty() {
         return VARIANT;
     }
 
+    @Nonnull
     @Override
     public Comparable<?> getTypeForItem(ItemStack stack) {
         return Variant.DEFAULT;
     }
 
+    @Nonnull
     @Override
     protected BlockStateContainer createBlockState() {
         return isDouble() ?
@@ -53,11 +57,14 @@ public abstract class BlockSlab extends net.minecraft.block.BlockSlab {
             new BlockStateContainer(this, HALF, VARIANT);
     }
 
+    @Nonnull
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(BlockRegistry.SLAB);
     }
 
+    @SuppressWarnings("deprecation")
+    @Nonnull
     @Override
     public IBlockState getStateFromMeta(int meta) {
         IBlockState state = getDefaultState().withProperty(VARIANT, Variant.DEFAULT);

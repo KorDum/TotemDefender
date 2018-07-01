@@ -14,7 +14,7 @@ import ru.kordum.totemDefender.proxy.CommonProxy;
 public class TotemDefender {
     public static final String MODID = "totemdefender";
     public static final String NAME = "Totem Defender";
-    public static final String VERSION = "2.6";
+    public static final String VERSION = "2.8";
 
     @SidedProxy(
         clientSide = "ru.kordum.totemDefender.proxy.ClientProxy",
