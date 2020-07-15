@@ -113,7 +113,7 @@ public class WorldGenTotemTree extends WorldGenAbstractTree {
                         if (rand.nextDouble() > 0.05) {
                             log = LOG;
                         } else {
-                            double faceRand = rand.nextGaussian();
+                            double faceRand = rand.nextDouble();
                             if (faceRand > 0.66) {
                                 log = LOG_FACE1;
                             } else if (faceRand > 0.33) {
